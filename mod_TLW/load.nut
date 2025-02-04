@@ -2,24 +2,24 @@
 //::include("mod_sellswords/hook_helper.nut")
 // all folders below must be loaded in that order
 
-// load the config folder which contains new Const added by this mod 
-foreach (file in ::IO.enumerateFiles("mod_TLW/config"))
-	{
-		::include(file);
-	}
-
-
-foreach (file in ::IO.enumerateFiles("mod_TLW/hooks"))
-	{
-		::include(file);
-	}
+// load the config folder which contains new Const added by this mod
+//foreach (file in ::IO.enumerateFiles("mod_TLW/config"))
+//	{
+//		::include(file);
+//	}
+//
+//
+//foreach (file in ::IO.enumerateFiles("mod_TLW/hooks"))
+//	{
+//		::include(file);
+//	}
 /*
 
 // load all hooks related to vanilla and legends
 foreach (file in ::IO.enumerateFiles("mod_sellswords/hooks"))
 	::include(file);
 
-// load all hooks related to ptr 
+// load all hooks related to ptr
 if (::Is_PTR_Exist)
 	foreach (file in ::IO.enumerateFiles("mod_sellswords/hooks_ptr"))
 		::include(file);

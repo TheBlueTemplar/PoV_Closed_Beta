@@ -10,6 +10,7 @@
 ::TLW.HooksMod.queue(">mod_msu", ">mod_legends", function() {
 	::TLW.Mod <- ::MSU.Class.Mod(::TLW.ID, ::TLW.Version, ::TLW.Name);
 
+	::includeFiles(::IO.enumerateFiles(TLW.ID + "/config"));
 	::includeFiles(::IO.enumerateFiles(TLW.ID + "/hooks"));
 	::includeFiles(::IO.enumerateFiles(TLW.ID + "/settings"));
 
