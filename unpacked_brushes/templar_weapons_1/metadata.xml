@@ -1,6 +1,0 @@
-<brush name="gfx/templar_weapons_1.png" version="17">
-  <sprite id="icon_mace_whip" offsetY="35" ic="FF374554" width="180" height="152" img="icon_mace_whip.png" left="-42" right="60" top="-89" bottom="19" />
-  <sprite id="icon_mace_whip_bloodied" offsetY="35" ic="FF374554" width="180" height="152" img="icon_mace_whip_bloodied.png" left="-42" right="60" top="-89" bottom="19" />
-  <sprite id="icon_mace_whip_named" offsetY="35" ic="FF374554" width="180" height="152" img="icon_mace_whip_named.png" left="-42" right="60" top="-89" bottom="19" />
-  <sprite id="icon_mace_whip_named_bloodied" offsetY="35" ic="FF374554" width="180" height="152" img="icon_mace_whip_named_bloodied.png" left="-42" right="60" top="-89" bottom="19" />
-</brush>
