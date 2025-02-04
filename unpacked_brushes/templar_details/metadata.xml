@@ -1,0 +1,4 @@
+<brush name="gfx/templar_details.png" version="17">
+	<sprite id="vattghern_medallion" offsetY="35" ic="FF374C5A" width="140" height="248" img="vattghern_medallion_icon.png" left="-26" right="34" top="-49" bottom="3" />
+	<sprite id="vattghern_medallion_dead" offsetX="6" offsetY="10" f="64FD" ic="FF384D5B" width="191" height="185" img="vattghern_medallion_icon_dead.png" left="-36" right="16" top="-47" bottom="17" />
+</brush>
