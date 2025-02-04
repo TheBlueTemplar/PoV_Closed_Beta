@@ -21,7 +21,7 @@ Recommended Modlist:
 
 Of course, you can include some simple mods, ui mods and such, but please try to keep the list short for the best testing results. Also, I will not redistribute any of the aforementioned mods, you will need to dl them yourselves, though you should really have all of them already. I will upload my mod here too in the next days 
 
-### Incombatible Mods:
+### Incompatible Mods:
 show named items in locations from the bb legends discord. Did not work for me for some reason, use at your own risk
 
 
