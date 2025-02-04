@@ -9,7 +9,7 @@ Play around with the Vatt'ghern (regardless of ho you obtained him). Does this f
 
 ### Installation:
 
-Download the zip and extract into your bb data folder
+Download the zip and place into your bb data folder (Do not extract)
 
 Recommended Modlist:
 * MSU
