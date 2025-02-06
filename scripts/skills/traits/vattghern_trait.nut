@@ -10,7 +10,7 @@ this.vattghern_trait <- this.inherit("scripts/skills/traits/character_trait", {
 		StartRegen = 3
 		StartDamage = 3
 		StartResolve = 10
-		MaxScale = 5
+		MaxScale = 151
 		MaxAction = 2
 		MaxInitiative = 15
 		MaxRegen = 18
@@ -123,14 +123,14 @@ this.vattghern_trait <- this.inherit("scripts/skills/traits/character_trait", {
 
 	function onUpdate( _properties )
 	{
-		if(this.getContainer().getActor().getLifetimeStats().Kills < this.m.MaxScale)
-		{
+		//if(this.getContainer().getActor().getLifetimeStats().Kills < this.m.MaxScale)
+		//{
 			_properties.InitiativeMult *= (1+ (0.01 * (this.getInitiativeBonus())));
 			_properties.ActionPoints += this.getActionBonus();
 			_properties.DamageTotalMult *= (1+ (0.01 * (this.getDamageBonus())));
 			_properties.BraveryMult *= (1+ (0.01 * (this.getResolveBonus())));
 			_properties.DailyWageMult *= 2;
-		}
+		//}
 	}
 	
 	
