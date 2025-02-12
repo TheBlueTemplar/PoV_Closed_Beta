@@ -16,7 +16,7 @@ this.strain_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Dark Visions[/color]: This character has strange visions of things that have been and things to come.  It gives them a certain ability to connect and internalize new experiences faster.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Reactive Muscle Tissue[/color]: This character\'s body reacts to physical trauma, secreting a calciferous substance that causes their muscles to reflexively sieze and contract at points of impact to minimize muscle damage.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Subdermal Reactivity[/color]: This character\'s subdermal flesh has mutated and automatically reacts to sudden trauma, lessening the chance to suffer injuries in battle.";
+		return "[color=" + this.Const.UI.Color.PositiveValue + "]Dark Visions[/color]: This character has strange visions of things that have been and things to come.  It gives them a certain ability to connect and internalize new experiences faster. On the other hand, these same visions cause extreme distress to the Vatt\'ghern\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Reactive Muscle Tissue[/color]: This character\'s body reacts to physical trauma, secreting a calciferous substance that causes their muscles to reflexively sieze and contract at points of impact to minimize muscle damage.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Subdermal Reactivity[/color]: This character\'s subdermal flesh has mutated and automatically reacts to sudden trauma, lessening the chance to suffer injuries in battle.";
 	}
 
 	function getTooltip()
@@ -50,6 +50,12 @@ this.strain_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				icon = "ui/icons/special.png",
 				text = "The threshold to sustain injuries on getting hit is increased by [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color]"
 			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/bravery.png",
+				text = "Lose [color=" + this.Const.UI.Color.NegativeValue + "]25% + 10[/color] Resolve, due to dark visions"
+			},
 		];
 		return ret;
 	}
@@ -59,6 +65,8 @@ this.strain_mutagen_effect <- this.inherit("scripts/skills/skill", {
 		_properties.XPGainMult *= 1.25;
 		_properties.FatigueLossOnAnyAttackMult = 0.0;
 		_properties.ThresholdToReceiveInjuryMult *= 1.50;
+		_properties.BraveryMult *= 0.75;
+		_properties.Bravery += -10;
 	}
 
 	function isHidden()

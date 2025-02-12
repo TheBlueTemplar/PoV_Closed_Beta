@@ -315,5 +315,21 @@
 	            SettingsDescription = ""
 	        }
 		}
+		BasiliskDrone = {
+	        SettingsName = "Basilisk Drone"
+	        SettingsDescription = ""
+	        Chance = {
+	            SettingsName = "Corpse Drop Chance"
+	            SettingsDescription = ""
+	        }
+		}
+		BasiliskSentry = {
+	        SettingsName = "Basilisk Sentry"
+	        SettingsDescription = ""
+	        Chance = {
+	            SettingsName = "Corpse Drop Chance"
+	            SettingsDescription = ""
+	        }
+		}
 	}
 }

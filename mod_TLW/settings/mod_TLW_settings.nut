@@ -125,6 +125,12 @@
 	ZombieNecromancer = {
 		Chance = 25.0,
 	}
+	BasiliskDrone = {
+		Chance = 25.0,
+	}
+	BasiliskSentry = {
+		Chance = 40.0,
+	}
 };
 
 local settingsPage = ::TLW.Mod.ModSettings.addPage("Corpse Drop Chance");

@@ -16,7 +16,7 @@ this.skeleton_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Curse Essence[/color]: This character\'s body is sustained by the curse of undeath.  They require less food and do not tire as quickly.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Synapse Blockage[/color]: This character\'s body has mutated in such a way that their fight-or-flight response is altered, increasing their resolve.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Subdermal Stitching[/color]: This character\'s skin and subdermal tissue has mutated and will rapidly stitch back together.";
+		return "[color=" + this.Const.UI.Color.PositiveValue + "]Curse Essence[/color]: This character\'s body is sustained by the curse of undeath.  They require less food and have increased stamina.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Synapse Blockage[/color]: This character\'s body has mutated in such a way that their emotions have become much more \"cold\", especially preventing the character from reaping the benefits of high morale\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Subdermal Stitching[/color]: This character\'s skin and subdermal tissue has mutated and will rapidly stitch back together, increasing piercing damage resistance. On the other hand, open wounds take more time to fully heal";
 	}
 
 	function getTooltip()
@@ -35,26 +35,38 @@ this.skeleton_mutagen_effect <- this.inherit("scripts/skills/skill", {
 			{
 				id = 11,
 				type = "text",
-				icon = "ui/icons/special.png",
-				text = "Reduces the Fatigue cost actions by[color=" + this.Const.UI.Color.PositiveValue + "] 30%[/color]."
+				icon = "ui/icons/fatigue.png",
+				text = "Increases Fatigue by[color=" + this.Const.UI.Color.PositiveValue + "] 10%[/color]."
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "This character consumes [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color] less food."
+				text = "This character consumes [color=" + this.Const.UI.Color.PositiveValue + "]75%[/color] less food."
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/morale.png",
-				text = "This character has plus [color=" + this.Const.UI.Color.PositiveValue + "]20%[/color] to bravery."
+				text = "This character has [color=" + this.Const.UI.Color.PositiveValue + "]40%[/color] piercing damage resistance."
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "This character takes [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color] less damage from piercing attacks."
+				text = "This character\'s lost health recovers [color=" + this.Const.UI.Color.NegativeValue + "]60%[/color] slower."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/pov_fire.png",
+				text = "This character takes [color=" + this.Const.UI.Color.NegativeValue + "]50%[/color] more damage from fire attacks."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/special.png",
+				text = "Will never be of [color=" + this.Const.UI.Color.NegativeValue + "]confident[/color] morale."
 			}
 		];
 		return ret;
@@ -62,10 +74,22 @@ this.skeleton_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
-		_properties.FatigueEffectMult = 0.7;
-		_properties.Bravery *= 1.2;
-		_properties.DailyFood *= 0.5;
+		_properties.StaminaMult *= 1.1;
+		//_properties.Bravery *= 1.2;
+		_properties.DailyFood *= 0.25;
+		_properties.HitpointsRecoveryRateMult *= 0.4;
+
+		local actor = this.getContainer().getActor();
+		actor.setMaxMoraleState(this.Const.MoraleState.Steady);
+
+		if (actor.getMoraleState() > this.Const.MoraleState.Steady)
+		{
+			actor.setMoraleState(this.Const.MoraleState.Steady);
+			//actor.setDirty(true);
+		}
 	}
+
+
 
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{
@@ -74,21 +98,33 @@ this.skeleton_mutagen_effect <- this.inherit("scripts/skills/skill", {
 			return;
 		}
 
-		if (_skill.getID() == "actives.aimed_shot" || _skill.getID() == "actives.quick_shot")
+		switch (_hitInfo.DamageType)
 		{
-			_properties.DamageReceivedRegularMult *= 0.5;
-		}
-		else if (_skill.getID() == "actives.shoot_bolt" || _skill.getID() == "actives.shoot_stake" || _skill.getID() == "actives.sling_stone" || _skill.getID() == "actives.fire_handgonne")
-		{
-			_properties.DamageReceivedRegularMult *= 0.5;
-		}
-		else if (_skill.getID() == "actives.throw_javelin" || _skill.getID() == "actives.ignite_firelance")
-		{
-			_properties.DamageReceivedRegularMult *= 0.5;
-		}
-		else if (_skill.getID() == "actives.puncture" || _skill.getID() == "actives.thrust" || _skill.getID() == "actives.stab" || _skill.getID() == "actives.deathblow" || _skill.getID() == "actives.impale" || _skill.getID() == "actives.rupture" || _skill.getID() == "actives.prong" || _skill.getID() == "actives.lunge" || _skill.getID() == "actives.throw_spear")
-		{
-			_properties.DamageReceivedRegularMult *= 0.50;
+			case this.Const.Damage.DamageType.Piercing:
+				if (_skill == null)
+				{
+					_properties.DamageReceivedRegularMult *= 0.6;
+				}
+				else
+				{
+					if (_skill.isRanged())
+					{
+						local weapon = _skill.getItem();
+						if (weapon != null && weapon.isItemType(this.Const.Items.ItemType.Weapon))
+						{
+							_properties.DamageReceivedRegularMult *= 0.6;
+						}
+					}
+					else
+					{
+						_properties.DamageReceivedRegularMult *= 0.6;
+					}
+				}
+				break;
+
+			case this.Const.Damage.DamageType.Burning:
+				_properties.DamageReceivedRegularMult *= 1.5;
+				break;
 		}
 	}
 

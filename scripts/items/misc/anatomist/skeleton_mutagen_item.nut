@@ -5,7 +5,7 @@ this.skeleton_mutagen_item <- this.inherit("scripts/items/misc/anatomist/anatomi
 		this.anatomist2_potion_item.create();
 		this.m.ID = "misc.skeleton_mutagen";
 		this.m.Name = "Undeath Mutagen";
-		this.m.Description = "TThis mutagen, obtained from the corpse of an Undead, allows whomever drinks it to gain some of their powers.";
+		this.m.Description = "This mutagen infuses the bearer with traits of the undead, granting unnatural resilience at a steep cost. Piercing attacks are less effective, and their reduced need for food makes them easy to sustain.\n\n However, their body heals at a much slower rate, and they are highly susceptible to fire, a devastating weakness. Also, the bearer’s morale is forever stunted, unable to feel the strength of confidence, and their increased fatigue weighs heavily in prolonged battles. A sinister transformation for those who seek endurance through sacrifice.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/potion_skele.png";
 		this.m.Value = 600;
@@ -72,6 +72,11 @@ this.skeleton_mutagen_item <- this.inherit("scripts/items/misc/anatomist/anatomi
 
 	function onUse( _actor, _item = null )
 	{
+
+		this.Sound.play("sounds/combat/drink_01.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/enemies/skeleton_rise_01.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/enemies/skeleton_death_01.wav", this.Const.Sound.Volume.Inventory);
+
 		if (_actor.getSkills().hasSkill("trait.witcher") && !_actor.getSkills().hasSkill("effects.skeleton_mutagen"))
 		{
 			//_actor.getBackground().addPerk(::Const.Perks.PerkDefs.LegendFavouredEnemySkeleton, 3, false);

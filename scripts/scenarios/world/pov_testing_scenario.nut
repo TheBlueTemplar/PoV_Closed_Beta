@@ -141,20 +141,24 @@ this.pov_testing_scenario <- this.inherit("scripts/scenarios/world/starting_scen
 
 		this.World.Assets.addBusinessReputation(this.m.StartingBusinessReputation);
 		this.World.Flags.set("HasLegendCampCrafting", true);
+		// ADD SOME SUPPLIES
 		this.World.Assets.getStash().add(this.new("scripts/items/supplies/wine_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/supplies/dried_fish_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/supplies/goat_cheese_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/supplies/smoked_ham_item"));
+		// ADD VATTGHERN MUTATION POTIONS AND STUFF TO HEAL THE INJURY
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/witcher_potion_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/witcher_potion_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/witcher_potion_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/special/fountain_of_youth_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/special/fountain_of_youth_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/special/fountain_of_youth_item"));
+		// ALL MOD'S NEW WEAPONS AND ITEMS
 		this.World.Assets.getStash().add(this.new("scripts/items/weapons/whip_mace"));
 		this.World.Assets.getStash().add(this.new("scripts/items/weapons/named/whip_mace_named"));
 		this.World.Assets.getStash().add(this.new("scripts/items/weapons/witcher_longsword"));
 		this.World.Assets.getStash().add(this.new("scripts/items/accessory/vattghern_medallion_item"));
-		// ADD ALL KNOWN MUTAGENS
+		// ALL MOD'S MUTAGENS
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/alp_mutagen_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/direwolf_mutagen_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/geist_mutagen_item"));
@@ -169,7 +173,17 @@ this.pov_testing_scenario <- this.inherit("scripts/scenarios/world/starting_scen
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/spider_mutagen_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/unhold_mutagen_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/strain_mutagen_item"));
-		// ADD ALL INGREDIENTS FOR CRAFTING THE ToG
+		// NEWLY ADDED MUTATIONS
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/basilisk_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/ifrit_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/serpent_mutagen_item"));
+		// ALL BASILISK CORPSES
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/corpse_basilisk_drone_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/corpse_basilisk_drone_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/corpse_basilisk_sentry_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/corpse_basilisk_sentry_item"));
+		// ALL INGREDIENTS FOR CRAFTING THE ToG
+		/*
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/third_eye_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/acidic_saliva_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/poison_gland_item"));
@@ -177,12 +191,14 @@ this.pov_testing_scenario <- this.inherit("scripts/scenarios/world/starting_scen
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/adrenaline_gland_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/vampire_dust_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/ghoul_brain_item"));
+		*/
+		// ORC MUTAGEN TESTING
+		//this.World.Assets.getStash().add(this.new("scripts/items/weapons/greenskins/orc_cleaver"));
 
 		this.World.Assets.m.Money = 20000;
 		this.World.Assets.m.ArmorParts = this.World.Assets.m.ArmorParts * 3;
 		this.World.Assets.m.Medicine = this.World.Assets.m.Medicine * 3;
 		this.World.Assets.m.Ammo = this.World.Assets.m.Ammo * 3;
-		//this.World.Assets.getStash().add(this.new("scripts/items/witcher_longsword"));
 	}
 
 	function onSpawnPlayer()

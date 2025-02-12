@@ -28,7 +28,7 @@ this.autopsy_ifrit_blueprint <- this.inherit("scripts/crafting/blueprint", {
 	{
 		if (this.Math.rand(1, 100) <= 10)
 			{
-				_stash.add(this.new("scripts/items/misc/anatomist/schrat_mutagen_item"));
+				_stash.add(this.new("scripts/items/misc/anatomist/ifrit_mutagen_item"));
 			}
 		if (this.Math.rand(1, 100) <= 40)
 			{

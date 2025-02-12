@@ -4,10 +4,10 @@ this.spider_mutagen_item <- this.inherit("scripts/items/misc/anatomist/anatomist
 	{
 		this.anatomist2_potion_item.create();
 		this.m.ID = "misc.spider_mutagen";
-		this.m.Name = "Venom Mutagen";
-		this.m.Description = "This mutagen, obtained from the corpse of a venomous creature, allows whomever drinks it to gain some of their powers.";
+		this.m.Name = "Spider Mutagen";
+		this.m.Description = "This mutagen reshapes the body into a venomous predator, making every strike drip with toxic potency. The user becomes immune to poison, their altered physiology thriving where others would falter. Every attack delivers a dose of venom, sapping the strength and reflexes of their foes, leaving them sluggish and vulnerable.\n\nAgainst already poisoned enemies, their strikes land with enhanced lethality, rewarding patience and persistence in combat. However, their reliance on venom comes at a cost—against untainted foes, their blows lack the same raw power, forcing them to either adapt or ensure their prey is always envenomed.";
 		this.m.IconLarge = "";
-		this.m.Icon = "consumables/potion_venom.png";
+		this.m.Icon = "consumables/potion_spider.png";
 		this.m.Value = 500;
 	}
 
@@ -74,10 +74,13 @@ this.spider_mutagen_item <- this.inherit("scripts/items/misc/anatomist/anatomist
 	function onUse( _actor, _item = null )
 	{
 
-		
-		if (_actor.getSkills().hasSkill("trait.witcher") && !_actor.getSkills().hasSkill("effects.venom_mutagen"))
+		this.Sound.play("sounds/combat/drink_01.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/enemies/dlc2/giant_spider_hurt_06.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/enemies/dlc2/giant_spider_death_04.wav", this.Const.Sound.Volume.Inventory);
+
+		if (_actor.getSkills().hasSkill("trait.witcher") && !_actor.getSkills().hasSkill("effects.spider_mutagen"))
 		{
-			_actor.getSkills().add(this.new("scripts/skills/effects/venom_mutagen_effect"));
+			_actor.getSkills().add(this.new("scripts/skills/effects/spider_mutagen_effect"));
 			//_actor.getBackground().addPerk(::Const.Perks.PerkDefs.LegendFavouredEnemySpider, 3, false);
 			//_actor.getSkills().add(::new(::Const.Perks.PerkDefObjects[::Const.Perks.PerkDefs.LegendFavouredEnemySpider].Script));
 			return this.anatomist2_potion_item.onUse(_actor, _item);

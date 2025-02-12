@@ -16,7 +16,7 @@ this.lindwurm_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Acidic blood[/color]: This character\'s blood is highly pressurized and burns upon prolonged exposure to air. Attackers who break skin will find themselves unpleasantly surprised by the resultant spray.";
+		return "[color=" + this.Const.UI.Color.PositiveValue + "]Acidic blood[/color]: This character\'s blood is highly pressurized and burns upon prolonged exposure to air. Attackers who break skin will find themselves unpleasantly surprised by the resultant spray. This same acid slighlt reduces healing speed.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Acidic Reinforcement[/color]: By slightly infusing their weapons with their own acid, the Vatt\'ghern does extra damage to enemie\'s armor. \n\n[color=" + this.Const.UI.Color.NegativeValue + "]Dravonic Cockiness[/color]: The Vatt\'ghern is full of himslef, disregarding his own defense, and demanding even more pay than usual.";
 	}
 
 	function getTooltip()
@@ -36,17 +36,50 @@ this.lindwurm_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "This character\'s blood burns with acid, damaging adjacent attackers whenever they deal hitpoint damage."
+				text = "This character\'s blood burns with [color=" + this.Const.UI.Color.PositiveValue + "]acid[/color], damaging adjacent attacker's armor whenever they deal hitpoint damage."
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "This character is immune to acid."
+				text = "This character is [color=" + this.Const.UI.Color.PositiveValue + "]immune[/color] to acid."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/armor_damage.png",
+				text = "Do [color=" + this.Const.UI.Color.PositiveValue + "]20% + 10[/color] more damage to armor."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/special.png",
+				text = "This character\'s lost health recovers [color=" + this.Const.UI.Color.NegativeValue + "]30%[/color] slower."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/special.png",
+				text = "This character\'s melee defense is reduced by [color=" + this.Const.UI.Color.NegativeValue + "]15%[/color]."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/money2.png",
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]+25[/color]% Daily Wage"
 			}
 			
 		];
 		return ret;
+	}
+
+	function onUpdate( _properties )
+	{
+		_properties.DamageArmorMult *= 1.2;
+		_properties.DamageArmorMult += 0.1;
+		_properties.DailyWageMult *= 1.25;
+		_properties.HitpointsRecoveryRateMult *= 0.7;
+		_properties.MeleeDefenseMult *= 0.85;
 	}
 
 	function onAdded()

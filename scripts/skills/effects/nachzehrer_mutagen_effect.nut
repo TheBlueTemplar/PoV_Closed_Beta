@@ -16,7 +16,7 @@ this.nachzehrer_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Hyperactive Tissue Growth[/color]: This character\'s body has mutated to regrow skin and muscle tissue much more quickly than normal. Wounds heal much faster than normal as a result.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Frenzied Attacks[/color]: This character\'s movements have become eratic and blidingly fast.  Any opponent engaged in battle with them will have their resolve tested.";
+		return "[color=" + this.Const.UI.Color.PositiveValue + "]Hyperactive Tissue Growth[/color]: This character\'s body has mutated to regrow skin and muscle tissue much more quickly than normal, vastly increasing regeneration. On the other hand, the user becomes more prone to injuries thanks to cellular instability.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Frenzied Attacks[/color]: This character\'s movements have become eratic and blidingly fast, vastly increasing initiative. This also renders the user almost unable to properly use ranged weapons though, while also slightly lowering their damage output.\n\n [color=" + this.Const.UI.Color.PositiveValue + "]Terrifying Presence[/color]: Any opponent engaged in battle with them will have their resolve tested. ";
 	}
 
 	function getTooltip()
@@ -48,7 +48,25 @@ this.nachzehrer_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/bravery.png",
-				text = "Reduces the Resolve of any opponent engaged in melee by [color=" + this.Const.UI.Color.NegativeValue + "]-5[/color]."
+				text = "Reduces the Resolve of any opponent engaged in melee by [color=" + this.Const.UI.Color.PositiveValue + "]-12[/color]."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/ranged_skill.png",
+				text = "Lose [color=" + this.Const.UI.Color.NegativeValue + "]-50%[/color] ranged skill."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/bravery.png",
+				text = "Deals [color=" + this.Const.UI.Color.NegativeValue + "]-10%[/color] melee damage."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/bravery.png",
+				text = "Injury threshold reduced by [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color]."
 			}
 		];
 		return ret;
@@ -58,8 +76,11 @@ this.nachzehrer_mutagen_effect <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		_properties.InitiativeMult *= 1.2;
-		_properties.Threat += 5;
+		_properties.Threat += 12;
 		_properties.HitpointsRecoveryRateMult *= 3.0;
+		_properties.ThresholdToReceiveInjuryMult *= 0.75;
+		_properties.RangedSkillMult *= 0.50;
+		_properties.MeleeDamageMult *= 0.90;
 	}
 
 	function isHidden()

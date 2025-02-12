@@ -16,11 +16,12 @@ this.geist_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Phase Coating[/color]: This character is able to secrete a substance that vibrates rapidly when stimulated. When applied to weapons, this aids in armor penetration.";
+		return "[color=" + this.Const.UI.Color.PositiveValue + "]Phase Coating[/color]: This character is able to secrete a substance that vibrates rapidly when stimulated. When applied to weapons, this aids in armor penetration. This very coating though reduces the damage done to armor itself.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Screaming Strikes[/color]: This character\'s strikes carry the echo of lost, vengeful souls, inflicting as much mental harm as physical to the enemies.";
 	}
 
 	function getTooltip()
 	{
+		local actor = this.getContainer().getActor();
 		local ret = [
 			{
 				id = 1,
@@ -35,8 +36,20 @@ this.geist_mutagen_effect <- this.inherit("scripts/skills/skill", {
 			{
 				id = 11,
 				type = "text",
+				icon = "ui/icons/special.png",
+				text = "Gain the [color=" + this.Const.UI.Color.PositiveValue + "]Fearsome[/color] Perk. (Or gain +10 Resolve if the Vatt'ghern already had the perk)."
+			},
+			{
+				id = 11,
+				type = "text",
 				icon = "ui/icons/direct_damage.png",
-				text = "An additional [color=" + this.Const.UI.Color.PositiveValue + "]25%[/color] of damage ignores armor when using melee weapons"
+				text = "Gain [color=" + this.Const.UI.Color.PositiveValue + "]20%[/color] armor penetration, with an additional flat bonus of [color=" + this.Const.UI.Color.PositiveValue + "]5[/color]."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/armor_damage.png",
+				text = "Do [color=" + this.Const.UI.Color.NegativeValue + "]40%[/color] less damage to armor."
 			}
 		];
 		return ret;
@@ -44,7 +57,9 @@ this.geist_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
-		_properties.DamageDirectMeleeAdd += 0.25;
+		_properties.DamageDirectAdd += 0.05;
+		_properties.DamageDirectMult += 0.20;
+		_properties.DamageArmorMult *= 0.6;
 	}
 
 	function isHidden()

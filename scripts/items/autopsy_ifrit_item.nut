@@ -67,7 +67,7 @@ this.autopsy_ifrit_item <- this.inherit("scripts/items/misc/anatomist/anatomist_
 			id = 11,
 			type = "text",
 			icon = "ui/icons/mutagen_shard_icon.png",
-			text = " Acquire [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] elemental mutagen.\n[color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] chance."
+			text = " Acquire [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] ifrit mutagen.\n[color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] chance."
 		});
 		
 		return result;

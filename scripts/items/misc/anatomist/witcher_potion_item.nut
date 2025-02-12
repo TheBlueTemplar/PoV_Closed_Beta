@@ -148,6 +148,7 @@ this.witcher_potion_item <- this.inherit("scripts/items/misc/anatomist/anatomist
 
 			//If bro did not die, they gain the Vatt'ghern trait!
 			_actor.getSkills().add(this.new("scripts/skills/traits/vattghern_trait"));
+			this.Sound.play("sounds/combat/rage_01.wav", this.Const.Sound.Volume.Inventory);
 			
 			// Fetch party members and worsen their mood, this depends on traits 
 			//line 149 has debug stuff in it

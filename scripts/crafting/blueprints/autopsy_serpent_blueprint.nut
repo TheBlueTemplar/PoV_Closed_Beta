@@ -28,7 +28,7 @@ this.autopsy_serpent_blueprint <- this.inherit("scripts/crafting/blueprint", {
 	{
 		if (this.Math.rand(1, 100) <= 10)
 			{
-				_stash.add(this.new("scripts/items/misc/anatomist/spider_mutagen_item"));
+				_stash.add(this.new("scripts/items/misc/anatomist/serpent_mutagen_item"));
 			}
 		if (this.Math.rand(1, 100) <= 30)
 			{

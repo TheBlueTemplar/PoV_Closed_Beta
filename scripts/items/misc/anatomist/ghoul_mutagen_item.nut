@@ -5,7 +5,7 @@ this.ghoul_mutagen_item <- this.inherit("scripts/items/misc/anatomist/anatomist2
 		this.anatomist2_potion_item.create();
 		this.m.ID = "misc.ghoul_mutagen";
 		this.m.Name = "Nachzehrer Mutagen";
-		this.m.Description = "This mutagen, obtained from the corpse of a Nachzehrer, allows whomever drinks it to gain some of their powers.";
+		this.m.Description = "This vile mutagen carries the essence of a ghoul\'s feral hunger and twisted vitality. Once consumed, it sharpens the user\'s reflexes to an unnatural degree, granting them incredible speed and an unsettling presence that saps the courage of nearby foes.\n\nHowever, the mutation also exacts a grim toll: precision with ranged weapons is lost entirely, melee strikes become weaker, and the body grows disturbingly fragile, unable to endure punishment as it once could. Those who embrace the ghoul\'s curse become swift predators, but their newfound agility comes at a steep price.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/potion_ghoul.png";
 		this.m.Value = 500;
@@ -31,8 +31,23 @@ this.ghoul_mutagen_item <- this.inherit("scripts/items/misc/anatomist/anatomist2
 			text = this.getValueString()
 		});
 
-		
-
+		if (this.getIconLarge() != null)
+		{
+			result.push({
+				id = 3,
+				type = "image",
+				image = this.getIconLarge(),
+				isLarge = true
+			});
+		}
+		else
+		{
+			result.push({
+				id = 3,
+				type = "image",
+				image = this.getIcon()
+			});
+		}
 		
 		result.push({
 			id = 65,
@@ -57,9 +72,9 @@ this.ghoul_mutagen_item <- this.inherit("scripts/items/misc/anatomist/anatomist2
 	function onUse( _actor, _item = null )
 	{
 		
-		
-		
-		
+		this.Sound.play("sounds/combat/drink_01.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/enemies/ghoul_grows_02.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/enemies/ghoul_hurt_04.wav", this.Const.Sound.Volume.Inventory);
 		
 		if (_actor.getSkills().hasSkill("trait.witcher") && !_actor.getSkills().hasSkill("effects.nachzehrer_mutagen"))
 		{

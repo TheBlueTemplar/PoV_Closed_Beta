@@ -1,8 +1,8 @@
 this.schrat_mutagen_effect <- this.inherit("scripts/skills/skill", {
 	m = {
-		HeadArmorBoost = 50,
+		HeadArmorBoost = 15,
 		HeadDamageTaken = 0,
-		BodyArmorBoost = 50,
+		BodyArmorBoost = 15,
 		BodyDamageTaken = 0
 	},
 	function create()
@@ -21,7 +21,7 @@ this.schrat_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Flexile Ligaments[/color]: This character\'s legs have mutated to respond much more rapidly and powerfully to external force. As a practical matter, they can maintain their center of balance and respond to any attempt to move them.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Hardened Exterior[/color]: This character\'s skin has mutated to become much stiffer and can resist a portion on any damage.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Hardened Skin[/color]: This character\'s skin has mutated and now forms hard patches that are difficult to puncture.";
+		return "[color=" + this.Const.UI.Color.PositiveValue + "]Flexile Ligaments[/color]: This character\'s legs have mutated to respond with unnatural force and stability, allowing them to resist any attempt to be displaced. Their stance remains firm, even against powerful external forces.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Barkskin[/color]: This character\'s skin has become incredibly rigid, forming a natural armor that absorbs a portion of incoming damage. When bearing a shield, their defensive instincts sharpen further, allowing them to weather strikes with even greater resilience.\n\n[color=" + this.Const.UI.Color.NegativeValue + "]Encumbered Frame[/color]: The weight of their altered form makes movement far more taxing, causing them to tire quickly when repositioning. Without a shield to balance their hardened structure, they become significantly more vulnerable to incoming attacks.\n\n [color=" + this.Const.UI.Color.NegativeValue + "]Flammable Carapace[/color]: The mutation has an unfortunate drawback—while their body is tougher than normal, it is also highly susceptible to fire, causing them to suffer extreme burns when exposed to flames.";
 	}
 
 	function getTooltip()
@@ -46,14 +46,32 @@ this.schrat_mutagen_effect <- this.inherit("scripts/skills/skill", {
 			{
 				id = 11,
 				type = "text",
-				icon = "ui/icons/special.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]10%[/color]Damage Reduction."
+				icon = "ui/icons/armor_body.png",
+				text = "This character\'s skin is hard, granting [color=" + this.Const.UI.Color.PositiveValue + "]15[/color] points of natural armor"
 			},
 			{
 				id = 11,
 				type = "text",
-				icon = "ui/icons/special.png",
-				text = "This character\'s skin is hard, granting [color=" + this.Const.UI.Color.PositiveValue + "]50[/color] points of natural armor"
+				icon = "ui/icons/shield_damage.png",
+				text = "When equipped with a shield, gain [color=" + this.Const.UI.Color.PositiveValue + "]+10[/color] to all defences, and [color=" + this.Const.UI.Color.PositiveValue + "]+20%[/color] damage resistance"
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/fatigue.png",
+				text = "Movement costs [color=" + this.Const.UI.Color.NegativeValue + "]30%[/color] more fatigue."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/pov_fire.png",
+				text = "This character takes [color=" + this.Const.UI.Color.NegativeValue + "]250%[/color] more damage from fire attacks."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/shield_damage.png",
+				text = "This character takes [color=" + this.Const.UI.Color.NegativeValue + "]+20%[/color] damage when not using a shield."
 			}
 			
 		];
@@ -62,13 +80,28 @@ this.schrat_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
+		_properties.MovementFatigueCostMult *= 1.3;
+		//_properties.MovementFatigueCostAdditional *= 1.40;
 		_properties.IsImmuneToKnockBackAndGrab = true;
 		_properties.Armor[this.Const.BodyPart.Head] += this.Math.max(0.0, this.m.HeadArmorBoost - this.m.HeadDamageTaken);
 		_properties.Armor[this.Const.BodyPart.Body] += this.Math.max(0.0, this.m.BodyArmorBoost - this.m.BodyDamageTaken);
 		_properties.ArmorMax[this.Const.BodyPart.Head] += this.m.HeadArmorBoost;
 		_properties.ArmorMax[this.Const.BodyPart.Body] += this.m.BodyArmorBoost;
 		
+
+		local actor = this.getContainer().getActor();
+		local item = actor.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+
+		if (item != null && item.isItemType(this.Const.Items.ItemType.Shield))
+		{
+			_properties.DamageReceivedRegularMult *= 0.80;
+			_properties.MeleeDefense += 10;
+			_properties.RangedDefense += 10;
+		}else{
+			_properties.DamageReceivedRegularMult *= 1.20;
+		}
 	}
+	
 
 	
 	
@@ -90,7 +123,7 @@ this.schrat_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{
-		_properties.DamageReceivedRegularMult *= 0.90;
+		//_properties.DamageReceivedRegularMult *= 0.90;
 		if (_hitInfo.BodyPart == this.Const.BodyPart.Head)
 		{
 			if (this.m.HeadDamageTaken >= this.m.HeadArmorBoost)
@@ -110,6 +143,11 @@ this.schrat_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 			_properties.DamageArmorReduction += this.m.BodyArmorBoost - this.m.BodyDamageTaken;
 			this.m.BodyDamageTaken += _hitInfo.DamageArmor;
+		}
+
+		if (_hitInfo.DamageType == this.Const.Damage.DamageType.Burning)
+		{
+			_properties.DamageReceivedRegularMult *= 2.5;
 		}
 	}
 

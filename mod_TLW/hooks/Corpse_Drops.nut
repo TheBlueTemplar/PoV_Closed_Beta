@@ -1392,3 +1392,39 @@
 	}
 
 });
+
+::TLW.HooksMod.hook("scripts/entity/tactical/enemies/legend_basilisk_drone", function ( q )
+{
+
+	q.onDeath = @(__original) function(_killer, _skill, _tile, _fatalityType)
+	{
+		__original(_killer, _skill, _tile, _fatalityType);
+		local item = "scripts/items/misc/corpse_basilisk_drone_item";
+		::TLW.doCorpseDrop(_killer, _tile, item);
+	}
+
+});
+
+::TLW.HooksMod.hook("scripts/entity/tactical/enemies/legend_basilisk_drone_low", function ( q )
+{
+
+	q.onDeath = @(__original) function(_killer, _skill, _tile, _fatalityType)
+	{
+		__original(_killer, _skill, _tile, _fatalityType);
+		local item = "scripts/items/misc/corpse_basilisk_drone_item";
+		::TLW.doCorpseDrop(_killer, _tile, item);
+	}
+
+});
+
+::TLW.HooksMod.hook("scripts/entity/tactical/enemies/legend_basilisk_sentry", function ( q )
+{
+
+	q.onDeath = @(__original) function(_killer, _skill, _tile, _fatalityType)
+	{
+		__original(_killer, _skill, _tile, _fatalityType);
+		local item = "scripts/items/misc/corpse_basilisk_sentry_item";
+		::TLW.doCorpseDrop(_killer, _tile, item);
+	}
+
+});

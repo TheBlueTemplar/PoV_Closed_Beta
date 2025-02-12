@@ -21,7 +21,7 @@ this.ifrit_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Stone Skin[/color]: This character\'s skin has mutated and now forms hard, rock-like patches that are much hardier and difficult to puncture.";
+		return "[color=" + this.Const.UI.Color.PositiveValue + "]Stone Skin[/color]: This character\'s skin has mutated and now forms hard, rock-like patches that are much hardier and difficult to puncture.\n\n [color=" + this.Const.UI.Color.PositiveValue + "]Uncomfortable [/color]: The changes on this character\'s skin make the skin itchy, heavier and harder to sweat, causing problems with the caracter\'s speed and stamina.";
 	}
 
 	function getTooltip()
@@ -43,6 +43,30 @@ this.ifrit_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				icon = "ui/icons/armor_body.png",
 				text = "This character\'s skin is hard and stone-like, granting [color=" + this.Const.UI.Color.PositiveValue + "]50[/color] points of natural armor"
 			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/armor_body.png",
+				text = "This character also gets [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color]Damage Reduction."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/initiative.png",
+				text = "Lose [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] Initiative."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/fatigue.png",
+				text = "All skills now cost [color=" + this.Const.UI.Color.NegativeValue + "]10%[/color] more Fatigue."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/fatigue.png",
+				text = "Fatigue recovery is reduced by [color=" + this.Const.UI.Color.NegativeValue + "]2[/color] Points."
+			}
 			
 		];
 		return ret;
@@ -66,10 +90,14 @@ this.ifrit_mutagen_effect <- this.inherit("scripts/skills/skill", {
 		_properties.Armor[this.Const.BodyPart.Body] += this.Math.max(0.0, this.m.BodyArmorBoost - this.m.BodyDamageTaken);
 		_properties.ArmorMax[this.Const.BodyPart.Head] += this.m.HeadArmorBoost;
 		_properties.ArmorMax[this.Const.BodyPart.Body] += this.m.BodyArmorBoost;
+		_properties.Initiative *= 0.75;
+		_properties.FatigueEffectMult *= 1.10;
+		_properties.FatigueRecoveryRate += -2;
 	}
 
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{
+		_properties.DamageReceivedRegularMult *= 0.90;
 		if (_hitInfo.BodyPart == this.Const.BodyPart.Head)
 		{
 			if (this.m.HeadDamageTaken >= this.m.HeadArmorBoost)

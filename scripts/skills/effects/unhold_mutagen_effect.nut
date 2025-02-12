@@ -16,7 +16,7 @@ this.unhold_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Hyperactive Cell Growth[/color]: This character\'s body has mutated to grow at an unnatural pace. In battle, this causes their wounds to close and heal within moments.";
+		return "[color=" + this.Const.UI.Color.PositiveValue + "]Hyperactive Cell Growth[/color]: This character\'s body has mutated to grow at an unnatural pace. The character has much more vitality, while in battle, this causes their wounds to close and heal within moments.\n\n[color=" + this.Const.UI.Color.NegativeValue + "]Faltering Fury[/color]: This character\'s body body focus on restoring its wounds sap strength from the character\'s attacks, with worsening effects, the more wounded the character is.\n\n[color=" + this.Const.UI.Color.NegativeValue + "]Increased Appetite[/color]: The increased metabolism due to rapid cell growth lead to greatly increased appetite, not that the Vatt\'ghern minds the extra ration or two. Just don\' let him get the mead!";
 	}
 
 	function getTooltip()
@@ -36,17 +36,37 @@ this.unhold_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "Heals [color=" + this.Const.UI.Color.PositiveValue + "]20[/color] hitpoints each turn"
+				text = "Heals [color=" + this.Const.UI.Color.PositiveValue + "]15[/color] hitpoints each turn"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "Grants [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color] hitpoint bonus"
+				text = "Grants [color=" + this.Const.UI.Color.PositiveValue + "]35%[/color] hitpoint bonus"
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/damage_dealt.png",
+				text = "Does [color=" + this.Const.UI.Color.NegativeValue + "]less[/color] damage equal to [color=" + this.Const.UI.Color.NegativeValue + "]half[/color] of missing health %."
+			},
+			{
+				id = 19,
+				type = "text",
+				icon = "ui/icons/asset_food.png",
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]+100%[/color] Food Consumption"
 			}
 			
 		];
 		return ret;
+	}
+
+	function onCombatStarted()
+	{
+		local actor = this.getContainer().getActor();
+
+			// ADD UNHOLD MUTAGEN MISSING HP - LESS DMG EFFECT
+			actor.getSkills().add(this.new("scripts/skills/effects/pov_missing_hp_dmg_effect"));
 	}
 
 	function onCombatFinished()
@@ -64,7 +84,7 @@ this.unhold_mutagen_effect <- this.inherit("scripts/skills/skill", {
 	{
 		local actor = this.getContainer().getActor();
 		local healthMissing = actor.getHitpointsMax() - actor.getHitpoints();
-		local healthAdded = this.Math.min(healthMissing, 20);
+		local healthAdded = this.Math.min(healthMissing, 15);
 
 		if (healthAdded <= 0)
 		{
@@ -84,8 +104,42 @@ this.unhold_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate(_properties)
 	{
-		_properties.HitpointsMult *= 1.5;
+		_properties.HitpointsMult *= 1.35;
+		_properties.DailyFood += 1.0;
 	}
+
+	// Imagine this is a reverse Muscularity effect
+	// ADDED AS A SEPERATE EFFECT ABOVE
+	/*
+	function onAnySkillUsed( _skill, _targetEntity, _properties )
+	{
+		local item = _skill.getItem();
+
+		if (item != null && item.isItemType(this.Const.Items.ItemType.Defensive) && !item.isItemType(this.Const.Items.ItemType.Weapon))
+			return;
+
+		local isValidRanged = item != null && item.isItemType(this.Const.Items.ItemType.Weapon) && (item.isWeaponType(this.Const.Items.WeaponType.Throwing) || item.isWeaponType(this.Const.Items.WeaponType.Bow));
+		if (!_skill.isRanged() || (isValidRanged && item.isItemType(this.Const.Items.ItemType.Weapon)))
+		{
+			local actor = this.getContainer().getActor();
+			local maxHp = actor.getHitpointsMax();
+			local Hp = actor.getHitpoints();
+			local currentHpPercent = (Hp * 100) / maxHp;
+			local missingHpPercent = 100 - currentHpPercent;
+
+			local damagePenalty = this.Math.maxf(0, missingHpPercent / 2) * 0.01; 
+
+			if (damagePenalty >= 1)
+			{	
+				// This is me being paranoic xd
+				damagePenalty = 1;
+			}
+
+			local finalDamageMult = 1 - damagePenalty;
+			_properties.DamageTotalMult *= finalDamageMult;
+		}
+	}
+	*/
 
 	function isHidden()
 	{

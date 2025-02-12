@@ -5,7 +5,7 @@ this.strain_mutagen_item <- this.inherit("scripts/items/misc/anatomist/anatomist
 		this.anatomist2_potion_item.create();
 		this.m.ID = "misc.strain_mutagen";
 		this.m.Name = "Wiederganger Mutagen";
-		this.m.Description = "A mutagen, isolated from the worms that are responsible for reanimation of the wiedergangers, allows whomever drinks it to gain some of their powers.";
+		this.m.Description = "This vile mutagen originates from the corrupted essence of weidergangers, infecting the vatt'ghern with a twisted blend of resilience and despair.\n\n The mutation strengthens the body, accelerating experience gain, preventing fatigue from enemy blows, and drastically increasing the threshold for sustaining injuries. \n\n Yet, such unnatural vigor comes at a heavy cost. The infected suffer relentless and haunting visions, eroding their resolve and leaving them vulnerable to fear and doubt. A double-edged gift indeed.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/potion_strain.png";
 		this.m.Value = 500;
@@ -31,6 +31,23 @@ this.strain_mutagen_item <- this.inherit("scripts/items/misc/anatomist/anatomist
 			text = this.getValueString()
 		});
 
+		if (this.getIconLarge() != null)
+		{
+			result.push({
+				id = 3,
+				type = "image",
+				image = this.getIconLarge(),
+				isLarge = true
+			});
+		}
+		else
+		{
+			result.push({
+				id = 3,
+				type = "image",
+				image = this.getIcon()
+			});
+		}
 		
 		result.push({
 			id = 65,
@@ -54,7 +71,9 @@ this.strain_mutagen_item <- this.inherit("scripts/items/misc/anatomist/anatomist
 
 	function onUse( _actor, _item = null )
 	{
-		
+		this.Sound.play("sounds/combat/drink_01.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/humans/0/human_flee_01.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/enemies/zombie_bite_04.wav", this.Const.Sound.Volume.Inventory);
 		
 		if (_actor.getSkills().hasSkill("trait.witcher") && !_actor.getSkills().hasSkill("effects.strain_mutagen"))
 		{

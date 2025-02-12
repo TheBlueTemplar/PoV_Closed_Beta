@@ -42,5 +42,7 @@
         Zombie = "scripts/items/misc/corpse_zombie_item"
         ZombieKnight = "scripts/items/misc/corpse_zombie2_item"
         ZombieNecromancer = "scripts/items/misc/corpse_necro_item"
+        BasiliskDrone = "scripts/items/misc/corpse_basilisk_drone_item"
+        BasiliskSentry = "scripts/items/misc/corpse_basilisk_sentry_item"
 	}
 }

@@ -81,8 +81,8 @@ this.sickness2_injury <- this.inherit("scripts/skills/injury/injury", {
 				type = "text",
 				icon = "ui/icons/vision.png",
 				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-4[/color] Vision"
-			}
-				{
+			},
+			{
 				id = 19,
 				type = "text",
 				icon = "ui/icons/asset_food.png",

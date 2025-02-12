@@ -5,7 +5,7 @@ this.lindwurm_mutagen_item <- this.inherit("scripts/items/misc/anatomist/anatomi
 		this.anatomist2_potion_item.create();
 		this.m.ID = "misc.lindwurm_mutagen";
 		this.m.Name = "Lindwurm Mutagen";
-		this.m.Description = "This mutagen, obtained from the corpse of a Wurm, allows whomever drinks it to gain some of their powers.";
+		this.m.Description = "Infused with the volatile essence of the Lindwurm, this mutagen transforms its bearer into a devastating force on the battlefield. Their blood burns with potent acid, searing the armor of attackers who dare strike them. Immune to acid themselves, they become relentless armor-breakers, tearing through defenses with enhanced effectiveness.\n\n However, the mutation comes with significant drawbacks: their wounds heal more slowly, melee defense is reduced, and their increased wages reflect the high cost of maintaining such a destructive force. A formidable choice for those who prioritize overwhelming offense over endurance.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/potion_lindwurm.png";
 		this.m.Value = 3250;
@@ -55,7 +55,12 @@ this.lindwurm_mutagen_item <- this.inherit("scripts/items/misc/anatomist/anatomi
 	}
 
 	function onUse( _actor, _item = null )
-	{								   
+	{			
+
+		this.Sound.play("sounds/combat/drink_01.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/enemies/lindwurm_idle_02.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/enemies/lindwurm_hurt_01.wav", this.Const.Sound.Volume.Inventory);
+
 	if (_actor.getSkills().hasSkill("trait.witcher") && !_actor.getSkills().hasSkill("effects.lindwurm_mutagen"))
 		{
 			_actor.getSkills().add(this.new("scripts/skills/effects/lindwurm_mutagen_effect"));

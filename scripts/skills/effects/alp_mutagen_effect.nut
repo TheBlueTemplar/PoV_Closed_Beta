@@ -16,7 +16,7 @@ this.alp_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Enhanced Vision[/color]: This character\'s eyes have mutated to respond faster and more drastically to low light environments. As a result, they have night vision nearly on par with their sight during the day.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Third Eye[/color]: This character has developed the ability to percieve their surroundings.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Mutated Lungs[/color]: This character\'s lungs have mutated to assist in filtering contaminants in harmful environments.";
+		return "[color=" + this.Const.UI.Color.PositiveValue + "]Enhanced Vision[/color]: This character\'s eyes have mutated to respond faster and more drastically to low light environments. As a result, they have night vision nearly on par with their sight during the day.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Third Eye[/color]: This character has developed the ability to percieve their surroundings. While the character can now peek into the uknown, they suddenly show a struggle to recall some of their memory. \n\n[color=" + this.Const.UI.Color.PositiveValue + "]Mutated Lungs[/color]: This character\'s lungs have mutated to assist in filtering contaminants in harmful environments. This filtering process stresses the lungs a little bit more though.";
 	}
 
 	function getTooltip()
@@ -42,14 +42,27 @@ this.alp_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/vision.png",
-				text = "Gain the Third Eye skill"
+				text = "Gain the [color=" + this.Const.UI.Color.PositiveValue + "]Third Eye[/color] skill, and an additional [color=" + this.Const.UI.Color.PositiveValue + "]+1[/color] vision"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/special.png",
 				text = "Only take [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color] of damage inflicted by harmful miasmas"
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/xp_received.png",
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-30%[/color] Experience Gain."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/xp_received.png",
+				text = "Fatigue recovery reduced by [color=" + this.Const.UI.Color.NegativeValue + "]-1[/color]."
 			}
+
 		];
 		return ret;
 	}
@@ -58,6 +71,9 @@ this.alp_mutagen_effect <- this.inherit("scripts/skills/skill", {
 	{
 		_properties.IsAffectedByNight = false;
 		_properties.IsResistantToMiasma = true;
+		_properties.Vision += 1;
+		_properties.XPGainMult *= 0.70;
+		_properties.FatigueRecoveryRate += -1;
 	}
 
 	function isHidden()

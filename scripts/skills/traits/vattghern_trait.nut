@@ -113,7 +113,7 @@ this.vattghern_trait <- this.inherit("scripts/skills/traits/character_trait", {
 			id = 10,
 			type = "text",
 			icon = "ui/icons/miniboss.png",
-			text = "The Vatt'ghern counts as[color=" + this.Const.UI.Color.NegativeValue + "]one and a half[/color] Brother, for the enemy scaling calculation"
+			text = "The Vatt'ghern counts as[color=" + this.Const.UI.Color.NegativeValue + "] one and a half[/color] Brother, for the enemy scaling calculation"
 		});
 		
 		return result;

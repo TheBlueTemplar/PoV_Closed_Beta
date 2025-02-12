@@ -69,7 +69,7 @@ this.autopsy_serpent_item <- this.inherit("scripts/items/misc/anatomist/anatomis
 			id = 11,
 			type = "text",
 			icon = "ui/icons/mutagen_shard_icon.png",
-			text = " Acquire [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] venom mutagen.\n[color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] chance."
+			text = " Acquire [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] serpent mutagen.\n[color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] chance."
 		});
 		
 		return result;

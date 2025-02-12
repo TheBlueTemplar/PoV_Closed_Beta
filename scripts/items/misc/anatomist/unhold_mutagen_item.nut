@@ -5,7 +5,7 @@ this.unhold_mutagen_item <- this.inherit("scripts/items/misc/anatomist/anatomist
 		this.anatomist2_potion_item.create();
 		this.m.ID = "misc.unhold_mutagen";
 		this.m.Name = "Unhold Mutagen";
-		this.m.Description = "This mutagen, obtained from the corpse of an Unhold, allows whomever drinks it to gain some of their powers.";
+		this.m.Description = "This mutagen, The Unhold Mutation grants the character an incredible vitality, with wounds healing almost instantly in battle due to hyperactive cell growth, and vastly increased hitpoints.\n\nHowever, this rapid regeneration comes at a cost—while the body focuses on recovery, it weakens the character's offensive power, making their attacks progressively weaker as they take more damage.\n\nAdditionally, the mutation significantly increases the character’s appetite, as the accelerated metabolism demands more food than usual. While they don't mind the extra rations, caution is advised, especially when mead is involved!";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/potion_unhold.png";
 		this.m.Value = 2750;
@@ -71,7 +71,9 @@ this.unhold_mutagen_item <- this.inherit("scripts/items/misc/anatomist/anatomist
 
 	function onUse( _actor, _item = null )
 	{
-		
+		this.Sound.play("sounds/combat/drink_01.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/enemies/unhold_regenerate_03.wav", this.Const.Sound.Volume.Inventory);
+		this.Sound.play("sounds/enemies/unhold_hurt_01.wav", this.Const.Sound.Volume.Inventory);
 		
 		if (_actor.getSkills().hasSkill("trait.witcher") && !_actor.getSkills().hasSkill("effects.unhold_mutagen"))
 		{
