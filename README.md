@@ -1,4 +1,4 @@
-# Path-of-the-Vatt-ghern-V0.0.11-Alpha
+# Path-of-the-Vatt-ghern-V0.1.0-Beta
 
 ### There are two main "objectives" about this test:
 
