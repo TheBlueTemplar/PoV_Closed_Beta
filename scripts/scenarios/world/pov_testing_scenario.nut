@@ -4,7 +4,7 @@ this.pov_testing_scenario <- this.inherit("scripts/scenarios/world/starting_scen
 	{
 		this.m.ID = "scenario.pov_testing";
 		this.m.Name = "POV Testing";
-		this.m.Description = "[p=c][img]gfx/ui/events/testing_vattghern.png[/img][/p][p]A scenario meant for internal testing, modified for use by the playtesters. Playing this origin is meant to be for testing very specific things like \'can x mutagen do the y thing \'.\n\n[color=#bcad8c]Filthy Rich:[/color] You begin rich with resources and money, starting with 20000 gold and almost maxed out meds, tools and ammo. \n\n [color=#bcad8c]Reputable:[/color] Despite doing nothing, you start with 1000 reputation, pretty close to professional. Wow! \n\n [color=#bcad8c]Mutationmaxxing:[/color] You have each off the mutation potions with you, including 3 Trial of the grasses potions, as well as any other new items I added to the mod. \n\n [color=#bcad8c] Not recommended for a \'normal\' playthrough! [/color][/p]";
+		this.m.Description = "[p=c][img]gfx/ui/events/pov_testing_vattghern.png[/img][/p][p]A scenario meant for internal testing, modified for use by the playtesters. Playing this origin is meant to be for testing very specific things like \'can x mutagen do the y thing \'.\n\n[color=#bcad8c]Filthy Rich:[/color] You begin rich with resources and money, starting with 20000 gold and almost maxed out meds, tools and ammo. \n\n [color=#bcad8c]Reputable:[/color] Despite doing nothing, you start with 1000 reputation, pretty close to professional. Wow! \n\n [color=#bcad8c]Mutationmaxxing:[/color] You have each off the mutation potions with you, including 3 Trial of the grasses potions, as well as any other new items I added to the mod. \n\n [color=#bcad8c] Not recommended for a \'normal\' playthrough! [/color][/p]";
 		this.m.Difficulty = 4;
 		this.m.Order = 39;
 		this.m.IsFixedLook = true;
@@ -22,7 +22,7 @@ this.pov_testing_scenario <- this.inherit("scripts/scenarios/world/starting_scen
 		local roster = this.World.getPlayerRoster();
 		local names = [];
 
-		for( local i = 0; i < 5; i = i )
+		for( local i = 0; i < 6; i = i )
 		{
 			local bro;
 			bro = roster.create("scripts/entity/tactical/player");
@@ -53,8 +53,8 @@ this.pov_testing_scenario <- this.inherit("scripts/scenarios/world/starting_scen
 		bros[0].getBaseProperties().MeleeSkill += 10;
 		bros[0].getBaseProperties().MeleeDefense += 10;
 		bros[0].getBaseProperties().RangedDefense += 5;
-		bros[0].getSkills().add(this.new("scripts/skills/traits/vattghern_trait"));
-		bros[0].getFlags().increment("ActiveMutations");
+		bros[0].getSkills().add(this.new("scripts/skills/traits/pov_vattghern_trait"));
+		bros[0].getFlags().increment("pov_ActiveMutations");
 		bros[0].getSkills().add(this.new("scripts/skills/traits/old_trait"));
 		bros[0].getSkills().add(this.new("scripts/skills/traits/player_character_trait"));
 		bros[0].getSkills().add(this.new("scripts/skills/perks/perk_legend_potion_brewer"));
@@ -66,9 +66,9 @@ this.pov_testing_scenario <- this.inherit("scripts/scenarios/world/starting_scen
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
 		//items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Head));
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Mainhand));
-		items.equip(this.new("scripts/items/weapons/witcher_longsword"));
+		items.equip(this.new("scripts/items/weapons/pov_witcher_longsword"));
 		items.equip(this.new("scripts/items/legend_armor/cloth/legend_gambeson_wolf"));
-		items.equip(this.new("scripts/items/accessory/vattghern_medallion_item"));
+		items.equip(this.new("scripts/items/accessory/pov_vattghern_medallion_item"));
 		bros[0].m.Talents = [];
 		local talents = bros[0].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
@@ -108,14 +108,14 @@ this.pov_testing_scenario <- this.inherit("scripts/scenarios/world/starting_scen
 		bros[2].m.LevelUps = 5;
 		bros[2].m.Level = 6;
 
+		// THIS IS A TESTING SLOT, PLACE WHATEVER BACKGROUND YOU WANT HERE
 		bros[3].setStartValuesEx([
 			"beggar_background"
 		]);
 		bros[3].getBackground().m.RawDescription = "What is this poor sod even doing here??";
-		//bros[2].setName("Lambert");
-		bros[3].setPlaceInFormation(13);
-		bros[2].getBaseProperties().Bravery += 15;
-		bros[2].getBaseProperties().RangedDefense += 5;
+		bros[3].setName("Broski");
+		bros[4].setTitle("The Transformer");
+		bros[3].setPlaceInFormation(14);
 		bros[3].addLightInjury();
 		bros[3].addInjury(this.Const.Injury.Brawl);
 		bros[3].m.PerkPoints = 0;
@@ -129,15 +129,22 @@ this.pov_testing_scenario <- this.inherit("scripts/scenarios/world/starting_scen
 		bros[4].setName("Officinale");
 		bros[4].setTitle("The Viscount");
 		//bros[3].setBackgroundType(this.Const.BackgroundType.Female); FAIL XD
-		bros[4].setPlaceInFormation(13);
+		bros[4].setPlaceInFormation(12);
 		bros[4].getSkills().add(this.new("scripts/skills/traits/cocky_trait"));
 		bros[4].getSkills().add(this.new("scripts/skills/traits/legend_seductive_trait"));
 		bros[4].getSkills().add(this.new("scripts/skills/traits/bright_trait"));
+		bros[4].getBaseProperties().Bravery += 15;
+		bros[4].getBaseProperties().RangedDefense += 5;
 		bros[4].addLightInjury();
 		//bros[3].addInjury(this.Const.Injury.Brawl);
 		bros[4].m.PerkPoints = 0;
 		bros[4].m.LevelUps = 0;
 		bros[4].m.Level = 1;
+
+		bros[5].setStartValuesEx([
+			"legend_vala_background"
+		]);
+		bros[5].getBackground().m.RawDescription = "Greek Original Giagia, has magic powers";
 
 		this.World.Assets.addBusinessReputation(this.m.StartingBusinessReputation);
 		this.World.Flags.set("HasLegendCampCrafting", true);
@@ -147,41 +154,86 @@ this.pov_testing_scenario <- this.inherit("scripts/scenarios/world/starting_scen
 		this.World.Assets.getStash().add(this.new("scripts/items/supplies/goat_cheese_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/supplies/smoked_ham_item"));
 		// ADD VATTGHERN MUTATION POTIONS AND STUFF TO HEAL THE INJURY
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/witcher_potion_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/witcher_potion_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/witcher_potion_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_witcher_potion_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_witcher_potion_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_witcher_potion_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/special/fountain_of_youth_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/special/fountain_of_youth_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/special/fountain_of_youth_item"));
 		// ALL MOD'S NEW WEAPONS AND ITEMS
-		this.World.Assets.getStash().add(this.new("scripts/items/weapons/whip_mace"));
-		this.World.Assets.getStash().add(this.new("scripts/items/weapons/named/whip_mace_named"));
-		this.World.Assets.getStash().add(this.new("scripts/items/weapons/witcher_longsword"));
-		this.World.Assets.getStash().add(this.new("scripts/items/accessory/vattghern_medallion_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/weapons/pov_whip_mace"));
+		this.World.Assets.getStash().add(this.new("scripts/items/weapons/named/pov_whip_mace_named"));
+		this.World.Assets.getStash().add(this.new("scripts/items/weapons/pov_witcher_longsword"));
+		this.World.Assets.getStash().add(this.new("scripts/items/accessory/pov_vattghern_medallion_item"));
 		// ALL MOD'S MUTAGENS
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/alp_mutagen_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/direwolf_mutagen_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/geist_mutagen_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/ghoul_mutagen_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/goblin_mutagen_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/hexe_mutagen_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/lindwurm_mutagen_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/necrosavant_mutagen_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/orc_mutagen_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/schrat_mutagen_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/skeleton_mutagen_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/spider_mutagen_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/unhold_mutagen_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/strain_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_alp_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_direwolf_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_ghost_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_ghoul_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_goblin_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_hexe_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_lindwurm_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_vampire_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_orc_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_schrat_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_skeleton_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_spider_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_unhold_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_strain_mutagen_item"));
 		// NEWLY ADDED MUTATIONS
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/basilisk_mutagen_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/ifrit_mutagen_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/serpent_mutagen_item"));
-		// ALL BASILISK CORPSES
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/corpse_basilisk_drone_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/corpse_basilisk_drone_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/corpse_basilisk_sentry_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/corpse_basilisk_sentry_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_basilisk_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_sandgolem_mutagen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_serpent_mutagen_item"));
+		// ALL MOD'S CORPSES
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_alp_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_alp2_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_basilisk_drone_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_basilisk_sentry_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_direwolf_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_direwolf2_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_ghost_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_ghost2_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_ghoul_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_goblin1_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_goblin2_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_goblin3_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_hexen_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_hexen2_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_hyena_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_sandgolem_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_lindwurm_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_lindwurm2_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_mummy_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_necro_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_orc_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_orc2_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_orc3_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_schrat_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_schrat2_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_serpent_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_skeleton_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_skeleton3_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_spider_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_spider2_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_unhold_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_unhold2_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_unhold4_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_vampire_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_vampire2_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_zombie_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_zombie2_item"));
+		// VALA TESTING
+		this.World.Assets.getStash().add(this.new("scripts/items/trade/uncut_gems_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/trade/uncut_gems_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/trade/uncut_gems_item"));
+		// MISC/MEME STUFF
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_beautiful_potion_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_donkey_mutagen_item"));
+		// NEWLY ADDED CORPSES
+		/*
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_basilisk_drone_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/pov_corpse_basilisk_sentry_item"));
+		*/
 		// ALL INGREDIENTS FOR CRAFTING THE ToG
 		/*
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/third_eye_item"));
@@ -195,6 +247,7 @@ this.pov_testing_scenario <- this.inherit("scripts/scenarios/world/starting_scen
 		// ORC MUTAGEN TESTING
 		//this.World.Assets.getStash().add(this.new("scripts/items/weapons/greenskins/orc_cleaver"));
 
+		this.World.Assets.getStash().resize(300);
 		this.World.Assets.m.Money = 20000;
 		this.World.Assets.m.ArmorParts = this.World.Assets.m.ArmorParts * 3;
 		this.World.Assets.m.Medicine = this.World.Assets.m.Medicine * 3;

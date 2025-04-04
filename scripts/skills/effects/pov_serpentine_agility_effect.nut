@@ -4,11 +4,11 @@ this.pov_serpentine_agility_effect <- this.inherit("scripts/skills/skill", {
 	},
 	function create()
 	{
-		this.m.ID = "effects.pov_serpentine_agility_effect";
+		this.m.ID = "effects.pov_serpentine_agility";
 		this.m.Name = "Serpentine Agility";
-		this.m.Description = "Great agility allows one to excel at dodgint attacks, especially when focuesed against one enemy.\n\n On the other hand, focus against multiple opponents becomes harder, leading to the diminishing of these affects, as well as the creation of openings during combat.";
-		this.m.Icon = "skills/serpent.png";
-		this.m.IconMini = "mini_vampire";
+		this.m.Description = "Great agility allows one to excel at dodgeing attacks, especially when focuesed against one enemy.\n\n On the other hand, focus against multiple opponents becomes harder, leading to the diminishing of these affects, as well as the creation of openings during combat.";
+		this.m.Icon = "skills/pov_serpent.png";
+		this.m.IconMini = "pov_mini_serpent";
 		this.m.Type = this.Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
@@ -16,7 +16,7 @@ this.pov_serpentine_agility_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "Great agility allows one to excel at dodgint attacks, especially when focuesed against one enemy.\n\n On the other hand, focus against multiple opponents becomes harder, leading to the diminishing of these affects, as well as the creation of openings during combat.";
+		return "Great agility allows one to excel at dodgeing attacks, especially when focuesed against one enemy.\n\n On the other hand, focus against multiple opponents becomes harder, leading to the diminishing of these affects, as well as the creation of openings during combat.";
 	}
 
 	function getPenalty()
@@ -135,7 +135,7 @@ this.pov_serpentine_agility_effect <- this.inherit("scripts/skills/skill", {
 			    id = 11,
 			    type = "text",
 			    icon = "ui/icons/ranged_skill.png",
-			    text = "Currently has +[color=" + this.Const.UI.Color.PositiveValue + "]"+bonus+"[/color] Melee Defense, and +[color=" + this.Const.UI.Color.PositiveValue + "]"+bonus/2+"[/color] Ranged Defense (Bonuses active when engaged with exactly [color=" + this.Const.UI.Color.NegativeValue + "]one[/color] enemy."
+			    text = "Currently has +[color=" + this.Const.UI.Color.PositiveValue + "]"+bonus+"[/color] Melee Defense, and +[color=" + this.Const.UI.Color.PositiveValue + "]"+bonus/2+"[/color] Ranged Defense (Bonuses active when engaged with exactly [color=" + this.Const.UI.Color.NegativeValue + "]one[/color] enemy)."
 			},
 			{
 			    id = 11,
@@ -146,7 +146,7 @@ this.pov_serpentine_agility_effect <- this.inherit("scripts/skills/skill", {
 			{
 			    id = 11,
 			    type = "text",
-			    icon = "ui/icons/initiative.png",
+			    icon = "ui/icons/melee_defense.png",
 			    text = "Currently Loses [color=" + this.Const.UI.Color.NegativeValue + "]"+surrAmount+"[/color] Melee Defense, due to being surroudned."
 			}
 		];

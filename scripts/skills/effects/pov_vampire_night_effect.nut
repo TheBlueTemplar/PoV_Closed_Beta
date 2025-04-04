@@ -7,8 +7,8 @@ this.pov_vampire_night_effect <- this.inherit("scripts/skills/skill", {
 		this.m.ID = "effects.pov_vampire_night_effect";
 		this.m.Name = "Vampire: Night!";
 		this.m.Description = "The Vatt\'ghern\'s vampiric nature strongly improves their combat ability during the dark night.";
-		this.m.Icon = "skills/vampire.png";
-		this.m.IconMini = "mini_vampire";
+		this.m.Icon = "skills/pov_vampire_night.png";
+		this.m.IconMini = "pov_mini_vampire_night";
 		this.m.Type = this.Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;

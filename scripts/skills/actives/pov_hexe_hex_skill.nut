@@ -1,0 +1,1 @@
+//ended up combining charm and hex in one skill and applying different effects from there

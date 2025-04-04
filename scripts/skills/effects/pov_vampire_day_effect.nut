@@ -7,8 +7,8 @@ this.pov_vampire_day_effect <- this.inherit("scripts/skills/skill", {
 		this.m.ID = "effects.pov_vampire_day_effect";
 		this.m.Name = "Vampire: Day";
 		this.m.Description = "The Vatt\'ghern\'s vampiric nature hampers their combat ability during daytime.";
-		this.m.Icon = "skills/vampire.png";
-		this.m.IconMini = "mini_vampire";
+		this.m.Icon = "skills/pov_vampire_day.png";
+		this.m.IconMini = "pov_mini_vampire_day";
 		this.m.Type = this.Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;

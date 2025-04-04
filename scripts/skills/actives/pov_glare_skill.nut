@@ -58,7 +58,7 @@ this.pov_glare_skill <- this.inherit("scripts/skills/skill", {
 
 		if (target.isAlive())
 		{
-			target.getSkills().add(this.new("scripts/skills/effects/pov_paralyzed"));
+			target.getSkills().add(this.new("scripts/skills/effects/pov_paralyzed_effect"));
 
 			if (!_user.isHiddenToPlayer() && _targetTile.IsVisibleForPlayer)
 			{

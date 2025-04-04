@@ -7,8 +7,8 @@ this.pov_missing_hp_dmg_effect <- this.inherit("scripts/skills/skill", {
 		this.m.ID = "effects.pov_missing_hp_dmg_effect";
 		this.m.Name = "Hp Weakness";
 		this.m.Description = "The Vatt\'ghern\'s unhold mutation restricts their damage output, if their hp is lower than maximum.";
-		this.m.Icon = "skills/troll.png";
-		this.m.IconMini = "mini_troll";
+		this.m.Icon = "skills/pov_troll.png";
+		this.m.IconMini = "pov_mini_troll";
 		this.m.Type = this.Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
@@ -52,6 +52,7 @@ this.pov_missing_hp_dmg_effect <- this.inherit("scripts/skills/skill", {
 			local currentHpPercent = (Hp * 100) / maxHp;
 			local missingHpPercent = 100 - currentHpPercent;
 
+			// 50% less damage on 1% health, 25% less dmg on 50% health
 			local damagePenalty = this.Math.maxf(0, missingHpPercent / 2) * 0.01; 
 
 			if (damagePenalty >= 1)

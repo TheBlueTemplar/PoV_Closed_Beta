@@ -2,9 +2,9 @@ this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 	m = {},
 	function create()
 	{
-		this.m.ID = "scenario.last_witchers";
+		this.m.ID = "scenario.pov_last_witchers";
 		this.m.Name = "Path of the Vatt'ghern";
-		this.m.Description = "[p=c][img]gfx/ui/events/mysterious_vattghern.png[/img][/p][p] You are a Vatt'ghern, a proffetional beastslayer who has come to these lands with the ampbition of enstablishing a new School! The challenges are many, as most view you and your folk as mutants, thus it will be hard to earn the people's trust except for those who also fight against vicious beasts...\n\n[color=#bcad8c]Vatt'ghern on the Path:[/color] Start with an experienced Vatt'ghern, who has all the knowledge of mutagen creation and corpse dissection and has also brought a few Trial of the Grasses potions along. As you are ne to these lands, you start with no reputation. \n\n[color=#bcad8c]Monster Hunters:[/color] Due to the expertise of your group, you can spot enemy tracks from further away. \n\n[color=#bcad8c]Mutants:[/color] Few people will trust you, and even fewer will want to deal with you. Most recruits, excluding those who hate beats or are experienced at beasthunting, will demand much more pay to work for you. Also, you will get 25% worse prices overall. \n\n[color=#bcad8c]Spoils Of The Hunt:[/color] 25% Chance for extra drops from monsters, due to your expertise in monster unting techniques. [/p]";
+		this.m.Description = "[p=c][img]gfx/ui/events/pov_mysterious_vattghern.png[/img][/p][p] You are a Vatt'ghern, a proffetional beastslayer who has come to these lands with the ampbition of enstablishing a new School! The challenges are many, as most view you and your folk as mutants, thus it will be hard to earn the people's trust except for those who also fight against vicious beasts...\n\n[color=#bcad8c]Vatt'ghern on the Path:[/color] Start with an experienced Vatt'ghern, who has all the knowledge of mutagen creation and corpse dissection and has also brought a few Trial of the Grasses potions along. As you are ne to these lands, you start with no reputation. \n\n[color=#bcad8c]Monster Hunters:[/color] Due to the expertise of your group, you can spot enemy tracks from further away. \n\n[color=#bcad8c]Mutants:[/color] Few people will trust you, and even fewer will want to deal with you. Most recruits, excluding those who hate beats or are experienced at beasthunting, will demand much more pay to work for you. Also, you will get 25% worse prices overall. \n\n[color=#bcad8c]Spoils Of The Hunt:[/color] 25% Chance for extra drops from monsters, due to your expertise in monster unting techniques. [/p]";
 		this.m.Difficulty = 1;
 		this.m.Order = 40;
 		this.m.IsFixedLook = true;
@@ -58,8 +58,8 @@ this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 		bros[0].getBaseProperties().MeleeSkill += 10;
 		bros[0].getBaseProperties().MeleeDefense += 10;
 		bros[0].getBaseProperties().RangedDefense += 5;
-		bros[0].getSkills().add(this.new("scripts/skills/traits/vattghern_trait"));
-		bros[0].getFlags().increment("ActiveMutations");
+		bros[0].getSkills().add(this.new("scripts/skills/traits/pov_vattghern_trait"));
+		bros[0].getFlags().increment("pov_ActiveMutations");
 		bros[0].getSkills().add(this.new("scripts/skills/traits/old_trait"));
 		bros[0].getSkills().add(this.new("scripts/skills/traits/player_character_trait"));
 		bros[0].getSkills().add(this.new("scripts/skills/perks/perk_legend_potion_brewer"));
@@ -71,13 +71,13 @@ this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Head));
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Mainhand));
-		items.equip(this.new("scripts/items/weapons/witcher_longsword"));
+		items.equip(this.new("scripts/items/weapons/pov_witcher_longsword"));
 		//local armor = ["scripts/items/legend_armor/cloth/legend_gambeson_wolf","scripts/items/legend_armor/armor_upgrades/legend_direwolf_pelt_upgrade"];
 		//items.equip(this.new(armor));
 		items.equip(this.new("scripts/items/legend_armor/cloth/legend_gambeson_wolf"));
 		//items.equip(this.World.Assets.getStash("legend_direwolf_pelt_upgrade"));
 		//items.equip(this.new("scripts/items/helmets/legend_noble_hood"));
-		items.equip(this.new("scripts/items/accessory/vattghern_medallion_item"));
+		items.equip(this.new("scripts/items/accessory/pov_vattghern_medallion_item"));
 		bros[0].m.Talents = [];
 		local talents = bros[0].getTalents();
 		talents.resize(this.Const.Attributes.COUNT, 0);
@@ -144,11 +144,11 @@ this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 		this.World.Assets.getStash().add(this.new("scripts/items/supplies/ground_grains_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/legend_armor/armor_upgrades/legend_direwolf_pelt_upgrade"));
 		this.World.Assets.getStash().add(this.new("scripts/items/tools/throwing_net"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/witcher_potion_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/witcher_potion_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_witcher_potion_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_witcher_potion_item"));
 		this.World.Assets.m.Money = this.Math.round(this.World.Assets.m.Money * 1.5);
-		//this.World.Assets.getStash().add(this.new("scripts/items/weapons/whip_mace"));
-		//this.World.Assets.getStash().add(this.new("scripts/items/witcher_longsword"));
+		//this.World.Assets.getStash().add(this.new("scripts/items/weapons/pov_whip_mace"));
+		//this.World.Assets.getStash().add(this.new("scripts/items/pov_witcher_longsword"));
 	}
 
 	function onSpawnPlayer()

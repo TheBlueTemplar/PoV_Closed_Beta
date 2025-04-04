@@ -1,0 +1,62 @@
+this.pov_enemy_mutation_ghost <- this.inherit("scripts/skills/skill", {
+	m = {
+		//TurnsLeft = 2
+	},
+	function create()
+	{
+		this.m.ID = "effects.pov_enemy_mutation_ghost";
+		this.m.Name = "[color=#034207] Etherial Attacks [/color]";
+		this.m.Description = "This enemy has some properties of a Geist! Their attacks phase through armor, but also fail to damage it efectively.";
+		this.m.Icon = "skills/pov_geist_mutant.png";
+		this.m.IconMini = "pov_mini_geist_mutant";
+		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.IsActive = false;
+		this.m.IsRemovedAfterBattle = true;
+	}
+
+	function getDescription()
+	{
+		return "This enemy has some properties of a Geist! Their attacks phase through armor, but also fail to damage it efectively.";
+	}
+
+	function getTooltip()
+	{
+		local ret = [
+			{
+				id = 1,
+				type = "title",
+				text = this.getName()
+			},
+			{
+				id = 2,
+				type = "description",
+				text = this.getDescription()
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/direct_damage.png",
+				text = "Gain [color=" + this.Const.UI.Color.PositiveValue + "]15%[/color] armor penetration, with an additional flat bonus of [color=" + this.Const.UI.Color.PositiveValue + "]5[/color]."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/armor_damage.png",
+				text = "Do [color=" + this.Const.UI.Color.NegativeValue + "]50%[/color] less damage to armor."
+			}
+
+		];
+		return ret;
+	}
+
+	function onUpdate( _properties )
+	{
+		// Buffs
+		_properties.DamageDirectAdd += 0.05;
+		_properties.DamageDirectMult += 0.15;
+		_properties.RangedDefenseMult *= 1.15;
+		// Debuffs
+		_properties.DamageArmorMult *= 0.5;
+	}
+
+});
