@@ -6,7 +6,7 @@ this.pov_monster_hunter <- this.inherit("scripts/skills/traits/character_trait",
 		this.m.ID = "trait.pov_monster_hunter";
 		this.m.Name = "Monster Hunter";
 		this.m.Icon = "ui/traits/pov_monster_hunter.png";
-		this.m.Description = "There\'s a reason he won\'t stand the nightwatch. Says the dark remembers him… and one night, it\'ll come collect";
+		this.m.Description = "This character has all the right skills and passion to fight against all kinds of monsters, yet they do not show the same effectiveness against humans...";
 		this.m.Excluded = [
 			"trait.fearless",
 			"trait.brave",

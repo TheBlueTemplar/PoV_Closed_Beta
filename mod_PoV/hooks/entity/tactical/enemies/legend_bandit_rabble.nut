@@ -14,12 +14,12 @@
 		if (::TLW.EnableEnemyMutation)
 		{
 			local roll = this.Math.rand(1.0, 100.0)
-			local mutationChance = 100.0 	// Mutation Appearance Chance Handled by switch below
+			local mutationChance = 0.0 	// Mutation Appearance Chance Handled by switch below
 			local secondMutationChance = 0.0 // Second Mutation Appearance Chance Handled below
 			local possibleMutations = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16]		// Create a list of all possible mutations
 
 			// Chances Calculations
-			/*switch (this.World.Assets.getCombatDifficulty())
+			switch (this.World.Assets.getCombatDifficulty())
 			{
 				case this.Const.Difficulty.Easy: mutationChance = 2; break
 				case this.Const.Difficulty.Normal: mutationChance = 4; break
@@ -33,7 +33,7 @@
 			}else
 			{
 				secondMutationChance = mutationChance * 2
-			}*/
+			}
 
 			// Roll a Mutation Number
 			local mutations = possibleMutations[this.Math.rand(0, possibleMutations.len() - 1)]
