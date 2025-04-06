@@ -58,7 +58,7 @@ this.pov_hexe_curse_slave_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "This character has been cursed to feel the same pain and receive the same wounds as another character. Be careful, as it could kill him. The effect will persist for another [color=" + this.Const.UI.Color.NegativeValue + "]"this.m.TurnsLeft"[/color] turn(s).";
+		return "This character has been cursed to feel the same pain and receive the same wounds as another character. Be careful, as it could kill him. The effect will persist for another [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] turn(s).";
 	}
 
 	function applyDamage( _damage )
