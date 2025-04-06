@@ -3,7 +3,7 @@ this.pov_hexe_curse_slave_effect <- this.inherit("scripts/skills/skill", {
 		Master = null,
 		Color = this.createColor("#ffffff"),
 		IsActivated = false,
-		TurnsLeft = 4
+		TurnsLeft = 4,
 		HpReduction = 0
 	},
 	function activate()
