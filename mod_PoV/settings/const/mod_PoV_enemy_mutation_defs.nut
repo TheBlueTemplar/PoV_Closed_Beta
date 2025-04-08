@@ -10,7 +10,7 @@
 	{
 		Flag = "pov_mutant_vampire",
 		Script = "scripts/items/misc/anatomist/pov_unhold_vampire_item",
-		BaseDropChance = 2.25
+		BaseDropChance = 2.3
 	};
 
 	::TLW.Mutation.Spider <- 
