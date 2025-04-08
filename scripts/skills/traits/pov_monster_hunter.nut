@@ -66,7 +66,7 @@ this.pov_monster_hunter <- this.inherit("scripts/skills/traits/character_trait",
 				_properties.DamageTotalMult *= 1.05;
 			}else
 			{
-				_properties.DamageTotalMult *= 0.12;
+				_properties.DamageTotalMult *= 0.92;
 			}
 		}
 	}
