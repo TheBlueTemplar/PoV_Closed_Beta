@@ -256,14 +256,14 @@
 	{
 		Flag = "pov_corpse_vampire",
 		Script = "scripts/items/misc/pov_corpse_vampire_item",
-		BaseDropChance = 25.0
+		BaseDropChance = 35.0
 	};
 
 	::TLW.Corpse.LegendVampireLord <- 
 	{
 		Flag = "pov_corpse_vampire_lord",
 		Script = "scripts/items/misc/pov_corpse_vampire2_item",
-		BaseDropChance = 45.0
+		BaseDropChance = 50.0
 	};
 
 	::TLW.Corpse.Zombie <- 
