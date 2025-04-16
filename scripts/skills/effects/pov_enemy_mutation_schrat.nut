@@ -64,6 +64,15 @@ this.pov_enemy_mutation_schrat <- this.inherit("scripts/skills/skill", {
 		return ret;
 	}
 
+	function onAdded() 
+	{
+		local actor = this.getContainer().getActor();
+		if (!::MSU.isKindOf(actor, "player")) 
+		{
+			actor.m.OnDeathLootTable.push(::TLW.MutagenDrop.getMutagenDrop(actor, ::TLW.Mutation.Schrat));
+	  	}
+	}
+
 
 	function onCombatStarted()
 	{

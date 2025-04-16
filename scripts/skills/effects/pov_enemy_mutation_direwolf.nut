@@ -60,7 +60,7 @@ this.pov_enemy_mutation_direwolf <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "Skills cost [color=" + this.Const.UI.Color.PositiveValue + "]15%[/color] less fatigue"
+				text = "Skills cost [color=" + this.Const.UI.Color.PositiveValue + "]15%[/color] less fatigue and the character has [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] more fatigue."
 			},
 			{
 				id = 11,
@@ -84,11 +84,21 @@ this.pov_enemy_mutation_direwolf <- this.inherit("scripts/skills/skill", {
 		return ret;
 	}
 
+	function onAdded() 
+	{
+		local actor = this.getContainer().getActor();
+		if (!::MSU.isKindOf(actor, "player")) 
+		{
+			actor.m.OnDeathLootTable.push(::TLW.MutagenDrop.getMutagenDrop(actor, ::TLW.Mutation.Direwolf));
+	  	}
+	}
+
 	function onUpdate( _properties )
 	{
 		// Buffs
 		_properties.MovementFatigueCostMult *= 0.6;
 		_properties.FatigueEffectMult *= 0.85;
+		_properties.StaminaMult *= 1.10;
 		//_properties.IsImmuneToBleeding = true; // Too Op On Light Enemies
 		if (this.getContainer().hasSkill("special.night") && _properties.IsAffectedByNight)
 		{

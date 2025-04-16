@@ -49,9 +49,11 @@ this.pov_witcher_longsword <- this.inherit("scripts/items/weapons/weapon", {
 	{
 		this.weapon.onEquip();
 
-		local slash = this.new("scripts/skills/actives/pov_silverslash");
-		//slash.m.DirectDamageMult = this.m.DirectDamageMult;
-		this.addSkill(slash);
+		/*local slash = this.new("scripts/skills/actives/pov_silverslash");
+		slash.m.DirectDamageMult = this.m.DirectDamageMult;
+		this.addSkill(slash);*/
+
+		this.addSkill(this.new("scripts/skills/actives/slash"));
 		local skillToAdd = this.new("scripts/skills/actives/overhead_strike");
 		skillToAdd.setStunChance(this.m.StunChance);
 		//skillToAdd.m.DirectDamageMult = this.m.DirectDamageMult;

@@ -90,11 +90,21 @@ this.pov_enemy_mutation_goblin <- this.inherit("scripts/skills/skill", {
 		return ret;
 	}
 
+	function onAdded() 
+	{
+		local actor = this.getContainer().getActor();
+		if (!::MSU.isKindOf(actor, "player")) 
+		{
+			actor.m.OnDeathLootTable.push(::TLW.MutagenDrop.getMutagenDrop(actor, ::TLW.Mutation.Goblin));
+	  	}
+	}
+
 	function onUpdate( _properties )
 	{
 		// Buffs
 		_properties.MovementFatigueCostAdditional += -2;
 		_properties.RangedSkillMult *= 1.15;
+		_properties.RangedDefenseMult *= 1.10;
 		_properties.RangedAttackBlockedChanceMult = 0.80;
 		// Debuffs
 		_properties.Hitpoints *= 0.80;

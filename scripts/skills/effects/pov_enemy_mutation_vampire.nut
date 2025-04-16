@@ -50,6 +50,15 @@ this.pov_enemy_mutation_vampire <- this.inherit("scripts/skills/skill", {
 		return ret;
 	}
 
+	function onAdded() 
+	{
+		local actor = this.getContainer().getActor();
+		if (!::MSU.isKindOf(actor, "player")) 
+		{
+			actor.m.OnDeathLootTable.push(::TLW.MutagenDrop.getMutagenDrop(actor, ::TLW.Mutation.Vampire));
+	  	}
+	}
+
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
 		local actor = this.m.Container.getActor();

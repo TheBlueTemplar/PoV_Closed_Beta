@@ -98,6 +98,8 @@
 
 	add_mutation_enemy_serpent = function(_actor, _hard)
 	{
+		if (_actor.isResurrected()){return;} //Fallback-Fix for enemies getting mutation when rising from dead
+
 		// Flag for one having a specific mutation (Part of the old system, not used now)
 		if (!_actor.getFlags().has("pov_mutant_serpent"))
 			_actor.getFlags().add("pov_mutant_serpent")
@@ -118,6 +120,8 @@
 
 	add_mutation_enemy_unhold = function(_actor, _hard)
 	{
+		if (_actor.isResurrected()){return;}
+
 		if (!_actor.getFlags().has("pov_mutant_unhold"))
 			_actor.getFlags().add("pov_mutant_unhold")
 		if (!_actor.getFlags().has("mutant"))
@@ -134,6 +138,8 @@
 
 	add_mutation_enemy_vampire = function(_actor, _hard)
 	{
+		if (_actor.isResurrected()){return;}
+
 		if (!_actor.getFlags().has("pov_mutant_vampire"))
 			_actor.getFlags().add("pov_mutant_vampire")
 		if (!_actor.getFlags().has("mutant"))
@@ -153,6 +159,8 @@
 
 	add_mutation_enemy_spider = function(_actor, _hard)
 	{
+		if (_actor.isResurrected()){return;}
+
 		if (!_actor.getFlags().has("pov_mutant_spider"))
 			_actor.getFlags().add("pov_mutant_spider")
 		if (!_actor.getFlags().has("mutant"))
@@ -169,6 +177,8 @@
 
 	add_mutation_enemy_orc = function(_actor, _hard)
 	{
+		if (_actor.isResurrected()){return;}
+
 		if (!_actor.getFlags().has("pov_mutant_orc"))
 			_actor.getFlags().add("pov_mutant_orc")
 		if (!_actor.getFlags().has("mutant"))
@@ -185,6 +195,8 @@
 
 	add_mutation_enemy_lindwurm = function(_actor, _hard)
 	{
+		if (_actor.isResurrected()){return;}
+
 		if (!_actor.getFlags().has("pov_mutant_lindwurm"))
 			_actor.getFlags().add("pov_mutant_lindwurm")
 		if (!_actor.getFlags().has("mutant"))
@@ -202,6 +214,8 @@
 
 	add_mutation_enemy_sandgolem = function(_actor, _hard)
 	{
+		if (_actor.isResurrected()){return;}
+
 		if (!_actor.getFlags().has("pov_mutant_sandgolem"))
 			_actor.getFlags().add("pov_mutant_sandgolem")
 		if (!_actor.getFlags().has("mutant"))
@@ -218,6 +232,8 @@
 
 	add_mutation_enemy_ghost = function(_actor, _hard)
 	{
+		if (_actor.isResurrected()){return;}
+
 		if (!_actor.getFlags().has("pov_mutant_ghost"))
 			_actor.getFlags().add("pov_mutant_ghost")
 		if (!_actor.getFlags().has("mutant"))
@@ -236,6 +252,8 @@
 
 	add_mutation_enemy_ghoul = function(_actor, _hard)
 	{
+		if (_actor.isResurrected()){return;}
+
 		if (!_actor.getFlags().has("pov_mutant_ghoul"))
 			_actor.getFlags().add("pov_mutant_ghoul")
 		if (!_actor.getFlags().has("mutant"))
@@ -252,6 +270,8 @@
 
 	add_mutation_enemy_basilisk = function(_actor, _hard)
 	{
+		if (_actor.isResurrected()){return;}
+
 		if (!_actor.getFlags().has("pov_mutant_basilisk"))
 			_actor.getFlags().add("pov_mutant_basilisk")
 		if (!_actor.getFlags().has("mutant"))
@@ -268,6 +288,8 @@
 
 	add_mutation_enemy_direwolf = function(_actor, _hard)
 	{
+		if (_actor.isResurrected()){return;}
+
 		if (!_actor.getFlags().has("pov_mutant_direwolf"))
 			_actor.getFlags().add("pov_mutant_direwolf")
 		if (!_actor.getFlags().has("mutant"))
@@ -284,6 +306,8 @@
 
 	add_mutation_enemy_goblin = function(_actor, _hard)
 	{
+		if (_actor.isResurrected()){return;}
+
 		if (!_actor.getFlags().has("pov_mutant_goblin"))
 			_actor.getFlags().add("pov_mutant_goblin")
 		if (!_actor.getFlags().has("mutant"))
@@ -300,6 +324,8 @@
 
 	add_mutation_enemy_schrat = function(_actor, _hard)
 	{
+		if (_actor.isResurrected()){return;}
+
 		if (!_actor.getFlags().has("pov_mutant_schrat"))
 			_actor.getFlags().add("pov_mutant_schrat")
 		if (!_actor.getFlags().has("mutant"))
@@ -316,6 +342,8 @@
 
 	add_mutation_enemy_skeleton = function(_actor, _hard)
 	{
+		if (_actor.isResurrected()){return;}
+
 		if (!_actor.getFlags().has("pov_mutant_skeleton"))
 			_actor.getFlags().add("pov_mutant_skeleton")
 		if (!_actor.getFlags().has("mutant"))
@@ -336,6 +364,8 @@
 
 	add_mutation_enemy_alp = function(_actor, _hard)
 	{
+		if (_actor.isResurrected()){return;}
+
 		if (!_actor.getFlags().has("pov_mutant_alp"))
 			_actor.getFlags().add("pov_mutant_alp")
 		if (!_actor.getFlags().has("mutant"))
@@ -352,6 +382,8 @@
 
 	add_mutation_enemy_hexe = function(_actor, _hard)
 	{
+		if (_actor.isResurrected()){return;}
+		
 		if (!_actor.getFlags().has("pov_mutant_hexe"))
 			_actor.getFlags().add("pov_mutant_hexe")
 		if (!_actor.getFlags().has("mutant"))

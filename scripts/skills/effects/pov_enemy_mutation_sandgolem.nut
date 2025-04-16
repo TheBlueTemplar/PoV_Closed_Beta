@@ -70,6 +70,14 @@ this.pov_enemy_mutation_sandgolem <- this.inherit("scripts/skills/skill", {
 		return ret;
 	}
 
+	function onAdded() 
+	{
+		local actor = this.getContainer().getActor();
+		if (!::MSU.isKindOf(actor, "player")) 
+		{
+			actor.m.OnDeathLootTable.push(::TLW.MutagenDrop.getMutagenDrop(actor, ::TLW.Mutation.Sandgolem));
+	  	}
+	}
 
 	function onCombatStarted()
 	{

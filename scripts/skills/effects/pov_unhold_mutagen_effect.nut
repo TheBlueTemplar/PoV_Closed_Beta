@@ -16,7 +16,7 @@ this.pov_unhold_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Hyperactive Cell Growth[/color]: This character\'s body has mutated to grow at an unnatural pace. The character has much more vitality, while in battle, this causes their wounds to close and heal within moments.\n\n[color=" + this.Const.UI.Color.NegativeValue + "]Faltering Fury[/color]: This character\'s body body focus on restoring its wounds sap strength from the character\'s attacks, with worsening effects, the more wounded the character is.\n\n[color=" + this.Const.UI.Color.NegativeValue + "]Increased Appetite[/color]: The increased metabolism due to rapid cell growth lead to greatly increased appetite, not that the Vatt\'ghern minds the extra ration or two. Just don\' let him get the mead!";
+		return "[color=" + this.Const.UI.Color.PositiveValue + "]Hyperactive Cell Growth[/color]: This character\'s body has mutated to grow at an unnatural pace. The character has much more vitality, while in battle, this causes their wounds to close and heal within moments.\n\n[color=" + this.Const.UI.Color.NegativeValue + "]Faltering Fury[/color]: This character\'s body focus on restoring its wounds sap strength from the character\'s attacks, with worsening effects, the more wounded the character is.\n\n[color=" + this.Const.UI.Color.NegativeValue + "]Increased Appetite[/color]: The increased metabolism due to rapid cell growth lead to greatly increased appetite, not that the Vatt\'ghern minds the extra ration or two. Just don\' let him get the mead!";
 	}
 
 	function getTooltip()
