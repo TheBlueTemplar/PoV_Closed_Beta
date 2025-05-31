@@ -8,7 +8,7 @@ this.pov_ghoul_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_an
 		this.m.Description = "This vile mutagen carries the essence of a ghoul\'s feral hunger and twisted vitality. Once consumed, it sharpens the user\'s reflexes to an unnatural degree, granting them incredible speed and an unsettling presence that saps the courage of nearby foes.\n\nHowever, the mutation also exacts a grim toll: precision with ranged weapons is lost entirely, melee strikes become weaker, and the body grows disturbingly fragile, unable to endure punishment as it once could. Those who embrace the ghoul\'s curse become swift predators, but their newfound agility comes at a steep price.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/pov_potion_ghoul.png";
-		this.m.Value = 300;
+		this.m.Value = 500;
 	}
 
 	function getTooltip()

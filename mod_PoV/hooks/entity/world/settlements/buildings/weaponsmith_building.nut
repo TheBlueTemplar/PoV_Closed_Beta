@@ -16,6 +16,13 @@
 				S = "weapons/named/pov_whip_mace_named"
 			}
 		]);
+		_list.extend([
+			{
+				R = 97,
+				P = 2.0,
+				S = "special/pov_silvering_kit"
+			},
+		]);
 		__original( _list, _stash, _priceMult, _allowDamagedEquipment = false );
 	}
 

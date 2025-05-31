@@ -108,20 +108,6 @@ this.pov_schrat_mutagen_effect <- this.inherit("scripts/skills/skill", {
 		}
 	}
 	
-
-	/*function onTurnStart()
-	{
-		local actor = this.getContainer().getActor();
-		local item = actor.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
-		
-		if (item != null && !item.isItemType(this.Const.Items.ItemType.Shield) && !actor.getSkills().hasSkill("scripts/skills/effects/pov_schrat_no_shield_effect"))
-			{
-				actor.getSkills().add(this.new("scripts/skills/effects/pov_schrat_no_shield_effect"));
-			}
-	}*/
-	
-
-
 	function onCombatStarted()
 	{
 		this.m.HeadDamageTaken = 0;
@@ -133,8 +119,6 @@ this.pov_schrat_mutagen_effect <- this.inherit("scripts/skills/skill", {
 		this.m.HeadDamageTaken = 0;
 		this.m.BodyDamageTaken = 0;
 	}
-
-	
 
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{
@@ -166,7 +150,6 @@ this.pov_schrat_mutagen_effect <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
-
 	function isHidden()
 	{
 		return this.inBattleHiddenCheck();
@@ -181,7 +164,6 @@ this.pov_schrat_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 		return true;
 	}
-
 });
 
 

@@ -30,11 +30,11 @@ this.pov_autopsy_vampire2_blueprint <- this.inherit("scripts/crafting/blueprint"
 			{
 				_stash.add(this.new("scripts/items/misc/anatomist/pov_vampire_mutagen_item"));
 			}
-		if (this.Math.rand(1, 100) <= 60)
+		if (this.Math.rand(1, 100) <= 55)
 			{
 				_stash.add(this.new("scripts/items/misc/legend_ancient_scroll_item"));
 			}
-		if (this.Math.rand(1, 100) <= 50)
+		if (this.Math.rand(1, 100) <= 55)
 			{
 				_stash.add(this.new("scripts/items/misc/vampire_dust_item"));
 			}

@@ -51,6 +51,12 @@ this.pov_spider_mutagen_effect <- this.inherit("scripts/skills/skill", {
 			{
 				id = 11,
 				type = "text",
+				icon = "ui/icons/special.png",
+				text = "Can craft Vattghern Poisoned Oil."
+			},
+			{
+				id = 11,
+				type = "text",
 				icon = "ui/icons/pov_poison.png",
 				text = "Immunity to poison effects."
 			},
@@ -58,13 +64,13 @@ this.pov_spider_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/pov_poison.png",
-				text = "Attacks with any weapon [color=" + this.Const.UI.Color.PositiveValue + "]Poison[/color] the enemy (\"Mutant Poison\"), dealing [color=" + this.Const.UI.Color.PositiveValue + "]5[/color] damage for two turns, and reducing their initiative and damage by [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color]"
+				text = "Attacks with any weapon [color=" + this.Const.UI.Color.PositiveValue + "]Poison[/color] the enemy (\"Mutant Poison\"), dealing [color=" + this.Const.UI.Color.PositiveValue + "]7[/color] damage for two turns, and reducing their initiative and damage by [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] and vision by [color=" + this.Const.UI.Color.PositiveValue + "]1[/color]."
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/damage_dealt.png",
-				text = "Attacks with any weapon deal [color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] damage to a poisoned enemy, but [color=" + this.Const.UI.Color.NegativeValue + "]-15%[/color] damage to an enemy that is not poisoned."
+				text = "Attacks with any weapon deal [color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] damage to a poisoned enemy, but [color=" + this.Const.UI.Color.NegativeValue + "]-10%[/color] damage to an enemy that is not poisoned."
 			},
 
 			//we are using spider_poison_effect now, it got its own tooltip
@@ -158,11 +164,11 @@ this.pov_spider_mutagen_effect <- this.inherit("scripts/skills/skill", {
 			return;
 		}
 
-		if (_targetEntity.getSkills().getSkillByID("effects.pov_spider_poison") != null || _targetEntity.getSkills().getSkillByID("effects.spider_poison") != null || _targetEntity.getSkills().getSkillByID("effects.goblin_poison") != null || _targetEntity.getSkills().getSkillByID("effects.legend_basilisk_poison") != null)
+		if (_targetEntity.getSkills().getSkillByID("effects.pov_spider_poison") != null || _targetEntity.getSkills().getSkillByID("effects.pov_vattghern_poison") != null || _targetEntity.getSkills().getSkillByID("effects.spider_poison") != null || _targetEntity.getSkills().getSkillByID("effects.goblin_poison") != null || _targetEntity.getSkills().getSkillByID("effects.legend_basilisk_poison") != null)
 		{
 			_properties.DamageRegularMult *= 1.10;
 		}else{
-			_properties.DamageRegularMult *= 0.85;
+			_properties.DamageRegularMult *= 0.90;
 		}
 	}
 
@@ -191,9 +197,9 @@ this.pov_spider_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 		this.spawnIcon("status_effect_54", _targetEntity.getTile());
 
-		local poison = _targetEntity.getSkills().getSkillByID("effects.pov_spider_poison");
+		local poison = _targetEntity.getSkills().getSkillByID("effects.pov_vattghern_poison");
 		if (poison == null)
-			_targetEntity.getSkills().add(this.new("scripts/skills/effects/pov_spider_poison_effect"));
+			_targetEntity.getSkills().add(this.new("scripts/skills/effects/pov_vattghern_poison_effect"));
 		else
 			poison.resetTime();
 	}

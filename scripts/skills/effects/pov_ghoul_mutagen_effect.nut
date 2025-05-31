@@ -16,7 +16,7 @@ this.pov_ghoul_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Hyperactive Tissue Growth[/color]: This character\'s body has mutated to regrow skin and muscle tissue much more quickly than normal, vastly increasing regeneration. On the other hand, the user becomes more prone to injuries thanks to cellular instability.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Frenzied Attacks[/color]: This character\'s movements have become eratic and blidingly fast, vastly increasing initiative. This also renders the user almost unable to properly use ranged weapons though, while also slightly lowering their damage output.\n\n [color=" + this.Const.UI.Color.PositiveValue + "]Terrifying Presence[/color]: Any opponent engaged in battle with them will have their resolve tested. ";
+		return "[color=" + this.Const.UI.Color.PositiveValue + "]Hyperactive Tissue Growth[/color]: This character\'s body has mutated to regrow skin and muscle tissue much more quickly than normal, vastly increasing regeneration. On the other hand, the user becomes more prone to injuries thanks to cellular instability.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Frenzied Attacks[/color]: The more entities die in a battle, this character\'s movements become increasingly eratic and blidingly fast, vastly increasing ther combat capabilities. This also renders the user almost unable to properly use ranged weapons though, while also slightly lowering their damage output.\n\n [color=" + this.Const.UI.Color.PositiveValue + "]Terrifying Presence[/color]: Any opponent engaged in battle with them will have their resolve truly tested. ";
 	}
 
 	function getTooltip()
@@ -35,14 +35,14 @@ this.pov_ghoul_mutagen_effect <- this.inherit("scripts/skills/skill", {
 			{
 				id = 11,
 				type = "text",
-				icon = "ui/icons/days_wounded.png",
-				text = "Lost health regenerates 3x faster than normal."
+				icon = "ui/icons/special.png",
+				text = "Gain a stacking [color=" + this.Const.UI.Color.PositiveValue + "]buff[/color] which increases as more enttities die in a battle."
 			},
 			{
 				id = 11,
 				type = "text",
-				icon = "ui/icons/initiative.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+20%[/color] initiative."
+				icon = "ui/icons/days_wounded.png",
+				text = "Lost health regenerates 3x faster than normal."
 			},
 			{
 				id = 11,
@@ -66,21 +66,26 @@ this.pov_ghoul_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/days_wounded.png",
-				text = "Injury threshold reduced by [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color]."
+				text = "Injury threshold reduced by [color=" + this.Const.UI.Color.NegativeValue + "]20%[/color]."
 			}
 		];
 		return ret;
 	}
 
+	function onCombatStarted()
+	{
+		local actor = this.getContainer().getActor();
+		actor.getSkills().add(this.new("scripts/skills/effects/pov_vattghern_corpse_rush_effect"));
+	}
 
 	function onUpdate( _properties )
 	{
 		// Buffs
-		_properties.InitiativeMult *= 1.2;
+		//_properties.InitiativeMult *= 1.2;
 		_properties.Threat += 12;
 		_properties.HitpointsRecoveryRateMult *= 3.0;
 		// Debuffs
-		_properties.ThresholdToReceiveInjuryMult *= 0.75;
+		_properties.ThresholdToReceiveInjuryMult *= 0.80;
 		_properties.RangedSkillMult *= 0.50;
 		_properties.MeleeDamageMult *= 0.90;
 	}

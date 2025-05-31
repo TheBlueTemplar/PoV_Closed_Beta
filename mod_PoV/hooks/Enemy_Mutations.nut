@@ -4,14 +4,16 @@
 	getMutagenDrop = function (_actor, _mutagen)
 	{
 		local chance = _mutagen.BaseDropChance;
-		local difficultyModifier = [2, 1, 0.6, 0.2][::World.Assets.getCombatDifficulty()];
+		// this means a modifier of 300%, 200%, 150% and 75%
+		// Practically, the chance for a mutant to appear AND drop a mutagen is 0.3% across all diffs
+		local difficultyModifier = [3, 2, 1.5, 0.75][::World.Assets.getCombatDifficulty()];
 		chance *= difficultyModifier;
 		if (::TLW.ChaosMode)
 		{
+			// Chaos mode further cuts the mutagen drop chance by half, might reduce it more!
 			chance *= 0.5;
 		}
 		//chance = 100; //For Testing Only
-
 		return [chance, _mutagen.Script];
 	}
 }
@@ -32,7 +34,7 @@
 			case this.Const.Difficulty.Easy: mutationChance = 2.0; break
 			case this.Const.Difficulty.Normal: mutationChance = 3.0; break
 			case this.Const.Difficulty.Hard: mutationChance = 5.0; break
-			case this.Const.Difficulty.Legendary: mutationChance = 10.0; break
+			case this.Const.Difficulty.Legendary: mutationChance = 8.0; break
 		}
 
 		//loop that checks the array(possibleMutations) length, rolls a mutation number(index) and removes rolled mutation from the array
@@ -397,6 +399,6 @@
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_hexe"))
 		}
 	}
-
-
+	
+	// ENEMY SPECIFIC MUTATIONS
 }

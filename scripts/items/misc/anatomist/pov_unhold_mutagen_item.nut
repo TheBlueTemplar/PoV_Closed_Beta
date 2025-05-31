@@ -8,7 +8,7 @@ this.pov_unhold_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_a
 		this.m.Description = "This mutagen, The Unhold Mutation grants the character an incredible vitality, with wounds healing almost instantly in battle due to hyperactive cell growth, and vastly increased hitpoints.\n\nHowever, this rapid regeneration comes at a cost—while the body focuses on recovery, it weakens the character's offensive power, making their attacks progressively weaker as they take more damage.\n\nAdditionally, the mutation significantly increases the character’s appetite, as the accelerated metabolism demands more food than usual. While they don't mind the extra rations, caution is advised, especially when mead is involved!";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/pov_potion_unhold.png";
-		this.m.Value = 300;
+		this.m.Value = 500;
 	}
 
 	function getTooltip()

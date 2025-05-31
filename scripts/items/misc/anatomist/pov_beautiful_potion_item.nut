@@ -9,6 +9,7 @@ this.pov_beautiful_potion_item <- this.inherit("scripts/items/misc/anatomist/pov
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/pov_potion_beautiful.png";
 		this.m.Value = 300;
+		this.m.IsPrecious = false;
 	}
 
 	function getTooltip()

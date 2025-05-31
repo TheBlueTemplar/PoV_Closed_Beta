@@ -1,3 +1,8 @@
+/////////////////////////////////////////////////////////////////////
+// 					Author: The Blue Templar 					   //
+// 			Not to be used elsewhere or tampered with, 2025.       //
+/////////////////////////////////////////////////////////////////////
+
 this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	m = {
 		// HERE IS THE LOGIC FOR THE VARS BELOW:
@@ -7,22 +12,22 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 		// To determine how to re-scale (damage as example)
 		// Max Scale / (MaxDamage - Start Damage) = KillsPerDamage
 		// Idk What Im writing
-		KillsPerAction = 175,
-		KillsPerInitiative = 20,
-		KillsPerRegen = 13,
-		KillsPerDamage = 13,
+		KillsPerAction = 200,
+		KillsPerInitiative = 22,
+		KillsPerRegen = 14,
+		KillsPerDamage = 14,
 		KillsPerResolve = 13,
 		StartAction = 1
-		StartInitiative = 5
-		StartRegen = 3
-		StartDamage = 3
-		StartResolve = 10
+		StartInitiative = 3
+		StartRegen = 1
+		StartDamage = 1
+		StartResolve = 5
 		MaxScale = 201
 		MaxAction = 2
-		MaxInitiative = 15
-		MaxRegen = 18
-		MaxDamage = 18
-		MaxResolve = 25
+		MaxInitiative = 12
+		MaxRegen = 15
+		MaxDamage = 15
+		MaxResolve = 20
 		IsActivated = false,
 
 		// Old Scaling
@@ -49,8 +54,8 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 		this.character_trait.create();
 		this.m.ID = "trait.pov_witcher";
 		this.m.Name = "Vatt'ghern";
-		this.m.Icon = "ui/perks/pov_wolf.png";
-		this.m.Description = "%name% has survived the [color=" + this.Const.UI.Color.PositiveValue + "]trial of the grasses[/color] and became a Vatt'ghern. Specialised in killing monsters, they are faster and stronger than normal humans. \n\n While the trial left them weak, their skills will improve over time as they get kills. Bonuses Cap at 150 kills. \n\n Due to the Vatt'ghern's skillset, they demand much larger pay than the common mercenary.";
+		this.m.Icon = "ui/traits/pov_vattghern.png";
+		this.m.Description = "%name% has survived the [color=" + this.Const.UI.Color.PositiveValue + "]trial of the grasses[/color] and became a Vatt'ghern. Specialised in killing monsters, they are faster and stronger than normal humans. \n\n While the trial left them weak, their skills will improve over time as they get kills. Bonuses Cap at 200 kills. \n\n Due to the Vatt'ghern's skillset, they demand much larger pay than the common mercenary.";
 		this.m.Order = this.Const.SkillOrder.Background - 2;
 	}
 
@@ -146,6 +151,22 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 
 	}
 
+	// Vattghern Eyes Effect
+	function onAdded()
+	{
+		local actor = this.getContainer().getActor();
+
+		if (actor.hasSprite("permanent_injury_4"))
+		{
+			local sprite = actor.getSprite("permanent_injury_4");
+			sprite.Visible = true;
+			sprite.setBrush("pov_vattghern_eyes");
+			sprite.Alpha = 0;
+			sprite.fadeIn(1500);
+		}
+
+		actor.setDirty(true);
+	}
 
 	function onUpdate( _properties )
 	{
@@ -155,8 +176,6 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 			_properties.BraveryMult *= (1+ (0.01 * (this.getResolveBonus())));
 			_properties.DailyWageMult *= 2;
 	}
-
-
 
 	function getMutations()
 	{

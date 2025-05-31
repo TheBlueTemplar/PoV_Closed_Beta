@@ -11,7 +11,10 @@
 	  	}
 
 		// HERE, ADD EFFECTS YOU ALWAYS WANT APPLIED
-		//this.m.Skills.add(this.new("scripts/skills/effects/pov_serpentine_agility_effect"))
+		if(this.World.Assets.getCombatDifficulty() != this.Const.Difficulty.Easy)
+		{
+			this.m.Skills.add(this.new("scripts/skills/effects/pov_ghoul_corpse_rush_effect"));
+		}
 
 		// Chaos Mutation
 		if (::TLW.ChaosMode && ::TLW.EnableEnemyMutation)

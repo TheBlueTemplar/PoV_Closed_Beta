@@ -16,7 +16,6 @@
 			this.m.Skills.add(this.new("scripts/skills/effects/pov_serpentine_agility_effect"));
 		}
 		
-
 		// Chaos Mutation
 		if (::TLW.ChaosMode && ::TLW.EnableEnemyMutation)
 		{

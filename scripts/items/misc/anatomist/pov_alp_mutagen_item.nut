@@ -9,7 +9,7 @@ this.pov_alp_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_anat
 		this.m.Description = "This mutagen awakens a supernatural awareness, granting the user an eerie clarity in darkness. Night holds no secrets from their gaze, and their altered eyes pierce through the gloom with unnatural precision.\n\nThey develop a mysterious Third Eye, enhancing their perception beyond mortal limits, allowing them to detect threats others would overlook. Their body, too, adapts to the realm of nightmares, resisting the suffocating grasp of toxic mists and foul vapors.\n\nProjectiles seem to veer just slightly off-course, as if guided by unseen forces, and even if they hit, they cause less harm. \n\n However, this transformation comes at a cost: learning slows, as if trapped in a waking dream, and the body's endurance wanes, making it harder to shake off exhaustion.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/pov_potion_alp.png";
-		this.m.Value = 300;
+		this.m.Value = 500;
 	}
 
 	function getTooltip()

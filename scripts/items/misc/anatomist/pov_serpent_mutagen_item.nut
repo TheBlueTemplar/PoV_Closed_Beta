@@ -8,7 +8,7 @@ this.pov_serpent_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_
 		this.m.Description = "Suffused with the sly and lethal essence of serpents, this mutagen transforms its bearer into a master of precision and cunning on the battlefield. Each strike is calculated, benefiting from increased accuracy when allies surround the target, turning cooperation into a deadly advantage. The bearer’s agility is unmatched, recovering fatigue at an accelerated rate, enabling relentless combat and nimble repositioning. Additionally, their initiative fuels their defensive prowess, granting them both melee and ranged defense that scales with their speed.\n\nHowever, this serpentine gift is not without its drawbacks. The mutation demands a physical toll, reducing the bearer’s maximum health and increasing the damage they sustain from attacks. Furthermore, when cornered by multiple enemies, the bearer’s defenses falter, making them vulnerable in the midst of chaos. A double-edged boon, perfect for those who value precision and strategy over brute strength.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/pov_potion_serpent.png";
-		this.m.Value = 300;
+		this.m.Value = 500;
 	}
 
 	function getTooltip()

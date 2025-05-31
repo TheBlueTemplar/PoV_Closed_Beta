@@ -36,13 +36,13 @@ this.pov_enemy_mutation_spider <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/pov_poison.png",
-				text = "Attacks with any weapon [color=" + this.Const.UI.Color.PositiveValue + "]Poison[/color] the enemy, dealing [color=" + this.Const.UI.Color.PositiveValue + "]5[/color] damage for two turns, and reducing their initiative and damage by [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color]"
+				text = "Attacks with any weapon [color=" + this.Const.UI.Color.PositiveValue + "]Poison[/color] the enemy, dealing [color=" + this.Const.UI.Color.PositiveValue + "]9[/color] damage for two turns, and reducing their initiative and damage by [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color]"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/damage_dealt.png",
-				text = "Attacks with any weapon deal [color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] damage to a poisoned enemy, but [color=" + this.Const.UI.Color.NegativeValue + "]-15%[/color] damage to an enemy that is not poisoned."
+				text = "Attacks with any weapon deal [color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] damage to a poisoned enemy, but [color=" + this.Const.UI.Color.NegativeValue + "]-13%[/color] damage to an enemy that is not poisoned."
 			},
 
 		];
@@ -68,9 +68,9 @@ this.pov_enemy_mutation_spider <- this.inherit("scripts/skills/skill", {
 
 		if (_targetEntity.getSkills().getSkillByID("effects.pov_spider_poison") != null || _targetEntity.getSkills().getSkillByID("effects.spider_poison") != null || _targetEntity.getSkills().getSkillByID("effects.goblin_poison") != null || _targetEntity.getSkills().getSkillByID("effects.legend_basilisk_poison") != null)
 		{
-			_properties.DamageRegularMult *= 1.05;
+			_properties.DamageRegularMult *= 1.10;
 		}else{
-			_properties.DamageRegularMult *= 0.85;
+			_properties.DamageRegularMult *= 0.87;
 		}
 	}
 

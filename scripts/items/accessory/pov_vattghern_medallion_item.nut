@@ -13,6 +13,7 @@ this.pov_vattghern_medallion_item <- this.inherit("scripts/items/accessory/acces
 		this.m.Icon = "accessory/pov_vattghern_medallion.png";
 		this.m.Sprite = "pov_vattghern_medallion";
 		this.m.Value = 1000;
+		this.m.IsPrecious = true;
 	}
 
 	function getTooltip()

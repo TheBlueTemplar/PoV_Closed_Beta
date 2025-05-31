@@ -4,7 +4,7 @@ this.pov_glare_skill <- this.inherit("scripts/skills/skill", {
 	{
 		this.m.ID = "actives.pov_glare";
 		this.m.Name = "Glare";
-		this.m.Description = "Inflicts the [color=" + this.Const.UI.Color.NegativeValue + "]Paralyzed[/color] effect on the enemy, reducing their initiative by 40% and Offensive skills by 5% for two turns.";
+		this.m.Description = "Inflicts the [color=" + this.Const.UI.Color.NegativeValue + "]Paralyzed[/color] effect on the enemy, reducing their initiative by 40% and Offensive skills by 15% for two turns.";
 		this.m.KilledString = "Bok bok BAAAWK";
 		this.m.Icon = "skills/pov_glare.png";
 		this.m.IconDisabled = "skills/pov_glare_gx.png";

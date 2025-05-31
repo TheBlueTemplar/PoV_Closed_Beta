@@ -10,10 +10,15 @@
 			this.actor.m.OnDeathLootTable.push(::TLW.CorpseDrop.getCorpseDrop(actor, ::TLW.Corpse.Hyena));
 	  	}
 
+	  	// Racial
+	  	this.m.Skills.add(this.new("scripts/skills/racial/pov_hyena_racial"));
+	  	
 		// HERE, ADD EFFECTS YOU ALWAYS WANT APPLIED
-		//this.m.Skills.add(this.new("scripts/skills/effects/pov_serpentine_agility_effect"));
+		if(this.World.Assets.getCombatDifficulty() != this.Const.Difficulty.Easy)
+		{
+			this.m.Skills.add(this.new("scripts/skills/effects/pov_hyena_pack_mentality_effect"));
+		}
 		
-
 		// Chaos Mutation
 		if (::TLW.ChaosMode && ::TLW.EnableEnemyMutation)
 		{

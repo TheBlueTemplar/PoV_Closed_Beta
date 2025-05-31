@@ -22,6 +22,7 @@ this.pov_witcher_longsword <- this.inherit("scripts/items/weapons/weapon", {
 		this.m.ShowArmamentIcon = true;
 		this.m.ArmamentIcon = "pov_icon_witchersword";
 		this.m.Value = 5000;
+		this.m.IsPrecious = true;
 		this.m.ShieldDamage = 12;
 		this.m.Condition = 80.0;
 		this.m.ConditionMax = 80.0;

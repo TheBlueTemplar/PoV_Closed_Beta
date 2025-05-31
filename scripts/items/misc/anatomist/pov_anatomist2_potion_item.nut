@@ -8,6 +8,7 @@ this.pov_anatomist2_potion_item <- this.inherit("scripts/items/item", {
 		this.m.IsDroppedAsLoot = true;
 		this.m.IsAllowedInBag = false;
 		this.m.IsUsable = true;
+		this.m.IsPrecious = true;
 	}
 
 	function playInventorySound( _eventType )

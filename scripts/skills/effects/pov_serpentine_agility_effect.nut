@@ -5,7 +5,7 @@ this.pov_serpentine_agility_effect <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_serpentine_agility";
-		this.m.Name = "Serpentine Agility";
+		this.m.Name = "[color=#5c3a01]Serpentine Agility[/color]";
 		this.m.Description = "Great agility allows one to excel at dodgeing attacks, especially when focuesed against one enemy.\n\n On the other hand, focus against multiple opponents becomes harder, leading to the diminishing of these affects, as well as the creation of openings during combat.";
 		this.m.Icon = "skills/pov_serpent.png";
 		this.m.IconMini = "pov_mini_serpent";

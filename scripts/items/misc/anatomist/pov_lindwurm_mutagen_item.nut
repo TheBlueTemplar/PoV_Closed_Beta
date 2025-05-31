@@ -8,7 +8,7 @@ this.pov_lindwurm_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov
 		this.m.Description = "Infused with the volatile essence of the Lindwurm, this mutagen transforms its bearer into a devastating force on the battlefield. Their blood burns with potent acid, searing the armor of attackers who dare strike them. Immune to acid themselves, they become relentless armor-breakers, tearing through defenses with enhanced effectiveness.\n\n However, the mutation comes with significant drawbacks: their wounds heal more slowly, melee defense is reduced, and their increased wages reflect the high cost of maintaining such a destructive force. A formidable choice for those who prioritize overwhelming offense over endurance.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/pov_potion_lindwurm.png";
-		this.m.Value = 300;
+		this.m.Value = 600;
 	}
 
 	function getTooltip()

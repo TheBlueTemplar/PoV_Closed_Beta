@@ -14,7 +14,6 @@
             "perk.legend_barter_convincing",
             "perk.legends.legend_off_book_deal",
             "trait.legend_seductive",
-            //"trait.pov_seductive"
             "effects.pov_hexe_mutagen"
         ];
 
@@ -38,7 +37,7 @@
 		foreach(bro in bros)
 		{
 			if (bro.getSkills().hasSkill("effects.pov_hexe_mutagen"))
-				trymult *= 69.69; //tryout multiplier, change however u want
+				trymult *= 0.75; //tryout multiplier, change however u want
 				::TLW.Mod.Debug.printLog("Setting trymult: " + trymult);
 		}
 
@@ -53,7 +52,7 @@
 		foreach(bro in bros)
 		{
 			if (bro.getSkills().hasSkill("effects.pov_hexe_mutagen"))
-				hiremult *= 69.69;	//hire multiplier, change however u want
+				hiremult *= 0.85;	//hire multiplier, change however u want
 				::TLW.Mod.Debug.printLog("Setting hiremult: " + hiremult);
 		}
 

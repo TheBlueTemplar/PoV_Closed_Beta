@@ -5,15 +5,19 @@ this.pov_witcher_potion_item_blueprint <- this.inherit("scripts/crafting/bluepri
 		this.blueprint.create();
 		this.m.ID = "blueprint.pov_witcher_potion_item";
 		this.m.Type = this.Const.Items.ItemType.Usable;
-		this.m.PreviewCraftable = this.new("scripts/items/misc/anatomist/pov_witcher_potion_item");
+		this.m.PreviewCraftable = this.new("scripts/items/misc/anatomist/pov_witcher_potion_item_preview");
 		this.m.Cost = 450;
 		local ingredients = [
 			{
 				Script = "scripts/items/misc/third_eye_item",//drop from alp
 				Num = 1
 			},
-			{
+			/*{
 				Script = "scripts/items/misc/acidic_saliva_item",//drop from hyena NEW
+				Num = 1
+			},*/
+			{
+				Script = "scripts/items/misc/sulfurous_rocks_item",//drop from ifrit NEW
 				Num = 1
 			},
 			{

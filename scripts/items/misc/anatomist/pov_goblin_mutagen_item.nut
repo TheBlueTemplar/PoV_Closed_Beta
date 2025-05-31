@@ -8,7 +8,7 @@ this.pov_goblin_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_a
 		this.m.Description = "This mutagen reshapes the body into a wiry, quick-footed form, enhancing agility and sharpshooting prowess while sapping resilience. Movement becomes swift and efficient, making complex maneuvers feel effortless, while ranged attacks strike with uncanny precision, often slipping through gaps in an enemy’s guard. Even careful, methodical shots require less time to execute, making them deadlier in skilled hands.\n\nHowever, the body grows frail, struggling to withstand direct blows, and the mind becomes more prone to panic under pressure. Heavier armor feels especially cumbersome, draining stamina far faster than usual, forcing reliance on speed, positioning, and ambush tactics to survive.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/pov_potion_goblin.png";
-		this.m.Value = 300;
+		this.m.Value = 400;
 	}
 
 	function getTooltip()

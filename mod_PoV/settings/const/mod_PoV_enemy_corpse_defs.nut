@@ -87,14 +87,14 @@
 	::TLW.Corpse.Hexe <- 
 	{
 		Flag = "pov_corpse_hexe",
-		Script = "scripts/items/misc/pov_corpse_goblin3_item",
+		Script = "scripts/items/misc/pov_corpse_hexen_item",
 		BaseDropChance = 45.0
 	};
 
 	::TLW.Corpse.LegendHexeLeader <- 
 	{
 		Flag = "pov_corpse_hexe_leader",
-		Script = "scripts/items/misc/pov_corpse_goblin3_item",
+		Script = "scripts/items/misc/pov_corpse_hexen2_item",
 		BaseDropChance = 60.0
 	};
 
@@ -256,14 +256,14 @@
 	{
 		Flag = "pov_corpse_vampire",
 		Script = "scripts/items/misc/pov_corpse_vampire_item",
-		BaseDropChance = 35.0
+		BaseDropChance = 40.0
 	};
 
 	::TLW.Corpse.LegendVampireLord <- 
 	{
 		Flag = "pov_corpse_vampire_lord",
 		Script = "scripts/items/misc/pov_corpse_vampire2_item",
-		BaseDropChance = 50.0
+		BaseDropChance = 55.0
 	};
 
 	::TLW.Corpse.Zombie <- 

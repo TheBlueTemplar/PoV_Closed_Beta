@@ -8,7 +8,7 @@ this.pov_witcher_potion_item <- this.inherit("scripts/items/misc/anatomist/pov_a
 		this.m.Description = "The Trial Of The Grasses is the pinnacle of what research on human anatomy has yielded. The few who know of its existence claim that to consume it and survive, is to ascend to a higher state of being, something beyond a mere human. But the process, is truly horrifying \n\n The poor fellow who consumes this potion will be put under the ultimate test, at risk of their own life. [color=" + this.Const.UI.Color.NegativeValue + "]Only the most healthy and battle hardened people are guaranteed to survive[/color]. Even after surviving, they will be extremely sick for many days \n\n [color=" + this.Const.UI.Color.NegativeValue + "]This process is also going to negatively impact the entire party's mood[/color], affected individually by each brother's bravery and resolve.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/pov_potion_vattghern.png";
-		this.m.Value = 1000;
+		this.m.Value = 3000;
 	}
 
 	function getTooltip()
@@ -67,6 +67,22 @@ this.pov_witcher_potion_item <- this.inherit("scripts/items/misc/anatomist/pov_a
 	{
 		if (!_actor.getSkills().hasSkill("trait.pov_witcher"))
 		{
+			// Check if bro has Anatomist Mutations (or SSU Sequences) THE DIE IF THEY DO MUEHEH (or just dont use the item)
+			if (_actor.getFlags().getAsInt("ActiveMutations") >= 1)
+			{
+				if(this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
+				{
+					_actor.getItems().transferToStash(this.World.Assets.getStash());
+					_actor.getSkills().onDeath(this.Const.FatalityType.None);
+					::Legends.addFallen(_actor, "The Trial of the Grasses reacted horribly with their current mutations.");
+					this.World.getPlayerRoster().remove(_actor);
+					return true;
+				}else{
+					this.Sound.play("sounds/bottle_01.wav", this.Const.Sound.Volume.Inventory);
+					return false;
+				}
+			}
+
 			// Check for brother's level, if not high enough, KILL HIM
 			// Example: Base Chance 120 means that there is 0% final chance on bro lvl 12
 			local deathChanceBase = 0;
@@ -112,24 +128,13 @@ this.pov_witcher_potion_item <- this.inherit("scripts/items/misc/anatomist/pov_a
 
 			if (this.Math.rand(1, 100) <= deathChanceFinal)
 			{
-				local dead = _actor;
-				local fallen = {
-					Name = dead.getName(),
-					Time = this.World.getTime().Days,
-					TimeWithCompany = this.Math.max(1, dead.getDaysWithCompany()),
-					Kills = dead.getLifetimeStats().Kills,
-					Battles = dead.getLifetimeStats().Battles,
-					KilledBy = " Succumbed to the Trial of the Grasses",
-					Expendable = dead.getBackground().getID() == "background.slave"
-				};
-				this.World.Statistics.addFallen(fallen);
-
 				_actor.getItems().transferToStash(this.World.Assets.getStash());
 				_actor.getSkills().onDeath(this.Const.FatalityType.None);
-
+				::Legends.addFallen(_actor, "Succumbed to the Trial of the Grasses.");
 				this.World.getPlayerRoster().remove(_actor);
 
-				// THERE IS A DEBUGGING THING BELOW
+				// THERE IS A DEBUGGING THING BELOW 
+				// (no more lmao, I used this worsen mood to debug XDD what a noob)
 				foreach( bro in brothers )
 				{
 					bro.worsenMood(3, "Lost a Brother to the Horrifying Trial of the Grasses");
@@ -148,10 +153,10 @@ this.pov_witcher_potion_item <- this.inherit("scripts/items/misc/anatomist/pov_a
 				{
 					bro.improveMood(1, "Witnessesed a great mutation!");
 				}
-				else if(bro.getCurrentProperties().getBravery() > 70 || bro.getSkills().hasSkill("trait.brave") || bro.getSkills().hasSkill("trait.fearless"))
+				else if(bro.getCurrentProperties().getBravery() > 70 || bro.getSkills().hasSkill("trait.brave") || bro.getSkills().hasSkill("trait.fearless") || bro.getSkills().hasSkill("trait.pov_witcher"))
 				{
 					bro.worsenMood(1, "Unsettled By The Trial Of The Grasses");
-				}else if(bro.getCurrentProperties().getBravery() < 35 || bro.getSkills().hasSkill("trait.craven") || bro.getSkills().hasSkill("trait.dastard") || bro.getSkills().hasSkill("trait.fainthearted") || bro.getSkills().hasSkill("trait.superstitious"))
+				}else if(bro.getCurrentProperties().getBravery() < 35 || bro.getSkills().hasSkill("trait.craven") || bro.getSkills().hasSkill("trait.dastard") || bro.getSkills().hasSkill("trait.fainthearted") || bro.getSkills().hasSkill("trait.superstitious") || bro.getSkills().hasSkill("trait.pov_fear_mutants"))
 				{
 					bro.worsenMood(3, "Traumatised By The Trial Of The Grasses");
 				}else
@@ -162,16 +167,9 @@ this.pov_witcher_potion_item <- this.inherit("scripts/items/misc/anatomist/pov_a
 
 			//If bro did not die, they gain the Vatt'ghern trait!
 			return ::TLW.MutatePlayer.mutatePlayer(_actor, ::TLW.PlayerMutation.Vattghern);
-
-			//_actor.getSkills().add(this.new("scripts/skills/traits/pov_vattghern_trait"));
-			//this.Sound.play("sounds/combat/rage_01.wav", this.Const.Sound.Volume.Inventory);
-
 			//return this.pov_anatomist2_potion_item.onUse(_actor, _item);
-
 		}
-
 	}
-
 });
 
 

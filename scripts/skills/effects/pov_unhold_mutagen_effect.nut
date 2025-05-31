@@ -66,6 +66,7 @@ this.pov_unhold_mutagen_effect <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 
 			// ADD UNHOLD MUTAGEN MISSING HP - LESS DMG EFFECT
+			// Imagine this is a reverse Muscularity effect
 			actor.getSkills().add(this.new("scripts/skills/effects/pov_missing_hp_dmg_effect"));
 	}
 
@@ -85,7 +86,7 @@ this.pov_unhold_mutagen_effect <- this.inherit("scripts/skills/skill", {
 		// DEFINE HP HEALED
 		local actor = this.getContainer().getActor();
 		local healthMissing = actor.getHitpointsMax() - actor.getHitpoints();
-		local healthAdded = this.Math.min(healthMissing, 12);
+		local healthAdded = this.Math.min(healthMissing, 10);
 
 		if (healthAdded <= 0)
 		{
@@ -106,46 +107,13 @@ this.pov_unhold_mutagen_effect <- this.inherit("scripts/skills/skill", {
 	function onUpdate(_properties)
 	{
 		// Buffs
-		// Regen 12HP
+		// Regen 10HP
 		_properties.HitpointsMult *= 1.35;
 
 		// Debuffs
 		// Lower HP% = Less Dmg%
 		_properties.DailyFood += 1.0;
 	}
-
-	// Imagine this is a reverse Muscularity effect
-	// ADDED AS A SEPERATE EFFECT ABOVE
-	/*
-	function onAnySkillUsed( _skill, _targetEntity, _properties )
-	{
-		local item = _skill.getItem();
-
-		if (item != null && item.isItemType(this.Const.Items.ItemType.Defensive) && !item.isItemType(this.Const.Items.ItemType.Weapon))
-			return;
-
-		local isValidRanged = item != null && item.isItemType(this.Const.Items.ItemType.Weapon) && (item.isWeaponType(this.Const.Items.WeaponType.Throwing) || item.isWeaponType(this.Const.Items.WeaponType.Bow));
-		if (!_skill.isRanged() || (isValidRanged && item.isItemType(this.Const.Items.ItemType.Weapon)))
-		{
-			local actor = this.getContainer().getActor();
-			local maxHp = actor.getHitpointsMax();
-			local Hp = actor.getHitpoints();
-			local currentHpPercent = (Hp * 100) / maxHp;
-			local missingHpPercent = 100 - currentHpPercent;
-
-			local damagePenalty = this.Math.maxf(0, missingHpPercent / 2) * 0.01; 
-
-			if (damagePenalty >= 1)
-			{	
-				// This is me being paranoic xd
-				damagePenalty = 1;
-			}
-
-			local finalDamageMult = 1 - damagePenalty;
-			_properties.DamageTotalMult *= finalDamageMult;
-		}
-	}
-	*/
 
 	function isHidden()
 	{

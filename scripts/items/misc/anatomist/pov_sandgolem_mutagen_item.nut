@@ -8,7 +8,7 @@ this.pov_sandgolem_mutagen_item <- this.inherit("scripts/items/misc/anatomist/po
 		this.m.Description = "This potent mutagen rewrites the vatt'ghern's physiology, transforming their flesh into a hardened, stone-like texture that provides extraordinary resilience. With natural armor shielding them from harm and a remarkable reduction in incoming damage, they become a living fortress on the battlefield.\n\n However, such unyielding strength comes at a steep cost—their movements grow sluggish, their reflexes dulled, and their stamina drained more quickly. Fatigue recovery slows, and every action becomes more taxing. It is a gift of unparalleled durability, but one that demands the vatt'ghern to carefully weigh power against agility and endurance.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/pov_potion_ifrit.png";
-		this.m.Value = 300;
+		this.m.Value = 500;
 	}
 
 	function getTooltip()

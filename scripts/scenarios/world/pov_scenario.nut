@@ -1,14 +1,19 @@
+/////////////////////////////////////////////////////////////////////
+// 					Author: The Blue Templar 					   //
+// 			Not to be used elsewhere or tampered with, 2025.       //
+/////////////////////////////////////////////////////////////////////
+
 this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 	m = {},
 	function create()
 	{
 		this.m.ID = "scenario.pov_last_witchers";
 		this.m.Name = "Path of the Vatt'ghern";
-		this.m.Description = "[p=c][img]gfx/ui/events/pov_mysterious_vattghern.png[/img][/p][p] You are a Vatt'ghern, a proffetional beastslayer who has come to these lands with the ampbition of enstablishing a new School! The challenges are many, as most view you and your folk as mutants, thus it will be hard to earn the people's trust except for those who also fight against vicious beasts...\n\n[color=#bcad8c]Vatt'ghern on the Path:[/color] Start with an experienced Vatt'ghern, who has all the knowledge of mutagen creation and corpse dissection and has also brought a few Trial of the Grasses potions along. As you are ne to these lands, you start with no reputation. \n\n[color=#bcad8c]Monster Hunters:[/color] Due to the expertise of your group, you can spot enemy tracks from further away. \n\n[color=#bcad8c]Mutants:[/color] Few people will trust you, and even fewer will want to deal with you. Most recruits, excluding those who hate beats or are experienced at beasthunting, will demand much more pay to work for you. Also, you will get 25% worse prices overall. \n\n[color=#bcad8c]Spoils Of The Hunt:[/color] 25% Chance for extra drops from monsters, due to your expertise in monster unting techniques. [/p]";
-		this.m.Difficulty = 1;
+		this.m.Description = "[p=c][img]gfx/ui/events/pov_vattghern_origin.png[/img][/p][p] You are a Vatt\'ghern, a professional beastslayer who has come to these lands with the ambition of enstablishing a new School! The challenges are many, as most view you and your folk as mutants, thus it will be hard to earn the people\'s trust, except for those who also fight against vicious beasts...\n\n[color=#bcad8c]Vatt\'ghern on the Path:[/color] Start with an experienced Vatt\'ghern, who has all the knowledge of mutagen creation and corpse dissection and has also brought a few Trial of the Grasses potions along, along with some strong gear. \n\n[color=#bcad8c]Monster Hunters:[/color] Due to the expertise of your group, you can move faster on the map, and you can spot enemy tracks from further away. \n\n[color=#bcad8c]Mutants:[/color] Few people will trust you, and even fewer will want to deal with you. You start with significantly low reputation. Most recruits, excluding those who hate beasts or are experienced at beasthunting, will demand much more pay to work for you. On the other hand, beasthunting origins, including some rare ones, will appear more frequently. Finally, you will get 15% worse prices overall. \n\n[color=#bcad8c]Spoils Of The Hunt:[/color] 25% Chance for extra drops from monsters, due to your knowledge and techniques. \n\n[color=#bcad8c]This Origin is meant to be a \"headstart\" into PoV, easing the players into the mod by immediately granting access into some of its mid-late game mechanics. [/color][/p]";
+		this.m.Difficulty = 2;
 		this.m.Order = 40;
 		this.m.IsFixedLook = true;
-		this.m.StartingBusinessReputation = 0;
+		this.m.StartingBusinessReputation = -400;
 		this.setRosterReputationTiers(this.Const.Roster.createReputationTiers(this.m.StartingBusinessReputation));
 	}
 
@@ -67,6 +72,7 @@ this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 		bros[0].m.PerkPoints = 5;
 		bros[0].m.LevelUps = 5;
 		bros[0].m.Level = 6;
+		bros[0].m.LifetimeStats.Kills = 75;
 		local items = bros[0].getItems();
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Body));
 		items.unequip(items.getItemAtSlot(this.Const.ItemSlot.Head));
@@ -239,7 +245,10 @@ this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 		{
 			bro.m.HiringCost = this.Math.floor(bro.m.HiringCost * 0.8);
 			bro.getBaseProperties().DailyWageMult *= 0.8;
-			bro.getSkills().add(this.new("scripts/skills/traits/hate_beasts_trait"));
+			if (!bro.getSkills().hasSkill("trait.hate_beasts"))
+			{
+				bro.getSkills().add(this.new("scripts/skills/traits/hate_beasts_trait"));
+			}
 			bro.improveMood(1.5, "Hates beasts as much as you do");
 		}
 		else
@@ -257,8 +266,8 @@ this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 	{
 		this.starting_scenario.onInit();
 		this.World.Assets.m.FootprintVision = 1.5;
-		this.World.Assets.m.BuyPriceMult = 1.25;
-		this.World.Assets.m.SellPriceMult = 0.75;
+		this.World.Assets.m.BuyPriceMult = 1.15;
+		this.World.Assets.m.SellPriceMult = 0.85;
 		this.World.Assets.m.ExtraLootChance = 25;
 //		this.World.State.getPlayer().m.BaseMovementSpeed = 120;
 		if (this.World.State.getPlayer() != null)	//fallback for movespeed multiplier
@@ -268,7 +277,7 @@ this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 	}
 
 
-		function onUpdateHiringRoster( _roster )
+	function onUpdateHiringRoster( _roster )
 	{
 		this.addBroToRoster(_roster, "beast_hunter_background", 7);
 	}

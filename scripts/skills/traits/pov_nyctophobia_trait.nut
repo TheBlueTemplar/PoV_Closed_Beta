@@ -1,4 +1,4 @@
-this.pov_nyctophobia <- this.inherit("scripts/skills/traits/character_trait", {
+this.pov_nyctophobia_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	m = {},
 	function create()
 	{

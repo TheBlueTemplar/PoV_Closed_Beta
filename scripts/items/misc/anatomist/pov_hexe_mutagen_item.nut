@@ -8,7 +8,7 @@ this.pov_hexe_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_ana
 		this.m.Description = "This mutagen weaves an aura of unnatural charm and influence, subtly bending fate and fortune to the user’s favor. Their words carry a strange weight, making deals and bargains more favorable, while prospective recruits seem drawn to their presence, their hiring costs mysteriously lowered.\n\n A sinister luck follows them into battle, warping probability itself—foes may find their strikes inexplicably missing, as if some unseen force denies them a clean hit.\n\n However, this power comes at a price. The same eerie presence that twists fate also provokes unease, drawing enemy attention more than it should. Worse still, unseen forces stir around them, leading to unpredictable misfortunes that can manifest at the most inopportune moments.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/pov_potion_hexe.png";
-		this.m.Value = 300;
+		this.m.Value = 600;
 	}
 
 	function getTooltip()

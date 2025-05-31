@@ -8,7 +8,7 @@ this.pov_basilisk_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov
 		this.m.Description = "This mutagen, obtained from the corpse of a basilisk, allows whomever drinks it to gain some of its powers.\n\n This mutation improves the Vatt\'ghern\'s ability to strike an opponent\'s head, and inflict more damage to it. \n\n The Vatt\'ghern also gets a stamina regeneration effect when striking a headshot, and also gains the Glare skill, a medium range attack, which [color=" + this.Const.UI.Color.NegativeValue + "]Paralyzes[/color] an enemy. \n\n This mutation also has some side effects, with signs showing an increaded demand of stamina for any action, due to the increased focus of the Vatt\'ghern, while also reducing the damage output on an enemy\'s body";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/pov_potion_basilisk.png";
-		this.m.Value = 300;
+		this.m.Value = 500;
 	}
 
 	function getTooltip()

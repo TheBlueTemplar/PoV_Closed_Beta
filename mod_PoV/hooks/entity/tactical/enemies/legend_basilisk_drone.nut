@@ -10,10 +10,12 @@
 			this.actor.m.OnDeathLootTable.push(::TLW.CorpseDrop.getCorpseDrop(actor, ::TLW.Corpse.BasiliskDrone));
 	  	}
 
+		// Racial
+	  	this.m.Skills.add(this.new("scripts/skills/racial/pov_basilisk_racial"));
+	  	
 		// HERE, ADD EFFECTS YOU ALWAYS WANT APPLIED
 		//this.m.Skills.add(this.new("scripts/skills/effects/pov_serpentine_agility_effect"));
 		
-
 		// Chaos Mutation
 		if (::TLW.ChaosMode && ::TLW.EnableEnemyMutation)
 		{

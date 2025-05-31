@@ -36,7 +36,7 @@ this.pov_missing_hp_dmg_effect <- this.inherit("scripts/skills/skill", {
 			{
 			    id = 11,
 			    type = "text",
-			    icon = "ui/icons/fatigue.png",
+			    icon = "ui/icons/health.png",
 			    text = "Deals [color=" + this.Const.UI.Color.NegativeValue + "]"+penalty+"[/color] % less damage due to missing health."
 			}
 

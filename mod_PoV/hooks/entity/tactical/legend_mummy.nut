@@ -10,6 +10,28 @@
 			this.actor.m.OnDeathLootTable.push(::TLW.CorpseDrop.getCorpseDrop(actor, ::TLW.Corpse.LegendMummy));
 	  	}
 
+	  	// HERE, ADD EFFECTS YOU ALWAYS WANT APPLIED
+		if(this.World.Assets.getCombatDifficulty() != this.Const.Difficulty.Easy)
+		{
+			local chance;
+			local chanceSecret = 1;
+			switch (this.World.Assets.getCombatDifficulty())
+			{
+				//case this.Const.Difficulty.Easy: mutationChance = 5; break
+				case this.Const.Difficulty.Normal: chance = 7; break
+				case this.Const.Difficulty.Hard: chance = 10; break
+				case this.Const.Difficulty.Legendary: chance = 15; break
+			}
+			if (this.Math.rand(1.0, 100.0) <= chance)
+			{
+				this.m.Skills.add(this.new("scripts/skills/effects/pov_potent_reanimation_effect"));
+			}
+			else if (this.Math.rand(1.0, 100.0) <= chanceSecret)
+			{
+				this.m.Skills.add(this.new("scripts/skills/effects/pov_calcium_deficiency_effect"));
+			}
+		}
+
 		// Chaos Mutation
 		if (::TLW.ChaosMode && ::TLW.EnableEnemyMutation)
 		{
@@ -17,6 +39,7 @@
 			::TLW.Chaos.add_mutation_all(this.actor, false)
 		}
 
+		// Enemy Mutation
 		if (::TLW.EnableEnemyMutation)
 		{
 			local roll = this.Math.rand(1.0, 100.0)

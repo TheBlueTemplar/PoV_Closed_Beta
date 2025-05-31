@@ -8,7 +8,7 @@ this.pov_strain_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_a
 		this.m.Description = "This vile mutagen originates from the corrupted essence of weidergangers, infecting the vatt'ghern with a twisted blend of resilience and despair.\n\n The mutation strengthens the body, accelerating experience gain, preventing fatigue from enemy blows, and drastically increasing the threshold for sustaining injuries. \n\n Yet, such unnatural vigor comes at a heavy cost. The infected suffer relentless and haunting visions, eroding their resolve and leaving them vulnerable to fear and doubt. A double-edged gift indeed.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/pov_potion_strain.png";
-		this.m.Value = 300;
+		this.m.Value = 400;
 	}
 
 	function getTooltip()

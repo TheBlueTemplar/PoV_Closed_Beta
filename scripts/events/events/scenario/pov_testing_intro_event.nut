@@ -41,21 +41,7 @@ this.pov_testing_intro_event <- this.inherit("scripts/events/event", {
 
 	function onPrepareVariables( _vars )
 	{
-		/*
-		local brothers = this.World.getPlayerRoster().getAll();
-		_vars.push([
-			"bs1",
-			brothers[0].getNameOnly()
-		]);
-		_vars.push([
-			"bs2",
-			brothers[1].getNameOnly()
-		]);
-		_vars.push([
-			"bs3",
-			brothers[2].getNameOnly()
-		]);
-		*/
+
 	}
 
 	function onClear()

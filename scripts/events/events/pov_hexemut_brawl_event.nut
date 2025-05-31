@@ -4,6 +4,7 @@ this.pov_hexemut_brawl_event <- this.inherit("scripts/events/event", {
 	},
 	function create()
 	{
+		// THIS IS NOW AN ENCOUNTER - NOT AN EVENT ANYMORE
 		this.m.ID = "event.pov_hexemut_brawl";
 		this.m.Title = "During camp...";
 		this.m.Cooldown = 50.0 * this.World.getTime().SecondsPerDay;
@@ -103,7 +104,7 @@ this.pov_hexemut_brawl_event <- this.inherit("scripts/events/event", {
 		}
 
 		this.m.vattghernHexe = vattghern_candidates[this.Math.rand(0, vattghern_candidates.len() - 1)];
-		this.m.Score = this.Math.round(5 + (partySize / 2));
+		this.m.Score = this.Math.round(15 + (partySize / 2));
 	}
 
 	function onPrepare()

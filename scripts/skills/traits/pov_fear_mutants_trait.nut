@@ -38,19 +38,19 @@ this.pov_fear_mutants_trait <- this.inherit("scripts/skills/traits/character_tra
 				id = 10,
 				type = "text",
 				icon = "ui/icons/bravery.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-10[/color] Resolve when in battle with nobles"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-10[/color] Resolve when in battle against mutants."
 			},
 			{
 				id = 10,
 				type = "text",
 				icon = "ui/icons/melee_skill.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-8%[/color] Melee Skill when in battle with nobles"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-8%[/color] Melee Skill when in battle with against mutants."
 			},
 			{
 				id = 10,
 				type = "text",
 				icon = "ui/icons/ranged_skill.png",
-				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-8%[/color] Ranged Skill when in battle with nobles"
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-8%[/color] Ranged Skill when in battle with against mutants."
 			}
 		];
 	}

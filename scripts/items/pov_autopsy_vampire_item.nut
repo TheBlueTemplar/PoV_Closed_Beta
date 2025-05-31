@@ -49,7 +49,7 @@ this.pov_autopsy_vampire_item <- this.inherit("scripts/items/misc/anatomist/anat
 			id = 11,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = " Acquire [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] vampire dust.\n[color=" + this.Const.UI.Color.PositiveValue + "]30%[/color] chance."
+			text = " Acquire [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] vampire dust.\n[color=" + this.Const.UI.Color.PositiveValue + "]35%[/color] chance."
 		});
 
 		result.push({
