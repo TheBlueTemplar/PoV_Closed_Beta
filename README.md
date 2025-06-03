@@ -1,4 +1,5 @@
 # Path-of-the-Vatt-ghern-V0.1.0-Beta
+**Changelog in the Release Notes**
 
 ### There are two main "objectives" about this test:
 
