@@ -6,7 +6,7 @@ this.pov_corpse_unhold2_item <- this.inherit("scripts/items/supplies/food_item",
 		this.m.ID = "supplies.pov_corpse_unhold2";
 		this.m.Name = "Frost Unhold Corpse";
 		this.m.ItemType = this.Const.Items.ItemType.Misc;
-		this.m.Description = "This corpse is still in fairly good condition.  None of its vital organs have been destroyed.\n\nSomeone skilled may be able to extract useful materials from it.";
+		this.m.Description = "This corpse is still in fairly good condition.  None of its vital organs have been destroyed.\n\nA skilled medicus may be able to extract useful materials from it.";
 		this.m.IconLarge = "consumables/pov_enemy_unhold.png";
 		this.m.Icon = "consumables/pov_corpse_unhold2.png";
 		this.m.Value = 50;
@@ -42,7 +42,7 @@ this.pov_corpse_unhold2_item <- this.inherit("scripts/items/supplies/food_item",
 			id = 11,
 			type = "text",
 			//icon = "ui/icons/special.png",
-			text = "The frost unhold is a very large, and very stong creature.  This variety prefers to live in the snowy mountains of the North.  They are below average intelligence and very territorial.  The are often found alone, but on occation can be found in small groups.\n\nThe most notible trait of an unhold is its ability to rapidly regenerate from any wound inflicted upon it."
+			text = "The unhold is a very large, and very stong creature. While their intelligence is lacking, they are very agressive and territorial. \n\nUnholds are known to be able to crush entire battlelines by charging and throwing people around like they are nothing, but their most notorious trait is the ability to rapidly regenerate from any wound. \n\n This species is native to the north, and is much hardier than its souther counterparts. Rumors say that the barbarians of the north have even tamed some of these creatures..."
 		});
 
 

@@ -28,10 +28,10 @@
 	// Only For Testing!! Remember to disable!
 ::Const.CharacterTraits.extend(
 [
-	[
+	/*[
 		"trait.trait.pov_psychopath",
 		"scripts/skills/traits/pov_psychopath_trait"
-	],
+	],*/
 	/*[
 		"trait.pov_witcher",
 		"scripts/skills/traits/pov_vattghern_trait"

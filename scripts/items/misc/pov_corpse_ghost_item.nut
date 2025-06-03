@@ -6,11 +6,11 @@ this.pov_corpse_ghost_item <- this.inherit("scripts/items/supplies/food_item", {
 		this.m.ID = "supplies.pov_corpse_ghost";
 		this.m.Name = "Ectoplasm";
 		this.m.ItemType = this.Const.Items.ItemType.Misc;
-		this.m.Description = "This vial of slime is all that remains of the geist.  The vial is cold to the touch and vibrates with a low energy.  Over time it will eventually dissipate.\n\nSomeone skilled may be able to extract useful materials from it.";
+		this.m.Description = "This vial of slime is all that remains of the geist.  The vial is cold to the touch and vibrates with a low energy.  Over time it will eventually dissipate.\n\nSomeone skilled in alchemy may be able to extract useful materials from it.";
 		this.m.Icon = "consumables/pov_corpse_ghost.png";
 		this.m.Value = 50;
 		this.m.Amount = 50.0;
-		this.m.GoodForDays = 30;
+		this.m.GoodForDays = 20;
 		this.m.IsUndesirable = true;
 		this.m.IsAllowedInBag = false;
 	}

@@ -6,7 +6,7 @@ this.pov_corpse_spider_item <- this.inherit("scripts/items/supplies/food_item", 
 		this.m.ID = "supplies.pov_corpse_spider";
 		this.m.Name = "Webknecht Corpse";
 		this.m.ItemType = this.Const.Items.ItemType.Misc;
-		this.m.Description = "This corpse is still in fairly good condition.  None of its vital organs have been destroyed.\n\nSomeone skilled may be able to extract useful materials from it.";
+		this.m.Description = "This corpse is still in fairly good condition.  None of its vital organs have been destroyed.\n\nA skilled medicus may be able to extract useful materials from it.";
 		this.m.Icon = "consumables/pov_corpse_spider.png";
 		this.m.Value = 50;
 		this.m.Amount = 50.0;
@@ -41,7 +41,7 @@ this.pov_corpse_spider_item <- this.inherit("scripts/items/supplies/food_item", 
 			id = 11,
 			type = "text",
 			//icon = "ui/icons/special.png",
-			text = "This webkecht is a spider the size of a large dog.  They are very aggressive and groups of them are known to attack travelers on sight.\n\nThey possess the ability to shoot webs and have large fangs that drip with a potent venom."
+			text = "This webkecht is a spider the size of a large dog.  They are very aggressive and groups of them are known to attack travelers on sight.\n\nThey possess the ability to shoot webs and have large fangs that drip with a potent venom. \n\n If their pray is snared by their web, they have almost no defence against their attacks."
 		});
 
 		result.push({

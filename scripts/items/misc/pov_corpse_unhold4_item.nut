@@ -6,7 +6,7 @@ this.pov_corpse_unhold4_item <- this.inherit("scripts/items/supplies/food_item",
 		this.m.ID = "supplies.pov_corpse_unhold4";
 		this.m.Name = "Rock Unhold Corpse";
 		this.m.ItemType = this.Const.Items.ItemType.Misc;
-		this.m.Description = "Although indistinguishable from a pile of ordinary rocks, this unhold corpse is still in fairly good condition.\n\nSomeone skilled may be able to extract useful materials from it.";
+		this.m.Description = "Although indistinguishable from a pile of ordinary rocks, this unhold corpse is still in fairly good condition.\n\nA skilled medicus may be able to extract useful materials from it.";
 		this.m.IconLarge = "consumables/enemy_unhold.png";
 		this.m.Icon = "consumables/pov_corpse_unhold4.png";
 		this.m.Value = 50;
@@ -42,7 +42,7 @@ this.pov_corpse_unhold4_item <- this.inherit("scripts/items/supplies/food_item",
 			id = 11,
 			type = "text",
 			//icon = "ui/icons/special.png",
-			text = "The rock unhold is by far the toughest of all the unholds.  They prefer to live in rocky, mountain regions.  Their skin is often the color and texture of the areas they inhabit, which can make them very difficult to spot.\n\nTheir ability regenerate from any wound is even better than other unhold varieties."
+			text = "The rock unhold is by far the toughest of all the unholds.  They prefer to live in rocky, mountain regions.  Their skin is often the color and texture of the areas they inhabit, which can make them very difficult to spot.\n\nTheir ability regenerate from any wound is even better than other unhold varieties, being able to regenerate even their own natural armor. \n\n Entire retinues have fallen to these creatures when unprepared"
 		});
 
 

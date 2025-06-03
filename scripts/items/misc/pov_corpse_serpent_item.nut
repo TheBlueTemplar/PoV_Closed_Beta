@@ -6,7 +6,7 @@ this.pov_corpse_serpent_item <- this.inherit("scripts/items/supplies/food_item",
 		this.m.ID = "supplies.pov_corpse_serpent";
 		this.m.Name = "Serpent Corpse";
 		this.m.ItemType = this.Const.Items.ItemType.Misc;
-		this.m.Description = "This corpse is still in fairly good condition.  Merchants will pay a lot for intact skin and scales.\n\nSomeone skilled may be able to extract useful materials from it.";
+		this.m.Description = "This corpse is still in fairly good condition.  Merchants will pay a lot for intact skin and scales.\n\nA skilled medicus may be able to extract useful materials from it.";
 		this.m.Icon = "consumables/pov_corpse_serpent.png";
 		this.m.Value = 50;
 		this.m.Amount = 50.0;

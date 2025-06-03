@@ -6,11 +6,11 @@ this.pov_corpse_skeleton_item <- this.inherit("scripts/items/supplies/food_item"
 		this.m.ID = "supplies.pov_corpse_skeleton";
 		this.m.Name = "Skeleton Corpse";
 		this.m.ItemType = this.Const.Items.ItemType.Misc;
-		this.m.Description = "After removing the armor from this skeleton corpse, you find nothing but bones.  There is no flesh, muscle or tendon.  It was obviously animated by some evil magic.\n\nThere are skill some residual energies remaining in the bones of this skeleton.  Someone skilled may be able to extract something from it.";
+		this.m.Description = "After removing the armor from this skeleton corpse, you find nothing but bones.  There is no flesh, muscle or tendon.  It was obviously animated by some evil magic.\n\nThere are skill some residual energies remaining in the bones of this skeleton.  Someone skilled in alchemy may be able to extract something from it.";
 		this.m.Icon = "consumables/pov_corpse_skeleton1.png";
 		this.m.Value = 50;
 		this.m.Amount = 50.0;
-		this.m.GoodForDays = 30;
+		this.m.GoodForDays = 20;
 		this.m.IsUndesirable = true;
 		this.m.IsAllowedInBag = false;
 	}
@@ -42,7 +42,7 @@ this.pov_corpse_skeleton_item <- this.inherit("scripts/items/supplies/food_item"
 			id = 11,
 			type = "text",
 			//icon = "ui/icons/special.png",
-			text = "The skeleton legions roam the deserts of the south.  Even with the decayed state of their bodies and equipment they are a formidable force.  In life, their empire might have conquered the world.\n\nIn battle, they do not fatigue, require no food and suffer no loss of morale."
+			text = "The skeleton legions silently guard forgotten crypts, ready to set out and reclaim what was theirs. In life, their empire might have conquered the world.  Even with the decayed state of their bodies and equipment they are a formidable force.  \n\nIn battle, they do not fatigue, require no food and suffer no loss of morale. The perfect soldiers."
 		});
 
 		result.push({

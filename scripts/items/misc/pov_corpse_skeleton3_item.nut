@@ -6,11 +6,11 @@ this.pov_corpse_skeleton3_item <- this.inherit("scripts/items/supplies/food_item
 		this.m.ID = "supplies.pov_corpse_skeleton3";
 		this.m.Name = "Skeleton Priest Headpiece";
 		this.m.ItemType = this.Const.Items.ItemType.Misc;
-		this.m.Description = "The headpiece you found on the skeleton priest is crackling with energy.  It is much more concentrated than the residual energies found in the bones.\n\nSomeone skilled may be able to extract something from it.";
+		this.m.Description = "The headpiece you found on the skeleton priest is crackling with energy.  It is much more concentrated than the residual energies found in the bones.\n\nSomeone skilled in alchemy may be able to extract something from it.";
 		this.m.Icon = "consumables/pov_corpse_skeleton3.png";
 		this.m.Value = 50;
 		this.m.Amount = 50.0;
-		this.m.GoodForDays = 10;
+		this.m.GoodForDays = 20;
 		this.m.IsUndesirable = true;
 		this.m.IsAllowedInBag = false;
 	}

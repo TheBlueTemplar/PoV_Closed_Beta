@@ -6,7 +6,7 @@ this.pov_corpse_orc_item <- this.inherit("scripts/items/supplies/food_item", {
 		this.m.ID = "supplies.pov_corpse_orc";
 		this.m.Name = "Orc Young Corpse";
 		this.m.ItemType = this.Const.Items.ItemType.Misc;
-		this.m.Description = "This corpse is still in fairly good condition.\n\nSomeone skilled may be able to extract useful materials from it.";
+		this.m.Description = "This brutish corpse is still in fairly good condition.\n\nA skilled medicus may be able to extract useful materials from it.";
 		this.m.Icon = "consumables/pov_corpse_orc.png";
 		this.m.Value = 50;
 		this.m.Amount = 50.0;
@@ -42,7 +42,7 @@ this.pov_corpse_orc_item <- this.inherit("scripts/items/supplies/food_item", {
 			id = 11,
 			type = "text",
 			//icon = "ui/icons/special.png",
-			text = "Orc young are already as bulky and muscled as the strongest of humans and possess increasible endurance and ferocity.  Groups of orc young can often be found raiding villages.  As a rite of initiation, young orcs are sent out to either kill or be killed.\n\nFighting a group of orcs is similar to fighting a herd of charging bulls.  A preferred tactic is to slam into opponents at full speed to stun them."
+			text = "Orc young are already as bulky and muscled as the strongest of humans and possess incredible endurance and ferocity.  Groups of orc young can often be found raiding villages.  As a rite of initiation, young orcs are sent out to either kill or be killed.\n\nFighting a group of orcs is similar to fighting a herd of charging bulls.  A preferred tactic is to slam into opponents at full speed to stun them."
 		});
 		result.push({
 			id = 67,

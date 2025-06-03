@@ -6,11 +6,11 @@ this.pov_corpse_vampire2_item <- this.inherit("scripts/items/supplies/food_item"
 		this.m.ID = "supplies.pov_corpse_vampire2";
 		this.m.Name = "Necrosavant Lord Corpse";
 		this.m.ItemType = this.Const.Items.ItemType.Misc;
-		this.m.Description = "The moment this necrosavant was slain, it burst into flames and fell to the ground in a heap of ash and bone.  There are slight traces of organic matter still intact.\n\nSomeone skilled may be able to extract useful materials from it.";
+		this.m.Description = "The moment this necrosavant was slain, it burst into flames and fell to the ground in a heap of ash and bone.  There are slight traces of organic matter still intact.\n\nSomeone skilled in alchemy may be able to extract useful materials from it.";
 		this.m.Icon = "consumables/pov_corpse_vampire2.png";
 		this.m.Value = 50;
 		this.m.Amount = 50.0;
-		this.m.GoodForDays = 30;
+		this.m.GoodForDays = 20;
 		this.m.IsUndesirable = true;
 		this.m.IsAllowedInBag = false;
 	}

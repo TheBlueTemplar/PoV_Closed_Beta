@@ -3,7 +3,7 @@
 // 			Not to be used elsewhere or tampered with, 2025.       //
 /////////////////////////////////////////////////////////////////////
 
-// Important objects for compatibility purposes
+// Important objects for compatibility purposes (see how to call a few lines below)
 ::TLW.hasSSU <- ::mods_getRegisteredMod("mod_sellswords") != null;
 
 // Load SSU shit, if exists

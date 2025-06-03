@@ -6,7 +6,7 @@ this.pov_corpse_basilisk_drone_item <- this.inherit("scripts/items/supplies/food
 		this.m.ID = "supplies.pov_corpse_basilisk_drone";
 		this.m.Name = "Basilisk Drone Corpse";
 		this.m.ItemType = this.Const.Items.ItemType.Misc;
-		this.m.Description = "This corpse is still in fairly good condition.\n\nSomeone skilled may be able to extract useful materials from it.";
+		this.m.Description = "This corpse of a magnificent beast is still in fairly good condition.\n\nA skilled medicus may be able to extract useful materials from it.";
 		this.m.Icon = "consumables/pov_corpse_basilisk_drone.png";
 		this.m.Value = 50;
 		this.m.Amount = 50.0;

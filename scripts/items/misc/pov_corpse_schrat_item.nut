@@ -6,7 +6,7 @@ this.pov_corpse_schrat_item <- this.inherit("scripts/items/supplies/food_item", 
 		this.m.ID = "supplies.pov_corpse_schrat";
 		this.m.Name = "Schrat Corpse";
 		this.m.ItemType = this.Const.Items.ItemType.Misc;
-		this.m.Description = "This outer layers of the schrat corpse are very similar to ordinary wood.  On the inside, there are components that similar to organs.\n\nSomeone skilled may be able to extract useful materials from it.";
+		this.m.Description = "This outer layers of the schrat corpse are very similar to ordinary wood.  On the inside, there are components that similar to organs.\n\nSomeone skilled in alchemy may be able to extract useful materials from it.";
 		this.m.Icon = "consumables/pov_corpse_schrat.png";
 		this.m.Value = 50;
 		this.m.Amount = 50.0;

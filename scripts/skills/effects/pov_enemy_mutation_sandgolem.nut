@@ -1,8 +1,8 @@
 this.pov_enemy_mutation_sandgolem <- this.inherit("scripts/skills/skill", {
 	m = {
-		HeadArmorBoost = 50,
+		HeadArmorBoost = 75,
 		HeadDamageTaken = 0,
-		BodyArmorBoost = 50,
+		BodyArmorBoost = 75,
 		BodyDamageTaken = 0
 	},
 	function create()

@@ -6,7 +6,7 @@ this.pov_corpse_unhold3_item <- this.inherit("scripts/items/supplies/food_item",
 		this.m.ID = "supplies.pov_corpse_unhold3";
 		this.m.Name = "Swamp Unhold Corpse";
 		this.m.ItemType = this.Const.Items.ItemType.Misc;
-		this.m.Description = "This corpse is still in fairly good condition.  None of its vital organs have been destroyed.\n\nSomeone skilled may be able to extract useful materials from it.";
+		this.m.Description = "This corpse is still in fairly good condition.  None of its vital organs have been destroyed.\n\nA skilled medicus may be able to extract useful materials from it.";
 		this.m.IconLarge = "consumables/enemy_unhold3.png";
 		this.m.Icon = "consumables/pov_corpse_unhold3.png";
 		this.m.Value = 50;
@@ -42,7 +42,7 @@ this.pov_corpse_unhold3_item <- this.inherit("scripts/items/supplies/food_item",
 			id = 11,
 			type = "text",
 			//icon = "ui/icons/special.png",
-			text = "The swamp unhold is the most predatory of unholds.  They prefer to live in warm, swampy regions.  Like all unholds they adapt quickly to their  environments.  In this case, their skin is a dark green, often with moss and vines taking root on their back.\n\nThey are entirely carnivorous and have long sharp teeth which they use to consume anything that wanders into their domain."
+			text = "The swamp unhold is the most predatory of unholds.  They prefer to live in warm, swampy regions.  Like all unholds they adapt quickly to their  environments.  In this case, their skin is a dark green, often with moss and vines taking root on their back. Any who get too close also get overwhelmed with an unbearable rotting stench \n\nThey are entirely carnivorous and have long sharp teeth which they use to consume anything that wanders into their domain. Notably, they are much wilder than other unhold species."
 		});
 
 

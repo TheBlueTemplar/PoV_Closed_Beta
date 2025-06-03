@@ -6,11 +6,11 @@ this.pov_corpse_zombie_item <- this.inherit("scripts/items/supplies/food_item", 
 		this.m.ID = "supplies.pov_corpse_zombie";
 		this.m.Name = "Wiederganger Corpse";
 		this.m.ItemType = this.Const.Items.ItemType.Misc;
-		this.m.Description = "It is rare to find a wiederganger corpse in a useable condition.  Many fall to pieces or are mosly piles of rotten flesh filled with worms.\n\nSomeone skilled may be able to extract useful materials from it.  However, already mostly decayed, it will not last much longer.";
+		this.m.Description = "It is rare to find a wiederganger corpse in a useable condition.  Many fall to pieces or are mosly piles of rotten flesh filled with worms.\n\nA skilled medicus may be able to extract useful materials from it.  However, already mostly decayed, it will not last much longer.";
 		this.m.Icon = "consumables/pov_corpse_zombie.png";
 		this.m.Value = 50;
 		this.m.Amount = 50.0;
-		this.m.GoodForDays = 10;
+		this.m.GoodForDays = 7;
 		this.m.IsUndesirable = true;
 		this.m.IsAllowedInBag = false;
 	}

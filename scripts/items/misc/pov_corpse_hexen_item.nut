@@ -6,7 +6,7 @@ this.pov_corpse_hexen_item <- this.inherit("scripts/items/supplies/food_item", {
 		this.m.ID = "supplies.pov_corpse_hexen";
 		this.m.Name = "Hexen Corpse";
 		this.m.ItemType = this.Const.Items.ItemType.Misc;
-		this.m.Description = "The outward appearance of this corpse is that of an ordinary old, very old woman.  Internally, the bones are blackened and have a pungent odor.  An anatomist may be able to extract useful materials from this corpse.";
+		this.m.Description = "The outward appearance of this corpse is that of an ordinary old, very old woman.  Internally, the bones are blackened and have a pungent odor.  A skilled medicus may be able to extract useful materials from this corpse.";
 		this.m.Icon = "consumables/pov_corpse_hexe.png";
 		this.m.Value = 50;
 		this.m.Amount = 50.0;

@@ -6,7 +6,7 @@ this.pov_corpse_demonhound_item <- this.inherit("scripts/items/supplies/food_ite
 		this.m.ID = "supplies.pov_corpse_demonhound";
 		this.m.Name = "Hollenhund Corpse";
 		this.m.ItemType = this.Const.Items.ItemType.Misc;
-		this.m.Description = "The magic fire that burned on this demon hound has been extinguished.  It now appears to be the bones of a regular hound.\n\nThere are skill some residual energies remaining in the bones of these bones.  Someone skilled may be able to extract something from it.";
+		this.m.Description = "The magic fire that burned on this demon hound has been extinguished.  It now appears to be the bones of a regular hound.\n\nThere are skill some residual energies remaining in the bones of these bones.  A skilled medicus may be able to extract something from it.";
 		this.m.Icon = "consumables/pov_corpse_demonhound.png";
 		this.m.Value = 50;
 		this.m.Amount = 50.0;
