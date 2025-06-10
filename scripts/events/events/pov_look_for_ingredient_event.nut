@@ -336,7 +336,7 @@ this.pov_look_for_ingredient_event <- this.inherit("scripts/events/event", {
 			}
 		}
 
-		/*if (other_candidates.len() == null)
+		if (other_candidates.len() == null)
 		{
 			return;
 		}
@@ -349,11 +349,11 @@ this.pov_look_for_ingredient_event <- this.inherit("scripts/events/event", {
 		if (this.World.getTime().Days <= 30)
 		{
 			return;
-		}*/
+		}
 
 		this.m.OtherGuy = other_candidates[this.Math.rand(0, other_candidates.len() - 1)];
-		//this.m.Score = 10;
-		this.m.Score = 9999;
+		this.m.Score = 10;
+		//this.m.Score = 9999;
 	}
 
 	function onPrepare()
