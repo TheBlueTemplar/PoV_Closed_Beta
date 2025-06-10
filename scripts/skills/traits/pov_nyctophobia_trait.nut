@@ -38,13 +38,13 @@ this.pov_nyctophobia_trait <- this.inherit("scripts/skills/traits/character_trai
 				id = 10,
 				type = "text",
 				icon = "ui/icons/bravery.png",
-				text = "Lose [color=" + this.Const.UI.Color.NegativeValue + "]-15%[/color] Resolve with an additional reduction of [color=" + this.Const.UI.Color.NegativeValue + "]-10[/color] when battling at night."
+				text = "Lose [color=" + this.Const.UI.Color.NegativeValue + "]-15%[/color] Resolve with an additional reduction of [color=" + this.Const.UI.Color.NegativeValue + "]-5[/color] when battling at night."
 			},
 			{
 				id = 10,
 				type = "text",
 				icon = "ui/icons/initiative.png",
-				text = "Lose [color=" + this.Const.UI.Color.NegativeValue + "]-20%[/color] initiative when battling at night."
+				text = "Lose [color=" + this.Const.UI.Color.NegativeValue + "]-15%[/color] initiative when battling at night."
 			}
 		];
 	}
@@ -62,8 +62,8 @@ this.pov_nyctophobia_trait <- this.inherit("scripts/skills/traits/character_trai
 		if (this.getContainer().hasSkill("special.night"))
 		{
 			_properties.BraveryMult *= 0.85;
-			_properties.Bravery -= 10;
-			_properties.InitiativeMult *= 0.80;
+			_properties.Bravery -= 5;
+			_properties.InitiativeMult *= 0.85;
 			// Make this a status effect so it will be visible for the battle
 			this.m.Type = ::Const.SkillType.StatusEffect;
 		} else {

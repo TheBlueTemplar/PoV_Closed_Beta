@@ -76,6 +76,33 @@
 	}
 }
 
+::TLW.MutantEffect <-
+{
+	add_mutant_effect = function(_actor)
+	{
+		// Adds sprite for the mutation effect (glow)
+		if (_actor.hasSprite("pov_back_socket"))
+		{
+			local mutant_glow_sprite = _actor.getSprite("pov_back_socket");
+			mutant_glow_sprite.setBrush("pov_mutant_glow"); //credit to ROTU mod for base art
+			mutant_glow_sprite.Color = this.createColor("#00" + this.Math.rand(50,99) + this.Math.rand(0,5) + "a"); // make the 96 part random! (70 - 99?)
+			mutant_glow_sprite.Saturation = 0.7;
+			mutant_glow_sprite.Scale = 0.85;
+			//mutant_glow_sprite.varySaturation(0.1);
+			//mutant_glow_sprite.varyColor(0.05, 0.05, 0.05);
+			mutant_glow_sprite.Visible = true;
+		}
+		// Adds sprite for the mutation effect (bust)
+		if (_actor.hasSprite("miniboss"))
+		{
+			local mutant_bust_sprite = _actor.getSprite("miniboss");
+			mutant_bust_sprite.setBrush("pov_mutant_bust"); 
+			mutant_bust_sprite.Saturation = 0.8;
+			mutant_bust_sprite.Visible = true;
+		}
+	}
+}
+
 ::TLW.EnemyMutations <-
 {
 	// ALL MUTATIONS REFERENCE
@@ -118,6 +145,9 @@
 			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_serpent"))
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_serpent"))
 		}
+
+		// Add the Mutation effect Sprite
+		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 
 	add_mutation_enemy_unhold = function(_actor, _hard)
@@ -136,6 +166,8 @@
 			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_unhold"))
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_unhold"))
 		}
+
+		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 
 	add_mutation_enemy_vampire = function(_actor, _hard)
@@ -157,6 +189,8 @@
 			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_vampire"))
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_vampire"))
 		}
+
+		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 
 	add_mutation_enemy_spider = function(_actor, _hard)
@@ -175,6 +209,8 @@
 			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_spider"))
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_spider"))
 		}
+
+		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 
 	add_mutation_enemy_orc = function(_actor, _hard)
@@ -193,6 +229,8 @@
 			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_orc"))
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_orc"))
 		}
+
+		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 
 	add_mutation_enemy_lindwurm = function(_actor, _hard)
@@ -212,6 +250,8 @@
 			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_lindwurm"))
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_lindwurm"))
 		}
+
+		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 
 	add_mutation_enemy_sandgolem = function(_actor, _hard)
@@ -230,6 +270,8 @@
 			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_sandgolem"))
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_sandgolem"))
 		}
+
+		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 
 	add_mutation_enemy_ghost = function(_actor, _hard)
@@ -250,6 +292,8 @@
 			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_ghost"))
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_ghost"))
 		}
+
+		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 
 	add_mutation_enemy_ghoul = function(_actor, _hard)
@@ -268,6 +312,8 @@
 			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_ghoul"))
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_ghoul"))
 		}
+
+		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 
 	add_mutation_enemy_basilisk = function(_actor, _hard)
@@ -286,6 +332,8 @@
 			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_basilisk"))
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_basilisk"))
 		}
+
+		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 
 	add_mutation_enemy_direwolf = function(_actor, _hard)
@@ -304,6 +352,8 @@
 			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_direwolf"))
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_direwolf"))
 		}
+
+		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 
 	add_mutation_enemy_goblin = function(_actor, _hard)
@@ -322,6 +372,8 @@
 			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_goblin"))
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_goblin"))
 		}
+
+		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 
 	add_mutation_enemy_schrat = function(_actor, _hard)
@@ -340,6 +392,8 @@
 			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_schrat"))
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_schrat"))
 		}
+
+		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 
 	add_mutation_enemy_skeleton = function(_actor, _hard)
@@ -362,6 +416,8 @@
 			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_skeleton"))
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_skeleton"))
 		}
+
+		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 
 	add_mutation_enemy_alp = function(_actor, _hard)
@@ -380,6 +436,8 @@
 			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_alp"))
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_alp"))
 		}
+
+		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 
 	add_mutation_enemy_hexe = function(_actor, _hard)
@@ -398,7 +456,9 @@
 			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_hexe"))
 				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_hexe"))
 		}
+
+		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 	
-	// ENEMY SPECIFIC MUTATIONS
+	// ENEMY SPECIFIC MUTATIONS (wtf was this for xd)
 }

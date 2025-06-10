@@ -9,6 +9,7 @@
 				P = 15.0,
 				S = "misc/anatomist/pov_witcher_potion_item"
 			},*/
+			// VATTGHERN MUTAGENS
 			{
 				R = 97,
 				P = 50.0,
@@ -100,9 +101,30 @@
 				S = "misc/anatomist/pov_beautiful_potion_item" //those are called by the script path, not ID
 				//meme item
 			},
+			// TOG ITEMS
+			{
+				R = 98,
+				P = 4.5,
+				S = "scripts/items/misc/vampire_dust_item"
+			},
+			{
+				R = 99,
+				P = 4.5,
+				S = "scripts/items/misc/unhold_heart_item"
+			},
+			{
+				R = 98,
+				P = 4.5,
+				S = "scripts/items/misc/third_eye_item"
+			},
+			{
+				R = 97,
+				P = 2.5,
+				S = "scripts/items/misc/sulfurous_rocks_item"
+			},
 		]);
 
-		__original( _list, _stash, _priceMult, _allowDamagedEquipment = false );
+		__original( _list, _stash, _priceMult, _allowDamagedEquipment);
 	}
 
 });

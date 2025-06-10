@@ -23,7 +23,7 @@
 				S = "special/pov_silvering_kit"
 			},
 		]);
-		__original( _list, _stash, _priceMult, _allowDamagedEquipment = false );
+		__original( _list, _stash, _priceMult, _allowDamagedEquipment);
 	}
 
 });

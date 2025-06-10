@@ -1,0 +1,67 @@
+### Changelog V0.2.2:
+
+* 4 New Events and Encounters! Mod now boasts 18 Events and Ambitions!
+   * An event for an interaction between the Hexe mutated vattghern and the druid
+   * An city encounter for the players, with the opportunity to get one of the ToG ingredients!
+   * Two new secret/meme/easter egg events! 
+* New in battle effect for the enemy mutants, so players can tell them apart! (glow and bust art)
+* Rebalanced (buffed) the Basilisk Vattghern Mutation (Head Damage +5% --> +8%, Body Damage -25% --> -20%)
+* Decreased the Penalty of the Nyctophobia trait!
+* Very minor fixes here and there
+
+### Changelog V0.2.1:
+
+* Fixed some typos
+* Fixed the psychopath effect appearing on bros (it shouldn't - it is earned instead)
+* Revisited the text and descriptions of all corpse items, plus minor tweaks:
+   * Their descriptions now refer to the perk required to dissect them
+   * Some descriptions were enriched, or just made more lore - appropriate
+   * All magic related corpses now "rot" in 20 days flat (was in the range of 10 - 30 before)
+   * The rest decay at 10 days, with weiderganger corpses decaying in 7 (they are already rotting)
+* The ifrit mutation was buffed for both player and enemy, +50 Armor --> **+75 Armor**
+* One new positive camp encounter!
+* The "vattghern eyes" art was made a little bit more noticeable
+* The legendary Vattghern sword (for now only available with the PoV origin) was buffed, gaining 10% more damage, double durability and more value
+* The art of this sword was also remade
+
+### Changelog V0.2.0:
+(NOT SAVE COMPATIBLE)
+
+* Integrated Excalibird's "Silver Weapons" Mod into PoV, tweaked to be balanced into the mod
+* In the new game difficulty selection menu, the descriptions of all the combat difficulties now have additional info, related to the mod's mechanics.
+* Legendary Difficulty renamed to "Death March"
+* A brand new main menu screen for PoV!
+* Vattghern will now have new, yellow eyes!!
+* Added some in battle art for the paralyzed effect!
+* Revisited some of the mod's art, mainly polished stuff and reworked some bad quality shit
+* Revisited the "Path Of The Vatt'ghern" Origin, with better description, starting vattghern has some kills already ( his trait starts with some scaling), and the nerfs to the origin were made less harsh!
+* Mutagens can now also appear in black markets, but are more rare and cost more there
+* Mutagens that can be bought from alchemists/black markets were made slightly more rare
+* The trial of the grasses is no longer sold anywhere, you have to craft it!
+* The recipe for the trial of the grasses has been slightly tweaked, (no longer need hyena's saliva, now needs glistering rocks from ifrits!)
+* Reworked the vattghern and enemy ghoul mutation, now includes the new effect I added to ghouls
+* Minor tweaks to various item drop rates
+* Minor balancing tweaks to some effects 
+* Various little fixes here and there
+* Removed the testing origin, it has done its part
+
+### Changelog V0.1.8:
+
+* Added new enemy effects for Undead, Unholds, Ghouls and Hyenas!
+* Mod organisation vastly improved. Load.nut and register files mainly!
+* Interaction between SSU and PoV, now Vattghern mutations and SSU sequences (and vanilla anatomist pots) are now exclusive, you cannot use them with eachother. (In SSU side, if you do this you die :) )
+* Understood how encoutners work, and made some and also converted some events. We now have 4 encounters total
+* Also made some new events (3). Now the mod boasts 8 events total!!!
+* Flesh golems now may drop strain mutagen crafting parts, and can have mutations with chaos mode on!
+* Fire Damage was reworked, now most monsters and undead have either weakness or resistance to it! (I plan to expand upon this system)
+* The ghoul mutation (enemy and vattghern) was overhauled, now gives an effect similar to the new one for ghouls (as more entities die, gain a stacking buff)
+* New Item: Vattghern Poison Flask, similar to poisoned oil, but with vattghern poison. This poison was also fixed and no longer stacks
+* Finally, Darxo's "pain form injuries" was incorporated into PoV! Great system idea, will expand it at some point! For now I messed with the effects and their appearance and their descriptions. https://discord.com/channels/547043336465154049/821034811396587530/954989987248607243
+
+### Changelog V0.1.7:
+
+* Added Misanthropist and psychopath trait - with their own art and events!
+* Various balance tweaks
+* Added some new trait interactions
+* Mutagens can appear on black markets!
+* Minor fixes

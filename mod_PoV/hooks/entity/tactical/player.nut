@@ -60,4 +60,4 @@
 		return ::Math.round(__original() * hiremult);
 	}
 
-})
+});

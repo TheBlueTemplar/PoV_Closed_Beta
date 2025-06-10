@@ -56,13 +56,13 @@ this.pov_basilisk_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/damage_dealt.png",
-				text = "Deal [color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] more damage when hitting the head with any weapon"
+				text = "Deal [color=" + this.Const.UI.Color.PositiveValue + "]+8%[/color] more damage when hitting the head with any weapon"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/damage_dealt.png",
-				text = "Deal [color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] less damage when hitting the body with any weapon"
+				text = "Deal [color=" + this.Const.UI.Color.NegativeValue + "]-20%[/color] less damage when hitting the body with any weapon"
 			},
 			{
 				id = 11,
@@ -79,9 +79,9 @@ this.pov_basilisk_mutagen_effect <- this.inherit("scripts/skills/skill", {
 		// Buffs
 		// Glare Ability and fat regen on hdsh
 		_properties.HitChance[this.Const.BodyPart.Head] += 5;
-		_properties.DamageAgainstMult[this.Const.BodyPart.Head] += 0.05;
+		_properties.DamageAgainstMult[this.Const.BodyPart.Head] += 0.08;
 		// Debuffs
-		_properties.DamageAgainstMult[this.Const.BodyPart.Body] += -0.25;
+		_properties.DamageAgainstMult[this.Const.BodyPart.Body] += -0.20;
 		_properties.FatigueEffectMult *= 1.15;
 	}
 

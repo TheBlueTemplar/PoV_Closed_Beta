@@ -7,7 +7,8 @@
 
 // "TLW" left in honor of the OG mod, and our inspiration
 // Abyss and JM for being absolute bros and getting me into modding and wonderful ideas
-// Pot, Excalibird and all the other devs, guests and contributors to PoV
+// Pot, Excalibird and all the other devs, guests
+// All of the lovely playtesters, and the contributors to PoV!
 // Legends and the broader modding community for all their tools, documentation and support
 
 // Included Mods
@@ -18,7 +19,7 @@
 ::TLW <- {
 	ID = "mod_PoV",
 	Name = "Path of the Vatt\'ghern",
-	Version = "0.2.1",
+	Version = "0.2.2",
 	EnableEnemyMutation = true,	//default settings
 	ChaosMode = false
 }
