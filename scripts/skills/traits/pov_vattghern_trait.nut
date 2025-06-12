@@ -156,6 +156,15 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 	{
 		local actor = this.getContainer().getActor();
 
+		// If actor is a Vattghern, add a new, special bust layer!
+		if (actor.hasSprite("socket"))
+		{
+			local bust_sprite = actor.getSprite("socket");
+			bust_sprite.setBrush("pov_vattghern_bust"); 
+			//mutant_bust_sprite.Saturation = 0.8;
+			bust_sprite.Visible = true;
+		}
+
 		if (actor.hasSprite("permanent_injury_4"))
 		{
 			local sprite = actor.getSprite("permanent_injury_4");

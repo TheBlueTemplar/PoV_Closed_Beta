@@ -315,6 +315,12 @@ this.pov_look_for_ingredient_event <- this.inherit("scripts/events/event", {
 			}
 		}
 
+		//fallback
+		if (town == null)
+		{
+			return;
+		}
+
 		if (!town.hasBuilding("building.taxidermist") && !town.hasBuilding("building.taxidermist_oriental") && !town.hasBuilding("building.alchemist"))
 		{
 			return;

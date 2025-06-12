@@ -54,7 +54,7 @@ this.pov_lindwurm_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "This character\'s lost health recovers [color=" + this.Const.UI.Color.NegativeValue + "]30%[/color] slower."
+				text = "This character\'s lost health recovers [color=" + this.Const.UI.Color.NegativeValue + "]40%[/color] slower."
 			},
 			{
 				id = 11,
@@ -82,7 +82,7 @@ this.pov_lindwurm_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 		// Debuffs
 		_properties.DailyWageMult *= 1.25;
-		_properties.HitpointsRecoveryRateMult *= 0.7;
+		_properties.HitpointsRecoveryRateMult *= 0.6;
 		_properties.MeleeDefenseMult *= 0.85;
 	}
 

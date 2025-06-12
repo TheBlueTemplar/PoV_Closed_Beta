@@ -27,6 +27,7 @@
 			// Checks For Mutation Limit ( Currently its 1 + 1 per 6 Levels)
 			local mutationCount = _actor.getFlags().getAsInt("pov_ActiveMutations");
 			local mutationLimit = 1 + this.Math.floor(_actor.getLevel()/7);
+			//local mutationLimit = 999; // Debug - Testing
 
 			// List of mutations that do not affect mutation count w/fallback
 			if (_actor.getSkills().hasSkill("trait.pov_witcher")) {mutationCount -= 1;}

@@ -19,7 +19,7 @@
 ::TLW <- {
 	ID = "mod_PoV",
 	Name = "Path of the Vatt\'ghern",
-	Version = "0.2.2",
+	Version = "0.2.3",
 	EnableEnemyMutation = true,	//default settings
 	ChaosMode = false
 }
@@ -28,7 +28,7 @@
 ::TLW.HooksMod.require("mod_msu >= 1.7.2", "mod_modern_hooks >= 0.4.0", "mod_legends >= 19.1.23");
 ::TLW.HooksMod.conflictWith("mod_silver_weapons", "mod_PFI", "mod_TLW", "mod_more_bandits", "mod_background_perks", "mod_rpgr_parameters", "mod_LA", "Chirutiru_balance", "mod_Chirutiru_enemies", "zChirutiru_equipment", "mod_immortal_warriors", "mod_partiesDropNameds", "mod_weapons_updated", "mod_weapons", "mod_reforged", "mod_RevampedXPSystem", "mod_rpgr_raids", "mod_beast_loot"); 
 
-::TLW.HooksMod.queue(">mod_legends", ">mod_msu", ">mod_AC", ">mod_nggh_magic_concept", ">mod_sellswords", function() 
+::TLW.HooksMod.queue(">mod_legends", ">mod_msu", ">mod_AC", ">mod_nggh_magic_concept", ">mod_sellswords", ">mod_ROTUC", function() 
 {
 	::TLW.Mod <- ::MSU.Class.Mod(::TLW.ID, ::TLW.Version, ::TLW.Name);
 

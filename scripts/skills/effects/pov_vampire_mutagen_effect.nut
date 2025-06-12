@@ -49,7 +49,7 @@ this.pov_vampire_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "Heal [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] of hitpoint damage inflicted on adjacent enemies that have blood. Healing is [color=" + this.Const.UI.Color.NegativeValue + "]capped to 17%[/color] of the Vatt\'ghern\'s max HP."
+				text = "Heal [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] of hitpoint damage inflicted on adjacent enemies that have blood. Healing is [color=" + this.Const.UI.Color.NegativeValue + "]capped to 15%[/color] of the Vatt\'ghern\'s max HP."
 			},
 			{
 				id = 11,
@@ -162,13 +162,13 @@ this.pov_vampire_mutagen_effect <- this.inherit("scripts/skills/skill", {
 	}
 
 	// Heal for 10% of damage dealt
-	// Max healing is 17% of max HP per heal
+	// Max healing is 15% of max HP per heal
 	function lifesteal( _damageInflictedHitpoints )
 	{
 		local actor = this.m.Container.getActor();
 		this.spawnIcon("status_effect_09", actor.getTile());
 		local hitpointsHealed = this.Math.round(_damageInflictedHitpoints * 0.10);
-		local maxHeal = this.Math.round(actor.getHitpointsMax()/6);
+		local maxHeal = this.Math.round(actor.getHitpointsMax()*0.15);
 
 		if(hitpointsHealed > maxHeal)
 		{

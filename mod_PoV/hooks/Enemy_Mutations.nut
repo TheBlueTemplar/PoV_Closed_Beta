@@ -85,9 +85,9 @@
 		{
 			local mutant_glow_sprite = _actor.getSprite("pov_back_socket");
 			mutant_glow_sprite.setBrush("pov_mutant_glow"); //credit to ROTU mod for base art
-			mutant_glow_sprite.Color = this.createColor("#00" + this.Math.rand(50,99) + this.Math.rand(0,5) + "a"); // make the 96 part random! (70 - 99?)
-			mutant_glow_sprite.Saturation = 0.7;
-			mutant_glow_sprite.Scale = 0.85;
+			mutant_glow_sprite.Color = this.createColor("#0" + this.Math.rand(0,9) + this.Math.rand(59,99) + this.Math.rand(0,5) + "a"); // make the 96 part random! (70 - 99?)
+			mutant_glow_sprite.Saturation = 0.8;
+			mutant_glow_sprite.Scale = 0.9;
 			//mutant_glow_sprite.varySaturation(0.1);
 			//mutant_glow_sprite.varyColor(0.05, 0.05, 0.05);
 			mutant_glow_sprite.Visible = true;

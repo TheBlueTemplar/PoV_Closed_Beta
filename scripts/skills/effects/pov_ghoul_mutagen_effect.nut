@@ -42,7 +42,7 @@ this.pov_ghoul_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/days_wounded.png",
-				text = "Lost health regenerates 3x faster than normal."
+				text = "Lost health regenerates [color=" + this.Const.UI.Color.PositiveValue + "]3x[/color] faster than normal."
 			},
 			{
 				id = 11,
@@ -60,7 +60,7 @@ this.pov_ghoul_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/damage_dealt.png",
-				text = "Deals [color=" + this.Const.UI.Color.NegativeValue + "]-10%[/color] melee damage."
+				text = "Deals [color=" + this.Const.UI.Color.NegativeValue + "]-8%[/color] melee damage."
 			},
 			{
 				id = 11,
@@ -87,7 +87,7 @@ this.pov_ghoul_mutagen_effect <- this.inherit("scripts/skills/skill", {
 		// Debuffs
 		_properties.ThresholdToReceiveInjuryMult *= 0.80;
 		_properties.RangedSkillMult *= 0.50;
-		_properties.MeleeDamageMult *= 0.90;
+		_properties.MeleeDamageMult *= 0.92;
 	}
 
 	function isHidden()

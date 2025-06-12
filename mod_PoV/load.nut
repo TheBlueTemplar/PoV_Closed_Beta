@@ -5,11 +5,23 @@
 
 // Important objects for compatibility purposes (see how to call a few lines below)
 ::TLW.hasSSU <- ::mods_getRegisteredMod("mod_sellswords") != null;
+::TLW.hasROTU <- ::mods_getRegisteredMod("mod_ROTUC") != null;
+::TLW.hasMC <- ::mods_getRegisteredMod("mod_nggh_magic_concept") != null;
 
 // Load SSU shit, if exists
 if (::TLW.hasSSU)
 {
 	::includeFiles(::IO.enumerateFiles(TLW.ID + "/hooks_SSU"));
+}
+// Load ROTU shit, if exists
+if (::TLW.hasROTU)
+{
+	::includeFiles(::IO.enumerateFiles(TLW.ID + "/hooks_ROTU"));
+}
+// Load MC shit, if exists
+if (::TLW.hasMC)
+{
+	::includeFiles(::IO.enumerateFiles(TLW.ID + "/hooks_MC"));
 }
 
 // Load all files in Config Folder

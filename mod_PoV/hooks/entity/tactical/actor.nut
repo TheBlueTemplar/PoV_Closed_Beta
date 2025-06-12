@@ -13,15 +13,6 @@
 
 			return old_addSprite(_layerID);
 		};
-
-		// If actor is a Vattghern, add a new, special bust layer!
-		/*if (this.hasSprite("miniboss"))
-		{
-			local mutant_bust_sprite = this.getSprite("miniboss");
-			mutant_bust_sprite.setBrush("pov_mutant_bust"); 
-			mutant_bust_sprite.Saturation = 0.8;
-			mutant_bust_sprite.Visible = true;
-		}*/
 		__original();
 		//this.addSprite = old_addSprite;
 	}

@@ -1,9 +1,25 @@
+### Changelog V0.2.3:
+
+* All (or most) of the following mod's enemies were incomporated into PoV (Enemy Mutation and Corpse Drops Systems)
+   * SSU: Almost all of the enemies, Orcs, Undead, Goblins etc. into corpse system too
+   * MC: Implemented for the enemies that make sense
+   * ROTU: Same as above 
+* Slightly rebalanced some vattghern mutations, specifically:
+   * Nerfs: Lindwurm (slightly slower healing), Vampire (less max lifesteal)
+   * Buffs: Nacho (Lessened Dmg Nerf), Schrat (Increased Armor by 10 to 25)
+* New in battle effect for the Vattghern, their bust is more silver and with a wolf!
+* Enemy mutants in battle effects were made slightly more visible
+* All the icons for the enemy mutants tooltips and skills have been remade to be more "clean". Credits to Paragon!
+* Fixed a crash related to a new encounter
+* Fully Documented all mutation effects, they can be found at the playtest wiki of the PoV Discord Server 
+
 ### Changelog V0.2.2:
 
 * 4 New Events and Encounters! Mod now boasts 18 Events and Ambitions!
    * An event for an interaction between the Hexe mutated vattghern and the druid
    * An city encounter for the players, with the opportunity to get one of the ToG ingredients!
    * Two new secret/meme/easter egg events! 
+* The more hard to find ingredients for the Trial Of The Grasses can be very rarely found on sale on alchemists and black markets, on high price tags!
 * New in battle effect for the enemy mutants, so players can tell them apart! (glow and bust art)
 * Rebalanced (buffed) the Basilisk Vattghern Mutation (Head Damage +5% --> +8%, Body Damage -25% --> -20%)
 * Decreased the Penalty of the Nyctophobia trait!
