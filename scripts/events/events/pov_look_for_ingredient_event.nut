@@ -342,7 +342,7 @@ this.pov_look_for_ingredient_event <- this.inherit("scripts/events/event", {
 			}
 		}
 
-		if (other_candidates.len() == null)
+		if (other_candidates.len() == 0)
 		{
 			return;
 		}
