@@ -49,7 +49,7 @@ this.pov_coat_with_vattghern_poison_skill <- this.inherit("scripts/skills/skill"
 				id = 7,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "The next [color=" + this.Const.UI.Color.PositiveValue + "]4[/color] attacks will apply the Poisoned status effect for [color=" + this.Const.UI.Color.NegativeValue + "]10[/color] damage per turn. While under this poison, they also losing [color=" + this.Const.UI.Color.NegativeValue + "]10%[/color] initiative and damage and [color=" + this.Const.UI.Color.NegativeValue + "]1[/color] vision."
+				text = "The next [color=" + this.Const.UI.Color.PositiveValue + "]4[/color] attacks will apply the Poisoned status effect for [color=" + this.Const.UI.Color.NegativeValue + "]10[/color] damage per turn. While under this poison, they also lose [color=" + this.Const.UI.Color.NegativeValue + "]10%[/color] initiative and damage, and [color=" + this.Const.UI.Color.NegativeValue + "]1[/color] vision."
 			}
 		];
 

@@ -54,7 +54,7 @@ this.pov_enemy_mutation_goblin <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/ranged_skill.png",
-				text = "An additional [color=" + this.Const.UI.Color.PositiveValue + "]15%[/color] of ranged skill."
+				text = "An additional [color=" + this.Const.UI.Color.PositiveValue + "]18%[/color] of ranged skill."
 			},
 			{
 				id = 11,
@@ -103,8 +103,8 @@ this.pov_enemy_mutation_goblin <- this.inherit("scripts/skills/skill", {
 	{
 		// Buffs
 		_properties.MovementFatigueCostAdditional += -2;
-		_properties.RangedSkillMult *= 1.15;
-		_properties.RangedDefenseMult *= 1.10;
+		_properties.RangedSkillMult *= 1.18;
+		_properties.RangedDefenseMult *= 1.15;
 		_properties.RangedAttackBlockedChanceMult = 0.80;
 		// Debuffs
 		_properties.Hitpoints *= 0.80;

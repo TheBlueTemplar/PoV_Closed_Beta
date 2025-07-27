@@ -36,7 +36,7 @@ this.pov_calcium_deficiency_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "Has [color=" + this.Const.UI.Color.NegativeValue + "]-25%[/color] max hitpoints."
+				text = "Has [color=" + this.Const.UI.Color.NegativeValue + "]-35%[/color] max hitpoints."
 			},
 			{
 				id = 11,
@@ -57,7 +57,7 @@ this.pov_calcium_deficiency_effect <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		// Buffs
-		_properties.HitpointsMult *= 0.75;
+		_properties.HitpointsMult *= 0.65;
 		// Debuffs
 	}
 

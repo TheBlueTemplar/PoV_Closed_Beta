@@ -1,8 +1,8 @@
 this.pov_enemy_mutation_schrat <- this.inherit("scripts/skills/skill", {
 	m = {
-		HeadArmorBoost = 25,
+		HeadArmorBoost = 40,
 		HeadDamageTaken = 0,
-		BodyArmorBoost = 25,
+		BodyArmorBoost = 40,
 		BodyDamageTaken = 0
 	},
 	function create()
@@ -45,7 +45,7 @@ this.pov_enemy_mutation_schrat <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/armor_body.png",
-				text = "This character\'s skin is hard, granting [color=" + this.Const.UI.Color.PositiveValue + "]25[/color] points of natural armor"
+				text = "This character\'s skin is hard, granting [color=" + this.Const.UI.Color.PositiveValue + "]40[/color] points of natural armor"
 			},
 			{
 				id = 11,

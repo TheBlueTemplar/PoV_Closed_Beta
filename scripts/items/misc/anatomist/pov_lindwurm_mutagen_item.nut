@@ -5,7 +5,7 @@ this.pov_lindwurm_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov
 		this.pov_anatomist2_potion_item.create();
 		this.m.ID = "misc.pov_lindwurm_mutagen";
 		this.m.Name = "Lindwurm Mutagen";
-		this.m.Description = "Infused with the volatile essence of the Lindwurm, this mutagen transforms its bearer into a devastating force on the battlefield. Their blood burns with potent acid, searing the armor of attackers who dare strike them. Immune to acid themselves, they become relentless armor-breakers, tearing through defenses with enhanced effectiveness.\n\n However, the mutation comes with significant drawbacks: their wounds heal more slowly, melee defense is reduced, and their increased wages reflect the high cost of maintaining such a destructive force. A formidable choice for those who prioritize overwhelming offense over endurance.";
+		this.m.Description = "Infused with the volatile essence of the Lindwurm, this mutagen transforms its bearer into a devastating force on the battlefield. Their blood burns with potent acid, searing the armor of attackers who dare strike them, and giving them the option to coat their own weapons with it. Immune to acid themselves, they become relentless armor-breakers, tearing through defenses with enhanced effectiveness.\n\n However, the mutation comes with significant drawbacks: their wounds heal more slowly, their defense in melee is reduced, and their increased faith in their abilities leads to constant demand of higher pay. A truly devastating mutation, if applied properly and with care.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/pov_potion_lindwurm.png";
 		this.m.Value = 600;

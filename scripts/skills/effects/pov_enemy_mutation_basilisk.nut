@@ -36,25 +36,25 @@ this.pov_enemy_mutation_basilisk <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/chance_to_hit_head.png",
-				text = "Gain [color=" + this.Const.UI.Color.PositiveValue + "]+5%[/color] chance to hit the head"
+				text = "Gain [color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] chance to hit the head"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/damage_dealt.png",
-				text = "Deal [color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] more damage when hitting the head with any weapon"
+				text = "Deal [color=" + this.Const.UI.Color.PositiveValue + "]+12%[/color] more damage when hitting the head with any weapon"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/damage_dealt.png",
-				text = "Deal [color=" + this.Const.UI.Color.NegativeValue + "]-18%[/color] less damage when hitting the body with any weapon"
+				text = "Deal [color=" + this.Const.UI.Color.NegativeValue + "]-16%[/color] less damage when hitting the body with any weapon"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "All skills cost [color=" + this.Const.UI.Color.NegativeValue + "]18%[/color] more fatigue"
+				text = "All skills cost [color=" + this.Const.UI.Color.NegativeValue + "]15%[/color] more fatigue"
 			}
 		];
 		return ret;
@@ -72,11 +72,11 @@ this.pov_enemy_mutation_basilisk <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		// Buffs
-		_properties.HitChance[this.Const.BodyPart.Head] += 5;
-		_properties.DamageAgainstMult[this.Const.BodyPart.Head] += 0.10;
+		_properties.HitChance[this.Const.BodyPart.Head] += 10;
+		_properties.DamageAgainstMult[this.Const.BodyPart.Head] += 0.12;
 		// Debuffs
-		_properties.DamageAgainstMult[this.Const.BodyPart.Body] += -0.18;
-		_properties.FatigueEffectMult *= 1.18;
+		_properties.DamageAgainstMult[this.Const.BodyPart.Body] += -0.16;
+		_properties.FatigueEffectMult *= 1.15;
 	}
 
 });

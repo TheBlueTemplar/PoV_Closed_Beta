@@ -1,9 +1,27 @@
-mod_PoV.Hooks.MainMenuScreen_show = MainMenuScreen.prototype.show;
+// Necro's stuff, study it
+mod_PoV.Hooks.MainMenuScreen_notifyBackendOnShown = MainMenuScreen.prototype.notifyBackendOnShown;
+MainMenuScreen.prototype.notifyBackendOnShown = function () {
+    this.mOriginalBackgroundUrl = this.mBackgroundImage.attr("src");
+    this.updatePOVBackgroundImage(true);
+    mod_PoV.Hooks.MainMenuScreen_notifyBackendOnShown.call(this);
+}
+
+MainMenuScreen.prototype.updatePOVBackgroundImage = function (_isShow) {
+    if (_isShow) {
+        this.mBackgroundImage.attr("src", Path.GFX + "ui/screens/pov_title.png");
+    } else if (this.mOriginalBackgroundUrl !== null && this.mOriginalBackgroundUrl !== undefined) {
+        this.mBackgroundImage.attr("src", this.mOriginalBackgroundUrl);
+    }
+}
+
+// Old Shet
+/*mod_PoV.Hooks.MainMenuScreen_show = MainMenuScreen.prototype.show;
 MainMenuScreen.prototype.show = function (_animate)
 {
 	mod_PoV.Hooks.MainMenuScreen_show.call(this, _animate);
-	this.mBackgroundImage.attr("src", Path.GFX + "ui/screens/pov_title.png");
-}
+    this.mBackgroundImage.attr("src", Path.GFX + "ui/screens/pov_title.png");
+}*/
+ 
 
 // Function I'm Hooking
 

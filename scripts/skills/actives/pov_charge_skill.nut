@@ -6,7 +6,7 @@ this.pov_charge_skill <- this.inherit("scripts/skills/skill", {
 	{
 		this.m.ID = "actives.pov_charge";
 		this.m.Name = "Charge";
-		this.m.Description = "Charge your enemies, stunning them on contact. \n\n Shielded enemies have a chance to resist the stun.";
+		this.m.Description = "Charge your enemies, stunning them on contact. \n\n Shielded enemies have a chance to resist the stun, especially using shieldwall.";
 		this.m.Icon = "skills/pov_active_52.png";
 		this.m.IconDisabled = "skills/pov_active_52_sw.png";
 		this.m.Overlay = "active_52";
@@ -304,7 +304,7 @@ this.pov_charge_skill <- this.inherit("scripts/skills/skill", {
 
 				if (victim.getSkills().hasSkill("effects.shieldwall"))
 				{
-					chance = chance - shield.getMeleeDefense();
+					chance = chance - shield.getMeleeDefense()*2;
 				}
 			}
 

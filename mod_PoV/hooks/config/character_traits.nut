@@ -4,14 +4,6 @@
 // ADD OTHER TRAITS THAT YOU HAVE IN THE MOD - MIGHTY USEFUL
 // CAREFUL WHAT YOU ADD HERE - THESE TRAITS ARE ADDED TO SPAWNLIST
 	[
-		"trait.pov_fear_mutants",
-		"scripts/skills/traits/pov_fear_mutants_trait"
-	],
-	[
-		"trait.pov_hate_mutants",
-		"scripts/skills/traits/pov_hate_mutants_trait"
-	],
-	[
 		"trait.pov_nyctophobia",
 		"scripts/skills/traits/pov_nyctophobia_trait"
 	],
@@ -20,16 +12,40 @@
 		"scripts/skills/traits/pov_monster_hunter_trait"
 	],
 	[
-		"trait.pov_monster_hunter",
+		"trait.pov_pov_misanthropist",
 		"scripts/skills/traits/pov_misanthropist_trait"
+	],
+	[
+		"trait.pov_hate_everything",
+		"scripts/skills/traits/pov_hate_everything_trait"
 	]
 ]);
 
-	// Only For Testing!! Remember to disable!
+// Same as above, related to enemy mutation system
+if(::TLW.EnableEnemyMutation)
+{
+	::Const.CharacterTraits.extend(
+	[
+		[
+			"trait.pov_fear_mutants",
+			"scripts/skills/traits/pov_fear_mutants_trait"
+		],
+		[
+			"trait.pov_hate_mutants",
+			"scripts/skills/traits/pov_hate_mutants_trait"
+		],
+	]);
+}
+
+// Only For Testing!! Remember to disable!
 ::Const.CharacterTraits.extend(
 [
 	/*[
-		"trait.trait.pov_psychopath",
+		"trait.pov_seductive",
+		"scripts/skills/traits/pov_seductive_trait"
+	],*/
+	/*[
+		"trait.pov_psychopath",
 		"scripts/skills/traits/pov_psychopath_trait"
 	],*/
 	/*[

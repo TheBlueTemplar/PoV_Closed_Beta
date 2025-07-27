@@ -8,6 +8,13 @@
 		{
 			this.actor.m.OnDeathLootTable.push([2,"scripts/items/misc/anatomist/pov_donkey_mutagen_item"]);
 		}
+
+		// Chaos Mutation
+		if (::TLW.ChaosMode && ::TLW.EnableEnemyMutation)
+		{
+			::TLW.Mod.Debug.printLog("Calling add_mutation_all")
+			::TLW.Chaos.add_mutation_all(this.actor, false)
+		}
 	}
 
 });

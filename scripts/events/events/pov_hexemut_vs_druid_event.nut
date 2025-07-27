@@ -32,7 +32,7 @@ this.pov_hexemut_vs_druid_event <- this.inherit("scripts/events/event", {
 
 				_event.m.druid.getSkills().add(this.new("scripts/skills/effects_world/exhausted_effect"));
 				_event.m.druid.getSkills().add(this.new("scripts/skills/effects/pov_exhausted_effect"));
-				_event.m.druid.worsenMood(1.0, "Exhausted from preparing defencive runes");
+				_event.m.druid.worsenMood(1.0, "Exhausted from preparing defensive runes");
 
 				
 				this.List.push({

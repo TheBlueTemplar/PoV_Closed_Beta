@@ -5,11 +5,11 @@ this.pov_autopsy_serpent_blueprint <- this.inherit("scripts/crafting/blueprint",
 		this.blueprint.create();
 		this.m.ID = "blueprint.pov_autopsy_serpent";
 		this.m.Type = this.Const.Items.ItemType.Usable;
-		this.m.PreviewCraftable = this.new("scripts/items/pov_autopsy_serpent_item");
+		this.m.PreviewCraftable = this.new("scripts/items/autopsy/pov_autopsy_serpent_item");
 		this.m.Cost = 110;
 		local ingredients = [
 			{
-				Script = "scripts/items/misc/pov_corpse_serpent_item",
+				Script = "scripts/items/misc/corpse/pov_corpse_serpent_item",
 				Num = 1
 			},
 		];

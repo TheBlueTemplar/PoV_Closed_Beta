@@ -70,6 +70,8 @@ this.pov_hexe_curse_master_effect <- this.inherit("scripts/skills/skill", {
 	{
 		local actor = this.getContainer().getActor();
 		local maxHp = actor.getHitpointsMax();
+		local currentHP = actor.getHitpoints();
+		local damageTaken = _damageHitpoints;
 		local damagePercent;
 
 		if (this.m.Slave == null || this.m.Slave.isNull() || !this.m.Slave.isAlive())
@@ -78,9 +80,16 @@ this.pov_hexe_curse_master_effect <- this.inherit("scripts/skills/skill", {
 			return;
 		}
 
-		if (_damageHitpoints > 0)
+		if (damageTaken > 0)
 		{
-			damagePercent = (_damageHitpoints / maxHp) * 100;
+			// Limit damage taken, by reducing overall "overkill" damage!
+			if (damageTaken > currentHP)
+			{
+				//damageTaken = maxHP + damageTaken * 0.2; Experimental, leave it like that
+				damageTaken = currentHP + 1;
+			}
+
+			damagePercent = (damageTaken / maxHp) * 100;
 			this.m.Slave.applyDamage(damagePercent);
 		}
 

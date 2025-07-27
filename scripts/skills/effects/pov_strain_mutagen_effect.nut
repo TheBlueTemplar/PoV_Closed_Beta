@@ -16,7 +16,7 @@ this.pov_strain_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Dark Visions[/color]: This character has strange visions of things that have been and things to come.  It gives them a certain ability to connect and internalize new experiences faster. On the other hand, these same visions cause extreme distress to the Vatt\'ghern\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Reactive Muscle Tissue[/color]: This character\'s body reacts to physical trauma, secreting a calciferous substance that causes their muscles to reflexively sieze and contract at points of impact to minimize muscle damage.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Subdermal Reactivity[/color]: This character\'s subdermal flesh has mutated and automatically reacts to sudden trauma, lessening the chance to suffer injuries in battle.";
+		return "[color=" + this.Const.UI.Color.PositiveValue + "]Dark Visions[/color]: This character has strange visions of things that have been and things to come.  It gives them a certain ability to connect and internalize new experiences faster. On the other hand, these same visions cause extreme distress to the Vatt\'ghern\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Reactive Muscle Tissue[/color]: This character\'s body reacts to physical trauma, secreting a calciferous substance that causes their muscles to reflexively sieze and contract at points of impact to minimize muscle damage, reducing the chances of injury in battle. But, this reactivity works against the character when attacked with fire.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Foul Stench[/color]: This character also emits a very powerful smell in battle, which really helps to disorient its enemies. This comes at the further cost of the subject\'s sanity.";
 	}
 
 	function getTooltip()
@@ -35,14 +35,20 @@ this.pov_strain_mutagen_effect <- this.inherit("scripts/skills/skill", {
 			{
 				id = 11,
 				type = "text",
-				icon = "ui/icons/xp_received.png",
-				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+25%[/color] Experience Gain"
+				icon = "ui/icons/special.png",
+				text = "This character gains the [color=#044391] Foul Stench [/color] Passive ability when in battle."
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "This character accumulates no Fatigue from enemy attacks."
+				text = "This character suffers [color=" + this.Const.UI.Color.PositiveValue + "]no fatigue[/color] from enemy attacks"
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/xp_received.png",
+				text = "[color=" + this.Const.UI.Color.PositiveValue + "]+20%[/color] Experience Gain"
 			},
 			{
 				id = 11,
@@ -54,21 +60,41 @@ this.pov_strain_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/bravery.png",
-				text = "Lose [color=" + this.Const.UI.Color.NegativeValue + "]25% + 10[/color] Resolve, due to dark visions"
+				text = "Lose [color=" + this.Const.UI.Color.NegativeValue + "]30% + 12[/color] Resolve, due to dark visions"
 			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/pov_fire.png",
+				text = "This character takes [color=" + this.Const.UI.Color.NegativeValue + "]50%[/color] more damage from fire attacks."
+			}
 		];
 		return ret;
+	}
+
+	function onCombatStarted()
+	{
+		local actor = this.getContainer().getActor();
+		actor.getSkills().add(this.new("scripts/skills/effects/pov_unbearable_stench_passive_effect"));
 	}
 
 	function onUpdate( _properties )
 	{
 		// Buffs
-		_properties.XPGainMult *= 1.25;
+		_properties.XPGainMult *= 1.20;
 		_properties.FatigueLossOnAnyAttackMult = 0.0;
 		_properties.ThresholdToReceiveInjuryMult *= 1.50;
 		// Debuffs
-		_properties.BraveryMult *= 0.75;
-		_properties.Bravery += -10;
+		_properties.BraveryMult *= 0.70;
+		_properties.Bravery += -12;
+	}
+
+	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
+	{
+		if (_hitInfo.DamageType == this.Const.Damage.DamageType.Burning)
+		{
+			_properties.DamageReceivedRegularMult *= 1.5;
+		}
 	}
 
 	function isHidden()

@@ -16,7 +16,7 @@ this.pov_skeleton_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Curse Essence[/color]: This character\'s body is sustained by the curse of undeath.  They require less food and have increased stamina.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Synapse Blockage[/color]: This character\'s body has mutated in such a way that their emotions have become much more \"cold\", especially preventing the character from reaping the benefits of high morale\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Subdermal Stitching[/color]: This character\'s skin and subdermal tissue has mutated and will rapidly stitch back together, increasing piercing damage resistance. On the other hand, open wounds take more time to fully heal";
+		return "[color=" + this.Const.UI.Color.PositiveValue + "]Curse Essence[/color]: This character\'s body is sustained by the curse of undeath.  They require less food and have increased stamina.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Synapse Blockage[/color]: This character\'s body has mutated in such a way that their emotions have become muted, especially preventing the character from reaping the benefits of high morale, but also making morale attacks against them weaker\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Subdermal Stitching[/color]: This character\'s skin and subdermal tissue has mutated and will rapidly stitch back together, increasing piercing damage resistance. On the other hand, open wounds take more time to fully heal";
 	}
 
 	function getTooltip()
@@ -49,6 +49,12 @@ this.pov_skeleton_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				type = "text",
 				icon = "ui/icons/direct_damage.png",
 				text = "This character has [color=" + this.Const.UI.Color.PositiveValue + "]40%[/color] piercing damage resistance."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/bravery.png",
+				text = "Has a bonus of [color=" + this.Const.UI.Color.PositiveValue + "]20[/color] on all morale checks."
 			},
 			{
 				id = 11,
@@ -90,6 +96,12 @@ this.pov_skeleton_mutagen_effect <- this.inherit("scripts/skills/skill", {
 			actor.setMoraleState(this.Const.MoraleState.Steady);
 			//actor.setDirty(true);
 		}
+	}
+
+	// THIS HAS NOT BE FULLY TESTED
+	function checkMorale( _change, _difficulty, _type = this.Const.MoraleCheckType.Default, _showIconBeforeMoraleIcon = "", _noNewLine = false )
+	{
+		_difficulty = _difficulty + 20;
 	}
 
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )

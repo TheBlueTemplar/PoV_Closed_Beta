@@ -17,7 +17,7 @@ this.pov_basilisk_racial <- this.inherit("scripts/skills/skill", {
 	{
 		if (_hitInfo.DamageType == this.Const.Damage.DamageType.Burning)
 		{
-			_properties.DamageReceivedRegularMult *= 0.65;
+			_properties.DamageReceivedTotalMult *= 0.65;
 		}
 	}
 

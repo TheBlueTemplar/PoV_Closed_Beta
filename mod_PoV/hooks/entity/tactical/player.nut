@@ -14,7 +14,8 @@
             "perk.legend_barter_convincing",
             "perk.legends.legend_off_book_deal",
             "trait.legend_seductive",
-            "effects.pov_hexe_mutagen"
+            "effects.pov_hexe_mutagen",
+            "trait.pov_seductive"
         ];
 
         foreach( s in skills )

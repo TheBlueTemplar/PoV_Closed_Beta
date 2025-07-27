@@ -1,7 +1,7 @@
 this.pov_pain_effect <- this.inherit("scripts/skills/skill", {
 	m = {
 		// Full credits for this idea go to Darxo!
-		TurnsLeft = 1
+		TurnsLeft = 2
 	},
 	function create()
 	{
@@ -45,24 +45,31 @@ this.pov_pain_effect <- this.inherit("scripts/skills/skill", {
 				type = "text",
 				icon = "ui/icons/action_points.png",
 				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-1[/color] Action Point"
+			},
+			{
+				id = 12,
+				type = "text",
+				icon = "ui/icons/initiative.png",
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]-10%[/color] Initiative"
 			}
 		];
 	}
 
 	function onAdded()
 	{
-		this.m.TurnsLeft = this.Math.max(1, 1 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+		this.m.TurnsLeft = this.Math.max(1, 2 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
 	}
 
 	function onRefresh()
 	{
-		this.m.TurnsLeft = this.Math.max(1, 1 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+		this.m.TurnsLeft = this.Math.max(1, 2 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
 		this.spawnIcon("status_effect_119", this.getContainer().getActor().getTile());
 	}
 
 	function onUpdate( _properties )
 	{
 		_properties.DamageTotalMult *= 0.90;
+		_properties.InitiativeMult *= 0.90;
 		_properties.ActionPoints -= 1;
 	}
 

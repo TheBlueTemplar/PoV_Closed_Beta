@@ -12,7 +12,7 @@ this.pov_hate_mutants_trait <- this.inherit("scripts/skills/traits/character_tra
 			"trait.craven",
 			"trait.dastard",
 			"trait.fainthearted",
-			"trait.legend_fear_mutants",
+			"trait.pov_fear_mutants",
 			"trait.legend_peaceful"
 		];
 	}

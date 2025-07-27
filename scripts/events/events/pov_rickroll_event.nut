@@ -43,7 +43,7 @@ this.pov_rickroll_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		this.m.Score = 3;
+		this.m.Score = 5;
 		//this.m.Score = 9999;
 	}
 

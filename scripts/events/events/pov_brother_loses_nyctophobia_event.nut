@@ -9,7 +9,7 @@ this.pov_brother_loses_nyctophobia_event <- this.inherit("scripts/events/event",
 		this.m.Cooldown = 1.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/pov_lose_nyctophobia.png[/img]{You find %vattghern% sitting at the very edge of camp, where the firelight fades and shadows gather thickly. It\'s strange — not long ago, the man would barely leave the tents at night without a torch clutched tight in his hand. Now he sits there calmly, staring into the darkness as though it were an old friend.\n\n You approach quietly, half-expecting him to flinch or retreat, but he does neither. Instead, he glances over his shoulder with a half-smile, one corner of his mouth twitching in amusement.%SPEECH_ON% Strange, isn\'t it? I used to fear the dark. Now... it feels like home.%SPEECH_OFF% He turns his gaze back to the night, eyes sharp, almost glowing faintly in the moonlight — a lingering gift of the mutagen.%SPEECH_ON% I thought the dark was hiding monsters. I was wrong. The dark hides me.%SPEECH_OFF% There\'s a lightness in his voice, a kind of fierce pride that wasn\'t there before. You can\'t help but smirk at the realization: %vattghern% hasn\'t just conquered his fear — he\'s embraced the night itself. As you leave him there, a half-joking thought crosses your mind: perhaps all he\'s missing now is a cloak and a cowl to vanish fully into the night..}" 
+			Text = "[img]gfx/ui/events/pov_lose_nyctophobia.png[/img]{You find %vattghern% sitting at the very edge of camp, where the firelight fades and shadows gather thickly. It\'s strange — not long ago, the man would barely leave the tents at night without a torch clutched tight in his hand. Now he sits there calmly, staring into the darkness as though it were an old friend.\n\n You approach quietly, half-expecting him to flinch or retreat, but he does neither. Instead, he glances over his shoulder with a half-smile, one corner of his mouth twitching in amusement.%SPEECH_ON% Strange, isn\'t it? I used to fear the dark. Now... it feels like home.%SPEECH_OFF% He turns his gaze back to the night, eyes sharp, almost glowing faintly in the moonlight — a lingering gift of the mutagen.%SPEECH_ON% I thought the dark was hiding monsters. I was wrong. The dark hides me.%SPEECH_OFF% There\'s a lightness in his voice, a kind of fierce pride that wasn\'t there before. You can\'t help but smirk at the realization: %vattghern% hasn\'t just conquered his fear — he\'s embraced the night itself. As you leave him there, a half-joking thought crosses your mind: perhaps all he\'s missing now is a cloak and a cowl...}" 
 			Image = "",
 			List = [],
 			Characters = [],
@@ -80,7 +80,7 @@ this.pov_brother_loses_nyctophobia_event <- this.inherit("scripts/events/event",
 		{
 			if (bro.getSkills().hasSkill("trait.pov_nyctophobia"))
 			{
-				if (bro.getSkills().hasSkill("effects.pov_skeleton_mutagen") || bro.getSkills().hasSkill("effects.pov_ghost_mutagen") || bro.getSkills().hasSkill("effects.pov_alp_mutagen") || bro.getSkills().hasSkill("effects.pov_direwolf_mutagen") || bro.getSkills().hasSkill("effects.pov_vampire_mutagen"))
+				if (bro.getSkills().hasSkill("effects.pov_skeleton_mutagen") || bro.getSkills().hasSkill("effects.pov_ghost_mutagen") || bro.getSkills().hasSkill("effects.pov_alp_mutagen") || bro.getSkills().hasSkill("effects.pov_direwolf_mutagen") || bro.getSkills().hasSkill("effects.pov_vampire_mutagen") || bro.getCurrentProperties().Bravery > 70)
 				{
 					pussy_candidates.push(bro);
 				}
@@ -93,7 +93,7 @@ this.pov_brother_loses_nyctophobia_event <- this.inherit("scripts/events/event",
 		}
 
 		this.m.vattghern = pussy_candidates[this.Math.rand(0, pussy_candidates.len() - 1)];
-		this.m.Score = 9999;
+		this.m.Score = 77;
 	}
 
 	function onPrepare()

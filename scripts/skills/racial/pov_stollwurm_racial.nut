@@ -17,7 +17,7 @@ this.pov_stollwurm_racial <- this.inherit("scripts/skills/skill", {
 	{
 		if (_hitInfo.DamageType == this.Const.Damage.DamageType.Burning)
 		{
-			_properties.DamageReceivedRegularMult *= 0.25;
+			_properties.DamageReceivedTotalMult *= 0.25;
 		}
 	}
 

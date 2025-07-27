@@ -54,13 +54,13 @@ this.pov_enemy_mutation_direwolf <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "Movement costs [color=" + this.Const.UI.Color.PositiveValue + "]40%[/color] less Fatigue."
+				text = "Movement costs [color=" + this.Const.UI.Color.PositiveValue + "]50%[/color] less Fatigue."
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "Skills cost [color=" + this.Const.UI.Color.PositiveValue + "]15%[/color] less fatigue and the character has [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] more fatigue."
+				text = "Skills cost [color=" + this.Const.UI.Color.PositiveValue + "]20%[/color] less fatigue and the character has [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] more fatigue."
 			},
 			{
 				id = 11,
@@ -68,12 +68,12 @@ this.pov_enemy_mutation_direwolf <- this.inherit("scripts/skills/skill", {
 				icon = "ui/icons/pov_time_of_day.png",
 				text = "Nighttime penalties are [color=" + this.Const.UI.Color.PositiveValue + "]halved[/color]."
 			},
-			/*{
+			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/damage_received.png",
 				text = "This character is [color=" + this.Const.UI.Color.PositiveValue + "]immune[/color] to bleeding effects."
-			},*/
+			},
 			{
 				id = 11,
 				type = "text",
@@ -96,10 +96,10 @@ this.pov_enemy_mutation_direwolf <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		// Buffs
-		_properties.MovementFatigueCostMult *= 0.6;
-		_properties.FatigueEffectMult *= 0.85;
+		_properties.MovementFatigueCostMult *= 0.5;
+		_properties.FatigueEffectMult *= 0.80;
 		_properties.StaminaMult *= 1.10;
-		//_properties.IsImmuneToBleeding = true; // Too Op On Light Enemies
+		_properties.IsImmuneToBleeding = true; // Too Op On Light Enemies
 		if (this.getContainer().hasSkill("special.night") && _properties.IsAffectedByNight)
 		{
 			_properties.Vision += 1;

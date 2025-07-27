@@ -7,7 +7,7 @@ this.pov_whip_mace_named <- this.inherit("scripts/items/weapons/named/named_weap
 	function create()
 	{
 
-		local NameList = ["Belmond's Wrath","Chain Flail of the Belmonds","Belmond's Vengeance","Scourge of the Undead", "Blessed Ironlash","Vampirebane Whip","Belmond's Caress"];
+		local NameList = ["Belmond's Wrath","Chain Flail of the Belmonds","Belmond's Vengeance","Scourge of the Undead", "Blessed Ironlash", "Vampirebane Whip", "Belmond's Caress"];
 
 		this.named_weapon.create();
 		this.m.ID = "weapon.pov_whip_mace_named";
@@ -58,30 +58,13 @@ this.pov_whip_mace_named <- this.inherit("scripts/items/weapons/named/named_weap
 			id = 6,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Also, [color=" + this.Const.UI.Color.DamageValue + "]concecrates[/color] any undead hit, making take damage over time, and susceptible to bleeding, poison and injuries."
+			text = "Also, [color=" + this.Const.UI.Color.DamageValue + "]concecrates[/color] any undead hit, making them take damage over time, and susceptible to bleeding, poison and injuries."
 		});
 		return result;
 	}
 
 	function onEquip()
 	{
-		/*
-		this.weapon.onEquip();
-		local slash = this.new("scripts/skills/actives/pov_silverslash");
-		slash.m.DirectDamageMult = this.m.DirectDamageMult;
-		this.addSkill(slash);
-		*/
-
-		/*
-		// This was my first time testing this, used a modified legends skill!
-		this.weapon.onEquip();
-		local longFlail = this.new("scripts/skills/actives/legend_ranged_flail_skill");
-		longFlail.m.MaxRange = 3;
-		longFlail.m.Name = "Whip Flail";
-		longFlail.m.FatigueCost = 16;
-		this.addSkill(longFlail);
-		*/
-
 		this.named_weapon.onEquip();
 		//this.addSkill(this.new("scripts/skills/actives/legend_ranged_lash_skill"));
 		local whipFlail = this.new("scripts/skills/actives/pov_whip_flail_skill");
@@ -95,7 +78,6 @@ this.pov_whip_mace_named <- this.inherit("scripts/items/weapons/named/named_weap
 		slam.m.IconDisabled = "skills/active_pov_pound_named_sw.png";
 		slam.m.FatigueCost = 20;
 		this.addSkill(slam);
-
 	}
 
 	function onAnySkillUsed( _skill, _targetEntity, _properties)

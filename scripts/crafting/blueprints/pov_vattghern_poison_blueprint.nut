@@ -6,7 +6,7 @@ this.pov_vattghern_poison_blueprint <- this.inherit("scripts/crafting/blueprint"
 		this.m.ID = "blueprint.pov_vattghern_poison";
 		this.m.Type = this.Const.Items.ItemType.Usable;
 		this.m.PreviewCraftable = this.new("scripts/items/accessory/pov_vattghern_poison_item");
-		this.m.Cost = 125;
+		this.m.Cost = 100;
 		local ingredients = [
 			{
 				Script = "scripts/items/misc/poison_gland_item",

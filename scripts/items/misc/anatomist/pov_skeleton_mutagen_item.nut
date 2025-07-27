@@ -5,7 +5,7 @@ this.pov_skeleton_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov
 		this.pov_anatomist2_potion_item.create();
 		this.m.ID = "misc.pov_skeleton_mutagen";
 		this.m.Name = "Undeath Mutagen";
-		this.m.Description = "This mutagen infuses the bearer with traits of the undead, granting unnatural resilience at a steep cost. Piercing attacks are less effective, and their reduced need for food makes them easy to sustain.\n\n However, their body heals at a much slower rate, and they are highly susceptible to fire, a devastating weakness. Also, the bearer’s morale is forever stunted, unable to feel the strength of confidence, and their increased fatigue weighs heavily in prolonged battles. A sinister transformation for those who seek endurance through sacrifice.";
+		this.m.Description = "This mutagen infuses the bearer with traits of the undead, granting unnatural resilience at a steep cost. Piercing attacks are less effective against them, and their reduced need for food makes them easy to sustain. They also present greater endurance in battle, and their emotions are muted, making psychic attacks against them weaker.\n\n However, their body heals at a much slower rate, and they are highly susceptible to fire, a devastating weakness. Also, the bearer’s morale is forever stunted, unable to feel the strength of confidence. A sinister transformation for those who seek endurance through sacrifice.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/pov_potion_skele.png";
 		this.m.Value = 500;

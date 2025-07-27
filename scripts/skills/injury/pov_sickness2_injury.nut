@@ -5,7 +5,7 @@ this.pov_sickness2_injury <- this.inherit("scripts/skills/injury/injury", {
 		this.injury.create();
 		this.m.ID = "injury.pov_sickness2";
 		this.m.Name = "Mutation Aftermath";
-		this.m.Description = "This character has undergone a mutation. They are left in a horrible condition which will last for days, [color=" + this.Const.UI.Color.NegativeValue + "]and should avoid any and all fighting[/color]. \n\n While recovering, they will need to consume much more resources.";
+		this.m.Description = "This character has undergone a mutation. They are left in a horrible condition which will last for days, [color=" + this.Const.UI.Color.NegativeValue + "]and should avoid any and all fighting[/color]. \n\n While recovering, they will need to consume much more resources. \n\n This debuff is applied each time the Vatt\'ghern is mutated, but its duration is reduced each time a mutation happens.";
 		this.m.Type = this.m.Type | this.Const.SkillType.TemporaryInjury;
 		this.m.DropIcon = "injury_mutation_aftermath";
 		this.m.Icon = "ui/injury/pov_injury_mutation_aftermath.png";

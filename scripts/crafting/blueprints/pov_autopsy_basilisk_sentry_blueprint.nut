@@ -5,11 +5,11 @@ this.pov_autopsy_basilisk_sentry_blueprint <- this.inherit("scripts/crafting/blu
 		this.blueprint.create();
 		this.m.ID = "blueprint.pov_autopsy_basilisk_sentry";
 		this.m.Type = this.Const.Items.ItemType.Usable;
-		this.m.PreviewCraftable = this.new("scripts/items/pov_autopsy_basilisk_sentry_item");
+		this.m.PreviewCraftable = this.new("scripts/items/autopsy/pov_autopsy_basilisk_sentry_item");
 		this.m.Cost = 115;
 		local ingredients = [
 			{
-				Script = "scripts/items/misc/pov_corpse_basilisk_sentry_item",
+				Script = "scripts/items/misc/corpse/pov_corpse_basilisk_sentry_item",
 				Num = 1
 			},
 		];

@@ -8,22 +8,6 @@
 ::TLW.hasROTU <- ::mods_getRegisteredMod("mod_ROTUC") != null;
 ::TLW.hasMC <- ::mods_getRegisteredMod("mod_nggh_magic_concept") != null;
 
-// Load SSU shit, if exists
-if (::TLW.hasSSU)
-{
-	::includeFiles(::IO.enumerateFiles(TLW.ID + "/hooks_SSU"));
-}
-// Load ROTU shit, if exists
-if (::TLW.hasROTU)
-{
-	::includeFiles(::IO.enumerateFiles(TLW.ID + "/hooks_ROTU"));
-}
-// Load MC shit, if exists
-if (::TLW.hasMC)
-{
-	::includeFiles(::IO.enumerateFiles(TLW.ID + "/hooks_MC"));
-}
-
 // Load all files in Config Folder
 ::includeFiles(::IO.enumerateFiles(TLW.ID + "/config"));
 // load register folder
@@ -32,3 +16,13 @@ if (::TLW.hasMC)
 ::includeFiles(::IO.enumerateFiles(TLW.ID + "/settings"));
 // Load all files in Hooks Folder
 ::includeFiles(::IO.enumerateFiles(TLW.ID + "/hooks"));
+
+// Load SSU shit, if exists
+if (::TLW.hasSSU){::includeFiles(::IO.enumerateFiles(TLW.ID + "/hooks_SSU"));}
+// Load ROTU shit, if exists
+if (::TLW.hasROTU){::includeFiles(::IO.enumerateFiles(TLW.ID + "/hooks_ROTU"));}
+// Load MC shit, if exists
+if (::TLW.hasMC){::includeFiles(::IO.enumerateFiles(TLW.ID + "/hooks_MC"));}
+
+// update the perk tooltips (done by legends)
+//::Const.Perks.updatePerkGroupTooltips();

@@ -5,11 +5,11 @@ this.pov_autopsy_ghost2_blueprint <- this.inherit("scripts/crafting/blueprint", 
 		this.blueprint.create();
 		this.m.ID = "blueprint.pov_autopsy_ghost2";
 		this.m.Type = this.Const.Items.ItemType.Usable;
-		this.m.PreviewCraftable = this.new("scripts/items/pov_autopsy_ghost2_item");
+		this.m.PreviewCraftable = this.new("scripts/items/autopsy/pov_autopsy_ghost2_item");
 		this.m.Cost = 120;
 		local ingredients = [
 			{
-				Script = "scripts/items/misc/pov_corpse_ghost2_item",
+				Script = "scripts/items/misc/corpse/pov_corpse_ghost2_item",
 				Num = 1
 			},
 		];

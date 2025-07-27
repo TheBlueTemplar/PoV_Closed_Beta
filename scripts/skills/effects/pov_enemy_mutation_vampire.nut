@@ -120,14 +120,14 @@ this.pov_enemy_mutation_vampire <- this.inherit("scripts/skills/skill", {
 		this.m.ShouldHeal = true;
 	}
 
-	// Heal for 10% of damage dealt
-	// Max healing is 12.5% of max HP per heal
+	// Heal for 30% of damage dealt
+	// Max healing is 40% of max HP per heal
 	function lifesteal( _damageInflictedHitpoints )
 	{
 		local actor = this.m.Container.getActor();
 		this.spawnIcon("status_effect_09", actor.getTile());
-		local hitpointsHealed = this.Math.round(_damageInflictedHitpoints * 0.10);
-		local maxHeal = this.Math.round(actor.getHitpointsMax()/8);
+		local hitpointsHealed = this.Math.round(_damageInflictedHitpoints * 0.30);
+		local maxHeal = this.Math.round(actor.getHitpointsMax()*0.40);
 
 		if(hitpointsHealed > maxHeal)
 		{

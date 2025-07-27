@@ -5,7 +5,7 @@ this.pov_spider_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_a
 		this.pov_anatomist2_potion_item.create();
 		this.m.ID = "misc.pov_spider_mutagen";
 		this.m.Name = "Spider Mutagen";
-		this.m.Description = "This mutagen reshapes the body into a venomous predator, making every strike drip with toxic potency. The user becomes immune to poison, their altered physiology thriving where others would falter. Every attack delivers a dose of venom, sapping the strength and reflexes of their foes, leaving them sluggish and vulnerable.\n\nAgainst already poisoned enemies, their strikes land with enhanced lethality, rewarding patience and persistence in combat. However, their reliance on venom comes at a cost—against untainted foes, their blows lack the same raw power, forcing them to either adapt or ensure their prey is always envenomed.";
+		this.m.Description = "This mutagen reshapes the body into a venomous predator, making every strike drip with toxic potency. The user becomes immune to poison, their altered physiology thriving where others would falter. Every attack delivers a dose of venom, sapping the strength and reflexes of their foes, leaving them sluggish and vulnerable.\n\nAgainst already poisoned enemies, their strikes land with enhanced lethality, rewarding patience and persistence in combat. However, their reliance on venom comes at a cost—against untainted foes, their blows lack the same raw power, forcing them to either adapt and ensure their prey is always envenomed. \n\n They also get the ability to weave some amounts of sticky,silky web, which can be used to snare their foes, making them vulnerable to attack.";
 		this.m.IconLarge = "";
 		this.m.Icon = "consumables/pov_potion_spider.png";
 		this.m.Value = 400;

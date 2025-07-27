@@ -63,7 +63,6 @@ this.pov_hexemut_brawl_event <- this.inherit("scripts/events/event", {
 
 						if (this.Math.rand(1, 100) <= 70)
 						{
-
 							bro.addLightInjury();
 							this.List.push({
 								id = 10,

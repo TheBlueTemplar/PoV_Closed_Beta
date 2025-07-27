@@ -55,7 +55,7 @@ this.pov_enemy_mutation_ghoul <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/damage_dealt.png",
-				text = "Deals [color=" + this.Const.UI.Color.NegativeValue + "]-5%[/color] melee damage."
+				text = "Deals [color=" + this.Const.UI.Color.NegativeValue + "]-8%[/color] melee damage."
 			},
 			{
 				id = 11,
@@ -159,7 +159,7 @@ this.pov_enemy_mutation_ghoul <- this.inherit("scripts/skills/skill", {
 		// Debuffs
 		_properties.ThresholdToReceiveInjuryMult *= 0.75;
 		_properties.RangedSkillMult *= 0.80;
-		_properties.MeleeDamageMult *= 0.95;
+		_properties.MeleeDamageMult *= 0.92;
 	}
 
 });

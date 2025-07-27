@@ -36,7 +36,7 @@ this.pov_enemy_mutation_skeleton <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/fatigue.png",
-				text = "Increases Fatigue by[color=" + this.Const.UI.Color.PositiveValue + "] 10%[/color]."
+				text = "Increases Fatigue and Resolve by[color=" + this.Const.UI.Color.PositiveValue + "] 25%[/color]."
 			},
 			{
 				id = 11,
@@ -67,7 +67,8 @@ this.pov_enemy_mutation_skeleton <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		// Buffs
-		_properties.StaminaMult *= 1.1;
+		_properties.StaminaMult *= 1.25;
+		_properties.BraveryMult *= 1.25;
 		// Debuffs
 		_properties.HitpointsMult *= 0.90;
 	}

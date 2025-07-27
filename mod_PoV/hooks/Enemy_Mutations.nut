@@ -4,75 +4,111 @@
 	getMutagenDrop = function (_actor, _mutagen)
 	{
 		local chance = _mutagen.BaseDropChance;
+		// Practically, the chance for a mutant to appear AND drop a mutagen is ~0.3% across all diffs
 		// this means a modifier of 300%, 200%, 150% and 75%
-		// Practically, the chance for a mutant to appear AND drop a mutagen is 0.3% across all diffs
 		local difficultyModifier = [3, 2, 1.5, 0.75][::World.Assets.getCombatDifficulty()];
 		chance *= difficultyModifier;
 		if (::TLW.ChaosMode)
 		{
 			// Chaos mode further cuts the mutagen drop chance by half, might reduce it more!
-			chance *= 0.5;
+			chance *= 0.4;
 		}
 		//chance = 100; //For Testing Only
+		::TLW.Mod.Debug.printLog("Rolling for Mutagen Drop || Chance: " + chance);
 		return [chance, _mutagen.Script];
+	}
+}
+
+// Enemy Mutation Chances Const
+::TLW.EnemyMutChance <- 
+{
+	SLow = 5,
+	VLow = 7,
+	Low = 8,
+	Medium = 9,
+	Default = 10,
+	High = 12,
+	VHigh = 15,
+	SHigh = 20,
+	Test50 = 50,
+	Test100 = 100
+}
+
+// Enemy Mutations Integration and other functions at the end of this file!
+// Enemy Mutatuin System	
+::TLW.MutateEntity <- 
+{
+	// New Enemy Mutation System ('Dynamic')
+	// _mutations first has to be a defined array before passed here as an arg
+	mutate_entity = function(_actor, _chance, _mutations, _hard)
+	{
+		local possibleMutations = _mutations;	// List of all possible mutations
+
+		// Mutation Chances Calculations Based on CombatDiff (from ez to legenddary)
+		// Example for most cases with base chance 10. Actual numbers would be: 5,7,10,20
+		local mutationChance = [_chance*0.5, _chance*0.75, _chance, _chance*2][::World.Assets.getCombatDifficulty()];
+		// Second Mutation Chances Calculation
+		local secondMutationChance = mutationChance * 2;
+		if (_actor.m.IsMiniboss == true) {secondMutationChance = mutationChance * 3;}
+
+		// Roll a Mutation Number
+		local roll = this.Math.rand(1.0, 100.0)
+		local mutations = possibleMutations[this.Math.rand(0, possibleMutations.len() - 1)]
+		::TLW.Mod.Debug.printLog("Rolling for mutation: " + roll + " vs " + mutationChance);
+
+		if (roll <= mutationChance)
+		{
+			// Apply Mutation
+			::TLW.Mod.Debug.printLog("Rolled mutation number: " + mutations);
+			::TLW.EnemyMut.MutationFactory[mutations](_actor, _hard);
+
+			// Second Mutation
+			// Only Possible in non-easy diffs
+			if(this.World.Assets.getCombatDifficulty() != this.Const.Difficulty.Easy)
+			{
+				local secondRoll = this.Math.rand(1.0, 100.0)
+				::TLW.Mod.Debug.printLog("Rolling for second mutation: " + secondRoll + " vs " + secondMutationChance);
+				if (secondRoll <= secondMutationChance)
+				{
+				    // Remove the mutation previosuly added from the array, to avoid duplication
+				    possibleMutations.remove(possibleMutations.find(mutations))
+				    // Fallback for second mut
+				    if (possibleMutations.len() !=0)
+				    {	
+				    	// Pick a second mutation from the remaining options
+				    	local secondMutations = possibleMutations[this.Math.rand(0, possibleMutations.len() - 1)]
+					    // Apply the second mutation
+					    ::TLW.Mod.Debug.printLog("Rolled second mutation number: " + secondMutations);
+					    ::TLW.EnemyMut.MutationFactory[secondMutations](_actor, _hard);
+				    }
+				}
+			}
+		}
 	}
 }
 
 ::TLW.Chaos <- 
 {
-	// Potttttt
+	// Full credits to pot here (well, and Chopeks, and myself at that point xd)
 	add_mutation_all = function(_actor, _hard)	// _hard argument is just to pass it to other functions
 	{
-		local roll = this.Math.rand(1.0, 100.0)
-		local mutationChance = 5.0 	// Mutation Appearance Chance Handled by switch below
-		local possibleMutations = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] // Create a list of all possible mutations
-		local mutations = possibleMutations[this.Math.rand(0, possibleMutations.len() - 1)]	//mutation number(index) roll
-		
+		local roll;
 		// Mutation Chance modification based on game's combat diff
-		switch (this.World.Assets.getCombatDifficulty())
-		{
-			case this.Const.Difficulty.Easy: mutationChance = 2.0; break
-			case this.Const.Difficulty.Normal: mutationChance = 3.0; break
-			case this.Const.Difficulty.Hard: mutationChance = 5.0; break
-			case this.Const.Difficulty.Legendary: mutationChance = 8.0; break
-		}
+		local mutationChance = [2.0, 3.0, 5.0, 7.0][::World.Assets.getCombatDifficulty()];
+		// Create a list of all possible mutations (defined below)
+		local possibleMutations = ::TLW.EnemyMut.All;
 
-		//loop that checks the array(possibleMutations) length, rolls a mutation number(index) and removes rolled mutation from the array
-		//log calls in this loop will absolutely shit the log(lol) obviously
-		do //prob could be done way easier with good ol incremental loop, but i remembered those after writing all this shit so eh, it works
+		// Incremental loop, rolls for each of the possible mutations once
+		for (local i = 0; i < possibleMutations.len(); i++)
 		{
-			//::TLW.Mod.Debug.printLog("Rolling for mutation: " + roll + " vs " + mutationChance)
+			roll = this.Math.rand(1.0, 100.0);
 			if (roll <= mutationChance)
 			{
-				//::TLW.Mod.Debug.printLog("Rolled mutation number: " + mutations);
-				//prob could include just one type of mutations(wildlife or humanoid), but it works either way since i added fallbacks before adding flags and effects(there should be no duplicates in any scenario)
-				switch (mutations)
-				{
-					case 1: ::TLW.EnemyMutations.add_mutation_enemy_unhold(_actor, false); break;
-				    case 2: ::TLW.EnemyMutations.add_mutation_enemy_vampire(_actor, false); break;
-				    case 3: ::TLW.EnemyMutations.add_mutation_enemy_spider(_actor, false); break;
-				    case 4: ::TLW.EnemyMutations.add_mutation_enemy_orc(_actor, false); break;
-				    case 5: ::TLW.EnemyMutations.add_mutation_enemy_lindwurm(_actor, false); break;
-				    case 6: ::TLW.EnemyMutations.add_mutation_enemy_sandgolem(_actor, false); break;
-				    case 7: ::TLW.EnemyMutations.add_mutation_enemy_ghost(_actor, false); break;
-				    case 8: ::TLW.EnemyMutations.add_mutation_enemy_serpent(_actor, false); break;
-				    case 9: ::TLW.EnemyMutations.add_mutation_enemy_ghoul(_actor, false); break;
-				    case 10: ::TLW.EnemyMutations.add_mutation_enemy_basilisk(_actor, false); break;
-				    case 11: ::TLW.EnemyMutations.add_mutation_enemy_direwolf(_actor, false); break;
-				    case 12: ::TLW.EnemyMutations.add_mutation_enemy_goblin(_actor, false); break;
-				    case 13: ::TLW.EnemyMutations.add_mutation_enemy_schrat(_actor, false); break;
-				    case 14: ::TLW.EnemyMutations.add_mutation_enemy_skeleton(_actor, false); break;
-				    case 15: ::TLW.EnemyMutations.add_mutation_enemy_alp(_actor, false); break;
-				    case 16: ::TLW.EnemyMutations.add_mutation_enemy_hexe(_actor, false); break;
-				    default: ::TLW.Mod.Debug.printLog("Unknown mutation type: " + mutations); break;
-				}
+				local mutation = possibleMutations[i];
+				::TLW.EnemyMut.MutationFactory[mutation](_actor, _hard);
+				::TLW.Mod.Debug.printLog("Mutated with Roll: " + roll + " / " + mutationChance + " Rolled mutation number: " + mutation);
 			}
-			possibleMutations.remove(possibleMutations.find(mutations))	//removing rolled mutation from the array
-			//::TLW.Mod.Debug.printLog("Removing rolled mutation (" + mutations + ") from the array, resulting length: " + possibleMutations.len())
-			if(possibleMutations.len() != 0)	//this check fixes hitting nonexistent index when the possibleMutations array eventually becomes empty
-				mutations = possibleMutations[this.Math.rand(0, possibleMutations.len() - 1)] //mutation number(index) roll(well, reroll)
-			roll = this.Math.rand(1.0, 100.0)	//roll reroll(lol)
-		} while (possibleMutations.len() != 0)
+		}
 	}
 }
 
@@ -107,358 +143,194 @@
 {
 	// ALL MUTATIONS REFERENCE
 	/*
-	::TLW.EnemyMutation.add_mutation_enemy_unhold(this.actor, false);
-	::TLW.EnemyMutation.add_mutation_enemy_vampire(this.actor, false);
-	::TLW.EnemyMutation.add_mutation_enemy_spider(this.actor, false);
-	::TLW.EnemyMutation.add_mutation_enemy_orc(this.actor, false);
-	::TLW.EnemyMutation.add_mutation_enemy_lindwurm(this.actor, false);
-	::TLW.EnemyMutation.add_mutation_enemy_sandgolem(this.actor, false);
-	::TLW.EnemyMutation.add_mutation_enemy_ghost(this.actor, false);
-	::TLW.EnemyMutation.add_mutation_enemy_serpent(this.actor, false);
-	::TLW.EnemyMutation.add_mutation_enemy_ghoul(this.actor, false);
-	::TLW.EnemyMutation.add_mutation_enemy_basilisk(this.actor, false);
-	::TLW.EnemyMutation.add_mutation_enemy_direwolf(this.actor, false);
-	::TLW.EnemyMutation.add_mutation_enemy_goblin(this.actor, false);
-	::TLW.EnemyMutation.add_mutation_enemy_schrat(this.actor, false);
-	::TLW.EnemyMutation.add_mutation_enemy_skeleton(this.actor, false);
-	::TLW.EnemyMutation.add_mutation_enemy_alp(this.actor, false);
-	::TLW.EnemyMutation.add_mutation_enemy_hexe(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_unhold(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_vampire(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_spider(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_orc(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_lindwurm(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_sandgolem(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_ghost(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_serpent(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_ghoul(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_basilisk(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_direwolf(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_goblin(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_schrat(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_skeleton(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_alp(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_hexe(this.actor, false);
 	*/
 
-	add_mutation_enemy_serpent = function(_actor, _hard)
+	// Enemy Mutation General Function
+	// Arguments: Entity type in files (serpent,ghoul etc.), title in battle, additional tag
+	// actor and hard are  handled below
+	add_mutation_enemy = function(_name, _title, _tag, _actor, _hard)
 	{
+		//Summoned entities currently CAN have mutations (no issue with me)
 		if (_actor.isResurrected()){return;} //Fallback-Fix for enemies getting mutation when rising from dead
 
+		// Mutant name change!
+		if (!_actor.getFlags().has("mutant"))
+		{
+			local prevName = _actor.m.Name;
+			_actor.m.Name = "[Color=#01420d]"+_title+"[/color] " + prevName;
+		}
 		// Flag for one having a specific mutation (Part of the old system, not used now)
-		if (!_actor.getFlags().has("pov_mutant_serpent"))
-			_actor.getFlags().add("pov_mutant_serpent")
+		if (!_actor.getFlags().has("pov_mutant_"+_name+""))
+			_actor.getFlags().add("pov_mutant_"+_name+"")
 		// Mutant flag, battle mechanics interactions
 		if (!_actor.getFlags().has("mutant"))
 			_actor.getFlags().add("mutant")
-		// Here, in some cases also the Undead flag is added, for the same reason
+		// Additional Flag, used in cases like "undead", can also be empty
+		if (_tag)
+		{
+			if (!_actor.getFlags().has(_tag))
+			_actor.getFlags().add(_tag)
+		}
+		// Mutation addition
 		if (_hard) 
 		{
 			// Placeholder, may be used may not be used, we shall see
 		}else
 		{
 			// Enemy mutation added with fallback
-			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_serpent"))
-				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_serpent"))
+			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_"+_name+""))
+				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_"+_name+""))
 		}
-
 		// Add the Mutation effect Sprite
 		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
 
+	add_mutation_enemy_serpent = function(_actor, _hard)
+	{
+		::TLW.EnemyMutations.add_mutation_enemy("serpent", "Agile", null, _actor, _hard);
+	}
+
 	add_mutation_enemy_unhold = function(_actor, _hard)
 	{
-		if (_actor.isResurrected()){return;}
-
-		if (!_actor.getFlags().has("pov_mutant_unhold"))
-			_actor.getFlags().add("pov_mutant_unhold")
-		if (!_actor.getFlags().has("mutant"))
-			_actor.getFlags().add("mutant")
-		if (_hard)
-		{
-			// ..I am
-		}else
-		{
-			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_unhold"))
-				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_unhold"))
-		}
-
-		::TLW.MutantEffect.add_mutant_effect(_actor);
+		::TLW.EnemyMutations.add_mutation_enemy("unhold", "Hulking", null, _actor, _hard);
 	}
 
 	add_mutation_enemy_vampire = function(_actor, _hard)
 	{
-		if (_actor.isResurrected()){return;}
-
-		if (!_actor.getFlags().has("pov_mutant_vampire"))
-			_actor.getFlags().add("pov_mutant_vampire")
-		if (!_actor.getFlags().has("mutant"))
-			_actor.getFlags().add("mutant")
-		if (!_actor.getFlags().has("undead"))
-			_actor.getFlags().add("undead")
-
-		if (_hard)
-		{
-			// ..I am
-		}else
-		{
-			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_vampire"))
-				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_vampire"))
-		}
-
-		::TLW.MutantEffect.add_mutant_effect(_actor);
+		::TLW.EnemyMutations.add_mutation_enemy("vampire", "Vampiric", "undead", _actor, _hard);
 	}
 
 	add_mutation_enemy_spider = function(_actor, _hard)
 	{
-		if (_actor.isResurrected()){return;}
-
-		if (!_actor.getFlags().has("pov_mutant_spider"))
-			_actor.getFlags().add("pov_mutant_spider")
-		if (!_actor.getFlags().has("mutant"))
-			_actor.getFlags().add("mutant")
-		if (_hard)
-		{
-			// ..I am
-		}else
-		{
-			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_spider"))
-				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_spider"))
-		}
-
-		::TLW.MutantEffect.add_mutant_effect(_actor);
+		::TLW.EnemyMutations.add_mutation_enemy("spider", "Poisonous", null, _actor, _hard);
 	}
 
 	add_mutation_enemy_orc = function(_actor, _hard)
 	{
-		if (_actor.isResurrected()){return;}
-
-		if (!_actor.getFlags().has("pov_mutant_orc"))
-			_actor.getFlags().add("pov_mutant_orc")
-		if (!_actor.getFlags().has("mutant"))
-			_actor.getFlags().add("mutant")
-		if (_hard)
-		{
-			// ..I am
-		}else
-		{
-			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_orc"))
-				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_orc"))
-		}
-
-		::TLW.MutantEffect.add_mutant_effect(_actor);
+		::TLW.EnemyMutations.add_mutation_enemy("orc", "Savage", null, _actor, _hard);
 	}
 
 	add_mutation_enemy_lindwurm = function(_actor, _hard)
 	{
-		if (_actor.isResurrected()){return;}
-
-		if (!_actor.getFlags().has("pov_mutant_lindwurm"))
-			_actor.getFlags().add("pov_mutant_lindwurm")
-		if (!_actor.getFlags().has("mutant"))
-			_actor.getFlags().add("mutant")
-
-		if (_hard)
-		{
-			// ..I am
-		}else
-		{
-			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_lindwurm"))
-				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_lindwurm"))
-		}
-
-		::TLW.MutantEffect.add_mutant_effect(_actor);
+		::TLW.EnemyMutations.add_mutation_enemy("lindwurm", "Wurmblood", null, _actor, _hard);
 	}
 
 	add_mutation_enemy_sandgolem = function(_actor, _hard)
 	{
-		if (_actor.isResurrected()){return;}
-
-		if (!_actor.getFlags().has("pov_mutant_sandgolem"))
-			_actor.getFlags().add("pov_mutant_sandgolem")
-		if (!_actor.getFlags().has("mutant"))
-			_actor.getFlags().add("mutant")
-		if (_hard)
-		{
-			// ..I am
-		}else
-		{
-			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_sandgolem"))
-				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_sandgolem"))
-		}
-
-		::TLW.MutantEffect.add_mutant_effect(_actor);
+		::TLW.EnemyMutations.add_mutation_enemy("sandgolem", "Rockskin", null, _actor, _hard);
 	}
 
 	add_mutation_enemy_ghost = function(_actor, _hard)
 	{
-		if (_actor.isResurrected()){return;}
-
-		if (!_actor.getFlags().has("pov_mutant_ghost"))
-			_actor.getFlags().add("pov_mutant_ghost")
-		if (!_actor.getFlags().has("mutant"))
-			_actor.getFlags().add("mutant")
-		if (!_actor.getFlags().has("undead"))
-			_actor.getFlags().add("undead")
-		if (_hard)
-		{
-			// ..I am
-		}else
-		{
-			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_ghost"))
-				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_ghost"))
-		}
-
-		::TLW.MutantEffect.add_mutant_effect(_actor);
+		::TLW.EnemyMutations.add_mutation_enemy("ghost", "Ghastly", "undead", _actor, _hard);
 	}
 
 	add_mutation_enemy_ghoul = function(_actor, _hard)
 	{
-		if (_actor.isResurrected()){return;}
-
-		if (!_actor.getFlags().has("pov_mutant_ghoul"))
-			_actor.getFlags().add("pov_mutant_ghoul")
-		if (!_actor.getFlags().has("mutant"))
-			_actor.getFlags().add("mutant")
-		if (_hard)
-		{
-			// ..I am
-		}else
-		{
-			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_ghoul"))
-				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_ghoul"))
-		}
-
-		::TLW.MutantEffect.add_mutant_effect(_actor);
+		::TLW.EnemyMutations.add_mutation_enemy("ghoul", "Ghoulish", null, _actor, _hard);
 	}
 
 	add_mutation_enemy_basilisk = function(_actor, _hard)
 	{
-		if (_actor.isResurrected()){return;}
-
-		if (!_actor.getFlags().has("pov_mutant_basilisk"))
-			_actor.getFlags().add("pov_mutant_basilisk")
-		if (!_actor.getFlags().has("mutant"))
-			_actor.getFlags().add("mutant")
-		if (_hard)
-		{
-			// ..I am
-		}else
-		{
-			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_basilisk"))
-				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_basilisk"))
-		}
-
-		::TLW.MutantEffect.add_mutant_effect(_actor);
+		::TLW.EnemyMutations.add_mutation_enemy("basilisk", "Focused", null, _actor, _hard);
 	}
 
 	add_mutation_enemy_direwolf = function(_actor, _hard)
 	{
-		if (_actor.isResurrected()){return;}
-
-		if (!_actor.getFlags().has("pov_mutant_direwolf"))
-			_actor.getFlags().add("pov_mutant_direwolf")
-		if (!_actor.getFlags().has("mutant"))
-			_actor.getFlags().add("mutant")
-		if (_hard)
-		{
-			// ..I am
-		}else
-		{
-			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_direwolf"))
-				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_direwolf"))
-		}
-
-		::TLW.MutantEffect.add_mutant_effect(_actor);
+		::TLW.EnemyMutations.add_mutation_enemy("direwolf", "Beastly", null, _actor, _hard);
 	}
 
 	add_mutation_enemy_goblin = function(_actor, _hard)
 	{
-		if (_actor.isResurrected()){return;}
-
-		if (!_actor.getFlags().has("pov_mutant_goblin"))
-			_actor.getFlags().add("pov_mutant_goblin")
-		if (!_actor.getFlags().has("mutant"))
-			_actor.getFlags().add("mutant")
-		if (_hard)
-		{
-			// ..I am
-		}else
-		{
-			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_goblin"))
-				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_goblin"))
-		}
-
-		::TLW.MutantEffect.add_mutant_effect(_actor);
+		::TLW.EnemyMutations.add_mutation_enemy("goblin", "Cunning", null, _actor, _hard);
 	}
 
 	add_mutation_enemy_schrat = function(_actor, _hard)
 	{
-		if (_actor.isResurrected()){return;}
-
-		if (!_actor.getFlags().has("pov_mutant_schrat"))
-			_actor.getFlags().add("pov_mutant_schrat")
-		if (!_actor.getFlags().has("mutant"))
-			_actor.getFlags().add("mutant")
-		if (_hard)
-		{
-			// ..I am
-		}else
-		{
-			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_schrat"))
-				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_schrat"))
-		}
-
-		::TLW.MutantEffect.add_mutant_effect(_actor);
+		::TLW.EnemyMutations.add_mutation_enemy("schrat", "Barkhide", null, _actor, _hard);
 	}
 
 	add_mutation_enemy_skeleton = function(_actor, _hard)
 	{
-		if (_actor.isResurrected()){return;}
-
-		if (!_actor.getFlags().has("pov_mutant_skeleton"))
-			_actor.getFlags().add("pov_mutant_skeleton")
-		if (!_actor.getFlags().has("mutant"))
-			_actor.getFlags().add("mutant")
-		if (!_actor.getFlags().has("undead"))
-		{
-			_actor.getFlags().add("undead")
-		}
-		if (_hard)
-		{
-			// ..I am
-		}else
-		{
-			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_skeleton"))
-				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_skeleton"))
-		}
-
-		::TLW.MutantEffect.add_mutant_effect(_actor);
+		::TLW.EnemyMutations.add_mutation_enemy("skeleton", "Revenant", "undead", _actor, _hard);
 	}
 
 	add_mutation_enemy_alp = function(_actor, _hard)
 	{
-		if (_actor.isResurrected()){return;}
-
-		if (!_actor.getFlags().has("pov_mutant_alp"))
-			_actor.getFlags().add("pov_mutant_alp")
-		if (!_actor.getFlags().has("mutant"))
-			_actor.getFlags().add("mutant")
-		if (_hard)
-		{
-			// ..I am
-		}else
-		{
-			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_alp"))
-				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_alp"))
-		}
-
-		::TLW.MutantEffect.add_mutant_effect(_actor);
+		::TLW.EnemyMutations.add_mutation_enemy("alp", "Shifting", null, _actor, _hard);
 	}
 
 	add_mutation_enemy_hexe = function(_actor, _hard)
 	{
-		if (_actor.isResurrected()){return;}
-		
-		if (!_actor.getFlags().has("pov_mutant_hexe"))
-			_actor.getFlags().add("pov_mutant_hexe")
-		if (!_actor.getFlags().has("mutant"))
-			_actor.getFlags().add("mutant")
-		if (_hard)
-		{
-			// ..I am
-		}else
-		{
-			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_hexe"))
-				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_hexe"))
-		}
-
-		::TLW.MutantEffect.add_mutant_effect(_actor);
+		::TLW.EnemyMutations.add_mutation_enemy("hexe", "Cursebearer", null, _actor, _hard);
 	}
-	
 	// ENEMY SPECIFIC MUTATIONS (wtf was this for xd)
 }
+
+// Function that Handles Enemy Mutation System
+::TLW.EnemyMut <- {
+  All = [],
+  MutationFactory = [],
+
+  // Add new mutation function
+  add = function(_factory) 
+  {
+    local index = ::TLW.EnemyMut.All.len()+1;
+    ::TLW.EnemyMut.All.push(index);
+    while(index >= ::TLW.EnemyMut.MutationFactory.len())
+    {
+      ::TLW.EnemyMut.MutationFactory.push(function(_actor, _hard){});
+    }
+    ::TLW.EnemyMut.MutationFactory[index] = _factory;
+    return index;
+  },
+  // Helper Function, call the All array and exclude defined stuff
+  AllExcept = function (...)
+  {
+    return ::TLW.EnemyMut.All.filter(function (_idx, _x) { return !(_x in vargv) });
+  },
+  // Helper Function, call the All array and include only defined stuff
+  Only = function (...)
+  {
+    return ::TLW.EnemyMut.All.filter(function (_idx, _x) { return (_x in vargv) });
+  }
+}
+
+// Enemy Mutations Definition n Integration
+// Added to Above Object via Its Function, take EnemyMutations function as arg
+::TLW.EnemyMut.Unhold <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_unhold);
+::TLW.EnemyMut.Vampire <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_vampire);
+::TLW.EnemyMut.Spider <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_spider);
+::TLW.EnemyMut.Orc <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_orc);
+::TLW.EnemyMut.Lindwurm <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_lindwurm);
+::TLW.EnemyMut.Sandgolem <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_sandgolem);
+::TLW.EnemyMut.Ghost <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_ghost);
+::TLW.EnemyMut.Serpent <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_serpent);
+::TLW.EnemyMut.Ghoul <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_ghoul);
+::TLW.EnemyMut.Basilisk <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_basilisk);
+::TLW.EnemyMut.Direwolf <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_direwolf);
+::TLW.EnemyMut.Goblin <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_goblin);
+::TLW.EnemyMut.Schrat <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_schrat);
+::TLW.EnemyMut.Skeleton <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_skeleton);
+::TLW.EnemyMut.Alp <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_alp);
+::TLW.EnemyMut.Hexe <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_hexe);
+
+// Enemy Mutation Arrays Are Created From The Above Values
+// in Enemy_Mutation_Arrays.nut, in afterhooks (rest in prev file, bottom)
+

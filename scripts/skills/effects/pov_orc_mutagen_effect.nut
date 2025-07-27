@@ -19,7 +19,7 @@ this.pov_orc_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Kinetic Fibers[/color]: This character\'s muscles have mutated in such a way that the they allow the use of large, unqieldy orc weapons, while also improving the user's strength.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Hightened Agressiveness[/color]:This character\'s nervous system was tweaked to be a pool of endless rage. The Vatt\'ghern gains the charge ability, but has little mind to defend himself properly.";
+		return "[color=" + this.Const.UI.Color.PositiveValue + "]Kinetic Fibers[/color]: This character\'s muscles have mutated in such a way that the they allow the use of large, unqieldy orc weapons, while also improving the user's strength.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Hightened Agressiveness[/color]:This character\'s nervous system was tweaked to be a pool of endless rage. The Vatt\'ghern gains the charge ability, but has little mind to defend himself properly. When injured, they receive a temporary boost to their agression.";
 	}
 
 	function getTooltip()
@@ -45,12 +45,18 @@ this.pov_orc_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "Gains the ability to [color=" + this.Const.UI.Color.PositiveValue + "]charge[/color] and stun opponents."
+				text = "Gets [color=" + this.Const.UI.Color.PositiveValue + "]Temporary Buffs[/color] when injured."
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/special.png",
+				text = "Gains the ability to [color=" + this.Const.UI.Color.PositiveValue + "]charge[/color] and stun opponents."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/damage_dealt.png",
 				text = "Does [color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] overall damage."
 			},
 			{

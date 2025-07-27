@@ -5,11 +5,11 @@ this.pov_autopsy_unhold_blueprint <- this.inherit("scripts/crafting/blueprint", 
 		this.blueprint.create();
 		this.m.ID = "blueprint.pov_autopsy_unhold";
 		this.m.Type = this.Const.Items.ItemType.Usable;
-		this.m.PreviewCraftable = this.new("scripts/items/pov_autopsy_unhold_item");
+		this.m.PreviewCraftable = this.new("scripts/items/autopsy/pov_autopsy_unhold_item");
 		this.m.Cost = 110;
 		local ingredients = [
 			{
-				Script = "scripts/items/misc/pov_corpse_unhold_item",
+				Script = "scripts/items/misc/corpse/pov_corpse_unhold_item",
 				Num = 1
 			},
 		];
@@ -26,11 +26,11 @@ this.pov_autopsy_unhold_blueprint <- this.inherit("scripts/crafting/blueprint", 
 
 	function onCraft( _stash )
 	{
-		if (this.Math.rand(1, 100) <= 10)
+		if (this.Math.rand(1, 100) <= 15)
 			{
 				_stash.add(this.new("scripts/items/misc/anatomist/pov_unhold_mutagen_item"));
 			}
-		if (this.Math.rand(1, 100) <= 30)
+		if (this.Math.rand(1, 100) <= 25)
 			{
 				_stash.add(this.new("scripts/items/loot/deformed_valuables_item"));
 			}

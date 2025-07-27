@@ -106,7 +106,7 @@ this.pov_enemy_mutation_serpent <- this.inherit("scripts/skills/skill", {
 		}
 		if (nearbyEnemies == 1)
 		{
-			return 10;
+			return 12;
 		}
 		else
 		{
@@ -116,7 +116,7 @@ this.pov_enemy_mutation_serpent <- this.inherit("scripts/skills/skill", {
 
 	function getTooltip()
 	{
-		local initiative = this.Math.floor(this.getContainer().getActor().getInitiative() * 0.10);
+		local initiative = this.Math.floor(this.getContainer().getActor().getInitiative() * 0.15);
 		if (initiative < 0) {initiative = 0;}
 		local bonus = this.getBonus();
 		local surrAmount = this.getPenalty();
@@ -175,7 +175,7 @@ this.pov_enemy_mutation_serpent <- this.inherit("scripts/skills/skill", {
 
 	function onAfterUpdate( _properties )
 	{
-		local initiative = this.Math.floor(this.getContainer().getActor().getInitiative() * 0.10);
+		local initiative = this.Math.floor(this.getContainer().getActor().getInitiative() * 0.15);
 		_properties.MeleeDefense += this.Math.max(0, initiative);
 		_properties.RangedDefense += this.Math.max(0, initiative);
 	}

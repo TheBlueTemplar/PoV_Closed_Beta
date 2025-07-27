@@ -4,9 +4,12 @@ this.pov_witcher_longsword <- this.inherit("scripts/items/weapons/weapon", {
 	},
 	function create()
 	{
+
+		local NameList = ["Gwaed\'thain","Fen\'aeth","Zireael","Gwynbleidd","Addan\'Anye"];
+
 		this.weapon.create();
 		this.m.ID = "weapon.pov_witcher_longsword";
-		this.m.Name = "Gwaed\'thain";
+		this.m.Name = "[color=#023ae3]" + NameList[this.Math.rand(0, NameList.len() - 1)] + "[/color]";
 		this.m.Description = "A long silver sword. Perfectly balanced and ideal for slaying monsters.\n\nThis legendary weapon is as old, if not more, than some of the Vatt'ghern.";
 		this.m.IconLarge = "weapons/melee/pov_witchersword.png";
 		this.m.Icon = "weapons/melee/pov_witchersword_70x70.png";
@@ -21,14 +24,14 @@ this.pov_witcher_longsword <- this.inherit("scripts/items/weapons/weapon", {
 		this.m.ShowQuiver = false;
 		this.m.ShowArmamentIcon = true;
 		this.m.ArmamentIcon = "pov_icon_witchersword";
-		this.m.Value = 7500;
+		this.m.Value = 10000;
 		this.m.IsPrecious = true;
 		this.m.ShieldDamage = 12;
 		this.m.Condition = 160.0;
 		this.m.ConditionMax = 160.0;
 		this.m.StaminaModifier = -8;
-		this.m.RegularDamage = 65;
-		this.m.RegularDamageMax = 90;
+		this.m.RegularDamage = 70;
+		this.m.RegularDamageMax = 92;
 		this.m.ArmorDamageMult = 1.0;
 		this.m.DirectDamageMult = 0.3;
 		this.m.ChanceToHitHead = 10;

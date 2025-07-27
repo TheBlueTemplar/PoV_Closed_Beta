@@ -23,7 +23,7 @@ this.pov_vampire_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Parasitic Blood[/color]: This character\'s body has the incredible ability to incorporate different blood types into itself. This grants them healing from absorption of blood through skin pores.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Lord of the Night[/color]: This character is not affected by the typical nighttime penalties. In addition, they receive a bug bonus to all combat stats when fighting at night.\n\n[color=" + this.Const.UI.Color.NegativeValue + "]Spurned by the Sun[/color]: The nature of this mutation weakens this character when fighting at daytime.";
+		return "[color=" + this.Const.UI.Color.PositiveValue + "]Parasitic Blood[/color]: This character\'s body has the incredible ability to incorporate different blood types into itself. This grants them healing from absorption of blood through skin pores.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Lord of the Night[/color]: This character is not affected by the typical nighttime penalties. In addition, they receive a big bonus to all combat stats when fighting at night.\n\n[color=" + this.Const.UI.Color.NegativeValue + "]Spurned by the Sun[/color]: The nature of this mutation weakens this character when fighting at daytime.";
 	}
 
 	function getTooltip()

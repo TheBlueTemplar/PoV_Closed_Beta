@@ -17,7 +17,7 @@ this.pov_white_direwolf_racial <- this.inherit("scripts/skills/skill", {
 	{
 		if (_hitInfo.DamageType == this.Const.Damage.DamageType.Burning)
 		{
-			_properties.DamageReceivedRegularMult *= 1.20;
+			_properties.DamageReceivedTotalMult *= 1.20;
 		}
 	}
 

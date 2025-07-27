@@ -37,7 +37,7 @@ this.pov_enemy_mutation_unhold <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "Has [color=" + this.Const.UI.Color.PositiveValue + "]+30%[/color] hitpoint bonus and regenerates [color=" + this.Const.UI.Color.PositiveValue + "]15[/color] hp per turn"
+				text = "Has [color=" + this.Const.UI.Color.PositiveValue + "]+40%[/color] hitpoint bonus and regenerates [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] of their max hp per turn"
 			},
 			{
 			    id = 11,
@@ -83,15 +83,17 @@ this.pov_enemy_mutation_unhold <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate(_properties)
 	{
-		_properties.HitpointsMult *= 1.30;
+		_properties.HitpointsMult *= 1.50;
+		_properties.Hitpoints += 20;
 	}
 
 	function onTurnStart()
 	{
-		// REGEN 15 HP PER TURN
+		// REGEN 10% HP PER TURN
 		local actor = this.getContainer().getActor();
 		local healthMissing = actor.getHitpointsMax() - actor.getHitpoints();
-		local healthAdded = this.Math.min(healthMissing, 15);
+		local healthMax = actor.getHitpointsMax();
+		local healthAdded = this.Math.min(healthMissing, healthMax*0.1);
 
 		if (healthAdded <= 0)
 		{

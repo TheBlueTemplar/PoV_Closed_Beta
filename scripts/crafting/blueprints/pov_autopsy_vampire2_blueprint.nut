@@ -5,11 +5,11 @@ this.pov_autopsy_vampire2_blueprint <- this.inherit("scripts/crafting/blueprint"
 		this.blueprint.create();
 		this.m.ID = "blueprint.pov_autopsy_vampire2";
 		this.m.Type = this.Const.Items.ItemType.Usable;
-		this.m.PreviewCraftable = this.new("scripts/items/pov_autopsy_vampire2_item");
+		this.m.PreviewCraftable = this.new("scripts/items/autopsy/pov_autopsy_vampire2_item");
 		this.m.Cost = 105;
 		local ingredients = [
 			{
-				Script = "scripts/items/misc/pov_corpse_vampire2_item",
+				Script = "scripts/items/misc/corpse/pov_corpse_vampire2_item",
 				Num = 1
 			},
 		];
@@ -30,7 +30,7 @@ this.pov_autopsy_vampire2_blueprint <- this.inherit("scripts/crafting/blueprint"
 			{
 				_stash.add(this.new("scripts/items/misc/anatomist/pov_vampire_mutagen_item"));
 			}
-		if (this.Math.rand(1, 100) <= 55)
+		if (this.Math.rand(1, 100) <= 50)
 			{
 				_stash.add(this.new("scripts/items/misc/legend_ancient_scroll_item"));
 			}

@@ -9,7 +9,7 @@ this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 	{
 		this.m.ID = "scenario.pov_last_witchers";
 		this.m.Name = "Path of the Vatt'ghern";
-		this.m.Description = "[p=c][img]gfx/ui/events/pov_vattghern_origin.png[/img][/p][p] You are a Vatt\'ghern, a professional beastslayer who has come to these lands with the ambition of enstablishing a new School! The challenges are many, as most view you and your folk as mutants, thus it will be hard to earn the people\'s trust, except for those who also fight against vicious beasts...\n\n[color=#bcad8c]Vatt\'ghern on the Path:[/color] Start with an experienced Vatt\'ghern, who has all the knowledge of mutagen creation and corpse dissection and has also brought a few Trial of the Grasses potions along, along with some strong gear. \n\n[color=#bcad8c]Monster Hunters:[/color] Due to the expertise of your group, you can move faster on the map, and you can spot enemy tracks from further away. \n\n[color=#bcad8c]Mutants:[/color] Few people will trust you, and even fewer will want to deal with you. You start with significantly low reputation. Most recruits, excluding those who hate beasts or are experienced at beasthunting, will demand much more pay to work for you. On the other hand, beasthunting origins, including some rare ones, will appear more frequently. Finally, you will get 15% worse prices overall. \n\n[color=#bcad8c]Spoils Of The Hunt:[/color] 25% Chance for extra drops from monsters, due to your knowledge and techniques. \n\n[color=#bcad8c]This Origin is meant to be a \"headstart\" into PoV, easing the players into the mod by immediately granting access into some of its mid-late game mechanics. [/color][/p]";
+		this.m.Description = "[p=c][img]gfx/ui/events/pov_vattghern_origin.png[/img][/p][p] You are a Vatt\'ghern, a professional beastslayer who has come to these lands with the ambition of establishing a new School! The challenges are many, as most view you and your kin as mutants, thus it will be hard to earn the people\'s trust, except for those who also fight against vicious beasts...\n\n[color=#bcad8c]Vatt\'ghern on the Path:[/color] Start with an experienced Vatt\'ghern, who has all the knowledge of mutagen creation and corpse dissection and has also brought a few Trial of the Grasses potions along, along with some strong gear. \n\n[color=#bcad8c]Monster Hunters:[/color] Due to the expertise of your group, you can move faster on the map, and you can spot enemy tracks from further away. \n\n[color=#bcad8c]Mutants:[/color] Few people will trust you, and even fewer will want to deal with you. You start with significantly low reputation. Most recruits, excluding those who hate beasts or are experienced at beasthunting, will demand much more pay to work for you. On the other hand, beasthunting origins, including some rare ones, will appear more frequently. Finally, you will get 15% worse prices overall. \n\n[color=#bcad8c]Spoils Of The Hunt:[/color] 25% Chance for extra drops from monsters, due to your knowledge and techniques. \n\n[color=#bcad8c]This Origin is meant to be a \"headstart\" into PoV, easing the players into the mod by immediately granting access into some of its mid-late game mechanics. [/color][/p]";
 		this.m.Difficulty = 2;
 		this.m.Order = 40;
 		this.m.IsFixedLook = true;
@@ -61,11 +61,12 @@ this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 		bros[0].setPlaceInFormation(4);
 		bros[0].getBaseProperties().Hitpoints += 30;
 		bros[0].getBaseProperties().MeleeSkill += 10;
+		bros[0].getBaseProperties().RangedSkill += 5;
 		bros[0].getBaseProperties().MeleeDefense += 10;
 		bros[0].getBaseProperties().RangedDefense += 5;
 		bros[0].getSkills().add(this.new("scripts/skills/traits/pov_vattghern_trait"));
 		bros[0].getFlags().increment("pov_ActiveMutations");
-		bros[0].getSkills().add(this.new("scripts/skills/traits/old_trait"));
+		bros[0].getSkills().add(this.new("scripts/skills/traits/pov_old_vattghern_trait"));
 		bros[0].getSkills().add(this.new("scripts/skills/traits/player_character_trait"));
 		bros[0].getSkills().add(this.new("scripts/skills/perks/perk_legend_potion_brewer"));
 		bros[0].getSkills().add(this.new("scripts/skills/perks/perk_legend_field_triage"));
@@ -146,15 +147,41 @@ this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 
 		this.World.Assets.addBusinessReputation(this.m.StartingBusinessReputation);
 		this.World.Flags.set("HasLegendCampCrafting", true);
+		// Starting Supplies
 		this.World.Assets.getStash().add(this.new("scripts/items/supplies/ground_grains_item"));
-		this.World.Assets.getStash().add(this.new("scripts/items/supplies/ground_grains_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/supplies/dried_fish_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/supplies/bread_item"));
+		// Starting Utility (+Leg.Sword, and Vattghern Medallion, equipped on the Vattghern)
 		this.World.Assets.getStash().add(this.new("scripts/items/legend_armor/armor_upgrades/legend_direwolf_pelt_upgrade"));
+		this.World.Assets.getStash().add(this.new("scripts/items/legend_armor/armor_upgrades/legend_hyena_fur_upgrade"));
 		this.World.Assets.getStash().add(this.new("scripts/items/tools/throwing_net"));
+		this.World.Assets.getStash().add(this.new("scripts/items/special/pov_silvering_kit"));
+		// Starting Vattghern Items
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_witcher_potion_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_witcher_potion_item"));
+		// Add A Random Mutagen
+		local roll = this.Math.rand(1,14);
+		switch (roll) 
+		{
+			case 1: this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_alp_mutagen_item")); break;
+			case 2: this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_direwolf_mutagen_item")); break;
+			case 3: this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_ghost_mutagen_item")); break;
+			case 4: this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_ghoul_mutagen_item")); break;
+			case 5: this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_goblin_mutagen_item")); break;
+			case 6: this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_hexe_mutagen_item")); break;
+			case 7: this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_lindwurm_mutagen_item")); break;
+			case 8: this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_vampire_mutagen_item")); break;
+			case 9: this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_orc_mutagen_item")); break;
+			case 10: this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_schrat_mutagen_item")); break;
+			case 11: this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_skeleton_mutagen_item")); break;
+			case 12: this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_spider_mutagen_item")); break;
+			case 13: this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_unhold_mutagen_item")); break;
+			case 14: this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_strain_mutagen_item")); break;
+			default: ::TLW.Mod.Debug.printLog("No Mutation found to roll. Roll Number: " + roll);
+		}
+		// Starting Resource Modifiers
 		this.World.Assets.m.Money = this.Math.round(this.World.Assets.m.Money * 1.5);
-		//this.World.Assets.getStash().add(this.new("scripts/items/weapons/pov_whip_mace"));
-		//this.World.Assets.getStash().add(this.new("scripts/items/pov_witcher_longsword"));
+		this.World.Assets.m.Medicine = this.Math.round(this.World.Assets.m.Medicine * 1.5);
 	}
 
 	function onSpawnPlayer()

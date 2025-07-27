@@ -16,7 +16,7 @@ this.pov_lindwurm_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Acidic blood[/color]: This character\'s blood is highly pressurized and burns upon prolonged exposure to air. Attackers who break skin will find themselves unpleasantly surprised by the resultant spray. This same acid slighlt reduces healing speed.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Acidic Reinforcement[/color]: By slightly infusing their weapons with their own acid, the Vatt\'ghern does extra damage to enemie\'s armor. \n\n[color=" + this.Const.UI.Color.NegativeValue + "]Dravonic Cockiness[/color]: The Vatt\'ghern is full of himslef, disregarding his own defense, and demanding even more pay than usual.";
+		return "[color=" + this.Const.UI.Color.PositiveValue + "]Acidic blood[/color]: This character\'s blood is highly pressurized and burns upon prolonged exposure to air. Attackers who break skin will find themselves unpleasantly surprised by the resultant spray. This same acid slighlty reduces healing speed.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Acidic Reinforcement[/color]: By slightly infusing their weapons with their own acid, the Vatt\'ghern does extra damage to enemy armor. During combat, they can also strengthen this infusion. \n\n[color=" + this.Const.UI.Color.NegativeValue + "]Draconic Cockiness[/color]: The Vatt\'ghern is full of himself with an unnatural assurance and ego, disregarding his own defense, and demanding even more pay than usual.";
 	}
 
 	function getTooltip()
@@ -31,6 +31,12 @@ this.pov_lindwurm_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 2,
 				type = "description",
 				text = this.getDescription()
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/special.png",
+				text = "This character gains the [color=" + this.Const.UI.Color.PositiveValue + "]\"Coat With Acid\"[/color] skill"
 			},
 			{
 				id = 11,
@@ -79,6 +85,7 @@ this.pov_lindwurm_mutagen_effect <- this.inherit("scripts/skills/skill", {
 		_properties.DamageArmorMult *= 1.2;
 		_properties.DamageArmorMult += 0.15;
 		// Also causes acid effect on attackers
+		// Also gets coat with acid skill
 
 		// Debuffs
 		_properties.DailyWageMult *= 1.25;
@@ -88,7 +95,15 @@ this.pov_lindwurm_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function onAdded()
 	{
-			this.m.Container.getActor().getFlags().add("body_immune_to_acid");
+		this.m.Container.getActor().getFlags().add("body_immune_to_acid");
+		this.m.Container.getActor().getFlags().add("head_immune_to_acid");
+	
+		if (!this.m.Container.hasSkill("actives.pov_coat_with_acid"))
+		{
+			local acidCoat = this.new("scripts/skills/actives/pov_coat_with_acid_skill");
+			this.m.Container.add(acidCoat);
+		}
+	
 	}
 
 	function onDamageReceived( _attacker, _damageHitpoints, _damageArmor )

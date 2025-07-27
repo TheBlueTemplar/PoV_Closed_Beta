@@ -5,11 +5,11 @@ this.pov_autopsy_ghoul_blueprint <- this.inherit("scripts/crafting/blueprint", {
 		this.blueprint.create();
 		this.m.ID = "blueprint.pov_autopsy_ghoul";
 		this.m.Type = this.Const.Items.ItemType.Usable;
-		this.m.PreviewCraftable = this.new("scripts/items/pov_autopsy_ghoul_item");
+		this.m.PreviewCraftable = this.new("scripts/items/autopsy/pov_autopsy_ghoul_item");
 		this.m.Cost = 110;
 		local ingredients = [
 			{
-				Script = "scripts/items/misc/pov_corpse_ghoul_item",
+				Script = "scripts/items/misc/corpse/pov_corpse_ghoul_item",
 				Num = 1
 			},
 		];
@@ -26,7 +26,7 @@ this.pov_autopsy_ghoul_blueprint <- this.inherit("scripts/crafting/blueprint", {
 
 	function onCraft( _stash )
 	{
-		if (this.Math.rand(1, 100) <= 6)
+		if (this.Math.rand(1, 100) <= 8)
 			{
 				_stash.add(this.new("scripts/items/misc/anatomist/pov_ghoul_mutagen_item"));
 			}

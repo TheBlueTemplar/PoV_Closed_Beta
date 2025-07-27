@@ -105,22 +105,22 @@
 			{
 				R = 98,
 				P = 4.5,
-				S = "scripts/items/misc/vampire_dust_item"
+				S = "misc/vampire_dust_item"
 			},
 			{
 				R = 99,
 				P = 4.5,
-				S = "scripts/items/misc/unhold_heart_item"
+				S = "misc/unhold_heart_item"
 			},
 			{
 				R = 98,
 				P = 4.5,
-				S = "scripts/items/misc/third_eye_item"
+				S = "misc/third_eye_item"
 			},
 			{
 				R = 97,
 				P = 2.5,
-				S = "scripts/items/misc/sulfurous_rocks_item"
+				S = "misc/sulfurous_rocks_item"
 			},
 		]);
 

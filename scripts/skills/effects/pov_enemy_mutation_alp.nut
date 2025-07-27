@@ -78,7 +78,7 @@ this.pov_enemy_mutation_alp <- this.inherit("scripts/skills/skill", {
 			case this.Const.Damage.DamageType.Piercing:
 				if (_skill == null)
 				{
-					_properties.DamageReceivedRegularMult *= 0.8; 
+					_properties.DamageReceivedRegularMult *= 0.70; 
 				}
 				else
 				{					
@@ -99,7 +99,7 @@ this.pov_enemy_mutation_alp <- this.inherit("scripts/skills/skill", {
 							{
 								if (_skill.getID() == "actives.throw_spear")
 								{
-									_properties.DamageReceivedRegularMult *= 0.7;
+									_properties.DamageReceivedRegularMult *= 0.65;
 								}
 								else
 								{
@@ -113,12 +113,12 @@ this.pov_enemy_mutation_alp <- this.inherit("scripts/skills/skill", {
 						}
 						else
 						{
-							_properties.DamageReceivedRegularMult *= 0.8;
+							_properties.DamageReceivedRegularMult *= 0.7;
 						}
 					}
 					else
 					{
-						_properties.DamageReceivedRegularMult *= 0.8;
+						_properties.DamageReceivedRegularMult *= 0.7;
 					}
 				}
 				break;

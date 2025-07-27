@@ -17,7 +17,7 @@ this.pov_zombie_racial <- this.inherit("scripts/skills/skill", {
 	{
 		if (_hitInfo.DamageType == this.Const.Damage.DamageType.Burning)
 		{
-			_properties.DamageReceivedRegularMult *= 1.30;
+			_properties.DamageReceivedTotalMult *= 1.30;
 		}
 	}
 

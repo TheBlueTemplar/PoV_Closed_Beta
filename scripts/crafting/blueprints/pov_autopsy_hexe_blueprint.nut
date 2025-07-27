@@ -5,11 +5,11 @@ this.pov_autopsy_hexe_blueprint <- this.inherit("scripts/crafting/blueprint", {
 		this.blueprint.create();
 		this.m.ID = "blueprint.pov_autopsy_hexe";
 		this.m.Type = this.Const.Items.ItemType.Usable;
-		this.m.PreviewCraftable = this.new("scripts/items/pov_autopsy_hexe_item");
+		this.m.PreviewCraftable = this.new("scripts/items/autopsy/pov_autopsy_hexe_item");
 		this.m.Cost = 110;
 		local ingredients = [
 			{
-				Script = "scripts/items/misc/pov_corpse_hexen_item",
+				Script = "scripts/items/misc/corpse/pov_corpse_hexen_item",
 				Num = 1
 			},
 		];
@@ -38,6 +38,10 @@ this.pov_autopsy_hexe_blueprint <- this.inherit("scripts/crafting/blueprint", {
 			{
 				_stash.add(this.new("scripts/items/misc/mysterious_herbs_item"));
 			}
+		if (this.Math.rand(1, 100) <= 25)
+			{
+				_stash.add(this.new("scripts/items/loot/jade_broche_item"));
+			}	
 		if (this.Math.rand(1, 100) <= 30)
 			{
 				_stash.add(this.new("scripts/items/misc/poisoned_apple_item"));

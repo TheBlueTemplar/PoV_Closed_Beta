@@ -34,12 +34,12 @@ this.pov_vattghern_ambition <- this.inherit("scripts/ambitions/ambition", {
 		}
 
 		// Disable/Enable this one for debugging
-		if (this.World.getTime().Days <= 25)
+		if (this.World.getTime().Days <= 35)
 		{
 			return;
 		}
 
-		this.m.Score = 3 + this.Math.rand(0, 5);
+		this.m.Score = 4 + this.Math.rand(0, 5);
 	}
 
 	function onCheckSuccess()

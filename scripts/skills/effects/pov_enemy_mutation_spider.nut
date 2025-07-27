@@ -5,7 +5,7 @@ this.pov_enemy_mutation_spider <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_enemy_mutation_spider";
-		this.m.Name = "[color=#034207]Spider\'s Poison[/color]";
+		this.m.Name = "[color=#034207]Spider\'s Glands[/color]";
 		this.m.Description = "This enemy has some properties of a spider! They can poison their enemies, and deal more damage to them while they are poisoned.";
 		this.m.Icon = "skills/pov_spider_mutant.png";
 		this.m.IconMini = "pov_mini_spider_mutant";
@@ -42,7 +42,7 @@ this.pov_enemy_mutation_spider <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/damage_dealt.png",
-				text = "Attacks with any weapon deal [color=" + this.Const.UI.Color.PositiveValue + "]+10%[/color] damage to a poisoned enemy, but [color=" + this.Const.UI.Color.NegativeValue + "]-13%[/color] damage to an enemy that is not poisoned."
+				text = "Attacks with any weapon deal [color=" + this.Const.UI.Color.PositiveValue + "]+15%[/color] damage to a poisoned enemy, but [color=" + this.Const.UI.Color.NegativeValue + "]-15%[/color] damage to an enemy that is not poisoned."
 			},
 
 		];
@@ -56,6 +56,21 @@ this.pov_enemy_mutation_spider <- this.inherit("scripts/skills/skill", {
 		{
 			actor.m.OnDeathLootTable.push(::TLW.MutagenDrop.getMutagenDrop(actor, ::TLW.Mutation.Spider));
 	  	}
+
+		if (!this.m.Container.hasSkill("actives.web"))
+		{
+			local weave = this.new("scripts/skills/actives/web_skill");
+			weave.m.ActionPointCost = 5;
+			weave.m.FatigueCost = 28;
+			weave.m.MaxRange = 2;
+			weave.m.Description = "The Vatt\'ghern weaves and covers an enemy in their web, greatly reducing their initiative, defense and damage."
+			weave.m.Icon = "skills/active_pov_weave_net.png"; // change these two
+			weave.m.IconDisabled = "skills/active_pov_weave_net_sw.png";
+			this.m.Container.add(weave);
+
+			actor.m.AIAgent.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_throw_net"));
+		}
+	
 	}
 
 	function onAnySkillUsed( _skill, _targetEntity, _properties )
@@ -66,11 +81,11 @@ this.pov_enemy_mutation_spider <- this.inherit("scripts/skills/skill", {
 			return;
 		}
 
-		if (_targetEntity.getSkills().getSkillByID("effects.pov_spider_poison") != null || _targetEntity.getSkills().getSkillByID("effects.spider_poison") != null || _targetEntity.getSkills().getSkillByID("effects.goblin_poison") != null || _targetEntity.getSkills().getSkillByID("effects.legend_basilisk_poison") != null)
+		if (_targetEntity.getSkills().getSkillByID("effects.pov_mutant_poison") != null || _targetEntity.getSkills().getSkillByID("effects.spider_poison") != null || _targetEntity.getSkills().getSkillByID("effects.goblin_poison") != null || _targetEntity.getSkills().getSkillByID("effects.legend_basilisk_poison") != null)
 		{
-			_properties.DamageRegularMult *= 1.10;
+			_properties.DamageRegularMult *= 1.15;
 		}else{
-			_properties.DamageRegularMult *= 0.87;
+			_properties.DamageRegularMult *= 0.85;
 		}
 	}
 
@@ -99,9 +114,9 @@ this.pov_enemy_mutation_spider <- this.inherit("scripts/skills/skill", {
 
 		this.spawnIcon("status_effect_54", _targetEntity.getTile());
 
-		local poison = _targetEntity.getSkills().getSkillByID("effects.pov_spider_poison");
+		local poison = _targetEntity.getSkills().getSkillByID("effects.pov_mutant_poison");
 		if (poison == null)
-			_targetEntity.getSkills().add(this.new("scripts/skills/effects/pov_spider_poison_effect"));
+			_targetEntity.getSkills().add(this.new("scripts/skills/effects/pov_mutant_poison_effect"));
 		else
 			poison.resetTime();
 	}

@@ -9,6 +9,7 @@
 			if (_layerID == "socket")
 			{
 				old_addSprite("pov_back_socket");
+				old_addSprite("pov_back_socket2");
 			}
 
 			return old_addSprite(_layerID);
@@ -22,6 +23,11 @@
 		if (this.hasSprite("pov_back_socket"))
 		{
 			this.getSprite("pov_back_socket").Visible = false;
+		}
+
+		if (this.hasSprite("pov_back_socket2"))
+		{
+			this.getSprite("pov_back_socket2").Visible = false;
 		}
 
 		__original(_killer, _skill, _tile, _fatalityType);
