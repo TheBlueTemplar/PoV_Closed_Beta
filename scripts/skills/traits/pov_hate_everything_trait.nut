@@ -1,5 +1,6 @@
 this.pov_hate_everything_trait <- this.inherit("scripts/skills/traits/character_trait", {
 	m = {
+		Started = 0,
 		Trait1 = null,
 		Trait2 = null,
 		DaysHad = 0,
@@ -130,7 +131,7 @@ this.pov_hate_everything_trait <- this.inherit("scripts/skills/traits/character_
 				id = 11,
 				type = "text",
 				icon = "ui/icons/mood_01.png",
-				text = "In a some days, this [color=" + this.Const.UI.Color.NegativeValue + "]hatred[/color] will target something else..."
+				text = "In some days, this [color=" + this.Const.UI.Color.NegativeValue + "]hatred[/color] will target something else..."
 			});
 		}
 
@@ -139,7 +140,11 @@ this.pov_hate_everything_trait <- this.inherit("scripts/skills/traits/character_
 
 	function onAdded()
 	{
-		changeTraits();
+		if (this.m.Started == 0)
+		{
+			changeTraits();
+			this.m.Started = 1;
+		}
 	}
 
 	function onUpdate( _properties )
@@ -167,6 +172,7 @@ this.pov_hate_everything_trait <- this.inherit("scripts/skills/traits/character_
 	function onSerialize( _out )
 	{
 		this.character_trait.onSerialize(_out);
+		_out.writeU8(this.m.Started);
 		_out.writeU16(this.m.DaysHad);
 		_out.writeU16(this.m.DayChanged);
 		_out.writeString(this.m.Trait1);
@@ -176,6 +182,7 @@ this.pov_hate_everything_trait <- this.inherit("scripts/skills/traits/character_
 	function onDeserialize( _in )
 	{
 		this.character_trait.onDeserialize(_in);
+		this.m.Started = _in.readU8();
 		this.m.DaysHad = _in.readU16();
 		this.m.DayChanged = _in.readU16();
 		this.m.Trait1 = _in.readString();

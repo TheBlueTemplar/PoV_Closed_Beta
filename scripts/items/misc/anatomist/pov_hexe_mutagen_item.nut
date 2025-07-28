@@ -53,20 +53,24 @@ this.pov_hexe_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_ana
 		result.push({
 			id = 65,
 			type = "text",
-			text = "Mutates the body, causing sickness."
+			icon = "ui/tooltips/warning.png",
+			text = "Mutates the body, causing severe sickness"
 		});
+
 		result.push({
 			id = 65,
-			type = "hint",
+			type = "text",
 			icon = "ui/tooltips/warning.png",
 			text = "Must have Witcher Mutation and not already used this mutagen."
 		});
+
 		result.push({
 			id = 65,
-			type = "hint",
+			type = "text",
 			icon = "ui/tooltips/warning.png",
 			text = "Can have a maximum of [color=" + this.Const.UI.Color.NegativeValue + "]one[/color] brothers with this mutation in your party."
 		});
+
 		return result;
 	}
 

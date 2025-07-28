@@ -54,6 +54,7 @@ this.pov_beautiful_potion_item <- this.inherit("scripts/items/misc/anatomist/pov
 		result.push({
 			id = 65,
 			type = "text",
+			icon = "ui/icons/health.png",
 			text = "\"Mutates the body\", making you a beauty, and sick."
 		});
 		return result;

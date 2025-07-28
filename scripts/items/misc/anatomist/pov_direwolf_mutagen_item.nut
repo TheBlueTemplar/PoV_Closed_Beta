@@ -54,14 +54,16 @@ this.pov_direwolf_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov
 			id = 65,
 			type = "text",
 			icon = "ui/tooltips/warning.png",
-			text = "Mutates the body, causing sickness."
+			text = "Mutates the body, causing severe sickness"
 		});
+
 		result.push({
 			id = 65,
-			type = "hint",
+			type = "text",
 			icon = "ui/tooltips/warning.png",
 			text = "Must have Witcher Mutation and not already used this mutagen."
 		});
+
 		return result;
 
 	}

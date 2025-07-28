@@ -49,18 +49,20 @@ this.pov_vampire_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_
 			});
 		}
 
+		result.push({
+			id = 65,
+			type = "text",
+			icon = "ui/tooltips/warning.png",
+			text = "Mutates the body, causing severe sickness"
+		});
 
 		result.push({
 			id = 65,
 			type = "text",
-			text = "Right-click or drag onto the currently selected character in order to drink. This item will be consumed in the process."
-		});
-		result.push({
-			id = 65,
-			type = "hint",
 			icon = "ui/tooltips/warning.png",
-			text = "Mutates the body, causing sickness"
+			text = "Must have Witcher Mutation and not already used this mutagen."
 		});
+
 		return result;
 	}
 

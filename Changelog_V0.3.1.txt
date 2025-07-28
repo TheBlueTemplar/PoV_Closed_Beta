@@ -1,3 +1,9 @@
+## Changelog V0.3.1 BETA:
+
+* Improved the descriptions of all mutagen items
+* Improved the Vattghern and Misantrhopist Trait Icons
+* Fixed "Hates Everything" Perk incorrectly applying hate perks
+
 ## Changelog V0.3.0 BETA:
 
 Oooh Boy, bunch of new stuff were added. This is the biggest update yet, and is the groundwork for my public release.

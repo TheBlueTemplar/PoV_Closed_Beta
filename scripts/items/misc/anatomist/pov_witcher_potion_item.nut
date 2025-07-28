@@ -49,12 +49,13 @@ this.pov_witcher_potion_item <- this.inherit("scripts/items/misc/anatomist/pov_a
 			});
 		}
 
-		result.push({
+				result.push({
 			id = 65,
-			type = "hint",
+			type = "text",
 			icon = "ui/tooltips/warning.png",
-			text = "Heavily Mutates the body, causing severe sickness"
+			text = "Mutates the body, causing severe sickness"
 		});
+
 		return result;
 	}
 
