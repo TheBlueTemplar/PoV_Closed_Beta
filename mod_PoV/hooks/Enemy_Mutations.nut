@@ -45,6 +45,8 @@
 		local possibleMutations = _mutations;	// List of all possible mutations
 
 		// Mutation Chances Calculations Based on CombatDiff (from ez to legenddary)
+		// Fallback (might not even work)
+		if (_chance == null) {_chance = ::TLW.EnemyMutChance.Default;}
 		// Example for most cases with base chance 10. Actual numbers would be: 5,7,10,20
 		local mutationChance = [_chance*0.5, _chance*0.75, _chance, _chance*2][::World.Assets.getCombatDifficulty()];
 		// Second Mutation Chances Calculation

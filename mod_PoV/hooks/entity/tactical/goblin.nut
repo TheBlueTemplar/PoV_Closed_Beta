@@ -35,7 +35,7 @@
 	        } else if (::MSU.isKindOf(this, "goblin_leader")) {
 	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Default,::TLW.EnemyMut.Goblin,false);
 	        } else {
-	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Vlow,::TLW.EnemyMut.Goblin,false);
+	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.VLow,::TLW.EnemyMut.Goblin,false);
 	        }
 		}
 

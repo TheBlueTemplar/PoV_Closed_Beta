@@ -1,3 +1,8 @@
+## Changelog V0.3.2 BETA:
+
+* Fixed crash when fighting Goblins
+* Added a fallback function to the enemy mutation system, to maybe prevent some future shit
+
 ## Changelog V0.3.1 BETA:
 
 * Improved the descriptions of all mutagen items
