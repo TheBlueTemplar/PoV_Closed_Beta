@@ -88,6 +88,10 @@ this.pov_enemy_mutation_schrat <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
+		// Fallbacks/Attempts to fix some shet
+		if(this.m.HeadDamageTaken < 0) {this.m.HeadDamageTaken = 0;}
+		if(this.m.BodyDamageTaken < 0) {this.m.BodyDamageTaken = 0;}
+
 		// BUFFS
 		_properties.Armor[this.Const.BodyPart.Head] += this.Math.max(0.0, this.m.HeadArmorBoost - this.m.HeadDamageTaken);
 		_properties.Armor[this.Const.BodyPart.Body] += this.Math.max(0.0, this.m.BodyArmorBoost - this.m.BodyDamageTaken);

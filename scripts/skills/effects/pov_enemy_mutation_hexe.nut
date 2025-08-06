@@ -74,6 +74,12 @@ this.pov_enemy_mutation_hexe <- this.inherit("scripts/skills/skill", {
 
 	function onDamageReceived( _attacker, _damageHitpoints, _damageArmor )
 	{
+		// Fallback, fix for some crash (corpse explosion caused it?)
+		if (_attacker == null)
+		{
+			return;
+		}
+
 		local actor = this.getContainer().getActor();
 		if (this.m.canHex == true && !_attacker.getSkills().hasSkill("effects.pov_hexe_mutagen"))
 		{

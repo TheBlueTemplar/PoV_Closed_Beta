@@ -1,3 +1,9 @@
+## Changelog V0.3.3 BETA:
+
+* Improve the way that the enemy Spider and Orc Mutations add skills to entities. (Did not work correctly)
+* Fixed a fatal issue related to the enemy hexe mutation (needs testing)
+* Fixed an issue with effects adding infinite armor (ifrit, schrat enemy/player mutations)
+
 ## Changelog V0.3.2 BETA:
 
 * Fixed crash when fighting Goblins

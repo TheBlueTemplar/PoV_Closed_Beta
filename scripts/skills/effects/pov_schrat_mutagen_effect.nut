@@ -79,8 +79,11 @@ this.pov_schrat_mutagen_effect <- this.inherit("scripts/skills/skill", {
 	}
 
 	function onUpdate( _properties )
-	{
-		
+	{		
+		// Fallbacks/Attempts to fix some shet
+		if(this.m.HeadDamageTaken < 0) {this.m.HeadDamageTaken = 0;}
+		if(this.m.BodyDamageTaken < 0) {this.m.BodyDamageTaken = 0;}
+
 		// Buffs
 		_properties.IsImmuneToKnockBackAndGrab = true;
 		_properties.Armor[this.Const.BodyPart.Head] += this.Math.max(0.0, this.m.HeadArmorBoost - this.m.HeadDamageTaken);
