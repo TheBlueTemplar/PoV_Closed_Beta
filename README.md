@@ -1,5 +1,5 @@
 # Path-of-the-Vatt-ghern-V0.3.0-Beta
-**Changelog in the Release Notes**
+**Changelog in the Release Notes, or in the .txt above**
 
 ### Beta Version
 
@@ -18,6 +18,7 @@ Recommended Base Modlist:
 * Modern Hooks
 * Latest Legends Version
 * PoV, testing version
+* Emo's .exe
 
 At this point of the beta tests, you can include most of whatever you want, Rotu, SSU, MC and whatever else. Testing stability and interactions with other mods is starting to be more and more important!
 
