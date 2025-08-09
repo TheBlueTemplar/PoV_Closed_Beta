@@ -16,7 +16,7 @@ this.pov_acid_coat_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "This character is using a weapon coated with corrosive acid! Their next attack will apply the acid effect on their enemy! \n\n Missing the attack will waste the effect.";
+		return "This character is using a weapon coated with corrosive acid! Their next attack will be more effective against armor and apply the acid effect on their enemy! \n\n Missing the attack will waste the effect.";
 	}
 
 	function getTooltip()
@@ -33,6 +33,13 @@ this.pov_acid_coat_effect <- this.inherit("scripts/skills/skill", {
 				text = this.getDescription()
 			}
 		];
+	}
+
+	function onUpdate( _properties )
+	{
+		// Buffs
+		_properties.DamageArmorMult *= 1.2;
+		// Debuffs
 	}
 
 	function resetTime()

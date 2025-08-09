@@ -49,25 +49,19 @@ this.pov_autopsy_flesh_golem_item <- this.inherit("scripts/items/misc/anatomist/
 			id = 11,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = " Acquire [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] Grafted Flesh.\n[color=" + this.Const.UI.Color.PositiveValue + "]40%[/color] chance."
+			text = "Acquire [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] Grafted Flesh.\n[color=" + this.Const.UI.Color.PositiveValue + "]40%[/color] chance."
 		});
 		result.push({
 			id = 11,
 			type = "text",
 			icon = "ui/icons/asset_money.png",
-			text = " Acquire [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] Ivory Spine Shard.\n[color=" + this.Const.UI.Color.PositiveValue + "]25%[/color] chance."
+			text = "Acquire [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] Ivory Spine Shard.\n[color=" + this.Const.UI.Color.PositiveValue + "]25%[/color] chance."
 		});
 		result.push({
 			id = 11,
 			type = "text",
 			icon = "ui/icons/pov_extra_special.png",
-			text = " Acquire [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] Rot Essence.\n[color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] chance."
-		});
-		result.push({
-			id = 11,
-			type = "text",
-			icon = "ui/icons/pov_mutagen_shard_icon.png",
-			text = " Acquire [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] large red worm.\n[color=" + this.Const.UI.Color.PositiveValue + "]5%[/color] chance."
+			text = "Acquire [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] Rot Essence.\n[color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] chance."
 		});
 
 		return result;

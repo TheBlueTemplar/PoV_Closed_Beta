@@ -17,18 +17,18 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 		KillsPerRegen = 14,
 		KillsPerDamage = 14,
 		KillsPerResolve = 13,
-		StartAction = 1
-		StartInitiative = 3
-		StartRegen = 1
-		StartDamage = 1
-		StartResolve = 5
-		MaxScale = 201
-		MaxAction = 2
-		MaxInitiative = 12
-		MaxRegen = 15
-		MaxDamage = 15
-		MaxResolve = 20
-		IsActivated = false,
+		StartAction = 1,
+		StartInitiative = 1,
+		StartRegen = 0,
+		StartDamage = 0.5,
+		StartResolve = 3.5,
+		MaxScale = 201,
+		MaxAction = 2,
+		MaxInitiative = 12,
+		MaxRegen = 15,
+		MaxDamage = 15,
+		MaxResolve = 20,
+		IsActivated = false
 
 		// Old Scaling
 		/*KillsPerAction = 150,
@@ -55,7 +55,7 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 		this.m.ID = "trait.pov_witcher";
 		this.m.Name = "Vatt'ghern";
 		this.m.Icon = "ui/traits/pov_vattghern.png";
-		this.m.Description = "%name% has survived the [color=" + this.Const.UI.Color.PositiveValue + "]trial of the grasses[/color] and became a Vatt'ghern. Specialised in killing monsters, they are faster and stronger than normal humans. \n\n While the trial left them weak, their skills will improve over time as they get kills. Bonuses Cap at 200 kills. \n\n Due to the Vatt'ghern's skillset, they demand much larger pay than the common mercenary.";
+		this.m.Description = "%name% has survived the [color=#031b99]Trial of the grasses[/color] and became a Vatt'ghern. Specialized in killing monsters, they are faster and stronger than normal humans, and can ingest special [color=#031b99]mutagens[/color]. \n\n Their skills further improve over time as they get kills and mutations. Bonuses Cap at 200 kills. \n\n Due to the Vatt'ghern's skillset, they demand much larger pay than the common mercenary, and attract stronger opponents.";
 		this.m.Order = this.Const.SkillOrder.Background - 2;
 	}
 
@@ -98,7 +98,7 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 			id = 10,
 			type = "text",
 			icon = "ui/icons/action_points.png",
-			text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + action + "[/color] AP"
+			text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.Math.round(action) + "[/color] AP"
 		});
 
 		local initiative = this.getInitiativeBonus();
@@ -106,7 +106,7 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 			id = 10,
 			type = "text",
 			icon = "ui/icons/initiative.png",
-			text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + initiative + "[/color]% Initiative"
+			text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.Math.round(initiative) + "[/color]% Initiative"
 		});
 
 		local damage = this.getDamageBonus();
@@ -114,7 +114,7 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 			id = 10,
 			type = "text",
 			icon = "ui/icons/damage_dealt.png",
-			text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + damage + "[/color]% Damage"
+			text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.Math.round(damage) + "[/color]% Damage"
 		});
 
 		local regen = this.getRegenBonus();
@@ -122,7 +122,7 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 			id = 10,
 			type = "text",
 			icon = "ui/icons/health.png",
-			text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + regen + "[/color]% Regeneration"
+			text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.Math.round(regen) + "[/color]% Regeneration"
 		});
 
 		local resolve = this.getResolveBonus();
@@ -130,7 +130,7 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 			id = 10,
 			type = "text",
 			icon = "ui/icons/bravery.png",
-			text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + resolve + "[/color]% Resolve"
+			text = "[color=" + this.Const.UI.Color.PositiveValue + "]+" + this.Math.round(resolve) + "[/color]% Resolve"
 		});
 
 		result.push({
@@ -151,7 +151,7 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 
 	}
 
-	// Vattghern Eyes Effect
+	// Vattghern Eyes and Bust Effect
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
@@ -195,10 +195,10 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 	{
 		if(this.getContainer().getActor().getLifetimeStats().Kills < this.m.MaxScale)
 		{
-			return this.m.StartInitiative + (this.getContainer().getActor().getLifetimeStats().Kills / this.m.KillsPerInitiative);
+			return this.m.StartInitiative + (this.getContainer().getActor().getLifetimeStats().Kills / this.m.KillsPerInitiative) + (getMutations() * 0.70);
 		}else
 		{
-			return this.m.MaxInitiative;
+			return this.m.MaxInitiative + (getMutations() * 0.70);
 		}
 	}
 
@@ -206,10 +206,10 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 	{
 		if(this.getContainer().getActor().getLifetimeStats().Kills < this.m.MaxScale)
 		{
-			return this.m.StartAction + (this.getContainer().getActor().getLifetimeStats().Kills / this.m.KillsPerAction);
+			return this.m.StartAction + (this.getContainer().getActor().getLifetimeStats().Kills / this.m.KillsPerAction) + (getMutations() * 0.03);
 		}else
 		{
-			return this.m.MaxAction;
+			return this.m.MaxAction + (getMutations() * 0.03);
 		}
 	}
 
@@ -217,10 +217,10 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 	{
 		if(this.getContainer().getActor().getLifetimeStats().Kills < this.m.MaxScale)
 		{
-			return this.m.StartDamage + (this.getContainer().getActor().getLifetimeStats().Kills / this.m.KillsPerDamage);
+			return this.m.StartDamage + (this.getContainer().getActor().getLifetimeStats().Kills / this.m.KillsPerDamage) + (getMutations() * 0.50);
 		}else
 		{
-			return this.m.MaxDamage;
+			return this.m.MaxDamage + (getMutations() * 0.50);
 		}
 	}
 
@@ -228,10 +228,10 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 	{
 		if(this.getContainer().getActor().getLifetimeStats().Kills < this.m.MaxScale)
 		{
-			return this.m.StartRegen + (this.getContainer().getActor().getLifetimeStats().Kills / this.m.KillsPerRegen);
+			return this.m.StartRegen + (this.getContainer().getActor().getLifetimeStats().Kills / this.m.KillsPerRegen) + (getMutations() * 0.90);
 		}else
 		{
-			return this.m.MaxRegen;
+			return this.m.MaxRegen + (getMutations() * 0.90);
 		}
 	}
 
@@ -239,10 +239,10 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 	{
 		if(this.getContainer().getActor().getLifetimeStats().Kills < this.m.MaxScale)
 		{
-			return this.m.StartResolve + (this.getContainer().getActor().getLifetimeStats().Kills / this.m.KillsPerResolve);
+			return this.m.StartResolve + (this.getContainer().getActor().getLifetimeStats().Kills / this.m.KillsPerResolve) + (getMutations() * 1.5);
 		}else
 		{
-			return this.m.MaxResolve;
+			return this.m.MaxResolve + (getMutations() * 1.50);
 		}
 	}
 

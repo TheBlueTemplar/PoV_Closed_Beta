@@ -49,7 +49,7 @@ this.pov_coat_with_acid_skill <- this.inherit("scripts/skills/skill", {
 				id = 7,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "The next attack will apply the [color=" + this.Const.UI.Color.PositiveValue + "]acid[/color] status effect on the hit enemy, corroding their armor."
+				text = "The next attack will be 20% more effective against armor and apply the [color=" + this.Const.UI.Color.PositiveValue + "]acid[/color] status effect on the hit enemy, further corroding their armor."
 			},
 			{
 				id = 7,

@@ -5,7 +5,7 @@ this.pov_hate_everything_trait <- this.inherit("scripts/skills/traits/character_
 		Trait2 = null,
 		DaysHad = 0,
 		DayChanged = 0,
-		DaysToChange = 7
+		DaysToChange = 2
 		},
 	function create()
 	{
@@ -56,14 +56,20 @@ this.pov_hate_everything_trait <- this.inherit("scripts/skills/traits/character_
 			//Debug
 			::TLW.Mod.Debug.printLog("Checking Hate Everything Trait || Trying to Remove Old Traits:  " + oldTrait1.getName()+" and "+oldTrait1.getName());
 
-			//Remove traits from actor and array
-			actor.getSkills().removeByID(oldTrait1.getID());
-			traitList.remove(traitList.find(this.m.Trait1));
-			::TLW.Mod.Debug.printLog("Checking Hate Everything Trait || Successfully Removed Trait 1");
+			//Remove traits from actor and array, with fallback
+			if (actor.getSkills().hasSkill(oldTrait1))
+			{
+				actor.getSkills().removeByID(oldTrait1.getID());
+				traitList.remove(traitList.find(this.m.Trait1));
+				::TLW.Mod.Debug.printLog("Checking Hate Everything Trait || Successfully Removed Trait 1");
+			}
 			
-			actor.getSkills().removeByID(oldTrait2.getID());
-			traitList.remove(traitList.find(this.m.Trait2));
-			::TLW.Mod.Debug.printLog("Checking Hate Everything Trait || Successfully Removed Trait 2");
+			if (actor.getSkills().hasSkill(oldTrait2))
+			{
+				actor.getSkills().removeByID(oldTrait2.getID());
+				traitList.remove(traitList.find(this.m.Trait2));
+				::TLW.Mod.Debug.printLog("Checking Hate Everything Trait || Successfully Removed Trait 2");
+			}
 		}
 
 		//Add 2 Of These Perks to Actor

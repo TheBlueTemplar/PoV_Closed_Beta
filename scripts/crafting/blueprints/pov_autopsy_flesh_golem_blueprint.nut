@@ -38,10 +38,6 @@ this.pov_autopsy_flesh_golem_blueprint <- this.inherit("scripts/crafting/bluepri
 			{
 				_stash.add(this.new("scripts/items/loot/pov_rot_essence_special_item"));
 			}
-		if (this.Math.rand(1, 100) <= 5)
-			{
-				_stash.add(this.new("scripts/items/pov_undead_alpha_item"));
-			}
 	}
 
 });

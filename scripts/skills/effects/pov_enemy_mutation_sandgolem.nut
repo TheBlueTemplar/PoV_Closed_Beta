@@ -93,10 +93,6 @@ this.pov_enemy_mutation_sandgolem <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
-		// Fallbacks/Attempts to fix some shet
-		if(this.m.HeadDamageTaken < 0) {this.m.HeadDamageTaken = 0;}
-		if(this.m.BodyDamageTaken < 0) {this.m.BodyDamageTaken = 0;}
-
 		// BUFFS
 		_properties.Armor[this.Const.BodyPart.Head] += this.Math.max(0.0, this.m.HeadArmorBoost - this.m.HeadDamageTaken);
 		_properties.Armor[this.Const.BodyPart.Body] += this.Math.max(0.0, this.m.BodyArmorBoost - this.m.BodyDamageTaken);
@@ -111,6 +107,7 @@ this.pov_enemy_mutation_sandgolem <- this.inherit("scripts/skills/skill", {
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{
 		_properties.DamageReceivedRegularMult *= 0.90;
+
 		if (_hitInfo.BodyPart == this.Const.BodyPart.Head)
 		{
 			if (this.m.HeadDamageTaken >= this.m.HeadArmorBoost)
@@ -118,7 +115,7 @@ this.pov_enemy_mutation_sandgolem <- this.inherit("scripts/skills/skill", {
 				return;
 			}
 
-			_properties.DamageArmorReduction += this.m.HeadArmorBoost - this.m.HeadDamageTaken;
+			//_properties.DamageArmorReduction += this.m.HeadArmorBoost - this.m.HeadDamageTaken;
 			this.m.HeadDamageTaken += _hitInfo.DamageArmor;
 		}
 		else if (_hitInfo.BodyPart == this.Const.BodyPart.Body)
@@ -128,7 +125,7 @@ this.pov_enemy_mutation_sandgolem <- this.inherit("scripts/skills/skill", {
 				return;
 			}
 
-			_properties.DamageArmorReduction += this.m.BodyArmorBoost - this.m.BodyDamageTaken;
+			//_properties.DamageArmorReduction += this.m.BodyArmorBoost - this.m.BodyDamageTaken;
 			this.m.BodyDamageTaken += _hitInfo.DamageArmor;
 		}
 	}
