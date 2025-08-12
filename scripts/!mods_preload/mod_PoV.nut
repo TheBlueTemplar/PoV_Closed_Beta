@@ -19,7 +19,7 @@
 ::TLW <- {
 	ID = "mod_PoV",
 	Name = "Path of the Vatt\'ghern", //PoV
-	Version = "0.3.4",
+	Version = "0.3.5",
 	EnableEnemyMutation = true,	//default settings
 	ChaosMode = false,
 	EnableMainMenuArt = true

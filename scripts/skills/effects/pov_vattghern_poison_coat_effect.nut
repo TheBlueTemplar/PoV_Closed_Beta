@@ -16,7 +16,7 @@ this.pov_vattghern_poison_coat_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "This character is using a weapon coated with concentrated vattghern poison. The next few hits doing at least [color=" + this.Const.UI.Color.NegativeValue + "]" + this.Const.Combat.PoisonEffectMinDamage + "[/color] damage to hitpoints will apply it. Targets affected will lose [color=" + this.Const.UI.Color.NegativeValue + "]10[/color] hitpoints per turn until the effect has faded. \n\n While under this poison, they also losing [color=" + this.Const.UI.Color.NegativeValue + "]10%[/color] initiative and damage and [color=" + this.Const.UI.Color.NegativeValue + "]1[/color] vision.";
+		return "This character is using a weapon coated with concentrated vattghern poison. The next few hits doing at least [color=" + this.Const.UI.Color.NegativeValue + "]" + this.Const.Combat.PoisonEffectMinDamage + "[/color] damage to hitpoints will apply it. Targets affected will lose [color=" + this.Const.UI.Color.NegativeValue + "]7[/color] hitpoints per turn until the effect has faded. \n\n While under this poison, they also losing [color=" + this.Const.UI.Color.NegativeValue + "]10%[/color] initiative and damage and [color=" + this.Const.UI.Color.NegativeValue + "]1[/color] vision.\n\n Missing an attack wastes a stack of this coating effect.";
 	}
 
 	function getTooltip()
@@ -45,15 +45,21 @@ this.pov_vattghern_poison_coat_effect <- this.inherit("scripts/skills/skill", {
 		this.m.AttacksLeft = 4;
 	}
 
-	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
-	{
-		--this.m.AttacksLeft;
-
-		if (this.m.AttacksLeft <= 0)
+	function onAnySkillExecuted( _skill, _targetTile, _targetEntity, _forFree )
+    {
+    	if (_skill.m.IsAttack)
+    	{
+    		--this.m.AttacksLeft;
+    	}
+    	
+    	if (this.m.AttacksLeft <= 0)
 		{
 			this.removeSelf();
 		}
+    }
 
+	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
+	{
 		if (!_targetEntity.isAlive())
 		{
 			return;
@@ -80,18 +86,8 @@ this.pov_vattghern_poison_coat_effect <- this.inherit("scripts/skills/skill", {
 		}
 
 		local effect = this.new("scripts/skills/effects/pov_vattghern_poison_effect");
-		effect.setDamage(7);
+		//effect.setDamage(7);
 		_targetEntity.getSkills().add(effect);
-	}
-
-	function onTargetMissed( _skill, _targetEntity )
-	{
-		--this.m.AttacksLeft;
-
-		if (this.m.AttacksLeft <= 0)
-		{
-			this.removeSelf();
-		}
 	}
 
 });

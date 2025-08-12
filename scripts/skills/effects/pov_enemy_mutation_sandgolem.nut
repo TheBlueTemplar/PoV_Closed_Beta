@@ -1,8 +1,8 @@
 this.pov_enemy_mutation_sandgolem <- this.inherit("scripts/skills/skill", {
 	m = {
-		HeadArmorBoost = 75,
+		HeadArmorBoost = 80,
 		HeadDamageTaken = 0,
-		BodyArmorBoost = 75,
+		BodyArmorBoost = 80,
 		BodyDamageTaken = 0
 	},
 	function create()
@@ -106,7 +106,7 @@ this.pov_enemy_mutation_sandgolem <- this.inherit("scripts/skills/skill", {
 
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{
-		_properties.DamageReceivedRegularMult *= 0.90;
+		_properties.DamageReceivedRegularMult *= 0.88;
 
 		if (_hitInfo.BodyPart == this.Const.BodyPart.Head)
 		{

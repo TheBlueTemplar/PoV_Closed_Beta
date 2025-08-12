@@ -52,9 +52,22 @@ this.pov_acid_coat_effect <- this.inherit("scripts/skills/skill", {
 		this.m.AttacksLeft = 1;
 	}
 
+	function onAnySkillExecuted( _skill, _targetTile, _targetEntity, _forFree )
+    {
+    	if (_skill.m.IsAttack)
+    	{
+    		--this.m.AttacksLeft;
+    	}
+    	
+    	if (this.m.AttacksLeft <= 0)
+		{
+			this.removeSelf();
+		}
+    }
+
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
-		--this.m.AttacksLeft;
+		//--this.m.AttacksLeft;
 
 		if (!_targetEntity.isAlive())
 		{
@@ -72,16 +85,15 @@ this.pov_acid_coat_effect <- this.inherit("scripts/skills/skill", {
 		}
 
 		local effect = this.new("scripts/skills/effects/acid_effect");
-		//effect.setDamage(7);
 		_targetEntity.getSkills().add(effect);
 
-		if (this.m.AttacksLeft <= 0)
+		/*if (this.m.AttacksLeft <= 0)
 		{
 			this.removeSelf();
-		}
+		}*/
 	}
 
-	function onTargetMissed( _skill, _targetEntity )
+	/*function onTargetMissed( _skill, _targetEntity )
 	{
 		--this.m.AttacksLeft;
 
@@ -89,7 +101,7 @@ this.pov_acid_coat_effect <- this.inherit("scripts/skills/skill", {
 		{
 			this.removeSelf();
 		}
-	}
+	}*/
 
 });
 

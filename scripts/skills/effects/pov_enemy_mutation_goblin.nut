@@ -105,7 +105,7 @@ this.pov_enemy_mutation_goblin <- this.inherit("scripts/skills/skill", {
 		_properties.MovementFatigueCostAdditional += -2;
 		_properties.RangedSkillMult *= 1.18;
 		_properties.RangedDefenseMult *= 1.15;
-		_properties.RangedAttackBlockedChanceMult = 0.80;
+		_properties.RangedAttackBlockedChanceMult = this.Math.max(0, _properties.RangedAttackBlockedChanceMult - 0.20); //ty satan
 		// Debuffs
 		_properties.Hitpoints *= 0.80;
 		_properties.MeleeDefenseMult *= 0.80;

@@ -83,8 +83,8 @@ this.pov_enemy_mutation_unhold <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate(_properties)
 	{
-		_properties.HitpointsMult *= 1.50;
-		_properties.Hitpoints += 20;
+		_properties.HitpointsMult *= 1.42;
+		_properties.Hitpoints += 30;
 	}
 
 	function onTurnStart()

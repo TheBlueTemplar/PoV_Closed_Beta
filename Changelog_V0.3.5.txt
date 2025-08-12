@@ -1,3 +1,16 @@
+## Changelog V0.3.5 BETA:
+
+FIXES
+* Fixed an error with the Goblin Vattghern mutation, also tweaked its effects
+* The effects applied by "coat with acid" and "coat with vattghern poison" were tweaked, so they can apply poison to all targets of an AOE attack.
+BALANCE
+* Some enemy mutations were mostly buffed, to make them more interesting on enemies (schrat,lindwurm,ifrit,beast,skeleton,unhold,serpent,ghost,vampire) will explain interesting specifics below
+   * Enemies with the schrat mutation will be far more resilient while holding a shield
+   * Enemies with the skeleton mutation also have some resistance to cutting damage, in addition to their previous piercing resistance. They have slightly rediced Hp though
+   * Enemies with the vampire mutation will receive a decent buff during night battles, but a minor debuff during day battles
+MISC
+* Some descriptions of enemy corpse items were improved
+
 ## Changelog V0.3.4 BETA:
 
 FIXES

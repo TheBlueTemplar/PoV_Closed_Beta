@@ -50,6 +50,27 @@ this.pov_enemy_mutation_vampire <- this.inherit("scripts/skills/skill", {
 		return ret;
 	}
 
+	function onCombatStarted()
+	{
+		local actor = this.getContainer().getActor();
+
+		this.m.ShouldHeal = false;
+
+		if (this.getContainer().hasSkill("special.night"))
+		{
+			// ADD NIGHT BUFF - REMOVED AFTER COMBAT
+			actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_vampire_night_effect"));
+		}else{
+			// ADD DAY DEBUFF - REMOVED AFTER COMBAT
+			actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_vampire_day_effect"));
+		}
+	}
+ 
+	function onCombatFinished()
+	{
+		this.m.ShouldHeal = false;
+	}
+
 	function onAdded() 
 	{
 		local actor = this.getContainer().getActor();

@@ -97,9 +97,9 @@ this.pov_enemy_mutation_direwolf <- this.inherit("scripts/skills/skill", {
 	{
 		// Buffs
 		_properties.MovementFatigueCostMult *= 0.5;
-		_properties.FatigueEffectMult *= 0.80;
+		_properties.FatigueEffectMult *= 0.75;
 		_properties.StaminaMult *= 1.10;
-		_properties.IsImmuneToBleeding = true; // Too Op On Light Enemies
+		_properties.IsImmuneToBleeding = true; // Too Op On Light Enemies (Idc)
 		if (this.getContainer().hasSkill("special.night") && _properties.IsAffectedByNight)
 		{
 			_properties.Vision += 1;

@@ -33,7 +33,7 @@ this.pov_goblin_mutagen_effect <- this.inherit("scripts/skills/skill", {
 		local armorFatPen = actor.getItems().getStaminaModifier(::Const.ItemSlot.Body);
 		local helmetFatPen = actor.getItems().getStaminaModifier(::Const.ItemSlot.Head);
 		local totalPen = armorFatPen + helmetFatPen;
-		local penalty = totalPen * 0.2;
+		local penalty = totalPen * 0.15;
 		return penalty;
 	}
 
@@ -60,7 +60,7 @@ this.pov_goblin_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/ranged_skill.png",
-				text = "An additional [color=" + this.Const.UI.Color.PositiveValue + "]15%[/color] of ranged skill."
+				text = "An additional [color=" + this.Const.UI.Color.PositiveValue + "]15%[/color] ranged skill."
 			},
 			{
 				id = 11,
@@ -90,13 +90,13 @@ this.pov_goblin_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/bravery.png",
-				text = "Has a penalty of [color=" + this.Const.UI.Color.NegativeValue + "]25[/color] on all morale checks."
+				text = "Has a penalty of [color=" + this.Const.UI.Color.NegativeValue + "]20/color] on all morale checks."
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/special.png",
-				text = "The fatigue and initiative penalty from wearing armor is increased by [color=" + this.Const.UI.Color.NegativeValue + "]20%[/color]."
+				text = "The fatigue and initiative penalty from wearing armor is increased by [color=" + this.Const.UI.Color.NegativeValue + "]15%[/color]."
 			}
 			
 		];
@@ -109,7 +109,7 @@ this.pov_goblin_mutagen_effect <- this.inherit("scripts/skills/skill", {
 		// Get a bunch of ranged and mobility bonuses too
 		_properties.MovementFatigueCostAdditional += -1;
 		_properties.RangedSkillMult *= 1.15;
-		_properties.RangedAttackBlockedChanceMult = 0.75;
+		_properties.RangedAttackBlockedChanceMult = this.Math.max(0, _properties.RangedAttackBlockedChanceMult - 0.25);
 		// Debuffs
 		// Also a moral check penalty? dunno if it works
 		_properties.Hitpoints *= 0.80;
@@ -121,7 +121,7 @@ this.pov_goblin_mutagen_effect <- this.inherit("scripts/skills/skill", {
 	// THIS HAS NOT BE FULLY TESTED
 	function checkMorale( _change, _difficulty, _type = this.Const.MoraleCheckType.Default, _showIconBeforeMoraleIcon = "", _noNewLine = false )
 	{
-		_difficulty = _difficulty - 25;
+		_difficulty = _difficulty - 20;
 	}
 
 	function onAfterUpdate(_properties)

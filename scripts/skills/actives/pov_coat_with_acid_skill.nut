@@ -80,6 +80,7 @@ this.pov_coat_with_acid_skill <- this.inherit("scripts/skills/skill", {
 		local actor = this.getContainer().getActor();
 		local poison = actor.getSkills().getSkillByID("effects.pov_acid_coat");
 
+		if (actor.getMainhandItem() == null){return false;}
 		if (poison != null){return false;}else{return true;}
 	}
 
