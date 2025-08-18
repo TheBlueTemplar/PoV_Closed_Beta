@@ -1,5 +1,6 @@
 # Path-of-the-Vatt-ghern-V0.3.6-Beta
 **Changelog in the Release Notes**
+
 **Previous Changes Changelogs in changelog.md above, or the included .txt**
 
 ### Beta Version
