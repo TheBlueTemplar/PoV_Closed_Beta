@@ -1,4 +1,9 @@
-# V0.3.5 BETA
+# V0.3.6 BETA
+
+## Changelog V0.3.6 BETA:
+
+* Fixed a typo and improved the vattghern goblin mutation tooltip
+* Fixed an issue with the racial of frost unholds not appearing
 
 ## Changelog V0.3.5 BETA:
 
