@@ -60,42 +60,30 @@ this.pov_goblin_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/ranged_skill.png",
-				text = "An additional [color=" + this.Const.UI.Color.PositiveValue + "]15%[/color] ranged skill."
-			},
-			{
-				id = 11,
-				type = "text",
-				icon = "ui/icons/ranged_skill.png",
-				text = "An additional [color=" + this.Const.UI.Color.PositiveValue + "]25%[/color] chance that a shot can not be blocked."
-			},
-			{
-				id = 11,
-				type = "text",
-				icon = "ui/icons/ranged_skill.png",
 				text = "Aimed Shot AP cost reduced by [color=" + this.Const.UI.Color.PositiveValue + "]2[/color], with a slightly increased fatigue cost."
 			},
 			{
 				id = 11,
 				type = "text",
-				icon = "ui/icons/health.png",
-				text = "Maximum health decreased by [color=" + this.Const.UI.Color.NegativeValue + "]20%[/color]."
+				icon = "ui/icons/ranged_skill.png",
+				text = "An additional [color=" + this.Const.UI.Color.PositiveValue + "]15%[/color] ranged skill, with an additional [color=" + this.Const.UI.Color.PositiveValue + "]25%[/color] chance that a shot can not be blocked."
 			},
 			{
 				id = 11,
 				type = "text",
-				icon = "ui/icons/melee_defense.png",
-				text = "Melee defense decreased by [color=" + this.Const.UI.Color.NegativeValue + "]15%[/color]."
+				icon = "ui/icons/health.png",
+				text = "Maximum health decreased by [color=" + this.Const.UI.Color.NegativeValue + "]20%[/color] and Melee defense decreased by [color=" + this.Const.UI.Color.NegativeValue + "]15%[/color]."
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/bravery.png",
-				text = "Has a penalty of [color=" + this.Const.UI.Color.NegativeValue + "]20/color] on all morale checks."
+				text = "Has a penalty of [color=" + this.Const.UI.Color.NegativeValue + "]20[/color] on all morale checks."
 			},
 			{
 				id = 11,
 				type = "text",
-				icon = "ui/icons/special.png",
+				icon = "ui/icons/fatigue.png",
 				text = "The fatigue and initiative penalty from wearing armor is increased by [color=" + this.Const.UI.Color.NegativeValue + "]15%[/color]."
 			}
 			
