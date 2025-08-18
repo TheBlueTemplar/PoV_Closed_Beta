@@ -1,8 +1,8 @@
-this.pov_unhold_racial <- this.inherit("scripts/skills/skill", {
+this.pov_frost_unhold_racial <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()
 	{
-		this.m.ID = "racial.pov_unhold";
+		this.m.ID = "racial.pov_frost_unhold";
 		this.m.Name = "";
 		this.m.Description = "";
 		this.m.Icon = "";
