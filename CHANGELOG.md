@@ -1,3 +1,124 @@
-# V0.1.0
+# V0.3.5 BETA
 
-TURBO WIP!
+## Changelog V0.3.5 BETA:
+
+### FIXES
+* Fixed an error with the Goblin Vattghern mutation, also tweaked its effects
+* The effects applied by "coat with acid" and "coat with vattghern poison" were tweaked, so they can apply poison to all targets of an AOE attack.
+### BALANCE
+* Some enemy mutations were mostly buffed, to make them more interesting on enemies (schrat,lindwurm,ifrit,beast,skeleton,unhold,serpent,ghost,vampire) will explain interesting specifics below
+   * Enemies with the schrat mutation will be far more resilient while holding a shield
+   * Enemies with the skeleton mutation also have some resistance to cutting damage, in addition to their previous piercing resistance. They have slightly rediced Hp though
+   * Enemies with the vampire mutation will receive a decent buff during night battles, but a minor debuff during day battles
+### MISC
+* Some descriptions of enemy corpse items were improved
+
+## Changelog V0.3.4 BETA:
+
+FIXES
+* Actually Fixed an issue with effects adding infinite armor (ifrit, schrat enemy/player mutations) (failed in 0.3.3)
+* Added some more fallbakcs in code, to avoid potential issues.
+BALANCE
+* Number of mutations on the vattghern, now slightly increase their vattghern trait stats!
+* Flesh Golem Corpses now no longer have a chance to drop the "large red worm" mutagen component
+* Now the "Coat weapon with acid" skill, slightly increases armor damage while active
+ART
+* Revisited the Vattghern trait icon and the trial of the grasses item icon
+* Revisited the Vattghern medallion art
+MISC
+* Added an encounter, notifying the player for when the enemy golem parties start roaming
+
+## Changelog V0.3.3 BETA:
+
+* Improve the way that the enemy Spider and Orc Mutations add skills to entities. (Did not work correctly)
+* Fixed a fatal issue related to the enemy hexe mutation (needs testing)
+* Fixed an issue with effects adding infinite armor (ifrit, schrat enemy/player mutations)
+
+## Changelog V0.3.2 BETA:
+
+* Fixed crash when fighting Goblins
+* Added a fallback function to the enemy mutation system, to maybe prevent some future shit
+
+## Changelog V0.3.1 BETA:
+
+* Improved the descriptions of all mutagen items
+* Improved the Vattghern and Misantrhopist Trait Icons
+* Fixed "Hates Everything" Perk incorrectly applying hate perks
+
+## Changelog V0.3.0 BETA:
+
+Oooh Boy, bunch of new stuff were added. This is the biggest update yet, and is the groundwork for my public release.
+That said, i will devide what i dit into Categories for this one
+
+### NEW SYSTEMS & ADDITIONS
+* Descriptions for some of the mod's systems were improved, mainly:
+   * Mutation Sickness Trait now better describes how it works (the more you get, the less they last for)
+   * Corpses will hint a little better as to what they need to be dissected
+   * The "Field Triage" and "Potion Brewer" perks have now updated tooltips, describing their function in PoV
+* Reworked the Flesh Golem Enemy!
+   * Buffed so they are much more sturdy, but also slower and weaker in defense. Also weak to fire.
+   * Added into the enemy mutation system (with appropriate mutations)
+   * They also get the new "Unbearable Stench" ability. A passive AOE poison/debuff
+   * They have new corpse drops, with unique new crafting, loot and special items (Grafted Flesh, Ivory Spine Shard, Rot Essence)
+   * There is the possibility for enemy roaming parties of flesh golems! (Belong to undead "zombie" faction)
+* Special Item Framework
+   * Made a framework for a new "loot" item type, special loot. They have their own distinct art effects.
+   * These can only be obtained via corpse dissection, with low chances
+   * They can be used for special crafting recipes, to get powerful items, or sold at a high price in towns, combining the propertie of crafting and loot drops.
+* New Ammunition for handgonnes: "Rotten Flesh Ammo", craftable from the newly added items!
+* The mod's injury system was slightly reworked. Now, not all entities will react the same to be injured, namely:
+   * All debuffs that are got upon being injured now last for 2 turns instead of 1
+   * Most will still just receive the "Severe Pain" Debuff upon injured, but:
+   * Orc Bersekrers, and entities with the orc mutation (player and enemy) will receive a buff instead, granting them increased aggression!
+   * Undead, if and when they are injuted, will now receive the "Destabilised" debuff, which instead of reducing their damage and action points, it will reduce their defences and increase their damage taken instead!
+* The spider mutation was buffed, with the addition of the "Weave Net" Skill. Similar to what the spiders do ingame, Spider Vattghern and enemy mutants can now use this skill too, and from a slightly longer range!
+* Enemy mutants with the orc mutation can now use the "Orc Charge" skill, same as with the orc mutated Vattghern
+* A new skill was added to the Player vattghern with the lindwurm mutation, "Coat With Acid". By inflicting damage to themselves and their weapon, they coat it with corrosive acid, which can be then used to damage enemies and apply them the corrosive acid debuff, damaging their armor over 3 turns.
+* All Wardogs, Warhounds and Warwolves are now part of the enemy mutation system
+* All Enemy Mutated Enemies will now have dynamic new names during combat. Think of like a bandit rabble with the orc mutation can be now called "Savage Bandit Rabble"
+* Unhold Corpses did not fully work correctrly before, now different unhold types will drop different corpses (frost unhold -> frost corpse). Also, bog unholds now have fire resistance instead of weakness.
+
+### ART
+* All of the aforementioned additions have their own new art.
+* Full Rework of all of PoV's events art
+* Some assets improved in quality. Mainly the "Trial of the Grasses"
+
+### TRAITS
+* Added Hates Everyone Trait, every week, the brother gains 2 different hate perks, all available from a pool of all the hate perks ingame (Legends, PoV, and Vanilla). Cannot have the same perks as the previous ones when rerolling
+* Upgraded Charming Perk, obtainable via an event
+
+### EVENTS
+* A bro who has the hates everyone trait, may interact with a bro who does not have any hate perks, granting them one for free
+* An event between the hexe mutant bro and a crusader bro
+* A special interaction event between a charming bro and a hexe mutant, upgrading the charming trait of said bro
+* With all these additions, the mod now boasts 14 New Events, and 6 New Encounters!!
+* Enemy Mutation chances slightly tweaked. Weaker enemies will have slightly lower mutation chances, and stronger enemies slightly higher.
+
+### BALANCING
+* Fire resistance of many beasts tweaked, beasts weak to fore damage will also receive more damage to their armor, not just their HP (its their fur that burns after all)
+* Enemy Zombies and Undead can now also have the "Unbearable Stench" Effect, which has a medium difficulty based chance to appear on them.
+* Slightly increased Vampire corpse drop rates
+* Enemy Hexe mutation was nerfed, now should be less punishing
+* Enemy Spider, Orc, Beast, Basilisk, Skeleton, and Unhold mutations were buffed, either with better stats or new skills
+* Some Player Mutations Buffed: Spider (new skill) , Wurm (new skill), Strain ("Unbearable Stench" Passive), Skeleton (better stats) and Orc (Better Stats).
+* The "Nyctophobia" Trait was toned down, now less punishing and grants slight resolve bonus during daytime
+* The "Path of the Vattghern" origin was tweaked, with the addition of some useful starting items (more start supplies, medicine, and a random mutagen)
+* The "Old" trait that the starting vattghern has was turned into a unique trait, with far less severe penalties.
+
+### MISC
+* PoV's mod options were improved (more readable)
+* Also, a new option to toggle my main menu art was added (so people could use other art, like ROTU or Vanilla), thanks Necro!
+* Hate/fear mutants traits now will not spawn if the enemy mutation system is disabled in options!
+* improved Corpse Dissection Tooltips, now more precise with their descriptions, and added new icons to the food and value drops
+* Some Corpse autopsies can drop new value items: Hexe (Jade Brooch), Necromancer & Vampires (Ancient Scroll)
+
+### MODDER STUFF
+* The Mod's Enemy Mutation System was pretty much rebuilt from the ground up. (That was 220+ files...) Now it is far more dynamic and modular, which means that other mods could now hook into PoV and create their own enemy mutations!
+* Autopsy and Corpse Items were fully reorganised into their own respective folders.
+* Logging of some of the mod's systems was improved
+
+### TYPOS/FIXES
+* As always, a plethora of typos were found and fixed
+* Fixed an issue with injuries, that some people had
+* Unhold Corpses now drop correctly
+* Improved SSU Compatibility
