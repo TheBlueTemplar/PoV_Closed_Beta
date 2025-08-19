@@ -27,4 +27,4 @@ At this point of the beta tests, you can include most of whatever you want, Rotu
 * Using Bredditor and similar mods can cause millions of issues, keep this in mind!
 
 ### More Detailed Information:
-For detailed information about downloading the mod, compatibility with other mods etc. check out the discord server of PoV.
+For detailed information about downloading the mod, compatibility with other mods etc. check out the discord server of PoV. discord.gg/zhHTjM5bBB
