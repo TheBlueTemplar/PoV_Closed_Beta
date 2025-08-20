@@ -74,24 +74,29 @@ this.pov_enemy_mutation_hexe <- this.inherit("scripts/skills/skill", {
 
 	function onDamageReceived( _attacker, _damageHitpoints, _damageArmor )
 	{
-		// Fallback, fix for some crash (corpse explosion caused it?)
-		if (_attacker == null)
-		{
-			return;
-		}
+		// Fallback: corpse explosion / null attacker, etc.
+    	if (_attacker == null) return;
 
 		local actor = this.getContainer().getActor();
+		// Skip self-hits (reflects, hazards that attribute to self, etc.)
+    	if (_attacker == actor) return;
+
 		if (this.m.canHex == true && !_attacker.getSkills().hasSkill("effects.pov_hexe_mutagen"))
 		{
+			// 50% resist gate for status-resistant enemies
 			if (_attacker.getCurrentProperties().IsResistantToAnyStatuses && this.Math.rand(1, 100) <= 50)
 			{
-				if (!_user.isHiddenToPlayer() && !_attacker.isHiddenToPlayer())
+				if (!actor.isHiddenToPlayer() && !_attacker.isHiddenToPlayer())
 				{
 					this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_attacker) + " resists being hexed thanks to his unnatural physiology");
 				}
-				return false;
+				return;
 			}
 
+			// Set this here so you are safe
+			this.m.canHex = false;
+
+			// Choose a bright-ish red with variance
 			local color;
 			do
 			{
@@ -101,19 +106,23 @@ this.pov_enemy_mutation_hexe <- this.inherit("scripts/skills/skill", {
 			while (color.R + color.G + color.B <= 150);
 
 			this.Tactical.spawnSpriteEffect("effect_pentagram_02", color, actor.getTile(), !_attacker.getSprite("status_hex").isFlippedHorizontally() ? 10 : -5, 88, 3.0, 1.0, 0, 400, 300);
-			local slave = this.new("scripts/skills/effects/pov_hexe_curse_slave_effect");
-			local master = this.new("scripts/skills/effects/pov_hexe_curse_master_effect");
+			// Create and wire the pair
+	        local slave  = this.new("scripts/skills/effects/pov_hexe_curse_slave_effect");
+	        local master = this.new("scripts/skills/effects/pov_hexe_curse_master_effect");
 
-			slave.setMaster(master);
-			slave.setColor(color);
-			_attacker.getSkills().add(slave);
-			master.setSlave(slave);
-			master.setColor(color);
-			actor.getSkills().add(master);
-			slave.activate();
-			master.activate();
+	        slave.setMaster(master);
+	        slave.setColor(color);
 
-			this.m.canHex = false;
+	        master.setSlave(slave);
+	        master.setColor(color);
+
+	        // Add to their respective containers
+	        _attacker.getSkills().add(slave);
+	        actor.getSkills().add(master);
+
+	        // Activate after adding
+       		slave.activate();
+        	master.activate();
 		}
 	}
 });

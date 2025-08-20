@@ -90,6 +90,8 @@ this.pov_hexe_curse_master_effect <- this.inherit("scripts/skills/skill", {
 			}
 
 			damagePercent = (damageTaken / maxHp) * 100;
+			//fallback
+			if (damagePercent <= 1){return;}
 			this.m.Slave.applyDamage(damagePercent);
 		}
 

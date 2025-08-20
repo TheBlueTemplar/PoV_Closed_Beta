@@ -43,7 +43,13 @@
 	mutate_entity = function(_actor, _chance, _mutations, _hard)
 	{
 		local possibleMutations = _mutations;	// List of all possible mutations
-
+		// Some debug and fallbacks
+		if (possibleMutations == null || possibleMutations.len() <= 0)
+		{
+    	::TLW.Mod.Debug.printLog("Possible Error: Mutation array is empty. Skipping mutation.");
+    	return;
+		}
+		
 		// Mutation Chances Calculations Based on CombatDiff (from ez to legenddary)
 		// Fallback (might not even work)
 		if (_chance == null) {_chance = ::TLW.EnemyMutChance.Default;}
@@ -97,6 +103,8 @@
 		local roll;
 		// Mutation Chance modification based on game's combat diff
 		local mutationChance = [2.0, 3.0, 5.0, 7.0][::World.Assets.getCombatDifficulty()];
+		//mutationChance = 25.0; // Debug
+		
 		// Create a list of all possible mutations (defined below)
 		local possibleMutations = ::TLW.EnemyMut.All;
 

@@ -1,3 +1,11 @@
+## Changelog V0.3.7 BETA:
+
+* Added some new Rotu enemies into the enemy mutation system
+* Fixed the enemy mutation system, and fatal errors that it could rarely cause
+* Fixed a minor brush error
+* Attempt to fix an issue related to the enemy hexe mutation effect
+* Restored the mutation limit for the vattghern
+
 ## Changelog V0.3.6 BETA:
 
 * Fixed a typo and improved the vattghern goblin mutation tooltip

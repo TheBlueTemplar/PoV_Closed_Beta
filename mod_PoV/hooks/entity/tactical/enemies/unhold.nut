@@ -49,11 +49,11 @@
 			// Second arg (int) reference in Enemy_Mutations.nut, lines 22+
 			// Third arg (array) reference in Enemy_Mutation_Arrays.nut, in afterhooks (rest in prev file, bottom)
 			if (::MSU.isKindOf(this, "unhold_bog")) {
-	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Default,::TLW.EnemyMut.Unhold,false);
+	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Default,::TLW.EnemyMut.UnholdGroup,false);
 	        } else if (::MSU.isKindOf(this, "unhold_frost")) {
-	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Default,::TLW.EnemyMut.Unhold,false);
+	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Default,::TLW.EnemyMut.UnholdGroup,false);
 	        } else {
-				::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Medium,::TLW.EnemyMut.Unhold,false);
+				::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Medium,::TLW.EnemyMut.UnholdGroup,false);
 	        }
 		}
 

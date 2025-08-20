@@ -64,9 +64,9 @@
 			// Second arg (int) reference in Enemy_Mutations.nut, lines 22+
 			// Third arg (array) reference in Enemy_Mutation_Arrays.nut, in afterhooks (rest in prev file, bottom)
 			 if (::MSU.isKindOf(this, "zombie_knight")) {
-	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.High,::TLW.EnemyMut.Zombie,false);
+	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.High,::TLW.EnemyMut.ZombieGroup,false);
 	        } else{
-	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.VLow,::TLW.EnemyMut.Zombie,false);
+	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.VLow,::TLW.EnemyMut.ZombieGroup,false);
 	        }
 		}
 

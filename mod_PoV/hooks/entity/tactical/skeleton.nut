@@ -51,11 +51,11 @@
 			// Second arg (int) reference in Enemy_Mutations.nut, lines 22+
 			// Third arg (array) reference in Enemy_Mutation_Arrays.nut, in afterhooks (rest in prev file, bottom)
 			if (::MSU.isKindOf(this, "skeleton_priest") || ::MSU.isKindOf(this, "skeleton_lich")) {
-	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.High,::TLW.EnemyMut.Skeleton,false);
+	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.High,::TLW.EnemyMut.SkeletonGroup,false);
 	        } else if (::MSU.isKindOf(this, "skeleton_boss")) {
-	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.VHigh,::TLW.EnemyMut.Skeleton,false);
+	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.VHigh,::TLW.EnemyMut.SkeletonGroup,false);
 	        } else {
-	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Low,::TLW.EnemyMut.Skeleton,false);
+	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Low,::TLW.EnemyMut.SkeletonGroup,false);
 	        }
 		}
 

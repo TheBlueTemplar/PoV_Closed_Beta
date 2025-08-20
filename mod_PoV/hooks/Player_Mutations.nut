@@ -22,16 +22,38 @@
 		}
 
 		// Ignores Mutation Limit in some mutation cases
-		if(_mutagen.Name != "Donkey" && _mutagen.Name != "Vattghern")
+		if(_mutagen.Limit == true)
 		{
-			// Checks For Mutation Limit ( Currently its 1 + 1 per 6 Levels)
+			// Checks For Mutation Limit ( Currently its 1 + 7 per 6 Levels)
 			local mutationCount = _actor.getFlags().getAsInt("pov_ActiveMutations");
 			local mutationLimit = 1 + this.Math.floor(_actor.getLevel()/7);
-			//local mutationLimit = 999; // Debug - Testing
+			// Debug - Testing
+			//local mutationLimit = 999;
 
-			// List of mutations that do not affect mutation count w/fallback
-			if (_actor.getSkills().hasSkill("trait.pov_witcher")) {mutationCount -= 1;}
-			if (_actor.getSkills().hasSkill("effects.pov_donkey_mutagen")) {mutationCount -= 1;}
+			// Array of skills that are 'ignored' for mutation count
+		    local freeMutations = [
+		        "trait.pov_witcher",
+		        "effects.pov_donkey_mutagen",
+		        "effects.pov_spider_mutagen_upgraded",
+		        "effects.pov_unhold_mutagen_upgraded",
+		        "effects.pov_direwolf_mutagen_upgraded",
+		        "effects.pov_ghoul_mutagen_upgraded",
+		        "effects.pov_hexe_mutagen_upgraded",
+		        "effects.pov_lindwurm_mutagen_upgraded",
+		        "effects.pov_schrat_mutagen_upgraded",
+		        "effects.pov_alp_mutagen_upgraded"
+		    ];
+
+		    // Loop through and reduce count for each skill found
+		    foreach (skill in freeMutations)
+		    {
+		        if (_actor.getSkills().hasSkill(skill))
+		        {
+		        	mutationCount -= 1;
+		        }
+		    }
+			
+			// Fallback
 			if (mutationCount < 0){mutationCount = 0;}
 
 			if (mutationCount >= mutationLimit)
@@ -48,6 +70,14 @@
 		// There is no fallback for the effect here, its before this function is called!
 		_actor.getSkills().add(this.new(_mutagen.Script));
 
+		// If "Remove" has sth, then, well, remove this effect
+		// Used for mutation upgrades (they remove old effect)
+		if (_mutagen.Remove != "" && _actor.getSkills().getSkillByID(_mutagen.Remove))
+		{
+			local oldSkill = _actor.getSkills().getSkillByID(_mutagen.Remove);
+			_actor.getSkills().remove(oldSkill);
+		}
+
 		// Add Conditional, Additional Effects
 		if (_mutagen.Name == "Ghost")
 		{
@@ -62,9 +92,9 @@
 		}
 
 		// Play relevant Sounds
-		if (_mutagen.len() != null)
+		if (_mutagen.Sounds.len() != null)
 		{
-			for (local i = 0; i < (_mutagen.len() - 1); i++)
+			for (local i = 0; i < (_mutagen.Sounds.len() - 1); i++)
 			{
 				// Fallback, REQUIRED (For Some Reason)
 				if (_mutagen.Sounds[i] != null)

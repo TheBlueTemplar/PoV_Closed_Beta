@@ -7,7 +7,7 @@
 		// Corpse Drop
 		if (!::MSU.isKindOf(this.actor, "player")) 
 		{
-			this.actor.m.OnDeathLootTable.push(::TLW.CorpseDrop.getCorpseDrop(actor, ::TLW.Corpse.Alp));
+			this.actor.m.OnDeathLootTable.push(::TLW.CorpseDrop.getCorpseDrop(actor, ::TLW.Corpse.AlpGroup));
 	  	}
 		
 		// Enemy Mutation System

@@ -21,7 +21,7 @@
 		{
 			// Second arg (int) reference in Enemy_Mutations.nut, lines 22+
 			// Third arg (array) reference in Enemy_Mutation_Arrays.nut, in afterhooks (rest in prev file, bottom)
-			::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Low,::TLW.EnemyMut.Ghoul,false);
+			::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Low,::TLW.EnemyMut.GhoulGroup,false);
 		}
 
 		// Chaos Mutation

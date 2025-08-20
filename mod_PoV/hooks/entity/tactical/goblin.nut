@@ -31,11 +31,11 @@
 			// Third arg (array) reference in Enemy_Mutation_Arrays.nut, in afterhooks (rest in prev file, bottom)
 			
 			if (::MSU.isKindOf(this, "goblin_shaman")) {
-	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Default,::TLW.EnemyMut.Goblin,false);
+	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Default,::TLW.EnemyMut.GoblinGroup,false);
 	        } else if (::MSU.isKindOf(this, "goblin_leader")) {
-	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Default,::TLW.EnemyMut.Goblin,false);
+	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Default,::TLW.EnemyMut.GoblinGroup,false);
 	        } else {
-	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.VLow,::TLW.EnemyMut.Goblin,false);
+	            ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.VLow,::TLW.EnemyMut.GoblinGroup,false);
 	        }
 		}
 
