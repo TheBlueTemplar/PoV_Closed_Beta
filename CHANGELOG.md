@@ -1,4 +1,17 @@
-# V0.3.6 BETA
+# V0.3.8 BETA
+
+## Changelog V0.3.8 BETA:
+
+* Fixed Trial of the grasses not working properly
+* Fixed mutations not making the correct sound on successful mutation
+
+## Changelog V0.3.7 BETA:
+
+* Added some new Rotu enemies into the enemy mutation system
+* Fixed the enemy mutation system, and fatal errors that it could rarely cause
+* Fixed a minor brush error
+* Attempt to fix an issue related to the enemy hexe mutation effect
+* Restored the mutation limit for the vattghern
 
 ## Changelog V0.3.6 BETA:
 
