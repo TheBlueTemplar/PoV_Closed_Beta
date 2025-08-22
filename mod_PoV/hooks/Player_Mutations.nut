@@ -22,7 +22,7 @@
 		}
 
 		// Ignores Mutation Limit in some mutation cases
-		if(_mutagen.Limit == true)
+		if(_mutagen.Name != "Donkey" && _mutagen.Name != "Vattghern")
 		{
 			// Checks For Mutation Limit ( Currently its 1 + 7 per 6 Levels)
 			local mutationCount = _actor.getFlags().getAsInt("pov_ActiveMutations");
@@ -94,7 +94,7 @@
 		// Play relevant Sounds
 		if (_mutagen.Sounds.len() != null)
 		{
-			for (local i = 0; i < (_mutagen.Sounds.len() - 1); i++)
+			for (local i = 0; i <= (_mutagen.Sounds.len() - 1); i++)
 			{
 				// Fallback, REQUIRED (For Some Reason)
 				if (_mutagen.Sounds[i] != null)
