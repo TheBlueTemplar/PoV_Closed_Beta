@@ -1,4 +1,9 @@
-# V0.3.7 BETA
+# V0.3.8 BETA
+
+## Changelog V0.3.8 BETA:
+
+* Fixed Trial of the grasses not working properly
+* Fixed mutations not making the correct sound on successful mutation
 
 ## Changelog V0.3.7 BETA:
 
