@@ -22,7 +22,7 @@
 		}
 
 		// Ignores Mutation Limit in some mutation cases
-		if(_mutagen.Name != "Donkey" && _mutagen.Name != "Vattghern")
+		if(_mutagen.Limit == true)
 		{
 			// Checks For Mutation Limit ( Currently its 1 + 7 per 6 Levels)
 			local mutationCount = _actor.getFlags().getAsInt("pov_ActiveMutations");
