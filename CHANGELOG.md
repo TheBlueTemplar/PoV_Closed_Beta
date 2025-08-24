@@ -1,5 +1,16 @@
-# V0.3.8 BETA
+# V0.3.9 BETA
 
+## Changelog V0.3.9 BETA:
+
+### NEW ADDITIONS
+* A new active skill was added "Ghastly Touch". Does armor ignoring damage, with slightly reduced hit chance, and one turn cooldown.
+* This skill is added to both the Vattghern and the Enemy "Spirit" mutation (etherial attacks for the enemy)
+### FIXES
+* Fixed the Vattghern Serpent Mutation causing a crash when loading a battle.
+### BALANCE
+* The "Third Eye" active from the vattghern alp mutation was tweaked, now costs more AP and Fatigue. Grants vision in a slightly smaller radius (still very large, 15 hex)
+* The HP penalty of the vattghern serpent mutation was slightly reduced
+  
 ## Changelog V0.3.8 BETA:
 
 * Fixed Trial of the grasses not working properly
