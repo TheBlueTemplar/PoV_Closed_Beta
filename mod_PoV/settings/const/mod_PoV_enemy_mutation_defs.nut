@@ -9,7 +9,7 @@
 	::TLW.Mutation.Vampire <- 
 	{
 		Flag = "pov_mutant_vampire",
-		Script = "scripts/items/misc/anatomist/pov_unhold_vampire_item",
+		Script = "scripts/items/misc/anatomist/pov_vampire_mutagen_item",
 		BaseDropChance = 2.3
 	};
 
