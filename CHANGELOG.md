@@ -2,6 +2,7 @@
 
 ## Changelog V0.3.10 BETA:
 
+* Fixed an issue with the enemy vampire mutation dropping its mutagen
 * Fixed Ghost mutation not applying properly
 * Fixed enemy Alps and Direwolves not getting mutations
 
