@@ -78,19 +78,19 @@ this.pov_serpent_mutagen_effect <- this.inherit("scripts/skills/skill", {
 	{
 		local actor = this.getContainer().getActor();
 		// ADD SERPENTINE AGILITY EFFECT - REMOVED AFTER BATTLE
-		actor.getSkills().add(this.new("scripts/skills/effects/pov_serpentine_agility"));
+		actor.getSkills().add(this.new("scripts/skills/effects/pov_serpentine_agility_effect"));
 	}
 
 	function onUpdate( _properties )
 	{
 		// Buffs
 		_properties.SurroundedBonus += 3;
+		_properties.FatigueRecoveryRate += 2;
 
 		// Debuffs
 		// ADDED VIA SERPENTINE EFFECT
 		//_properties.SurroundedDefense -= 4;
-		_properties.FatigueRecoveryRate += 2;
-		_properties.HitpointsMult *= 0.80;
+		_properties.HitpointsMult *= 0.85;
 		// Takes 10% More dmg
 	}
 

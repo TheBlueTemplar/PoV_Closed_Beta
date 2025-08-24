@@ -21,8 +21,8 @@ this.pov_thirdeye_skill <- this.inherit("scripts/skills/skill", {
 		this.m.IsStacking = false;
 		this.m.IsAttack = false;
 		this.m.IsTargetingActor = false;
-		this.m.ActionPointCost = 2;
-		this.m.FatigueCost = 10;
+		this.m.ActionPointCost = 4;
+		this.m.FatigueCost = 20;
 		this.m.MinRange = 1;
 		this.m.MaxRange = 1;
 	}
@@ -58,8 +58,7 @@ this.pov_thirdeye_skill <- this.inherit("scripts/skills/skill", {
 
 	function onUse( _user, _targetTile )
 	{
-
-		this.Tactical.queryTilesInRange(_user.getTile(), 1, 20, false, [], this.onQueryTile, _user.getFaction());
+		this.Tactical.queryTilesInRange(_user.getTile(), 1, 15, false, [], this.onQueryTile, _user.getFaction());
 		return true;
 	}
 

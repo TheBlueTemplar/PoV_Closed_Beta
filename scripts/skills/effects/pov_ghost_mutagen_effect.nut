@@ -42,6 +42,12 @@ this.pov_ghost_mutagen_effect <- this.inherit("scripts/skills/skill", {
 			{
 				id = 11,
 				type = "text",
+				icon = "ui/icons/special.png",
+				text = "Gain the [color=" + this.Const.UI.Color.PositiveValue + "]Ghastly Touch[/color] Skill, an armor ignoring attack."
+			},
+			{
+				id = 11,
+				type = "text",
 				icon = "ui/icons/direct_damage.png",
 				text = "Gain [color=" + this.Const.UI.Color.PositiveValue + "]20%[/color] armor penetration, with an additional flat bonus of [color=" + this.Const.UI.Color.PositiveValue + "]5[/color]."
 			},
@@ -53,6 +59,19 @@ this.pov_ghost_mutagen_effect <- this.inherit("scripts/skills/skill", {
 			}
 		];
 		return ret;
+	}
+
+	function onAdded()
+	{
+		// Testing Swerdgeist Actives
+		this.m.Container.add(::new("scripts/skills/actives/pov_ghost_slash_skill"));
+		this.m.Container.add(::new("scripts/skills/actives/pov_ghost_split_skill"));
+		this.m.Container.add(::new("scripts/skills/actives/pov_ghost_swing_skill"));
+
+		if (!this.m.Container.hasSkill("actives.pov_ghastly_touch"))
+		{
+			this.m.Container.add(::new("scripts/skills/actives/pov_ghastly_touch_skill"));
+		}
 	}
 
 	function onUpdate( _properties )

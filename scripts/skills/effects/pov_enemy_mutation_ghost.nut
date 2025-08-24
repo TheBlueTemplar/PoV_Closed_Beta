@@ -56,6 +56,13 @@ this.pov_enemy_mutation_ghost <- this.inherit("scripts/skills/skill", {
 		{
 			actor.m.OnDeathLootTable.push(::TLW.MutagenDrop.getMutagenDrop(actor, ::TLW.Mutation.Ghost));
 	  	}
+
+	  	if (!this.m.Container.hasSkill("actives.pov_ghastly_touch"))
+		{
+			local touch = this.new("scripts/skills/actives/pov_ghastly_touch_skill");
+			//touch.m.ActionPointCost = 3;
+			this.m.Container.add(touch);
+		}
 	}
 
 	function onUpdate( _properties )
