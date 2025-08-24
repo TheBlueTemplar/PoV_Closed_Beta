@@ -1,4 +1,9 @@
-# V0.3.9 BETA
+# V0.3.10 BETA
+
+## Changelog V0.3.10 BETA:
+
+* Fixed Ghost mutation not applying properly
+* Fixed enemy Alps and Direwolves not getting mutations
 
 ## Changelog V0.3.9 BETA:
 
