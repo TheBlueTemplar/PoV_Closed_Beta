@@ -64,9 +64,9 @@ this.pov_ghost_mutagen_effect <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		// Testing Swerdgeist Actives
-		this.m.Container.add(::new("scripts/skills/actives/pov_ghost_slash_skill"));
-		this.m.Container.add(::new("scripts/skills/actives/pov_ghost_split_skill"));
-		this.m.Container.add(::new("scripts/skills/actives/pov_ghost_swing_skill"));
+		//this.m.Container.add(::new("scripts/skills/actives/pov_ghost_slash_skill"));
+		//this.m.Container.add(::new("scripts/skills/actives/pov_ghost_split_skill"));
+		//this.m.Container.add(::new("scripts/skills/actives/pov_ghost_swing_skill"));
 
 		if (!this.m.Container.hasSkill("actives.pov_ghastly_touch"))
 		{
