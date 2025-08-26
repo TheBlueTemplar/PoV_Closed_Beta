@@ -1,4 +1,10 @@
-# V0.3.10 BETA
+# V0.3.11 BETA
+
+## Changelog V0.3.11 BETA:
+
+* On game launch, you will now be notified of PoV updates!
+* PoV Origin Assassin should now have correct perks
+* Fixed the "Ghastly Touch" skill not having cooldown
 
 ## Changelog V0.3.10 BETA:
 
