@@ -31,6 +31,17 @@ this.pov_ghastly_touch_skill <- this.inherit("scripts/skills/skill", {
 	function getTooltip()
 	{
 		local ret = this.getDefaultTooltip();
+		if (this.m.Cooldown >= 1)
+		{
+			ret.extend([
+				{
+					id = 7,
+					type = "hint",
+					icon = "ui/icons/warning.png",
+					text = "Skill is on cooldown. Turns remaining: [color=" + this.Const.UI.Color.NegativeValue + "]"+this.m.Cooldown+"[/color]"
+				}
+			]);
+		}
 		return ret;
 	}
 
@@ -50,8 +61,8 @@ this.pov_ghastly_touch_skill <- this.inherit("scripts/skills/skill", {
 
 	function onUse( _user, _targetTile )
 	{
-		return this.attackEntity(_user, _targetTile.getEntity());
 		this.m.Cooldown = 1;
+		return this.attackEntity(_user, _targetTile.getEntity());
 	}
 
 	function onAnySkillUsed( _skill, _targetEntity, _properties )

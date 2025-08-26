@@ -112,7 +112,7 @@ this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 		bros[1].m.Level = 3;
 
 		bros[2].setStartValuesEx([
-			"legend_assassin_background"
+			"assassin_background"
 		]);
 		bros[2].getBackground().m.RawDescription = "A young assassin, %name% started by reading books to become a healer and a scholar. It is only some truly horrifying events that led this refined mind and its knowledge to the art of murder";
 		//bros[2].setName("Lambert");
