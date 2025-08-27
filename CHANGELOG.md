@@ -1,4 +1,12 @@
-# V0.3.11 BETA
+# V0.3.12 BETA
+
+## Changelog V0.3.12 BETA:
+
+* Reworked the art of the Orc Mutagen item and relevant effects
+* The debuffs of the Undead Pain from Injury effect is now a stronger debuff
+* "Color" was renamed to "color" in code
+* Color tags are now dynamic in pov (they were made into const)
+* Minor fixes to some enemy hooks related to Rotu
 
 ## Changelog V0.3.11 BETA:
 
