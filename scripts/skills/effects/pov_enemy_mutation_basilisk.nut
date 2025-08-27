@@ -5,7 +5,7 @@ this.pov_enemy_mutation_basilisk <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_enemy_mutation_basilisk";
-		this.m.Name = "[color=#034207] Basilisk\'s Focus [/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "] Basilisk\'s Focus [/color]";
 		this.m.Description = "This enemy has some properties of a Basilisk! Their intense focus grants them increased chance and damage against enemie's heads, but reduced damage against their bodies. In addition, all their attacks cost more fatigue";
 		this.m.Icon = "skills/pov_basilisk_mutant.png";
 		this.m.IconMini = "pov_mini_basilisk_mutant";

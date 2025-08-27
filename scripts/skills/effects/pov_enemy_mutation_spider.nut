@@ -5,7 +5,7 @@ this.pov_enemy_mutation_spider <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_enemy_mutation_spider";
-		this.m.Name = "[color=#034207]Spider\'s Glands[/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "]Spider\'s Glands[/color]";
 		this.m.Description = "This enemy has some properties of a spider! They can poison their enemies, and deal more damage to them while they are poisoned.";
 		this.m.Icon = "skills/pov_spider_mutant.png";
 		this.m.IconMini = "pov_mini_spider_mutant";
@@ -68,7 +68,11 @@ this.pov_enemy_mutation_spider <- this.inherit("scripts/skills/skill", {
 			weave.m.IconDisabled = "skills/active_pov_weave_net_sw.png";
 			this.m.Container.add(weave);
 
-			actor.m.AIAgent.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_throw_net"));
+			if (actor.getAIAgent().findBehavior(this.Const.AI.Behavior.ID.ThrowNet) == null)
+			{
+				actor.m.AIAgent.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_attack_throw_net"));
+				actor.getAIAgent().finalizeBehaviors();
+			}
 		}
 	
 	}
@@ -81,7 +85,7 @@ this.pov_enemy_mutation_spider <- this.inherit("scripts/skills/skill", {
 			return;
 		}
 
-		if (_targetEntity.getSkills().getSkillByID("effects.pov_mutant_poison") != null || _targetEntity.getSkills().getSkillByID("effects.spider_poison") != null || _targetEntity.getSkills().getSkillByID("effects.goblin_poison") != null || _targetEntity.getSkills().getSkillByID("effects.legend_basilisk_poison") != null)
+		if (_targetEntity.getSkills().getSkillByID("effects.pov_mutant_poison") != null || _targetEntity.getSkills().getSkillByID("effects.spider_poison") != null || _targetEntity.getSkills().getSkillByID("effects.goblin_poison") != null || _targetEntity.getSkills().getSkillByID("effects.legend_basilisk_poison") != null || _targetEntity.getSkills().getSkillByID("effects.pov_vattghern_upgraded_poison") != null || _targetEntity.getSkills().getSkillByID("effects.stench") != null)
 		{
 			_properties.DamageRegularMult *= 1.15;
 		}else{

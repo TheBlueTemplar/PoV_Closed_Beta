@@ -5,7 +5,7 @@ this.pov_enemy_mutation_goblin <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_enemy_mutation_goblin";
-		this.m.Name = "[color=#034207] Goblin\'s Cunning [/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "] Goblin\'s Cunning [/color]";
 		this.m.Description = "This enemy has some properties of a Goblin! They are much more proficient with using bows, but are more squisky in return, as well as hindered by armor more.";
 		this.m.Icon = "skills/pov_goblin_mutant.png";
 		this.m.IconMini = "pov_mini_goblin_mutant";

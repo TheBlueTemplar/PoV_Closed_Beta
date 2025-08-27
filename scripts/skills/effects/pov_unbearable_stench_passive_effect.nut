@@ -5,7 +5,7 @@ this.pov_unbearable_stench_passive_effect <- this.inherit("scripts/skills/skill"
 	function create()
 	{
 		this.m.ID = "effects.pov_unbearable_stench_passive";
-		this.m.Name = "[color=#5c3a01]Unbearable Stench[/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyEffect + "]Unbearable Stench[/color]";
 		this.m.Description = "This entity emits an extremely uncomforting scent, which makes most nearby enemies shrink and cringe at a mere whiff";
 		this.m.Icon = "skills/pov_foul_stench.png";
 		this.m.IconMini = "pov_mini_foul_stench";

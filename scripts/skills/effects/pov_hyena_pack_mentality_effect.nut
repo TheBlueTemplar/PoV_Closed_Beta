@@ -6,7 +6,7 @@ this.pov_hyena_pack_mentality_effect <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_hyena_pack_mentality";
-		this.m.Name = "[color=#5c3a01]Pack Mentality[/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyEffect + "]Pack Mentality[/color]";
 		this.m.Description = "This entity has a furious bond with their pack! So long as the others still breathe, it fights with the tenacity of a cornered beast—every ally standing feeds his will to live and kill.";
 		this.m.Icon = "skills/pov_hyena.png";
 		this.m.IconMini = "pov_mini_hyena";

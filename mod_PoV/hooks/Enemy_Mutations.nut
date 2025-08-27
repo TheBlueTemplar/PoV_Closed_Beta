@@ -183,7 +183,7 @@
 		if (!_actor.getFlags().has("mutant"))
 		{
 			local prevName = _actor.m.Name;
-			_actor.m.Name = "[Color=#01420d]"+_title+"[/color] " + prevName;
+			_actor.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "]"+_title+"[/color] " + prevName;
 		}
 		// Flag for one having a specific mutation (Part of the old system, not used now)
 		if (!_actor.getFlags().has("pov_mutant_"+_name+""))

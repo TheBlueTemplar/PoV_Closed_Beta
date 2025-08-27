@@ -5,7 +5,7 @@ this.pov_enemy_mutation_direwolf <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_enemy_mutation_direwolf";
-		this.m.Name = "[color=#034207] Beastly Endurance [/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "] Beastly Endurance [/color]";
 		this.m.Description = "This enemy has some properties of a Direwolf! They show vastly increased stamina in battle, as well as increased night vision, but are more hindered by armor.";
 		this.m.Icon = "skills/pov_direwolf_mutant.png";
 		this.m.IconMini = "pov_mini_direwolf_mutant";

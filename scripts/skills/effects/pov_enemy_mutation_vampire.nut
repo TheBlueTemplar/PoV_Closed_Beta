@@ -6,7 +6,7 @@ this.pov_enemy_mutation_vampire <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_enemy_mutation_vampire";
-		this.m.Name = "[color=#034207]Vampiric Blood[/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "]Vampiric Blood[/color]";
 		this.m.Description = "This enemy has Vampiric Blood! They inherit some properties of the necrosavants.";
 		this.m.Icon = "skills/pov_vampire_mutant.png";
 		this.m.IconMini = "pov_mini_vampire_mutant";

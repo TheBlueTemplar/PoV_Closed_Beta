@@ -6,7 +6,7 @@ this.pov_enemy_mutation_ghoul <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_enemy_mutation_ghoul";
-		this.m.Name = "[color=#034207] Ghoulish Hunger [/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "] Ghoulish Hunger [/color]";
 		this.m.Description = "This enemy has some properties of a Nahrezer! They become more swift and have a terrifying presence, but they are also easier to injure, and their fast attacks do not pack the same punch.";
 		this.m.Icon = "skills/pov_ghoul_mutant.png";
 		this.m.IconMini = "pov_mini_ghoul_mutant";

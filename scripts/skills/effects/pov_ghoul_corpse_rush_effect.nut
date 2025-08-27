@@ -6,7 +6,7 @@ this.pov_ghoul_corpse_rush_effect <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_ghoul_corpse_rush";
-		this.m.Name = "[color=#5c3a01]Scavenger\'s Surge![/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyEffect + "]Scavenger\'s Surge![/color]";
 		this.m.Description = "With every fresh corpse, the ghouls grow bolder, swifter, and more difficult to strike. The scent of death ignites something primal in them, a ravenous urge to feast, to frenzy, to overwhelm.";
 		this.m.Icon = "skills/pov_ghoul.png";
 		this.m.IconMini = "pov_mini_ghoul";

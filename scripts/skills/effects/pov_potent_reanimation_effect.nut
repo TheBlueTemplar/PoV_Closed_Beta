@@ -5,7 +5,7 @@ this.pov_potent_reanimation_effect <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_potent_reanimation";
-		this.m.Name = "[color=#5c3a01]Potent Reanimation[/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyEffect + "]Potent Reanimation[/color]";
 		this.m.Description = "This enemy has some properties of an Orc! They are much more agressive, and deal more damage, at the cost of their defences.";
 		this.m.Icon = "skills/pov_skeleton.png";
 		this.m.IconMini = "pov_mini_skeleton";

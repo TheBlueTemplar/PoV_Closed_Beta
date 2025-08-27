@@ -8,7 +8,7 @@ this.pov_enemy_mutation_schrat <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_enemy_mutation_schrat";
-		this.m.Name = "[color=#034207] Barkskin [/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "] Barkskin [/color]";
 		this.m.Description = "This enemy has some properties of a Scrat! So...wood";
 		this.m.Icon = "skills/pov_schrat_mutant.png";
 		this.m.IconMini = "pov_mini_schrat_mutant";

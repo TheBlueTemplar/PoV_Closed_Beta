@@ -5,10 +5,10 @@ this.pov_enemy_mutation_orc <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_enemy_mutation_orc";
-		this.m.Name = "[color=#034207] Orcish Agression [/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "] Orcish Agression [/color]";
 		this.m.Description = "This enemy has some properties of an Orc! They are much more agressive, and deal more damage, at the cost of their defences.";
-		this.m.Icon = "skills/pov_orc1_mutant.png";
-		this.m.IconMini = "pov_mini_orc_mutant";
+		this.m.Icon = "skills/pov_orcber_mutant.png";
+		this.m.IconMini = "pov_mini_orcber_mutant";
 		this.m.Type = this.Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
@@ -71,7 +71,11 @@ this.pov_enemy_mutation_orc <- this.inherit("scripts/skills/skill", {
 			charge.m.MaxRange = 3;
 			this.m.Container.add(charge);
 
-			actor.m.AIAgent.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_charge"));
+			if (actor.getAIAgent().findBehavior(::Const.AI.Behavior.ID.Charge) == null)
+			{
+				actor.m.AIAgent.addBehavior(this.new("scripts/ai/tactical/behaviors/ai_charge"));
+				actor.getAIAgent().finalizeBehaviors();
+			}
 		}
 	}
 

@@ -5,7 +5,7 @@ this.pov_enemy_mutation_lindwurm <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_enemy_mutation_lindwurm";
-		this.m.Name = "[color=#034207] Wurm's Acid [/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "] Wurm's Acid [/color]";
 		this.m.Description = "This enemy has some properties of an Wurm! Their blood boils with acid, coating enemies that attack from close.";
 		this.m.Icon = "skills/pov_lindwurm_mutant.png";
 		this.m.IconMini = "pov_mini_lindwurm_mutant";

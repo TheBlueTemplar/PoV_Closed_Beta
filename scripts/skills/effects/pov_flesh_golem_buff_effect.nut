@@ -5,7 +5,7 @@ this.pov_flesh_golem_buff_effect <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_flesh_golem_buff";
-		this.m.Name = "[color=#5c3a01]Living Rot[/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyEffect + "]Living Rot[/color]";
 		this.m.Description = "Blob, tanky";
 		this.m.Icon = "skills/pov_flesh_golem.png";
 		this.m.IconMini = "pov_mini_flesh_golem";

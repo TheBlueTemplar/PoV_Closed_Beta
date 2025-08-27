@@ -4,7 +4,7 @@ this.pov_rot_essence_special_item <- this.inherit("scripts/items/item", {
 	{
 		this.item.create();
 		this.m.ID = "misc.pov_rot_essence_special_item";
-		this.m.Name = "[color=#521a01]Rot Essence[/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povSpecialItem + "]Rot Essence[/color]";
 		this.m.Description = "A sealed glass vial containing an extremely rare sluggish, dark orange fluid that clings to the glass like tar, harvested from a dead flesh golem. It pulses faintly, as if something inside still breathes. The stench is foul even through the seal. Whatever this substance is, it seems to resist both time and flame.\n\n This could prove extremely usfeul in preparing some truly dreadful things. Alternatively, there are people out there who would pay a lot for this.";
 		this.m.Icon = "loot/pov_inventory_special_rot_essence.png";
 		this.m.SlotType = this.Const.ItemSlot.None;

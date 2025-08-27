@@ -5,7 +5,7 @@ this.pov_orc_pain_effect <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_orc_pain";
-		this.m.Name = "[color=#5c0101]Raging Pain[/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povPainEffect + "]Raging Pain[/color]";
 		this.m.Icon = "skills/pov_orcber.png";
 		this.m.IconMini = "pov_mini_orcber";
 		this.m.Overlay = "pov_medium_orcber";

@@ -5,7 +5,7 @@ this.pov_enemy_mutation_skeleton <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_enemy_mutation_skeleton";
-		this.m.Name = "[color=#034207] Curse Of Undeath [/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "] Curse Of Undeath [/color]";
 		this.m.Description = "This enemy has the curse of Undeath! They are especially resistant to pierce damage, and tire less quickly, but they also have less hitpoints. They also dont like holy water and priests...and crosses, they hate crosses.";
 		this.m.Icon = "skills/pov_skeleton_mutant.png";
 		this.m.IconMini = "pov_mini_skeleton_mutant";

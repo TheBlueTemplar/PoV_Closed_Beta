@@ -5,7 +5,7 @@ this.pov_calcium_deficiency_effect <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_calcium_deficiency";
-		this.m.Name = "[color=#5c3a01]Calcium Deficiency[/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyEffect + "]Calcium Deficiency[/color]";
 		this.m.Description = "This one did not drink enough milk xd.";
 		this.m.Icon = "skills/pov_skeleton.png";
 		this.m.IconMini = "pov_mini_skeleton";

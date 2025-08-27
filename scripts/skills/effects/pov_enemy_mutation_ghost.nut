@@ -5,7 +5,7 @@ this.pov_enemy_mutation_ghost <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_enemy_mutation_ghost";
-		this.m.Name = "[color=#034207] Etherial Attacks [/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "] Etherial Attacks [/color]";
 		this.m.Description = "This enemy has some properties of a Geist! Their attacks phase through armor, but also fail to damage it efectively.";
 		this.m.Icon = "skills/pov_geist_mutant.png";
 		this.m.IconMini = "pov_mini_geist_mutant";

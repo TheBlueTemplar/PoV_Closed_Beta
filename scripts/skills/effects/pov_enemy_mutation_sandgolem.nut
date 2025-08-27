@@ -8,7 +8,7 @@ this.pov_enemy_mutation_sandgolem <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_enemy_mutation_sandgolem";
-		this.m.Name = "[color=#034207] Ifrit\'s Durability [/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "] Ifrit\'s Durability [/color]";
 		this.m.Description = "This enemy has some properties of an Ifrit! So...rock";
 		this.m.Icon = "skills/pov_ifrit_mutant.png";
 		this.m.IconMini = "pov_mini_ifrit_mutant";

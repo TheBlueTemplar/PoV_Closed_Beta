@@ -5,7 +5,7 @@ this.pov_enemy_mutation_hexe <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_enemy_mutation_hexe";
-		this.m.Name = "[color=#034207] Hexen Curse [/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "] Hexen Curse [/color]";
 		this.m.Description = "This enemy has some properties of an Orc! They are much more agressive, and deal more damage, at the cost of their defences.";
 		this.m.Icon = "skills/pov_hexe_mutant.png";
 		this.m.IconMini = "pov_mini_hexe_mutant";

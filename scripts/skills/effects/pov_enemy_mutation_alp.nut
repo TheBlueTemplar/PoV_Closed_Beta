@@ -5,7 +5,7 @@ this.pov_enemy_mutation_alp <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_enemy_mutation_alp";
-		this.m.Name = "[color=#034207] Alp\'s Resistance [/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "] Alp\'s Resistance [/color]";
 		this.m.Description = "This enemy has some properties of an Alp! They are not affected by the night, and are resistant to ranged attacks.";
 		this.m.Icon = "skills/pov_alp_mutant.png";
 		this.m.IconMini = "pov_mini_alp_mutant";

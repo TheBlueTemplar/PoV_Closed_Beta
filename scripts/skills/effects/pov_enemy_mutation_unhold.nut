@@ -5,7 +5,7 @@ this.pov_enemy_mutation_unhold <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_enemy_mutation_unhold";
-		this.m.Name = "[color=#034207]Unhold\'s Vigor[/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "]Unhold\'s Vigor[/color]";
 		this.m.Description = "This enemy has some properties of an unhold! This restricts their damage output, if their hp is lower than maximum.";
 		this.m.Icon = "skills/pov_troll_mutant.png";
 		this.m.IconMini = "pov_mini_troll_mutant";

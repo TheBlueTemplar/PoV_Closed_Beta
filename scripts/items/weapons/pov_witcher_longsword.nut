@@ -9,7 +9,7 @@ this.pov_witcher_longsword <- this.inherit("scripts/items/weapons/weapon", {
 
 		this.weapon.create();
 		this.m.ID = "weapon.pov_witcher_longsword";
-		this.m.Name = "[color=#023ae3]" + NameList[this.Math.rand(0, NameList.len() - 1)] + "[/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povLegendaryWeapon + "]" + NameList[this.Math.rand(0, NameList.len() - 1)] + "[/color]";
 		this.m.Description = "A long silver sword. Perfectly balanced and ideal for slaying monsters.\n\nThis legendary weapon is as old, if not more, than some of the Vatt'ghern.";
 		this.m.IconLarge = "weapons/melee/pov_witchersword.png";
 		this.m.Icon = "weapons/melee/pov_witchersword_70x70.png";

@@ -5,7 +5,7 @@ this.pov_unhold_waning_fury_effect <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "effects.pov_unhold_waning_fury";
-		this.m.Name = "[color=#5c3a01]Waning Fury[/color]";
+		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyEffect + "]Waning Fury[/color]";
 		this.m.Description = "This beast thrives on brute strength. The healthier it is, the harder it hits—but as it takes wounds, its power wanes.";
 		this.m.Icon = "skills/pov_troll.png";
 		this.m.IconMini = "pov_mini_troll";
