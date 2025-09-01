@@ -13,11 +13,11 @@ Please do keep in mind that you are playing an early version of my mod, PoV. It 
 * Download the zip of the latest version and place into your battle brothers installation dorectory, in the data folder (Do not extract!) 
 * Download is in the 'releases', in this github page
 
-Recommended Base Modlist:
+Recommended Base Modlist (All the Latest Versions):
 * [MSU](https://github.com/MSUTeam/MSU) 
 * [Modern Hooks](https://www.nexusmods.com/battlebrothers/mods/685) 
-* [Latest Legends Version](https://discord.com/channels/547043336465154049/547427442818809881) 
-* [PoV, testing version](https://github.com/TheBlueTemplar/PoV_Closed_Beta/releases)
+* [Legends](https://discord.com/channels/547043336465154049/547427442818809881) 
+* [PoV BETA](https://github.com/TheBlueTemplar/PoV_Closed_Beta/releases)
 * Emo's .exe (Instructions and file [Here](https://discord.com/channels/1332985519256113183/1333009819719958559/1403330906336399520))
 
 At this point of the beta tests, you can include most of whatever you want, Rotu, SSU, MC and whatever else. Testing stability and interactions with other mods is starting to be more and more important!
