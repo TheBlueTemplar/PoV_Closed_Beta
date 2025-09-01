@@ -17,7 +17,7 @@ Recommended Base Modlist:
 * [MSU](https://github.com/MSUTeam/MSU) 
 * [Modern Hooks](https://www.nexusmods.com/battlebrothers/mods/685) 
 * [Latest Legends Version](https://discord.com/channels/547043336465154049/547427442818809881) 
-* PoV, testing version
+* [PoV, testing version](https://github.com/TheBlueTemplar/PoV_Closed_Beta/releases)
 * Emo's .exe (Instructions and file [Here](https://discord.com/channels/1332985519256113183/1333009819719958559/1403330906336399520))
 
 At this point of the beta tests, you can include most of whatever you want, Rotu, SSU, MC and whatever else. Testing stability and interactions with other mods is starting to be more and more important!
