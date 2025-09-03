@@ -30,7 +30,7 @@
    * Some of the ingredients of the ToG that could be found in some shops will now appear slightly more often, and with a little better prices
    * The aforementioned event
 * The Vattghern "weave net" skill from the Spider mutation now costs less AP and fatigue
-* Roaming flesh golems should spawn more consistently (and a little bit more often)
+* Roaming flesh golems should spawn more consistently (and a little bit more often), their parties will also have better loot
 
 ### FIXES
 * The "Hates Everything" trait now properly changes traits every 7 days (it was 2!!)
