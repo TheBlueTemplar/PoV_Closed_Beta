@@ -22,12 +22,12 @@
 * Logging was improved. May not flood logs as much
 
 ### BALANCE
-* Ifrit mutation were slightly reworked to make them more viable for the player, and more dangerous on an enemy.
+* Ifrit mutations were slightly reworked to make them more viable for the player, and more dangerous on an enemy.
    * In the past, they gave damage resistance only on direct HP damage. Now they grant total damage resistance, which means they also reduce armor damage
    * Overall armor increase and damage resistance increased for both player and enemy. The penalties were balanced accordingly
 * Attempted to make crafting the trial of the grasses a little easier
    * Corpse drops from enemy necrosavants slightly increased
-   * Some of the ingredients of the ToG that could be found in some shops will not appear slightly more often, and with a little better prices
+   * Some of the ingredients of the ToG that could be found in some shops will now appear slightly more often, and with a little better prices
    * The aforementioned event
 * The Vattghern "weave net" skill from the Spider mutation now costs less AP and fatigue
 * Roaming flesh golems should spawn more consistently (and a little bit more often)
