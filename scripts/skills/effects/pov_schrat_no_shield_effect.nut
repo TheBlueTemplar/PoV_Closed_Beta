@@ -43,7 +43,12 @@ this.pov_schrat_no_shield_effect <- this.inherit("scripts/skills/skill", {
 
 	function onAdded() 
 	{
-		this.spawnIcon("pov_medium_schrat_danger", this.getContainer().getActor().getTile());
+		local actor = this.getContainer().getActor();
+		if (actor.isActive() && actor.isPlacedOnMap())
+		{
+			this.spawnIcon("pov_medium_schrat_danger", this.getContainer().getActor().getTile());
+		}
+		
 	}
 
 	function onUpdate( _properties )
