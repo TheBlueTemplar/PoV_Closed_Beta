@@ -11,7 +11,7 @@
 * A new option was added in PoV Settings "MC Tweaks". Off by default. If enabled and player has the MC mod loaded, it currently tweaks some things for balance, and removes the "Possess" skill from enemy geists (it annoyed me)
 * The third eye skill from the Vattghern Alp Mutation now also grants a party wide buff, in addition to its increased vision. Cost more ap and fat though.
 * Some of PoV's new effects will now spawn an in battle icon when added in battle (poisoned, rot etc.)
-* Memed a bit. Maybe some unhold mutants were mutated )*too much*. Also, catapults. 
+* Memed a bit. Maybe some unhold mutants were mutated *too much*. Also, catapults. 
 * The vattghern trait now also shows how many more **normal** mutations the vattghern can get.
 * A brand new PoV Title Screen!
 
