@@ -6,22 +6,25 @@
 // Credits
 
 // "TLW" left in honor of the OG mod, and our inspiration
-// Abyss, JM and wonderful ideas for being absolute bros and getting me into modding 
-// Chopeks, Pot, Excalibird and all the other devs and guests
+// Abyss, JM and their wonderful ideas, and for being absolute bros and getting me into modding 
+// Chopeks, Son of Satan, Celestial and Breaky for being patient with and helping me
+// Pot and Excalibird for their contribution
 // All of the lovely playtesters, and the contributors to PoV!
 // Legends and the broader modding community for all their tools, documentation and support
 
 // Included Mods
 
-// Silver Weapons is included and tweaked in PoV, credits to excalibird
-// Pain from injury is included and rewritten in PoV, creadits to Darxo
+// Silver Weapons is included and tweaked in PoV, credits to Excalibird
+// Pain from injuries is included, tweaked and rewritten in PoV, creadits to Darxo
 
 ::TLW <- {
 	ID = "mod_PoV",
 	Name = "Path of the Vatt\'ghern", //PoV
-	Version = "0.3.12",
+	Version = "0.3.13",
 	EnableEnemyMutation = true,	//default settings
+	EnemyMutationScaling = true,
 	ChaosMode = false,
+	McTweaks = false,
 	EnableMainMenuArt = true
 }
 

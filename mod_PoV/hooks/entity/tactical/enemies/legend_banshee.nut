@@ -13,7 +13,6 @@
 		// HERE, ADD EFFECTS YOU ALWAYS WANT APPLIED
 		//this.m.Skills.add(this.new("scripts/skills/effects/pov_serpentine_agility_effect"));
 		
-
 		// Chaos Mutation
 		if (::TLW.ChaosMode && ::TLW.EnableEnemyMutation)
 		{
@@ -23,6 +22,15 @@
 
 		// No Mutation For Ghosts Currently
 		
+		// Edits of other mods (hooks)
+		if (::TLW.hasMC && ::TLW.McTweaks)
+		{
+			local badThing = this.actor.getSkills().getSkillByID("actives.ghost_possess");
+			if (badThing)
+			{
+				this.actor.getSkills().remove(badThing);
+			}
+		}
 	}
 
 });

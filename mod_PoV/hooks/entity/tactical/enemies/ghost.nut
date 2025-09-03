@@ -22,6 +22,15 @@
 
 		// No Mutation For Ghosts Currently
 
+		// Edits of other mods (hooks)
+		if (::TLW.hasMC && ::TLW.McTweaks)
+		{
+			local badThing = this.actor.getSkills().getSkillByID("actives.ghost_possess");
+			if (badThing)
+			{
+				this.actor.getSkills().remove(badThing);
+			}
+		}
 	}
 
 });

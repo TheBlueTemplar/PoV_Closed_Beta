@@ -74,11 +74,7 @@ this.pov_orc_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_anat
 
 	function onUse( _actor, _item = null )
 	{
-
-		if (_actor.getSkills().hasSkill("trait.pov_witcher") && !_actor.getSkills().hasSkill("effects.pov_orc_mutagen"))
-		{
-			return ::TLW.MutatePlayer.mutatePlayer(_actor, ::TLW.PlayerMutation.Orc);
-		}
+		return ::TLW.MutatePlayer.mutatePlayer(_actor, ::TLW.PlayerMutation.Orc);
 	}
 
 });

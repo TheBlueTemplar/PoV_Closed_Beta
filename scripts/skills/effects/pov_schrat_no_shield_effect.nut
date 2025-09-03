@@ -41,6 +41,11 @@ this.pov_schrat_no_shield_effect <- this.inherit("scripts/skills/skill", {
 		return ret;
 	}
 
+	function onAdded() 
+	{
+		this.spawnIcon("pov_medium_schrat_danger", this.getContainer().getActor().getTile());
+	}
+
 	function onUpdate( _properties )
 	{
 		//_properties.makeMotherSad = true;

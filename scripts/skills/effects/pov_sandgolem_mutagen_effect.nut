@@ -1,8 +1,8 @@
 this.pov_sandgolem_mutagen_effect <- this.inherit("scripts/skills/skill", {
 	m = {
-		HeadArmorBoost = 75,
+		HeadArmorBoost = 80,
 		HeadDamageTaken = 0,
-		BodyArmorBoost = 75,
+		BodyArmorBoost = 80,
 		BodyDamageTaken = 0
 	},
 	function create()
@@ -47,7 +47,7 @@ this.pov_sandgolem_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/armor_body.png",
-				text = "This character also gets [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color]Damage Reduction."
+				text = "This character also gets [color=" + this.Const.UI.Color.PositiveValue + "]12%[/color] Total Damage Reduction."
 			},
 			{
 				id = 11,
@@ -99,6 +99,8 @@ this.pov_sandgolem_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{	
+		_properties.DamageReceivedTotalMult *= 0.88;
+
 		if (_hitInfo.BodyPart == this.Const.BodyPart.Head)
 		{
 			if (this.m.HeadDamageTaken >= this.m.HeadArmorBoost)

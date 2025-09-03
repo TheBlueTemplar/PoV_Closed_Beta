@@ -71,7 +71,8 @@ this.pov_vattghern_poison_effect <- this.inherit("scripts/skills/skill", {
 	function onAdded()
 	{
 		this.m.TurnsLeft = this.Math.max(1, 2 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
-
+		this.spawnIcon("pov_medium_venom", this.getContainer().getActor().getTile());
+		
 		if (this.getContainer().hasSkill("trait.ailing"))
 		{
 			++this.m.TurnsLeft;

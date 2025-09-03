@@ -109,7 +109,7 @@ this.pov_ghoul_corpse_rush_effect <- this.inherit("scripts/skills/skill", {
 
 		deadEnemies = this.m.StartingEntities - entityCount;
 		buff = 100 - ((entityCount * 100) / this.m.StartingEntities); // that is a percent of the dead enemies, eg. 50
-		::TLW.Mod.Debug.printLog("Start Entities:: " + this.m.StartingEntities + "Entity Count:: " + entityCount + " Dead Enemies: " + deadEnemies + " Buff%: " + buff);
+		//::TLW.Mod.Debug.printLog("Start Entities:: " + this.m.StartingEntities + "Entity Count:: " + entityCount + " Dead Enemies: " + deadEnemies + " Buff%: " + buff);
 		return [deadEnemies, buff * 0.01]; // reurns all entities sum, and then this is sth like 0.5
 	}
 

@@ -8,7 +8,8 @@ foreach(event in [
 	"pov_psychopath_vs_cannibal_event",
 	"pov_high_renown_event",
 	"pov_look_for_ingredient_event",
-	"pov_flesh_golem_rumor_event"
+	"pov_flesh_golem_rumor_event",
+	"pov_beastmut_wolf_event"
 ]) {
 	::mods_hookExactClass("events/events/" + event, function(o) {
 		o.m.isValidForEncounter <- false;

@@ -55,11 +55,41 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 		this.m.ID = "trait.pov_witcher";
 		this.m.Name = "Vatt'ghern";
 		this.m.Icon = "ui/traits/pov_vattghern.png";
-		this.m.Description = "%name% has survived the [color=#031b99]Trial of the grasses[/color] and became a Vatt'ghern. Specialized in killing monsters, they are faster and stronger than normal humans, and can ingest special [color=#031b99]mutagens[/color]. \n\n Their skills further improve over time as they get kills and mutations. Bonuses Cap at 200 kills. \n\n Due to the Vatt'ghern's skillset, they demand much larger pay than the common mercenary, and attract stronger opponents.";
-		this.m.Order = this.Const.SkillOrder.Background - 2;
+		this.m.Description = "%name% has survived the [color=" + this.Const.UI.Color.povPerkBlue + "]Trial of the grasses[/color] and became a Vatt'ghern. Specialized in killing monsters, they are faster and stronger than normal humans, and can ingest special [color=" + this.Const.UI.Color.povPerkBlue + "]mutagens[/color]. \n\n Their skills further improve over time as they get kills and mutations. Bonuses Cap at 200 kills. \n\n Due to the Vatt'ghern's skillset, they demand much larger pay than the common mercenary, and attract stronger opponents.";
+		this.m.Order = this.Const.SkillOrder.Background - 3;
 	}
 
+	getMutationLimit = function()
+	{
+		local actor = this.getContainer().getActor();
+		// Checks For Mutation Limit ( Currently its 1 + 7 per 6 Levels)
+		local mutationCount = this.getMutations();
+		local mutationLimit = 1 + this.Math.floor(actor.getLevel()/7);
 
+		// loop over all mutations defined in ::TLW.PlayerMutation
+	    foreach (key, mut in ::TLW.PlayerMutation)
+	    {
+	        // skip ones that count toward the limit
+	        if (mut.Limit) continue;
+
+	        // if actor has the skill from this mutation, subtract 1
+	        local script = this.new(mut.Script);
+	        if (actor.getSkills().hasSkill(script.getID()))
+	        {
+	            mutationCount -= 1;
+	        }
+	    }
+
+	    // Fallback
+		if (mutationCount < 0){mutationCount = 0;}
+
+		local result = mutationLimit - mutationCount;
+
+		// Fallback
+		if (result <= 0){result = 0;}
+
+		return result;
+	}
 
 	function getTooltip()
 	{
@@ -86,12 +116,47 @@ this.pov_vattghern_trait <- this.inherit("scripts/skills/traits/character_trait"
 		});
 
 		local mutations = this.getMutations();
-		result.push({
-			id = 10,
-			type = "text",
-			icon = "ui/icons/special.png",
-			text = "[color=" + this.Const.UI.Color.PositiveValue + "]" + mutations + "[/color] Mutations"
-		});
+		if (mutations == 1)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				icon = "ui/icons/pov_mutagen_shard_icon.png",
+				text = "[color=" + this.Const.UI.Color.PositiveValue + "]" + mutations + "[/color] Mutation"
+			});
+		} else {
+			result.push({
+				id = 10,
+				type = "text",
+				icon = "ui/icons/pov_mutagen_shard_icon.png",
+				text = "[color=" + this.Const.UI.Color.PositiveValue + "]" + mutations + "[/color] Mutations"
+			});
+		}
+
+		local limit = this.getMutationLimit();
+		if (limit > 0)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				icon = "ui/icons/special.png",
+				text = "Can get [color=" + this.Const.UI.Color.PositiveValue + "]" + limit + "[/color] More Mutations"
+			});
+		} else if (limit == 1) {
+			result.push({
+				id = 10,
+				type = "text",
+				icon = "ui/icons/special.png",
+				text = "Can get [color=" + this.Const.UI.Color.PositiveValue + "]" + limit + "[/color] More Mutation"
+			});
+		} else {
+			result.push({
+				id = 10,
+				type = "text",
+				icon = "ui/icons/special.png",
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]Cannot[/color] get more [color=" + this.Const.UI.Color.povPerkBlue + "]normal[/color] Mutations"
+			});
+		}
 
 		local action = this.getActionBonus();
 		result.push({

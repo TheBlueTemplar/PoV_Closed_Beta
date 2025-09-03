@@ -1,3 +1,43 @@
+## Changelog V0.3.13 BETA:
+
+NEW ADDITIONS
+* 2 New Events and 1 New Encounter!
+   * Beast Mutated vattghern may now tame a wolf through a camp encounter
+   * One event is about the additional scaling PoV adds to its mutations (see below) 
+   * The other event might help you gather more of the required materials for the trial of the grasses
+* Enemy mutations now appear more often in lategame (starting from day 70). (Optional, can be disabled in PoV Mod Settings)
+* A new option was added in PoV Settings "MC Tweaks". Off by default. If enabled and player has the MC mod loaded, it currently tweaks some things for balance, and removes the "Possess" skill from enemy geists (it annoyed me)
+* The third eye skill from the Vattghern Alp Mutation now also grants a party wide buff, in addition to its increased vision. Cost more ap and fat though.
+* Some of PoV's new effects will now spawn an in battle icon when added in battle (poisoned, rot etc.)
+* Memed a bit. Maybe some unhold mutants were mutated )*too much*. Also, catapults. 
+* The vattghern trait now also shows how many more **normal** mutations the vattghern can get.
+* A brand new PoV Title Screen!
+
+IMPROVEMENTS/TWEAKS
+* The PoV Mod Settings page was improved, with more descriptive tooltips and new options.
+* Improved some icons and tooltips (art and text).
+* The Player mutations system code was made more dynamic 
+* Logging was improved. May not flood logs as much
+
+BALANCE
+* Ifrit mutation were slightly reworked to make them more viable for the player, and more dangerous on an enemy.
+   * In the past, they gave damage resistance only on direct HP damage. Now they grant total damage resistance, which means they also reduce armor damage
+   * Overall armor increase and damage resistance increased for both player and enemy. The penalties were balanced accordingly
+* Attempted to make crafting the trial of the grasses a little easier
+   * Corpse drops from enemy necrosavants slightly increased
+   * Some of the ingredients of the ToG that could be found in some shops will not appear slightly more often, and with a little better prices
+   * The aforementioned event
+* The Vattghern "weave net" skill from the Spider mutation now costs less AP and fatigue
+* Roaming flesh golems should spawn more consistently (and a little bit more often)
+
+
+FIXES
+* The "Hates Everything" trait now properly changes traits every 7 days (it was 2!!)
+* Enemy corpses now drop properly
+* Fixed error related to descriptions of Field Triage, and Potion Brewer
+* Sounds are now played properly on successful, failed, or prohibited player mutations
+* A few typos were also spotted and fixed
+
 ## Changelog V0.3.12 BETA:
 
 * Reworked the art of the Orc Mutagen item and relevant effects

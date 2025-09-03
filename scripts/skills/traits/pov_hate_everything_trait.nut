@@ -5,7 +5,7 @@ this.pov_hate_everything_trait <- this.inherit("scripts/skills/traits/character_
 		Trait2 = null,
 		DaysHad = 0,
 		DayChanged = 0,
-		DaysToChange = 2
+		DaysToChange = 7
 		},
 	function create()
 	{

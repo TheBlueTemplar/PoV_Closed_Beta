@@ -64,6 +64,42 @@
 			::TLW.Chaos.add_mutation_all(this.actor, false)
 		}
 
+		// Debug - Test
+		//::TLW.EnemyMutations.add_mutation_enemy_vampire(this.actor, false);
+		// Special Sprite n Name
+		if (this.actor.getSkills().hasSkill("effects.pov_enemy_mutation_vampire"))
+		{
+			local roll = this.Math.rand(1,100);
+			if (roll <= 3)
+			{
+				if (this.actor.hasSprite("pov_head_effect"))
+				{
+					if (::MSU.isKindOf(this, "unhold_bog"))
+					{
+						local memeSprite = this.actor.getSprite("pov_head_effect");
+						memeSprite.setBrush("pov_vamphold_03");
+						//memeSprite.Scale = 1.25;
+						memeSprite.Visible = true;
+					}
+					else if (::MSU.isKindOf(this, "unhold_frost"))
+					{
+						local memeSprite = this.actor.getSprite("pov_head_effect");
+						memeSprite.setBrush("pov_vamphold_02");
+						//memeSprite.Scale = 1.25;
+						memeSprite.Visible = true;
+					}
+					else
+					{
+						local memeSprite = this.actor.getSprite("pov_head_effect");
+						memeSprite.setBrush("pov_vamphold_01");
+						//memeSprite.Scale = 1.25;
+						memeSprite.Visible = true;
+					}
+					this.actor.m.Name = "[color="+ ::Const.UI.Color.povEnemyMutation + "]Vamphold[/color]";
+				}
+				
+			}
+		}
 	}
 
 });

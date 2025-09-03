@@ -1,8 +1,8 @@
 this.pov_enemy_mutation_sandgolem <- this.inherit("scripts/skills/skill", {
 	m = {
-		HeadArmorBoost = 80,
+		HeadArmorBoost = 100,
 		HeadDamageTaken = 0,
-		BodyArmorBoost = 80,
+		BodyArmorBoost = 100,
 		BodyDamageTaken = 0
 	},
 	function create()
@@ -39,13 +39,13 @@ this.pov_enemy_mutation_sandgolem <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/armor_body.png",
-				text = "This character\'s skin is hard and stone-like, granting [color=" + this.Const.UI.Color.PositiveValue + "]75[/color] points of natural armor"
+				text = "This character\'s skin is hard and stone-like, granting [color=" + this.Const.UI.Color.PositiveValue + "]100[/color] points of natural armor"
 			},
 			{
 				id = 11,
 				type = "text",
 				icon = "ui/icons/armor_body.png",
-				text = "This character also gets [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color]Damage Reduction."
+				text = "This character also gets [color=" + this.Const.UI.Color.PositiveValue + "]15%[/color]Damage Reduction."
 			},
 			{
 				id = 11,
@@ -99,14 +99,15 @@ this.pov_enemy_mutation_sandgolem <- this.inherit("scripts/skills/skill", {
 		_properties.ArmorMax[this.Const.BodyPart.Head] += this.m.HeadArmorBoost;
 		_properties.ArmorMax[this.Const.BodyPart.Body] += this.m.BodyArmorBoost;
 		// DEBUFFS
-		_properties.Initiative *= 0.70;
+		_properties.Initiative *= 0.75;
+		_properties.StaminaMult *= 0.90;
 		_properties.FatigueEffectMult *= 1.15;
 		_properties.FatigueRecoveryRate += -3;
 	}
 
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{
-		_properties.DamageReceivedRegularMult *= 0.88;
+		_properties.DamageReceivedTotalMult *= 0.85;
 
 		if (_hitInfo.BodyPart == this.Const.BodyPart.Head)
 		{

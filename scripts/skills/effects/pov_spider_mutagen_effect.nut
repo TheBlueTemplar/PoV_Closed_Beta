@@ -56,7 +56,7 @@ this.pov_spider_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/pov_poison.png",
-				text = "Attacks with any weapon [color=" + this.Const.UI.Color.PositiveValue + "]Poison[/color] the enemy (\"Mutant Poison\"), dealing [color=" + this.Const.UI.Color.PositiveValue + "]7[/color] damage for two turns, and reducing their initiative and damage by [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] and vision by [color=" + this.Const.UI.Color.PositiveValue + "]1[/color]."
+				text = "Attacks with any weapon [color=" + this.Const.UI.Color.PositiveValue + "]Poison[/color] the enemy (\"Vatt\'ghern Poison\"), dealing [color=" + this.Const.UI.Color.PositiveValue + "]7[/color] damage for two turns, and reducing their initiative and damage by [color=" + this.Const.UI.Color.PositiveValue + "]10%[/color] and vision by [color=" + this.Const.UI.Color.PositiveValue + "]1[/color]."
 			},
 			{
 				id = 11,
@@ -84,8 +84,8 @@ this.pov_spider_mutagen_effect <- this.inherit("scripts/skills/skill", {
 		if (!this.m.Container.hasSkill("actives.web"))
 		{
 			local weave = this.new("scripts/skills/actives/web_skill");
-			weave.m.ActionPointCost = 5;
-			weave.m.FatigueCost = 28;
+			weave.m.ActionPointCost = 4;
+			weave.m.FatigueCost = 25;
 			weave.m.MaxRange = 2;
 			weave.m.Description = "The Vatt\'ghern weaves and covers an enemy in their web, greatly reducing their initiative, defense and damage."
 			weave.m.Icon = "skills/active_pov_weave_net.png"; // change these two
@@ -104,7 +104,7 @@ this.pov_spider_mutagen_effect <- this.inherit("scripts/skills/skill", {
 			return;
 		}
 
-		if (_targetEntity.getSkills().getSkillByID("effects.pov_mutant_poison") != null || _targetEntity.getSkills().getSkillByID("effects.pov_vattghern_poison") != null || _targetEntity.getSkills().getSkillByID("effects.spider_poison") != null || _targetEntity.getSkills().getSkillByID("effects.goblin_poison") != null || _targetEntity.getSkills().getSkillByID("effects.legend_basilisk_poison") != null)
+		if (_targetEntity.getSkills().getSkillByID("effects.pov_mutant_poison") != null || _targetEntity.getSkills().getSkillByID("effects.pov_vattghern_poison") != null || _targetEntity.getSkills().getSkillByID("effects.spider_poison") != null || _targetEntity.getSkills().getSkillByID("effects.goblin_poison") != null || _targetEntity.getSkills().getSkillByID("effects.legend_basilisk_poison") != null || _targetEntity.getSkills().getSkillByID("effects.stench") != null)
 		{
 			_properties.DamageRegularMult *= 1.10;
 		}else{

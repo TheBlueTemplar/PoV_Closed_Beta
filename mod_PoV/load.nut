@@ -9,6 +9,8 @@
 ::TLW.hasMC <- ::mods_getRegisteredMod("mod_nggh_magic_concept") != null;
 
 // Load all files in Config Folder
+::includeFiles(::IO.enumerateFiles(TLW.ID + "/!config"));
+// Load all files in Config Folder
 ::includeFiles(::IO.enumerateFiles(TLW.ID + "/config"));
 // load register folder
 ::includeFiles(::IO.enumerateFiles(TLW.ID + "/register"));

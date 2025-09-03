@@ -2,8 +2,9 @@ this.send_flesh_golem_roamers_action <- this.inherit("scripts/factions/faction_a
 	m = {},
 	function create()
 	{
-		this.m.ID = "send_undead_roamers_action";
-		this.m.Cooldown = 5.0;
+		this.m.ID = "send_flesh_golem_roamers_action";
+		// Default 30
+		this.m.Cooldown = 35.0;
 		this.m.IsSettlementsRequired = true;
 		this.faction_action.create();
 	}
@@ -26,7 +27,7 @@ this.send_flesh_golem_roamers_action <- this.inherit("scripts/factions/faction_a
 		}
 
 		//default 3
-		if (_faction.getUnits().len() >= 3)
+		if (_faction.getUnits().len() >= 4)
 		{
 			return;
 		}
@@ -50,7 +51,7 @@ this.send_flesh_golem_roamers_action <- this.inherit("scripts/factions/faction_a
 		}
 
 		// default 10
-		this.m.Score = 10;
+		this.m.Score = 14;
 	}
 
 	function onClear()
@@ -96,7 +97,7 @@ this.send_flesh_golem_roamers_action <- this.inherit("scripts/factions/faction_a
 		party.getFlags().set("IsRandomlySpawned", true);
 		party.getLoot().Money = this.Math.rand(0, 100);
 		party.getLoot().ArmorParts = this.Math.rand(0, 10);
-		local r = this.Math.rand(1, 3);
+		local r = this.Math.rand(1, 2);
 
 		if (r == 1)
 		{
@@ -104,11 +105,6 @@ this.send_flesh_golem_roamers_action <- this.inherit("scripts/factions/faction_a
 		}
 
 		if (r == 2)
-		{
-			party.addToInventory("supplies/strange_meat_item");
-		}
-
-		if (r == 3)
 		{
 			party.addToInventory("supplies/strange_meat_item");
 		}

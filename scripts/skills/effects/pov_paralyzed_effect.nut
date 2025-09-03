@@ -19,6 +19,11 @@ this.pov_paralyzed_effect <- this.inherit("scripts/skills/skill", {
 		return "This character has been paralyzed, losing  [color=" + this.Const.UI.Color.NegativeValue + "] 40% [/color] initiative and [color=" + this.Const.UI.Color.NegativeValue + "] 15% [/color] of defences, for [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s).";
 	}
 
+	function onAdded() 
+	{
+		this.spawnIcon("pov_medium_paralyzed", this.getContainer().getActor().getTile());
+	}
+
 	function onRemoved()
 	{
 		local actor = this.getContainer().getActor();

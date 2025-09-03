@@ -256,7 +256,7 @@
 	{
 		Flag = "pov_corpse_vampire",
 		Script = "scripts/items/misc/corpse/pov_corpse_vampire_item",
-		BaseDropChance = 45.0
+		BaseDropChance = 50.0
 	};
 
 	::TLW.Corpse.LegendVampireLord <- 
@@ -303,7 +303,15 @@
 
 	::TLW.Corpse.FleshGolem <- 
 	{
-		Flag = "pov_corpse_flesh_golem_sentry",
+		Flag = "pov_corpse_flesh_golem",
 		Script = "scripts/items/misc/corpse/pov_corpse_flesh_golem_item",
-		BaseDropChance = 38.0
+		BaseDropChance = 28.0
+		// it is 40 for greater flesh golem, see its hook file
+	};
+
+	::TLW.Corpse.SwordGhost <- 
+	{
+		Flag = "pov_corpse_sword_ghost",
+		Script = "scripts/items/misc/corpse/pov_corpse_ghost3_item",
+		BaseDropChance = 30.0
 	};

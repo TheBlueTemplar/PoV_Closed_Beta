@@ -169,6 +169,9 @@ this.pov_witcher_potion_item <- this.inherit("scripts/items/misc/anatomist/pov_a
 			//If bro did not die, they gain the Vatt'ghern trait!
 			return ::TLW.MutatePlayer.mutatePlayer(_actor, ::TLW.PlayerMutation.Vattghern);
 			//return this.pov_anatomist2_potion_item.onUse(_actor, _item);
+		} else {
+			this.Sound.play("sounds/bottle_01.wav", this.Const.Sound.Volume.Inventory);
+			return false;
 		}
 	}
 });

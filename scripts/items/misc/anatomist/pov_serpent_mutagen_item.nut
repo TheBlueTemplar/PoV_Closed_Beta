@@ -74,14 +74,7 @@ this.pov_serpent_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_
 
 	function onUse( _actor, _item = null )
 	{
-
-		if (_actor.getSkills().hasSkill("trait.pov_witcher") && !_actor.getSkills().hasSkill("effects.pov_serpent_mutagen"))
-		{
-			return ::TLW.MutatePlayer.mutatePlayer(_actor, ::TLW.PlayerMutation.Serpent);
-		}
-
-
-
+		return ::TLW.MutatePlayer.mutatePlayer(_actor, ::TLW.PlayerMutation.Serpent);
 	}
 
 });

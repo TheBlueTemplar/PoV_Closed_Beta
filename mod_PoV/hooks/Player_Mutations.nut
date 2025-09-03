@@ -3,6 +3,14 @@
 {
 	mutatePlayer = function (_actor, _mutagen)
 	{
+		// Fallback if bro has that effect, or not a vattghern
+		local mutCheck = this.new(_mutagen.Script);
+		if (_actor.getSkills().hasSkill(mutCheck.getID()) || !_actor.getSkills().hasSkill("trait.pov_witcher") && _mutagen.Name != "Vattghern")
+		{
+			this.Sound.play("sounds/bottle_01.wav", this.Const.Sound.Volume.Inventory);
+			return false;
+		}
+
 		// Check if bro has Anatomist Mutations (or SSU Sequences) 
 		// THE DIE IF THEY DO MUEHEH (or just dont use the item)
 		// This is more of a fallback, should be handled in ToG
@@ -30,6 +38,21 @@
 			// Debug - Testing
 			//local mutationLimit = 999;
 
+			// loop over all mutations defined in ::TLW.PlayerMutation
+		    foreach (key, mut in ::TLW.PlayerMutation)
+		    {
+		        // skip ones that count toward the limit
+		        if (mut.Limit) continue;
+
+		        // if actor has the skill from this mutation, subtract 1
+		        local script = this.new(mut.Script);
+		        if (_actor.getSkills().hasSkill(script.getID()))
+		        {
+		            mutationCount -= 1;
+		        }
+		    }
+
+			/*
 			// Array of skills that are 'ignored' for mutation count
 		    local freeMutations = [
 		        "trait.pov_witcher",
@@ -52,6 +75,7 @@
 		        	mutationCount -= 1;
 		        }
 		    }
+		    */
 			
 			// Fallback
 			if (mutationCount < 0){mutationCount = 0;}
@@ -64,19 +88,24 @@
 			}
 		}
 
-		// On Successful Requirements...
-
-		// Add Mutation Effect
-		// There is no fallback for the effect here, its before this function is called!
-		_actor.getSkills().add(this.new(_mutagen.Script));
-
 		// If "Remove" has sth, then, well, remove this effect
 		// Used for mutation upgrades (they remove old effect)
 		if (_mutagen.Remove != "" && _actor.getSkills().getSkillByID(_mutagen.Remove))
 		{
 			local oldSkill = _actor.getSkills().getSkillByID(_mutagen.Remove);
 			_actor.getSkills().remove(oldSkill);
+		} else if (_mutagen.Remove != "") 
+		{
+			// If this is a mutation upgrade, but wrongly used, return false
+			this.Sound.play("sounds/bottle_01.wav", this.Const.Sound.Volume.Inventory);
+			return false;
 		}
+		
+		// On Successful Requirements...
+
+		// Add Mutation Effect
+		// There is no fallback for the effect here, its before this function is called!
+		_actor.getSkills().add(this.new(_mutagen.Script));
 
 		// Add Conditional, Additional Effects
 		if (_mutagen.Name == "Ghost")
@@ -130,7 +159,9 @@
 		// Set a chance for team mood drop with mid - low resolve - Special cases for: anatomis, and fear/hate mutants trait
 		local brothers = this.World.getPlayerRoster().getAll();
 		local chance = 25;
-		foreach( bro in brothers )
+		if (_mutagen.Name != "Vattghern")
+		{
+			foreach( bro in brothers )
 			{
 				if(bro.getBackground().getID() == "background.anatomist")
 				{
@@ -145,6 +176,7 @@
 					bro.worsenMood(0.5, "Unsettled by a mutation");
 				}
 			}
+		}
 
 		// Set actor flags
 		_actor.getFlags().increment("pov_ActiveMutations")

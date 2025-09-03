@@ -55,6 +55,21 @@
 		if (_chance == null) {_chance = ::TLW.EnemyMutChance.Default;}
 		// Example for most cases with base chance 10. Actual numbers would be: 5,7,10,20
 		local mutationChance = [_chance*0.5, _chance*0.75, _chance, _chance*2][::World.Assets.getCombatDifficulty()];
+		
+		// Mutation Chance further increased by passed days (optional)
+		if (::TLW.EnemyMutationScaling)
+		{
+			local day = this.World.getTime().Days;
+			if (day != null)
+			{
+				// These are defined in mod_PoV_scaling_defs.nut
+				if (day >= ::TLW.Scaling.D.Day) {mutationChance *= ::TLW.Scaling.D.Mult;}
+				else if (day >= ::TLW.Scaling.C.Day) {mutationChance *= ::TLW.Scaling.C.Mult;}
+				else if (day >= ::TLW.Scaling.B.Day) {mutationChance *= ::TLW.Scaling.B.Mult;}
+				else if (day >= ::TLW.Scaling.A.Day) {mutationChance *= ::TLW.Scaling.A.Mult;}
+			}
+		}
+
 		// Second Mutation Chances Calculation
 		local secondMutationChance = mutationChance * 2;
 		if (_actor.m.IsMiniboss == true) {secondMutationChance = mutationChance * 3;}

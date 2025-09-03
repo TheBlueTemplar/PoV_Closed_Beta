@@ -5,11 +5,13 @@
 	"scripts/items/misc/corpse/pov_corpse_alp2_item",
 	"scripts/items/misc/corpse/pov_corpse_basilisk_drone_item",
 	"scripts/items/misc/corpse/pov_corpse_basilisk_sentry_item",
+	"scripts/items/misc/corpse/pov_corpse_demonhound_item",
 	"scripts/items/misc/corpse/pov_corpse_direwolf_item",
 	"scripts/items/misc/corpse/pov_corpse_direwolf2_item",
 	"scripts/items/misc/corpse/pov_corpse_ghost_item",
 	"scripts/items/misc/corpse/pov_corpse_ghost2_item",
 	"scripts/items/misc/corpse/pov_corpse_ghoul_item",
+	"scripts/items/misc/corpse/pov_corpse_ghoul2_item",
 	"scripts/items/misc/corpse/pov_corpse_goblin1_item",
 	"scripts/items/misc/corpse/pov_corpse_goblin2_item",
 	"scripts/items/misc/corpse/pov_corpse_goblin3_item",
@@ -40,19 +42,34 @@
 	"scripts/items/misc/corpse/pov_corpse_zombie_item",
 	"scripts/items/misc/corpse/pov_corpse_zombie2_item",
 	"scripts/items/misc/corpse/pov_corpse_flesh_golem_item"
-
 ];
+
+/*::TLW.SpecialCorpses <- [
+	"scripts/items/misc/corpse/pov_corpse_alp2_item",
+	"scripts/items/misc/corpse/pov_corpse_direwolf2_item",
+	"scripts/items/misc/corpse/pov_corpse_ghost2_item",
+	"scripts/items/misc/corpse/pov_corpse_ghoul2_item",
+	"scripts/items/misc/corpse/pov_corpse_hexen2_item",
+	"scripts/items/misc/corpse/pov_corpse_lindwurm2_item",
+	"scripts/items/misc/corpse/pov_corpse_necro_item",
+	"scripts/items/misc/corpse/pov_corpse_schrat2_item",
+	"scripts/items/misc/corpse/pov_corpse_spider2_item",
+	"scripts/items/misc/corpse/pov_corpse_unhold4_item",
+	"scripts/items/misc/corpse/pov_corpse_flesh_golem_item"
+];*/
 
 ::TLW.CorpsesID <- [
 	"supplies.pov_corpse_alp",
 	"supplies.pov_corpse_alp2",
 	"supplies.pov_corpse_basilisk_drone",
 	"supplies.pov_corpse_basilisk_sentry",
+	"supplies.pov_corpse_demonhound",
 	"supplies.pov_corpse_direwolf",
 	"supplies.pov_corpse_direwolf2",
 	"supplies.pov_corpse_ghost",
 	"supplies.pov_corpse_ghost2",
 	"supplies.pov_corpse_ghoul",
+	"supplies.pov_corpse_ghoul2",
 	"supplies.pov_corpse_goblin1",
 	"supplies.pov_corpse_goblin2",
 	"supplies.pov_corpse_goblin3",

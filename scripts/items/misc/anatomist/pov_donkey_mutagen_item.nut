@@ -75,18 +75,10 @@ this.pov_donkey_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_a
 
 	function onUse( _actor, _item = null )
 	{
-
-		this.Sound.play("sounds/combat/drink_01.wav", this.Const.Sound.Volume.Inventory);
-		this.Sound.play("sounds/misc/donkey_hurt_01.wav", this.Const.Sound.Volume.Inventory);
-		this.Sound.play("sounds/misc/donkey_idle_01.wav", this.Const.Sound.Volume.Inventory);
-
-		if (_actor.getSkills().hasSkill("trait.pov_witcher") && !_actor.getSkills().hasSkill("effects.pov_donkey_mutagen"))
-		{
-			return ::TLW.MutatePlayer.mutatePlayer(_actor, ::TLW.PlayerMutation.Donkey);
-		}
-
-
-
+		//this.Sound.play("sounds/combat/drink_01.wav", this.Const.Sound.Volume.Inventory);
+		//this.Sound.play("sounds/misc/donkey_hurt_01.wav", this.Const.Sound.Volume.Inventory);
+		//this.Sound.play("sounds/misc/donkey_idle_01.wav", this.Const.Sound.Volume.Inventory);
+		return ::TLW.MutatePlayer.mutatePlayer(_actor, ::TLW.PlayerMutation.Donkey);
 	}
 
 });

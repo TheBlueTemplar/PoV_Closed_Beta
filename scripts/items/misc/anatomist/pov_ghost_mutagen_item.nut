@@ -74,12 +74,7 @@ this.pov_ghost_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_an
 
 	function onUse( _actor, _item = null )
 	{
-
-		if (_actor.getSkills().hasSkill("trait.pov_witcher") && !_actor.getSkills().hasSkill("effects.pov_ghost_mutagen"))
-		{
-			// Also adds the fearsome perk, or 10 Resolve if the have this already (done on the next line)
-			return ::TLW.MutatePlayer.mutatePlayer(_actor, ::TLW.PlayerMutation.Ghost);
-		}
+		return ::TLW.MutatePlayer.mutatePlayer(_actor, ::TLW.PlayerMutation.Ghost);
 	}
 
 });

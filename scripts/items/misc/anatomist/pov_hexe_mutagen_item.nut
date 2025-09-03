@@ -81,7 +81,6 @@ this.pov_hexe_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_ana
 
 	function onUse( _actor, _item = null )
 	{
-
 		local brothers = this.World.getPlayerRoster().getAll();
 		foreach( bro in brothers )
 		{
@@ -91,14 +90,8 @@ this.pov_hexe_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_ana
 				return;
 			}
 		}
-
-		if (_actor.getSkills().hasSkill("trait.pov_witcher") && !_actor.getSkills().hasSkill("effects.pov_hexe_mutagen"))
-		{
-			return ::TLW.MutatePlayer.mutatePlayer(_actor, ::TLW.PlayerMutation.Hexe);
-		}
-
-
-
+		
+		return ::TLW.MutatePlayer.mutatePlayer(_actor, ::TLW.PlayerMutation.Hexe);
 	}
 
 });

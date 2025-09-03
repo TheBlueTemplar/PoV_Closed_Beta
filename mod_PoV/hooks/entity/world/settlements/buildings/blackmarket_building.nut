@@ -103,22 +103,22 @@
 			},
 			// TOG ITEMS
 			{
-				R = 98,
-				P = 5.0,
+				R = 97,
+				P = 4.5,
 				S = "misc/vampire_dust_item"
 			},
 			{
 				R = 97,
-				P = 5.0,
+				P = 4.5,
 				S = "misc/unhold_heart_item"
 			},
 			{
 				R = 98,
-				P = 5.0,
+				P = 4.5,
 				S = "misc/third_eye_item"
 			},
 			{
-				R = 99,
+				R = 98,
 				P = 3.0,
 				S = "misc/sulfurous_rocks_item"
 			},

@@ -75,12 +75,7 @@ this.pov_spider_mutagen_item <- this.inherit("scripts/items/misc/anatomist/pov_a
 
 	function onUse( _actor, _item = null )
 	{
-
-		if (_actor.getSkills().hasSkill("trait.pov_witcher") && !_actor.getSkills().hasSkill("effects.pov_spider_mutagen"))
-		{
-			return ::TLW.MutatePlayer.mutatePlayer(_actor, ::TLW.PlayerMutation.Spider);
-		}
-
+		return ::TLW.MutatePlayer.mutatePlayer(_actor, ::TLW.PlayerMutation.Spider);
 	}
 
 });
