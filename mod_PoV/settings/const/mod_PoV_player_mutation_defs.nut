@@ -174,7 +174,7 @@
 	};
 
 	// MUTATION UPGRADES
-	::TLW.PlayerMutation.SpiderUpgrade <- 
+	/*::TLW.PlayerMutation.SpiderUpgrade <- 
 	{
 		Name = "SpiderUpgrade",
 		Limit = false,
@@ -244,4 +244,4 @@
 		Remove = "effects.pov_alp_mutagen",
 		Script = "scripts/skills/effects/pov_alp_mutagen_upgraded_effect",
 		Sounds = ["sounds/combat/drink_01.wav", "sounds/enemies/dlc2/alp_idle_03.wav"]
-	};
+	};*/
