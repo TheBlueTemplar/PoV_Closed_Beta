@@ -11,13 +11,13 @@ this.pov_hexemut_vs_monk_event <- this.inherit("scripts/events/event", {
 		this.m.Cooldown = 99999.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/pov_truth.png[/img]{You find %other% sitting alone, poking at the dirt with a stick. They glance up as you approach, lips pressing into a thin line. %SPEECH_ON% If you\'re looking for %vattghern% and %monk%, they\'re over there. Had some kind of... discussion. Honestly, I regret ever seeing it. %SPEECH_OFF% Following their gesture, you find %monk% seated stiffly by the campfire, staring into the flames. %vattghern% is nearby, wearing a smirk, though something about it seems hollow.\n\n It doesn’t take much to piece things together. %monk%, ever steadfast in his faith, had been pressing %vattghern% about the nature of his mutation, insisting that it was beyond the bounds of what should be. %vattghern% laughed it off, throwing back riddles and questions, picking apart the monk’s certainty like a weaver unraveling cloth. Finally, %monk%, determined to prove his faith unshaken, demanded to see—truly see—what the vattghern understood.\n\n And now here he sits, utterly silent. \n\n For hours, he has said nothing, neither praying nor arguing. Then, just as suddenly as the quiet fell, he stands, dusts himself off, and goes about his duties as if nothing happened. No trembling hands, no whispered prayers for protection.\n\n Yet, when you meet his gaze, something is missing. The fire, the fervor that once burned so brightly behind his eyes—it has dimmed, just slightly, like a candle flickering against an unseen wind.}",
+			Text = "[img]gfx/ui/events/pov_truth.png[/img]{You find %other% sitting alone, poking at the dirt with a stick. %They_other% glances up as you approach, lips pressing into a thin line. %SPEECH_ON% If you\'re looking for %vattghern% and %monk%, they\'re over there. Had some kind of... discussion. Honestly, I regret ever seeing it. %SPEECH_OFF% Following %their_other% gesture, you find %monk% seated stiffly by the campfire, staring into the flames. %vattghern% is nearby, wearing a smirk, though something about it seems hollow.\n\n It doesn\'t take much to piece things together. %monk%, ever steadfast in %their_monk% faith, had been pressing %vattghern% about the nature of %their_vattghern% mutation, insisting that it was beyond the bounds of what should be. %vattghern% laughed it off, throwing back riddles and questions, picking apart the monk\'s certainty like a weaver unraveling cloth. Finally, %monk%, determined to prove his faith unshaken, demanded to see - truly see - what the vattghern understood.\n\n And now here %they_monk% sits, utterly silent. \n\n For hours, %they_monk% has said nothing, neither praying nor arguing. Then, just as suddenly as the quiet fell, %they_monk% stands, dusts %themselves_monk% off, and goes about his duties as if nothing happened. No trembling hands, no whispered prayers for protection.\n\n Yet, when you meet %their_monk% gaze, something is missing. The fire, the fervor that once burned so brightly behind %their_monk% eyes...It has dimmed, just slightly, like a candle flickering against an unseen wind.}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Hopefully that's the last of it",
+					Text = "Hopefully that\'s the last of it",
 					function getResult( _event )
 					{
 						return 0;
@@ -112,14 +112,17 @@ this.pov_hexemut_vs_monk_event <- this.inherit("scripts/events/event", {
 			"vattghern",
 			this.m.vattghernHexe.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.vattghernHexe.getGender(), "vattghern");
 		_vars.push([
 			"monk",
 			this.m.monk.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.monk.getGender(), "monk");
 		_vars.push([
 			"other",
 			this.m.OtherGuy.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.OtherGuy.getGender(), "other");
 	}
 
 	function onClear()

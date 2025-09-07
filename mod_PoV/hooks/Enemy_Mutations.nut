@@ -10,7 +10,7 @@
 		chance *= difficultyModifier;
 		if (::TLW.ChaosMode)
 		{
-			// Chaos mode further cuts the mutagen drop chance by half, might reduce it more!
+			// Chaos mode further cuts the mutagen drop chance by 60%, might reduce it more!
 			chance *= 0.4;
 		}
 		//chance = 100; //For Testing Only

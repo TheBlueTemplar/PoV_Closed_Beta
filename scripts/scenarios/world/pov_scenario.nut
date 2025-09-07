@@ -9,7 +9,7 @@ this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 	{
 		this.m.ID = "scenario.pov_last_witchers";
 		this.m.Name = "Path of the Vatt'ghern";
-		this.m.Description = "[p=c][img]gfx/ui/events/pov_vattghern_origin.png[/img][/p][p] You are a Vatt\'ghern, a professional beastslayer who has come to these lands with the ambition of establishing a new School! The challenges are many, as most view you and your kin as mutants, thus it will be hard to earn the people\'s trust, except for those who also fight against vicious beasts...\n\n[color=#bcad8c]Vatt\'ghern on the Path:[/color] Start with an experienced Vatt\'ghern, who has all the knowledge of mutagen creation and corpse dissection and has also brought a few Trial of the Grasses potions along, along with some strong gear. \n\n[color=#bcad8c]Monster Hunters:[/color] Due to the expertise of your group, you can move faster on the map, and you can spot enemy tracks from further away. \n\n[color=#bcad8c]Mutants:[/color] Few people will trust you, and even fewer will want to deal with you. You start with significantly low reputation. Most recruits, excluding those who hate beasts or are experienced at beasthunting, will demand much more pay to work for you. On the other hand, beasthunting origins, including some rare ones, will appear more frequently. Finally, you will get 15% worse prices overall. \n\n[color=#bcad8c]Spoils Of The Hunt:[/color] 25% Chance for extra drops from monsters, due to your knowledge and techniques. \n\n[color=#bcad8c]This Origin is meant to be a \"headstart\" into PoV, easing the players into the mod by immediately granting access into some of its mid-late game mechanics. [/color][/p]";
+		this.m.Description = "[p=c][img]gfx/ui/events/pov_vattghern_origin.png[/img][/p][p] You are a Vatt\'ghern, a professional beastslayer who has come to these lands with the ambition of establishing a new School! The challenges are many, as most view you and your kin as mutants, thus it will be hard to earn the people\'s trust, except for those who also fight against vicious beasts...\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Vatt\'ghern on the Path:[/color] Start with an experienced Vatt\'ghern, who has all the knowledge of mutagen creation and corpse dissection and has also brought a few Trial of the Grasses potions along, and also some strong gear. \n\n[color=" + this.Const.UI.Color.PositiveValue + "]Monster Hunters:[/color] Due to the expertise of your group, you can move faster on the map, and you can spot enemy tracks from further away. Additionally, beasthunting origins, including some rare ones, will appear more frequently and their skillset will be improved. \n\n[color=" + this.Const.UI.Color.NegativeValue + "]Mutants:[/color] Few people will trust you, and even fewer will want to deal with you. You start with significantly low reputation. Most recruits, excluding those who hate beasts and mutants, or are experienced at beasthunting, will demand much more pay to work for you. Also, you will get 15% worse prices overall. \n\n[color=" + this.Const.UI.Color.PositiveValue + "]Spoils Of The Hunt:[/color] 25% Chance for extra drops from monsters, due to your knowledge and techniques. \n\n[color=" + this.Const.UI.Color.povEvent + "]This Origin is meant to be a \"headstart\" into PoV, easing the players into the mod by immediately granting access into some of its mid-late game mechanics. [/color][/p]";
 		this.m.Difficulty = 2;
 		this.m.Order = 40;
 		this.m.IsFixedLook = true;
@@ -156,6 +156,7 @@ this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 		this.World.Assets.getStash().add(this.new("scripts/items/legend_armor/armor_upgrades/legend_hyena_fur_upgrade"));
 		this.World.Assets.getStash().add(this.new("scripts/items/tools/throwing_net"));
 		this.World.Assets.getStash().add(this.new("scripts/items/special/pov_silvering_kit"));
+		this.World.Assets.getStash().add(this.new("scripts/items/misc/corpse/pov_corpse_unhold_item"));
 		// Starting Vattghern Items
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_witcher_potion_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/pov_witcher_potion_item"));
@@ -259,12 +260,19 @@ this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 			bro.getBaseProperties().DailyWageMult *= 0.75;
 			bro.getSprite("socket").setBrush("bust_base_beasthunters");
 			bro.getSkills().add(this.new("scripts/skills/traits/legend_beastslayers_trait"));
-			bro.improveMood(1.5, "Hates beasts as much as you do");
+			bro.improveMood(1.5, "Found the right band to join!");
+		}
+		else if (bro.getBackground().getID() == "background.legend_druid")
+		{
+			bro.m.HiringCost = this.Math.floor(bro.m.HiringCost * 1.0);
+			bro.getBaseProperties().DailyWageMult *= 0.3;
+			bro.getSkills().add(this.new("scripts/skills/traits/legend_beastslayers_trait"));
+			bro.improveMood(1.5, "Feels at one with nature");
 		}
 		else if (bro.getBackground().getID() == "background.legend_vala")
 		{
 			bro.m.HiringCost = this.Math.floor(bro.m.HiringCost * 1.0);
-			bro.getBaseProperties().DailyWageMult *= 0.0;
+			bro.getBaseProperties().DailyWageMult *= 0.3;
 			bro.getSkills().add(this.new("scripts/skills/traits/legend_beastslayers_trait"));
 			bro.improveMood(1.5, "Feels at one with nature");
 		}
@@ -278,11 +286,23 @@ this.pov_scenario <- this.inherit("scripts/scenarios/world/starting_scenario", {
 			}
 			bro.improveMood(1.5, "Hates beasts as much as you do");
 		}
+		else if (bro.getSkills().hasSkill("trait.pov_hate_mutants"))
+		{
+			bro.m.HiringCost = this.Math.floor(bro.m.HiringCost * 0.9);
+			bro.getBaseProperties().DailyWageMult *= 0.9;
+			bro.improveMood(1.0, "Happy to be on your side");
+		}
+		else if (bro.getSkills().hasSkill("trait.pov_hate_everything"))
+		{
+			bro.m.HiringCost = this.Math.floor(bro.m.HiringCost * 0.8);
+			bro.getBaseProperties().DailyWageMult *= 0.8;
+			bro.improveMood(1.0, "Their hate includes your enemies");
+		}
 		else
 		{
-			bro.m.HiringCost = this.Math.floor(bro.m.HiringCost * 1.35);
-			bro.getBaseProperties().DailyWageMult *= 1.35;
-			bro.worsenMood(2.0, "Has heard terrifying things about your kind...");
+			bro.m.HiringCost = this.Math.floor(bro.m.HiringCost * 1.30);
+			bro.getBaseProperties().DailyWageMult *= 1.30;
+			bro.worsenMood(1.5, "Has heard terrifying things about your kind...");
 		}
 
 		bro.getSkills().update();

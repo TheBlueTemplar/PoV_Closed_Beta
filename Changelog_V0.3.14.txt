@@ -1,3 +1,33 @@
+## Changelog V0.3.14 BETA:
+
+### IMPROVEMENTS/TWEAKS
+* The PoV Scenario was tweaked
+   * Penalties of the origin reduced
+   * Other than beast slayers, valas and people with "hates beasts", now the origin also has bonuses when recruiting druids, and people with the "hates mutants" and "hates everything" traits
+   * Starting supplies now include one unhold corpse (for thematic reasons, and as an opportunity for experimentation for new PoV players)
+* All of PoV's new encounters were properly re-implemented
+* All events, encounters and ambitions text reviewed and improved, with fixed typos
+   * Respact the genda - All gender references in text should now be accurate
+* PoV Settings page further improved. Added better description for some options to avoid issues
+   * Added some information in the PoV server, about recommended mod settings
+* All mutagen item tooltips improved
+* Mutagen items preview in crafting screen should be better (no more text overflow)
+
+### BALANCE
+* Vattghern Unhold Mutation Revisited - Added a risk/reward aspect to it
+   * Now, when between 75 - 100 %HP, grants linearly scaling bonus damage based on the vattgherns max HP
+     * Maximum Damage Bonus is 8% of Vattghern's max HP when on 100% Hp (So A 150HP Vattghern would receive 12% Bonus Damage). Bonus caps at 20% Damage
+   * WHen Between 1 - 74 %HP, grants linearly scaling damage penalty, going up to -45% when on 1%HP
+     * As an example, a vattghern on 50%HP would receive a -15% Damage Penalty 
+* Both Vattghern and Enemy Goblin mutations were buffed. On top of past effects, they also grant +12% Ranged Damage
+* The "Foul Stench" effect was slightly nerfed in its severity
+* The Damage penalty against humans from the "Beast Slayer" trait was halved
+
+### FIXES
+* Vast array of typo corrections
+* Fixed a minor error of a missing .png
+* Fixed an error with the schrat mutation's "no shield" effect
+
 ## Changelog V0.3.13 BETA:
 
 ### NEW ADDITIONS

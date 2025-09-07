@@ -9,7 +9,7 @@ this.pov_belly_full_of_mead_event <- this.inherit("scripts/events/event", {
 		this.m.Cooldown = 99999.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/belly_full_of_mead.png[/img]{You find %other% by the campfire, flask in hand, half-lost in the golden haze of surplus mead. His posture is relaxed, feet outstretched toward the dying embers, eyes glazed with the gentle warmth of alcohol. He notices you approaching, lifts the flask slightly, and slurs: %SPEECH_ON% Hey, come joi— %SPEECH_OFF% The invitation trails off mid-word, swept aside by a sudden burst of enthusiasm. Without missing a beat, he launches into a ramble about the craft of fermentation—his old hobby, apparently. %SPEECH_ON% See, it\'s all in the balance. Honey, yeah, but not too much. Gotta let the yeast breathe, you know? People rush it. Gotta respect the time. Mead\'s like... like a story—you don\'t rush a good story...%SPEECH_OFF% He drifts deeper into technicalities, gesturing loosely with the flask as if he\'s giving a lecture to the firewood. \n\n You let him be, quietly stepping away to let him enjoy the moment uninterrupted. As you leave, a thought drifts through your mind and lingers with a smirk...}",
+			Text = "[img]gfx/ui/events/belly_full_of_mead.png[/img]{You find %other% by the campfire, flask in hand, half-lost in the golden haze of surplus mead. %Their_other% posture is relaxed, feet outstretched toward the dying embers, eyes glazed with the gentle warmth of alcohol. %They_other% notices you approaching, lifts the flask slightly, and slurs: %SPEECH_ON% Hey, come joi— %SPEECH_OFF% The invitation trails off mid-word, swept aside by a sudden burst of enthusiasm. Without missing a beat, %they_other% launches into a ramble about the craft of fermentation, %their_other% old hobby apparently. %SPEECH_ON% See, it\'s all in the balance. Honey, yeah, but not too much. Gotta let the yeast breathe, you know? People rush it. Gotta respect the time. Mead\'s like... like a story... you don\'t rush a good story...%SPEECH_OFF% %They_other% drifts deeper into technicalities, gesturing loosely with the flask as if %they_other%\'s giving a lecture to the firewood. \n\n You let %them_other% be, quietly stepping away to let %them_other% enjoy the moment uninterrupted. As you leave, a thought drifts through your mind and lingers with a smirk...}",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -74,7 +74,7 @@ this.pov_belly_full_of_mead_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
-		if (candidates_items.len() <= 2)
+		if (candidates_items.len() < 2)
 		{
 			return;
 		}
@@ -96,6 +96,7 @@ this.pov_belly_full_of_mead_event <- this.inherit("scripts/events/event", {
 			"other",
 			this.m.OtherGuy.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.OtherGuy.getGender(), "other");
 	}
 
 	function onClear()

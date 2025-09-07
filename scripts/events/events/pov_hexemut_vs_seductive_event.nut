@@ -10,7 +10,7 @@ this.pov_hexemut_vs_seductive_event <- this.inherit("scripts/events/event", {
 		this.m.Cooldown = 50.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/pov_camp_figures.png[/img]{You find %seductive% and %vattghern% sitting by the fire. With the way things usually go around %vattghern%, you brace for another clash — harsh words, blood drawn, trust frayed. But not tonight. Their talk is soft, fluid. Friendly, even. You linger, confused, as %vattghern% laughs — genuinely — at something %seductive% says. It ends as simply as it began, with %seductive% rising, brushing off their cloak, and turning toward camp.\n\n As they pass, you feel it. A shift. Not in air or sound, but in them.\n\n There was always charm in %seductive% — a smile too practiced, a voice that carried just enough warmth. But now, there\'s something deeper. A presence. As though something unseen is watching from behind their eyes, guiding their steps, coaxing others to lean closer without realizing why.\n\nThey say nothing to you. They don\'t need to. You glance back at %vattghern%, who sits in stillness. Calm. No tension in the jaw. No fire in the eyes. Whatever happened between them wasn\'t alarming. It was... pleasant.\n\n And that\'s what troubles you.}",
+			Text = "[img]gfx/ui/events/pov_camp_figures.png[/img]{You find %seductive% and %vattghern% sitting by the fire. With the way things usually go around %vattghern%, you brace for another clash: harsh words, blood drawn, trust frayed. But not tonight. Their talk is soft, fluid. Friendly, even. You linger, confused, as %vattghern% laughs — genuinely — at something %seductive% says. It ends as simply as it began, with %seductive% rising, brushing off %their_seductive% cloak, and turning toward camp.\n\n As %they_seductive% passes by, you feel it. A shift. Not in air or sound, but in %them_seductive%.\n\n There was always charm in %seductive%, a smile too practiced, a voice that carried just enough warmth. But now, there\'s something deeper. A presence. As though something unseen is watching from behind %their_seductive% eyes, guiding %their_seductive% steps, coaxing others to lean closer without realizing why.\n\n%They_seductive% say nothing to you. %They_seductive% don\'t need to. You glance back at %vattghern%, who sits in stillness. Calm. No tension in the jaw. No fire in the eyes. Whatever happened between them wasn\'t alarming. It was... pleasant.\n\n And that\'s what troubles you.}",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -99,10 +99,12 @@ this.pov_hexemut_vs_seductive_event <- this.inherit("scripts/events/event", {
 			"vattghern",
 			this.m.vattghernHexe.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.vattghernHexe.getGender(), "vattghern");
 		_vars.push([
 			"seductive",
 			this.m.seductive.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.seductive.getGender(), "seductive");
 	}
 
 	function onClear()

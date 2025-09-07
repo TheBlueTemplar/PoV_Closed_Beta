@@ -10,7 +10,7 @@ this.pov_hexemut_vs_crusader_event <- this.inherit("scripts/events/event", {
 		this.m.Cooldown = 99999.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/pov_crusader_vs_figure.png[/img]{The sound of shouting wakes you, harsh voices cracking like whips in the night air. By the time you reach the source, the fight is over — gear scattered, blood on the dirt, and two figures pulled apart by the others.\n\nYou find %seductive% seated alone, bloodied and breathing hard. Their armor is dented, one eye swelling shut. But the voice is steady.%SPEECH_ON%I struck first. I\'ll admit it. I saw the look — that Hexe\'s stain, coiled like a serpent in %vattghern%\'s soul. I struck, and was answered. I think I landed a blow... but not enough. Still, it\'s not my place to pass judgment, not while they fight under your banner. I\'ll let it go.%SPEECH_OFF% They don\'t ask for a bandage, only silence. You leave them there, but as you walk away, a thought sticks with you — how did %seductive%, who spoke so often of smiting evil, suddenly decide to let it go? You\'re not sure what unsettles you more: the fight... or how it ended.}",
+			Text = "[img]gfx/ui/events/pov_crusader_vs_figure.png[/img]{The sound of shouting wakes you, harsh voices cracking like whips in the night air. By the time you reach the source, the fight is over, gear scattered, blood on the dirt, and two figures pulled apart by the others.\n\nYou find %crusader% seated alone, bloodied and breathing hard. %Their_crusader% armor is dented, one eye swelling shut. But %their_crusader% voice is steady.%SPEECH_ON%I struck first. I\'ll admit it. I saw the look, that Hexe\'s stain, coiled like a serpent in %vattghern%\'s soul. I struck, and was answered. I think I landed a blow... but not enough. Still, it\'s not my place to pass judgment, not while they fight under your banner. I\'ll let it go.%SPEECH_OFF% They don\'t ask for a bandage, only silence. You leave %them_crusader% there, but as you walk away, a thought sticks with you... how did %crusader%, who spoke so often of smiting evil, suddenly decide to let it go? You\'re not sure what unsettles you more: the fight... or how it ended.}",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -103,10 +103,12 @@ this.pov_hexemut_vs_crusader_event <- this.inherit("scripts/events/event", {
 			"vattghern",
 			this.m.vattghernHexe.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.vattghernHexe.getGender(), "vattghern");
 		_vars.push([
 			"crusader",
 			this.m.crusader.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.crusader.getGender(), "crusader");
 	}
 
 	function onClear()

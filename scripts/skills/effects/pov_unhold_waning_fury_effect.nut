@@ -6,7 +6,7 @@ this.pov_unhold_waning_fury_effect <- this.inherit("scripts/skills/skill", {
 	{
 		this.m.ID = "effects.pov_unhold_waning_fury";
 		this.m.Name = "[color="+ ::Const.UI.Color.povEnemyEffect + "]Waning Fury[/color]";
-		this.m.Description = "This beast thrives on brute strength. The healthier it is, the harder it hits—but as it takes wounds, its power wanes.";
+		this.m.Description = "This beast thrives on brute strength. The healthier it is, the harder it hits, but as it takes wounds, its power wanes.";
 		this.m.Icon = "skills/pov_troll.png";
 		this.m.IconMini = "pov_mini_troll";
 		this.m.Type = this.Const.SkillType.StatusEffect;
@@ -16,7 +16,7 @@ this.pov_unhold_waning_fury_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "This beast thrives on brute strength. The healthier it is, the harder it hits—but as it takes wounds, its power wanes.";
+		return "This beast thrives on brute strength. The healthier it is, the harder it hits, but as it takes wounds, its power wanes.";
 	}
 
 	function getTooltip()
@@ -49,14 +49,8 @@ this.pov_unhold_waning_fury_effect <- this.inherit("scripts/skills/skill", {
 			    id = 11,
 			    type = "text",
 			    icon = "ui/icons/damage_dealt.png",
-			    text = "Deals [color=" + this.Const.UI.Color.PositiveValue + "]5%[/color] more damage at max HP"
-			},
-			{
-			    id = 11,
-			    type = "text",
-			    icon = "ui/icons/pov_fire.png",
-			    text = "Takes [color=" + this.Const.UI.Color.NegativeValue + "]40%[/color] more damage from fire"
-			},
+			    text = "Deals [color=" + this.Const.UI.Color.PositiveValue + "]12%[/color] more damage at max HP"
+			}
 
 		];
 		return ret;
@@ -98,18 +92,10 @@ this.pov_unhold_waning_fury_effect <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
-	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
-	{
-		if (_hitInfo.DamageType == this.Const.Damage.DamageType.Burning)
-		{
-			_properties.DamageReceivedRegularMult *= 1.4;
-		}
-	}
-
 	function onUpdate (_properties)
 	{
 		_properties.HitpointsMult *= 1.10;
-		_properties.DamageTotalMult *= 1.05;
+		_properties.DamageTotalMult *= 1.12;
 	}
 
 });

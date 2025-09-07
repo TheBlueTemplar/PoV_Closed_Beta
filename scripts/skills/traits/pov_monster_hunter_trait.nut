@@ -48,7 +48,7 @@ this.pov_monster_hunter_trait <- this.inherit("scripts/skills/traits/character_t
 				id = 10,
 				type = "text",
 				icon = "ui/icons/damage_dealt.png",
-				text = "Deal [color=" + this.Const.UI.Color.NegativeValue + "]-8%[/color] Damage to enemy humans and other humanoids."
+				text = "Deal [color=" + this.Const.UI.Color.NegativeValue + "]-4%[/color] Damage to enemy humans and other humanoids."
 			}
 		];
 	}
@@ -66,7 +66,7 @@ this.pov_monster_hunter_trait <- this.inherit("scripts/skills/traits/character_t
 				_properties.DamageTotalMult *= 1.05;
 			}else
 			{
-				_properties.DamageTotalMult *= 0.92;
+				_properties.DamageTotalMult *= 0.96;
 			}
 		}
 	}

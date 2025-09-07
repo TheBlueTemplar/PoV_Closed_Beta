@@ -1,7 +1,7 @@
 this.pov_stench_effect <- this.inherit("scripts/skills/skill", {
 	m = {
 		TurnsLeft = 1,
-		Damage = 6,
+		Damage = 5,
 		LastRoundApplied = 0
 	},
 	function getDamage()
@@ -33,7 +33,7 @@ this.pov_stench_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "This character has piercing stench and rot invading his eyes and lungs, causing them to lose [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.Damage + "[/color] hitpoints each turn for [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s). \n\n While under this effect, they also losing [color=" + this.Const.UI.Color.NegativeValue + "]15%[/color] initiative, [color=" + this.Const.UI.Color.NegativeValue + "]10%[/color] damage, [color=" + this.Const.UI.Color.NegativeValue + "]25%[/color] Resolve and [color=" + this.Const.UI.Color.NegativeValue + "]1[/color] Vision.";
+		return "This character has piercing stench and rot invading his eyes and lungs, causing them to lose [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.Damage + "[/color] hitpoints each turn for [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s). \n\n While under this effect, they are also losing [color=" + this.Const.UI.Color.NegativeValue + "]15%[/color] initiative, [color=" + this.Const.UI.Color.NegativeValue + "]8%[/color] damage, [color=" + this.Const.UI.Color.NegativeValue + "]20%[/color] Resolve and [color=" + this.Const.UI.Color.NegativeValue + "]1[/color] Vision.";
 	}
 
 	function resetTime()
@@ -73,8 +73,8 @@ this.pov_stench_effect <- this.inherit("scripts/skills/skill", {
 	function onUpdate( _properties )
 	{
 		_properties.InitiativeMult *= 0.85;
-		_properties.DamageTotalMult *= 0.90;
-		_properties.BraveryMult *= 0.75;
+		_properties.DamageTotalMult *= 0.92;
+		_properties.BraveryMult *= 0.80;
 		_properties.Vision -= 1;
 	}
 

@@ -9,7 +9,7 @@ this.pov_hexemut_drunk_event <- this.inherit("scripts/events/event", {
 		this.m.Cooldown = 50.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/pov_drunk.png[/img]{You\'re used to your men drinking, but not like this. One moment, the camp is as it should be, the next, half your company is sprawled over crates, bedrolls, and each other - blackout drunk. Their snores and drunken murmurs fill the night, empty bottles scattered around like the remnants of a lost battle. The strange thing? You don’t remember anyone bringing out the drink.\n\n You step over a groaning sellsword and find %vattghern% sitting upright, the only one seemingly unaffected. They swirl a half-empty bottle in their hand, watching the firelight dance inside the glass. %SPEECH_ON% Strange, isn\'t it? No one saw the first pour, yet no one could resist the last. %SPEECH_OFF%} You glance at the bottles. No brewer’s mark, no sign of their origin. The scent is oddly sweet, but not unpleasant. Whatever it was, it wasn’t normal. The fire crackles, the only sound in the stillness. You exhale, rubbing your temple. This won’t be the last time something like this happens.}",
+			Text = "[img]gfx/ui/events/pov_drunk.png[/img]{You\'re used to your men drinking, but not like this. One moment, the camp is as it should be, the next, half your company is sprawled over crates, bedrolls, and each other... blackout drunk. Their snores and drunken murmurs fill the night, empty bottles scattered around like the remnants of a lost battle. The strange thing? You don\'t remember anyone bringing out the drink.\n\n You step over a groaning sellsword and find %vattghern% sitting upright, the only one seemingly unaffected. %They_vattghern% swirl a half-empty bottle in their hand, watching the firelight dance inside the glass. %SPEECH_ON% Strange, isn\'t it? No one saw the first pour, yet no one could resist the last. %SPEECH_OFF%} You glance at the bottles. No brewer\'s mark, no sign of their origin. The scent is oddly sweet, but not unpleasant. Whatever it was, it wasn\'t normal. The fire crackles, the only sound in the stillness. You exhale, rubbing your temple. This won\'t be the last time something like this happens.}",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -25,28 +25,12 @@ this.pov_hexemut_drunk_event <- this.inherit("scripts/events/event", {
 			],
 			function start( _event )
 			{
-				/*_event.m.vattghernHexe.worsenMood(0.5, "Admiration comes at a price");
-				//_event.m.vattghernHexe.addInjury(this.Const.Injury.BluntBody);
-				_event.m.vattghernHexe.addHeavyInjury();
-				// ADD MOOD AND INJURY THING HERE
-
-				this.List.push({
-					id = 10,
-					icon = "ui/icons/days_wounded.png",
-					text = _event.m.vattghernHexe.getName() + " suffers serious wounds"
-				});
-				this.List.push({
-					id = 10,
-					icon = this.Const.MoodStateIcon[_event.m.vattghernHexe.getMoodState()],
-					text = _event.m.vattghernHexe.getName() + this.Const.MoodStateEvent[_event.m.vattghernHexe.getMoodState()]
-				});*/
-
 				local brothers = this.World.getPlayerRoster().getAll();
 				foreach( bro in brothers )
 				{
 					if (!bro.getSkills().hasSkill("effects.pov_hexe_mutagen"))
 					{
-						if (this.Math.rand(1, 100) <= 20)
+						if (this.Math.rand(1, 100) <= 30)
 						{
 							bro.improveMood(0.5, "Had a good time in camp. (Does not remember why)");
 
@@ -83,11 +67,6 @@ this.pov_hexemut_drunk_event <- this.inherit("scripts/events/event", {
 		local vattghern_candidates = [];
 		local partySize = brothers.len();
 
-		// Set a minimum party size for this to happen (I dont want to)
-		/*if (brothers.len() < 10)
-		{
-			return;
-		}*/
 		if (this.World.getTime().IsDaytime)
 		{
 			return;
@@ -120,6 +99,7 @@ this.pov_hexemut_drunk_event <- this.inherit("scripts/events/event", {
 			"vattghern",
 			this.m.vattghernHexe.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.vattghernHexe.getGender(), "vattghern");
 	}
 
 	function onClear()

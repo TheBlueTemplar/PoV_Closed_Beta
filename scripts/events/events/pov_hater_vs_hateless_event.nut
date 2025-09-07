@@ -10,13 +10,13 @@ this.pov_hater_vs_hateless_event <- this.inherit("scripts/events/event", {
 		this.m.Cooldown = 60.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/pov_psycho_vs_cannibal.png[/img]{The campfire crackles, shadows flickering against the worn faces of %hater% and %hateless%. You\'re nearby, pretending not to listen, but their voices cut through the night like a knife. %SPEECH_ON% ...What do I hate? Why? I\'ll tell you why! I hate beasts for their savage and reckless fury, tearing through the weak without mercy. Undead? They\'re nothing but cursed shells, a mockery of life, and their stench sickens me. Greenskins? Brutish, savage, with no honor — they tear apart kin and stranger alike. Mutants? Twisted abominations, broken by nature\'s own hand. Nobles? Spoiled vermin, hiding behind silk and lies while others bleed. And the rest of the plebs? A cruel, greedy lot. I hate them all, without exception.%SPEECH_OFF% %hateless% listens quietly, eyes narrowing. When the tirade ends, a dark shadow crosses their face — a new fire kindles in their heart. They nod in agreement, muttering something under breath, something hateful, something new. %hater% notices and grins wide, satisfied. %SPEECH_ON%See? That\'s the spirit. Hate is the purest kind of love.%SPEECH_OFF%}",
+			Text = "[img]gfx/ui/events/pov_psycho_vs_cannibal.png[/img]{The campfire crackles, shadows flickering against the worn faces of %hater% and %hateless%. You\'re nearby, pretending not to listen, but their voices cut through the night like a knife. %SPEECH_ON% ...Is there something I don\'t hate? Why? I\'ll tell you why! I hate beasts for their savage and reckless fury, tearing through the weak without mercy. Undead? They\'re nothing but cursed shells, a mockery of life, and their stench sickens me. Greenskins? Brutish, savage, with no honor! They tear apart kin and stranger alike. Mutants? Twisted abominations, broken by nature\'s own hand. Nobles? Spoiled vermin, hiding behind silk and lies while others bleed. And the rest of the plebs? A cruel, greedy lot. I hate them all, without exception.%SPEECH_OFF% %hateless% listens quietly, %their_hateless% eyes narrowing. When the tirade ends, a dark shadow crosses %their_hateless% face, a new fire kindles in %their_hateless% heart. %They_hateless% nod in agreement, muttering something under breath, something hateful, something new. %hater% notices and grins wide, satisfied. %SPEECH_ON%See? That\'s the spirit. Hate is the purest kind of love.%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "As long as their hate is pointed at the enemy...",
+					Text = "As long as %their_hateless% hate is pointed at the enemy...",
 					function getResult( _event )
 					{
 						return 0;
@@ -97,10 +97,12 @@ this.pov_hater_vs_hateless_event <- this.inherit("scripts/events/event", {
 			"hater",
 			this.m.hater.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.hater.getGender(), "hater");
 		_vars.push([
 			"hateless",
 			this.m.hateless.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.hateless.getGender(), "hateless");
 	}
 
 	function onClear()

@@ -11,7 +11,7 @@ this.pov_hexemut_vs_vala_event <- this.inherit("scripts/events/event", {
 		this.m.Cooldown = 99999.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/legend_vala_recruitment.png[/img]{You realize after some time that %vattghern% and %vala% are nowhere to be seen. They’re not by the fire, not among the men gambling, and not tending to any camp chores. Their absence lingers like a question unasked. You start looking for them, asking around until you find %other%, who barely looks up from their meal. %SPEECH_ON% Oh, those two? In their tents. Some magic nonsense. One tried something on the other, it didn’t go well, and now they’re both lying there like winded dogs. %SPEECH_OFF% That’s all the explanation you get, but it’s enough. You pull back the tent flap and step inside, greeted by the heavy stillness of lingering tension. %vala% sits with their head in their hands, while %vattghern% rests against the tent wall, arms crossed, expression unreadable. Whatever happened between them drained them both.\n\n %vala% exhales sharply. %SPEECH_ON% I only wanted to understand… but this magic makes no sense. It\'s twisted, like looking into a reflection that shifts when you aren\'t watching. %SPEECH_OFF% %vattghern% scoffs, their voice low and measured.%SPEECH_ON% You shouldn\'t have looked at all. Be glad all you found was confusion. %SPEECH_OFF% It doesn’t take much to see where this could lead. Two mystics pulling at the threads of each other’s power, neither willing to back down. A recipe for disaster.\n\n You make no speech, no command—just a frown directed at %vala%. A warning without words. They meet your gaze for a moment before looking away. With this, you know they won\'t try this again.}",
+			Text = "[img]gfx/ui/events/legend_vala_recruitment.png[/img]{You realize after some time that %vattghern% and %vala% are nowhere to be seen. They\'re not by the fire, not among the men gambling, and not tending to any camp chores. Their absence lingers like a question unasked. You start looking for them, asking around until you find %other%, who barely looks up from %their_other% meal. %SPEECH_ON% Oh, those two? In their tents. Some magic nonsense. One tried something on the other, it didn\'t go well, and now they\'re both lying there like winded dogs. %SPEECH_OFF% That\'s all the explanation you get, but it\'s enough. You pull back the tent flap and step inside, greeted by the heavy stillness of lingering tension. %vala% sits with %their_vala% head in %their_vala% hands, while %vattghern% rests against the tent wall, arms crossed, expression unreadable. Whatever happened between them drained them both.\n\n %vala% exhales sharply. %SPEECH_ON% I only wanted to understand… but this magic makes no sense. It\'s twisted, like looking into a reflection that shifts when you aren\'t watching. %SPEECH_OFF% %vattghern% scoffs, %their_vattghern% voice low and measured.%SPEECH_ON% You shouldn\'t have looked at all. Be glad all you found was confusion. %SPEECH_OFF% It doesn\'t take much to see where this could lead. Two mystics pulling at the threads of each other\'s power, neither willing to back down. A recipe for disaster.\n\n You make no speech, no command—just a frown directed at %vala%. A warning without words. %They_vala% meets your gaze for a moment before looking away. With this, you know %they_vala% won\'t try this again.}",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -32,10 +32,10 @@ this.pov_hexemut_vs_vala_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.OtherGuy.getImagePath());
 
 				_event.m.vattghernHexe.getSkills().add(this.new("scripts/skills/effects/pov_exhausted_effect"));
-				_event.m.vattghernHexe.worsenMood(1.5, "Exhausted from a magican contest");
+				_event.m.vattghernHexe.worsenMood(1.0, "Exhausted from a magical contest");
 
 				_event.m.vala.getSkills().add(this.new("scripts/skills/effects/pov_exhausted_effect"));
-				_event.m.vala.worsenMood(1.5, "Exhausted from a magican contest");
+				_event.m.vala.worsenMood(1.0, "Exhausted from a magical contest");
 
 				
 				this.List.push({
@@ -112,14 +112,17 @@ this.pov_hexemut_vs_vala_event <- this.inherit("scripts/events/event", {
 			"vattghern",
 			this.m.vattghernHexe.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.vattghernHexe.getGender(), "vattghern");
 		_vars.push([
 			"vala",
 			this.m.vala.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.vala.getGender(), "vala");
 		_vars.push([
 			"other",
 			this.m.OtherGuy.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.OtherGuy.getGender(), "other");
 	}
 
 	function onClear()

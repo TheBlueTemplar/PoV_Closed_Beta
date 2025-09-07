@@ -10,7 +10,7 @@ this.pov_hexemut_vs_druid_event <- this.inherit("scripts/events/event", {
 		this.m.Cooldown = 99999.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/pov_druid.png[/img]{You find %druid% crouched at the edge of the camp, hunched over a mess of herbs, charred sticks, and faintly glowing runes scratched into the earth. Sweat beads on their brow despite the chill. They don\'t look up as you approach, hands moving with tense precision, lips muttering words older than stone.%SPEECH_ON%It\'s that cursed presence, %vattghern%. I don\'t care what form he takes, nor what banner he stands under. That sort of twisted magic doesn\'t fade—it stains. It clings. You may not see it, but I feel it. And I\'ll not leave this camp unguarded while it lurks so close.%SPEECH_OFF% You watch as they place another charm into the dirt, the etching glowing briefly before dimming like cooling iron. The work is slow, the rituals draining. By the time you leave them to their efforts, %druid% looks pale, breath heavy, hands trembling from the strain. Still, their eyes never waver from their task. \n\n The wards will hold. But at a cost.}",
+			Text = "[img]gfx/ui/events/pov_druid.png[/img]{You find %druid% crouched at the edge of the camp, hunched over a mess of herbs, charred sticks, and faintly glowing runes scratched into the earth. Sweat beads on %their_druid% brow despite the chill. %They_druid% doesn\'t look up as you approach, hands moving with tense precision, lips muttering words older than stone.%SPEECH_ON%It\'s that cursed presence, %vattghern%. I don\'t care what form %they_vattghern% takes, nor what banner %they_vattghern% stands under. That sort of twisted magic doesn\'t fade, it stains. It clings. You may not see it, but I feel it. And I\'ll not leave this camp unguarded while it lurks so close.%SPEECH_OFF% You watch as %they_druid% places another charm into the dirt, the etching glowing briefly before dimming like cooling iron. The work is slow, the rituals draining. By the time you leave %them_druid% to their efforts, %druid% looks pale, breath heavy, hands trembling from the strain. Still, %their_druid% eyes never waver from their task. \n\n The wards will hold. But at a cost.}",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -28,7 +28,7 @@ this.pov_hexemut_vs_druid_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.vattghernHexe.getImagePath());
 				this.Characters.push(_event.m.druid.getImagePath());
 
-				_event.m.vattghernHexe.worsenMood(1.0, "Feels a strange sense...");
+				_event.m.vattghernHexe.worsenMood(1.0, "Has a strange feeling...");
 
 				_event.m.druid.getSkills().add(this.new("scripts/skills/effects_world/exhausted_effect"));
 				_event.m.druid.getSkills().add(this.new("scripts/skills/effects/pov_exhausted_effect"));
@@ -102,10 +102,12 @@ this.pov_hexemut_vs_druid_event <- this.inherit("scripts/events/event", {
 			"vattghern",
 			this.m.vattghernHexe.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.vattghernHexe.getGender(), "vattghern");
 		_vars.push([
 			"druid",
 			this.m.druid.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.druid.getGender(), "druid");
 	}
 
 	function onClear()

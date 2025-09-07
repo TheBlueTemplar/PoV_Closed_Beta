@@ -47,7 +47,7 @@ page.addTitle("title", "Misc Settings");
 page.addDivider("divider");
 
 ::TLW.EnableMainMenuArtID <- "EnableMainMenuArt"
-local settingEnableMainMenuArt = page.addBooleanSetting(::TLW.EnableMainMenuArtID, true, "PoV Main Menu Art", "[color=" + this.Const.UI.Color.povTooltipBlue + "]Toggle the display of PoV's main menu art.[/color] \n\n Disable this if you want another mod's or Vanilla art. Immediately works, no restart required.");
+local settingEnableMainMenuArt = page.addBooleanSetting(::TLW.EnableMainMenuArtID, true, "PoV Main Menu Art", "[color=" + this.Const.UI.Color.povTooltipBlue + "]Toggle the display of PoV's main menu art.[/color] \n\n Disable this if you want another mod's or Vanilla art. Immediately works, no restart required. \n\n [color=" + this.Const.UI.Color.povPainEffect + "]Only toggle this while in the main menu screen. It will not work if you toggle ingame.[/color]");
 
 //Callbacks
 settingEnableMainMenuArt.addAfterChangeCallback(function(_oldValue)

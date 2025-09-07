@@ -16,7 +16,7 @@ this.pov_unhold_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Hyperactive Cell Growth[/color]: This character\'s body has mutated to grow at an unnatural pace. The character has much more vitality, while in battle, this causes their wounds to close and heal within moments.\n\n[color=" + this.Const.UI.Color.NegativeValue + "]Faltering Fury[/color]: This character\'s body focus on restoring its wounds sap strength from the character\'s attacks, with worsening effects, the more wounded the character is.\n\n[color=" + this.Const.UI.Color.NegativeValue + "]Increased Appetite[/color]: The increased metabolism due to rapid cell growth lead to greatly increased appetite, not that the Vatt\'ghern minds the extra ration or two. Just don\'t let him get the mead!";
+		return "[color=" + this.Const.UI.Color.povPerkBlue + "]Hyperactive Cell Growth[/color]: This character\'s body has mutated to grow at an unnatural pace. The character has much more vitality, while in battle, this causes their wounds to close and heal within moments.\n\n[color=" + this.Const.UI.Color.povPerkBlue + "]Colossal Fury[/color]: The character's increased vigor allows them to channel it into more powerful attacks when healthy. If heavily damaged though, the effect is reversed.\n\n[color=" + this.Const.UI.Color.povPerkBlue + "]Increased Appetite[/color]: The increased metabolism due to rapid cell growth lead to greatly increased appetite, not that the Vatt\'ghern minds the extra ration or two. Just don\'t let him get the mead!";
 	}
 
 	function getTooltip()
@@ -48,7 +48,7 @@ this.pov_unhold_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/damage_dealt.png",
-				text = "Does [color=" + this.Const.UI.Color.NegativeValue + "]less[/color] damage equal to [color=" + this.Const.UI.Color.NegativeValue + "]half[/color] of missing health %."
+				text = "Does [color=" + this.Const.UI.Color.PositiveValue + "]more[/color] damage based on max HP, when over 75% Health. When under that point, deals [color=" + this.Const.UI.Color.NegativeValue + "]less[/color]. Scales linearly with current Hp."
 			},
 			{
 				id = 19,
@@ -86,7 +86,7 @@ this.pov_unhold_mutagen_effect <- this.inherit("scripts/skills/skill", {
 		// DEFINE HP HEALED
 		local actor = this.getContainer().getActor();
 		local healthMissing = actor.getHitpointsMax() - actor.getHitpoints();
-		local healthAdded = this.Math.min(healthMissing, 10);
+		local healthAdded = this.Math.min(healthMissing, 12);
 
 		if (healthAdded <= 0)
 		{
@@ -107,7 +107,8 @@ this.pov_unhold_mutagen_effect <- this.inherit("scripts/skills/skill", {
 	function onUpdate(_properties)
 	{
 		// Buffs
-		// Regen 10HP
+		// Regen 12HP
+		// More Dmg at Max HP
 		_properties.HitpointsMult *= 1.35;
 
 		// Debuffs

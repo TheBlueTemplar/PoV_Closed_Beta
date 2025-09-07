@@ -159,7 +159,7 @@ this.pov_sandgolem_in_hole_event <- this.inherit("scripts/events/event", {
 		
 		this.m.Screens.push({
 			ID = "D",
-			Text = "[img]gfx/ui/events/pov_sandgolem_hole.png[/img]{Nodding, %beastslayer% the beast slayer walks up to the hole and stares in. It does not take him long to figure out how to lure the ifrit out of its hiding place. With a well timed dodge, followed by a precise strike, the elemental quickly crumbled. The rest of the company, having watched the entire scene, erupts into a vigorous celebration.\n\n You notice the beastslayer approaching the remains, quickly pocketing something, and then gathering everything else into a piece of cloth. He turns to you, grinning.  %SPEECH_ON%Here, I\'ts remains, might find some use for them%SPEECH_OFF%}",
+			Text = "[img]gfx/ui/events/pov_sandgolem_hole.png[/img]{Nodding, %beastslayer% the beast slayer walks up to the hole and stares in. It does not take %them_beastslayer% long to figure out how to lure the ifrit out of its hiding place. With a well timed dodge, followed by a precise strike, the elemental quickly crumbled. The rest of the company, having watched the entire scene, erupts into a vigorous celebration.\n\n You notice the beastslayer approaching the remains, quickly pocketing something, and then gathering everything else into a piece of cloth. %They_beastslayer% turns to you, grinning.  %SPEECH_ON%Here, I\'ts remains, might find some use for them%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -267,6 +267,10 @@ this.pov_sandgolem_in_hole_event <- this.inherit("scripts/events/event", {
 			"beastslayer",
 			this.m.Beastslayer ? this.m.Beastslayer.getNameOnly() : ""
 		]);
+		if (this.m.Beastslayer != null)
+		{
+			::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.Beastslayer.getGender(), "beastslayer");
+		}
 	}
 
 	function onClear()

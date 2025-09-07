@@ -9,7 +9,7 @@ this.pov_vattghern_crafts_poison_event <- this.inherit("scripts/events/event", {
 		this.m.Cooldown = 9999.0 * this.World.getTime().SecondsPerDay;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/pov_vattghern_potion.png[/img]{You\'re doing your usual rounds when you spot %vattghern% hunched near the edge of camp, half-hidden behind a rock. His back is to you, movements strange—almost twitchy. Curious, you step closer. He doesn\'t notice at first. You catch a glimpse of something glistening between his fingers—dark, viscous, and dripping slowly into a small glass vial. You clear your throat. He freezes, turning slowly. %SPEECH_ON% It\'s spider venom, he mutters. Fresh. Don\'t waste it. %SPEECH_OFF% He holds the vial out with a reluctant grunt, like a child caught with his hand in a trapper\'s pouch. You take it, unsure whether to thank him for it. You glance him up and down. His eyes are unfocused, pupils thin as needles. The back of his neck twitches once, sharply. Then you notice something... off. %SPEECH_ON% Is this... cord coming out of your pants? %SPEECH_OFF% He looks at you. Slowly. Expression blank. %SPEECH_ON% Don\'t ask too many questions. %SPEECH_OFF%}",
+			Text = "[img]gfx/ui/events/pov_vattghern_potion.png[/img]{You\'re doing your usual rounds when you spot %vattghern% hunched near the edge of camp, half-hidden behind a rock. %Their_vattghern% back is to you, movements strange, almost twitchy. Curious, you step closer. %They_vattghern% doesn\'t notice at first. You catch a glimpse of something glistening between %their_vattghern% fingers: dark, viscous, and dripping slowly into a small glass vial. You clear your throat. %They_vattghern% freezes, turning slowly. %SPEECH_ON% It\'s spider venom, %they_vattghern% mutters. Fresh. Don\'t waste it. %SPEECH_OFF% %They_vattghern% holds the vial out with a reluctant grunt, like a child caught with %their_vattghern% hand in a trapper\'s pouch. You take it, unsure whether to thank %them_vattghern% for it. You glance %them_vattghern% up and down. %Their_vattghern% eyes are unfocused, pupils thin as needles. The back of %their_vattghern% neck twitches once, sharply. Then you notice something... off. %SPEECH_ON% Is this cord... coming out of your pants? %SPEECH_OFF% He looks at you. Slowly. Expression blank. %SPEECH_ON% Don\'t ask too many questions. %SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -28,9 +28,10 @@ this.pov_vattghern_crafts_poison_event <- this.inherit("scripts/events/event", {
 				this.Characters.push(_event.m.vattghern.getImagePath());
 				local item = this.new("scripts/items/accessory/pov_vattghern_poison_item");
 				local secondItem = this.new("scripts/items/misc/spider_silk_item");
-				// Add two of the poison flasks
+				// Add two of the poison flasks and extra shet
 				this.World.Assets.getStash().add(item);
 				this.World.Assets.getStash().add(item);
+				this.World.Assets.getStash().add(secondItem);
 				this.List.push({
 					id = 10,
 					icon = "ui/items/" + item.getIcon(),
@@ -80,7 +81,7 @@ this.pov_vattghern_crafts_poison_event <- this.inherit("scripts/events/event", {
 		}
 
 		this.m.vattghern = candidates_vattghern[this.Math.rand(0, candidates_vattghern.len() - 1)];
-		this.m.Score = 10;
+		this.m.Score = 15;
 		//this.m.Score = 9999;
 	}
 
@@ -94,6 +95,7 @@ this.pov_vattghern_crafts_poison_event <- this.inherit("scripts/events/event", {
 			"vattghern",
 			this.m.vattghern != null ? this.m.vattghern.getName() : ""
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.vattghern.getGender(), "vattghern");
 	}
 
 	function onDetermineStartScreen()

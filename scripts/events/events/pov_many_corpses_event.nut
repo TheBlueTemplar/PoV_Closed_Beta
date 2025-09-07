@@ -109,7 +109,7 @@ this.pov_many_corpses_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "Dispose Them",
-			Text = "[img]gfx/ui/events/pov_corpse_cart_empty.png[/img]{You sigh and give the order. %SPEECH_ON%Fine. Burn them. Bury them. Dump them — I don\'t care how. Just get rid of the lot.%SPEECH_OFF% The change in the camp is almost immediate. The stench begins to lift, replaced by smoke or silence, depending on the method. The men speak more freely again. Meals are shared without grimaces. Laughter, hesitant at first, returns in small doses. \n\n You think to yourself that whatever those monster corpses were worth in coin, you seem to have bought back morale instead. At least that\'s what you hope.}",
+			Text = "[img]gfx/ui/events/pov_corpse_cart_empty.png[/img]{You sigh and give the order. %SPEECH_ON%Fine. Burn them. Bury them. Dump them. I don\'t care how. Just get rid of the lot.%SPEECH_OFF% The change in the camp is almost immediate. The stench begins to lift, replaced by smoke or silence, depending on the method. The men speak more freely again. Meals are shared without grimaces. Laughter, hesitant at first, returns in small doses. \n\n You think to yourself that whatever those monster corpses were worth in coin, you seem to have bought back for morale instead. At least that\'s what you hope.}",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -150,7 +150,7 @@ this.pov_many_corpses_event <- this.inherit("scripts/events/event", {
 
 				foreach( bro in brothers )
 				{
-					if (this.Math.rand(1, 100) <= 25)
+					if (this.Math.rand(1, 100) <= 40)
 					{
 						bro.improveMood(0.5, "Happy that the stench is gone");
 						this.List.push({
@@ -171,7 +171,7 @@ this.pov_many_corpses_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "Dispose Some",
-			Text = "[img]gfx/ui/events/pov_corpse_cart_half.png[/img]{You nod slowly and give a half-concession. %SPEECH_ON%We keep what\'s still good. The rest — get rid of it before it walks off on its own.%SPEECH_OFF% A few grumbles ripple through the camp, but orders are orders. The men set about the task with sour faces and cloths tied over their mouths. The worst of the corpses — the bloated, the leaking, the half-melted — are dragged away to a gully and burned without ceremony. The flames do little to mask the stench, but at least it no longer clings to the tents. \n\n The men don\'t exactly cheer, but they stop muttering as much, and supper no longer tastes like spoiled meat by association. A compromise, then — one that leaves both sanity and spoils somewhat intact.}",
+			Text = "[img]gfx/ui/events/pov_corpse_cart_half.png[/img]{You nod slowly and give a half-concession. %SPEECH_ON%We keep what\'s still good. The rest: get rid of it before it walks off on its own!%SPEECH_OFF% A few grumbles ripple through the camp, but orders are orders. The men set about the task with sour faces and cloths tied over their mouths. The worst of the corpses - the bloated, the leaking, the half-melted - are dragged away to a gully and burned without ceremony. The flames do little to mask the stench, but at least it no longer clings to the tents. \n\n The men don\'t exactly cheer, but they stop muttering as much, and supper no longer tastes like spoiled meat by association. A compromise, one that leaves both sanity and spoils somewhat intact.}",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -236,7 +236,7 @@ this.pov_many_corpses_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "Specialist",
-			Text = "[img]gfx/ui/events/pov_corpse_cart_full.png[/img]{The stench hangs over the camp like a curse, thick enough to taste. Muttering is turning to complaints, and complaints to unrest. You eye the bloated cart and then glance over at %Specialist%, who\'s calmly eating near the edge of camp — unbothered, as always. %SPEECH_ON%You\'ve dealt with worse. Got anything for the smell?%SPEECH_OFF% %Specialist% looks up, shrugs, and wipes their hands on their tunic.%SPEECH_ON% Aye. There\'s a few tricks of my trade. Herbs, ash, bit of pitch, and vinegar if we have it. Won\'t make it pleasant, but it\'ll make it tolerable.%SPEECH_OFF% You give the order. Soon enough, %specialist% is making rounds with bundles of pungent herbs and a thick, smoky paste, dabbing it across the worst parts of the cart and muttering something under their breath. By sundown, the difference is clear — the smell\'s not gone, but it no longer curls the stomach. The mood in camp lifts. A few even crack jokes again. \n\nNo corpses lost. No arguments. Just one strange soul with strange skills, doing what they do best.}",
+			Text = "[img]gfx/ui/events/pov_corpse_cart_full.png[/img]{The stench hangs over the camp like a curse, thick enough to taste. Muttering is turning to complaints, and complaints to unrest. You eye the bloated cart and then glance over at %Specialist%, who\'s calmly eating near the edge of camp, unbothered, as always. %SPEECH_ON%You\'ve dealt with worse. Got anything for the smell?%SPEECH_OFF% %Specialist% looks up, shrugs, and wipes %their_Specialist% hands on their tunic.%SPEECH_ON% Aye. There\'s a few tricks of my trade. Herbs, ash, bit of pitch, and vinegar if we have it. Won\'t make it pleasant, but it\'ll make it tolerable.%SPEECH_OFF% You give the order. Soon enough, %specialist% is making rounds with bundles of pungent herbs and a thick, smoky paste, dabbing it across the worst parts of the cart and muttering something under their breath. By sundown, the difference is clear... the smell\'s not gone, but it no longer curls the stomach. The mood in camp lifts. A few even crack jokes again. \n\nNo corpses lost. No arguments. Just one strange soul with strange skills, doing what they do best.}",
 			Image = "",
 			List = [],
 			Characters = [],
@@ -258,7 +258,7 @@ this.pov_many_corpses_event <- this.inherit("scripts/events/event", {
 				{
 					if (this.Math.rand(1, 100) <= 30)
 					{
-						bro.improveMood(0.5, "Happy that the stench is gone");
+						bro.improveMood(0.5, "Happy that the stench is mostly gone");
 
 						if (bro.getMoodState() >= this.Const.MoodState.Neutral)
 						{
@@ -351,14 +351,20 @@ this.pov_many_corpses_event <- this.inherit("scripts/events/event", {
 			"Specialist",
 			this.m.Specialist != null ? this.m.Specialist.getName() : ""
 		]);
+		if (this.m.Specialist != null)
+		{
+			::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.Specialist.getGender(), "Specialist");
+		}
 		_vars.push([
 			"Rando1",
 			this.m.Rando1.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.Rando1.getGender(), "Rando1");
 		_vars.push([
 			"Rando2",
 			this.m.Rando2.getName()
 		]);
+		::Const.LegendMod.extendVarsWithPronouns(_vars, this.m.Rando2.getGender(), "Rando2");
 	}
 
 	function onClear()

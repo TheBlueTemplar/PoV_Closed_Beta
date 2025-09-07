@@ -16,7 +16,7 @@ this.pov_goblin_mutagen_effect <- this.inherit("scripts/skills/skill", {
 
 	function getDescription()
 	{
-		return "[color=" + this.Const.UI.Color.PositiveValue + "]Reactive Muscles[/color]: This character\'s muscles have mutated, allowing them to execute swift and intricate movements with ease. Their body flows effortlessly through battle, making evasive maneuvers and repositioning far less taxing.\n\n[color=" + this.Const.UI.Color.PositiveValue + "]Mutated Cornea[/color]: Their eyes have adapted to detect the subtlest shifts in wind and motion, enhancing their ability to anticipate and correct projectile trajectories. Their ranged attacks strike with uncanny accuracy and can bypass obstructions with surprising frequency.\n\n[color=" + this.Const.UI.Color.NegativeValue + "]Frail Physique[/color]: This character\'s body has become more fragile, struggling to endure direct blows. Even minor injuries can take a severe toll, and heavier armor feels overly cumbersome, sapping energy faster than normal.\n\n[color=" + this.Const.UI.Color.NegativeValue + "]Skittish Mind[/color]: The Vatt\'ghern' is more prone to panic in the face of danger, making them susceptible to fear and doubt. Prolonged engagements or overwhelming odds may break their resolve more easily than most.";
+		return "[color=" + this.Const.UI.Color.povPerkBlue + "]Reactive Muscles[/color]: This character\'s muscles have mutated, allowing them to execute swift and intricate movements with ease. Their body flows effortlessly through battle, making evasive maneuvers and repositioning far less taxing.\n\n[color=" + this.Const.UI.Color.povPerkBlue + "]Mutated Cornea[/color]: Their eyes have adapted to detect the subtlest shifts in wind and motion, enhancing their ability to anticipate and correct projectile trajectories. Their ranged attacks strike with uncanny accuracy and can bypass obstructions with surprising frequency.\n\n[color=" + this.Const.UI.Color.povPerkBlue + "]Frail Physique[/color]: This character\'s body has become more fragile, struggling to endure direct blows. Even minor injuries can take a severe toll, and heavier armor feels overly cumbersome, sapping energy faster than normal.\n\n[color=" + this.Const.UI.Color.povPerkBlue + "]Skittish Mind[/color]: The Vatt\'ghern' is more prone to panic in the face of danger, making them susceptible to fear and doubt. Prolonged engagements or overwhelming odds may break their resolve more easily than most.";
 	}
 
 	function getPenalty()
@@ -66,6 +66,12 @@ this.pov_goblin_mutagen_effect <- this.inherit("scripts/skills/skill", {
 				id = 11,
 				type = "text",
 				icon = "ui/icons/ranged_skill.png",
+				text = "All Ranged Damage increased by [color=" + this.Const.UI.Color.PositiveValue + "]12%[/color]."
+			},
+			{
+				id = 11,
+				type = "text",
+				icon = "ui/icons/ranged_skill.png",
 				text = "An additional [color=" + this.Const.UI.Color.PositiveValue + "]15%[/color] ranged skill, with an additional [color=" + this.Const.UI.Color.PositiveValue + "]25%[/color] chance that a shot can not be blocked."
 			},
 			{
@@ -97,6 +103,7 @@ this.pov_goblin_mutagen_effect <- this.inherit("scripts/skills/skill", {
 		// Get a bunch of ranged and mobility bonuses too
 		_properties.MovementFatigueCostAdditional += -1;
 		_properties.RangedSkillMult *= 1.15;
+		_properties.RangedDamageMult *= 1.12;
 		_properties.RangedAttackBlockedChanceMult = this.Math.max(0, _properties.RangedAttackBlockedChanceMult - 0.25);
 		// Debuffs
 		// Also a moral check penalty? dunno if it works
