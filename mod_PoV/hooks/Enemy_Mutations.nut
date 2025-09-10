@@ -38,10 +38,44 @@
 // Enemy Mutatuin System	
 ::TLW.MutateEntity <- 
 {
+	// Function that handles actor's name change if he has multiple mutations
+	function renameActor(_actor, _oldName)
+	{
+		//skip check if actor isnt a mutant
+		if (!_actor.getFlags().has("mutant"))
+		{
+			return null;
+		}
+
+    local skills = _actor.getSkills();
+    if (skills == null) return null; // fallback
+
+    foreach (pair in ::TLW.EnemyMutationNames)
+    {
+        if (skills.hasSkill(pair[0]) && skills.hasSkill(pair[1]))
+        {
+        	local newName = pair[2];
+					if (newName != null)
+					{
+						_actor.m.Name = "[color="+ ::Const.UI.Color.povSpecialEnemyMutation + "]"+newName+"[/color] " + _oldName;
+					}
+				}
+    }
+    return null; // no match found
+	}
+
 	// New Enemy Mutation System ('Dynamic')
 	// _mutations first has to be a defined array before passed here as an arg
 	mutate_entity = function(_actor, _chance, _mutations, _hard)
 	{
+		// With chaos mode enabled, no mutations can come normally
+		// (they are given with add mutation all below instead)
+		if (::TLW.ChaosMode)
+		{
+			return;
+		}
+
+		local prevName = _actor.m.Name; // Saves actors original name, can be used in other funcs below
 		local possibleMutations = _mutations;	// List of all possible mutations
 		// Some debug and fallbacks
 		if (possibleMutations == null || possibleMutations.len() <= 0)
@@ -107,6 +141,9 @@
 				}
 			}
 		}
+
+		// If Multiple mutations present, special name change, if chaos mode true, do it then (if chaos mode, happens later)
+		renameActor(_actor, prevName);
 	}
 }
 
@@ -115,11 +152,26 @@
 	// Full credits to pot here (well, and Chopeks, and myself at that point xd)
 	add_mutation_all = function(_actor, _hard)	// _hard argument is just to pass it to other functions
 	{
+		local prevName = _actor.m.Name; // Saves actors original name, can be used in other funcs below
 		local roll;
 		// Mutation Chance modification based on game's combat diff
-		local mutationChance = [2.0, 3.0, 5.0, 7.0][::World.Assets.getCombatDifficulty()];
+		local mutationChance = [3.0, 4.0, 6.0, 9.0][::World.Assets.getCombatDifficulty()];
 		//mutationChance = 25.0; // Debug
 		
+		// Mutation Chance further increased by passed days (optional)
+		if (::TLW.EnemyMutationScaling)
+		{
+			local day = this.World.getTime().Days;
+			if (day != null)
+			{
+				// These are defined in mod_PoV_scaling_defs.nut
+				if (day >= ::TLW.Scaling.D.Day) {mutationChance *= ::TLW.Scaling.D.Mult;}
+				else if (day >= ::TLW.Scaling.C.Day) {mutationChance *= ::TLW.Scaling.C.Mult;}
+				else if (day >= ::TLW.Scaling.B.Day) {mutationChance *= ::TLW.Scaling.B.Mult;}
+				else if (day >= ::TLW.Scaling.A.Day) {mutationChance *= ::TLW.Scaling.A.Mult;}
+			}
+		}
+
 		// Create a list of all possible mutations (defined below)
 		local possibleMutations = ::TLW.EnemyMut.All;
 
@@ -134,6 +186,9 @@
 				::TLW.Mod.Debug.printLog("Mutated with Roll: " + roll + " / " + mutationChance + " Rolled mutation number: " + mutation);
 			}
 		}
+
+		// If Multiple mutations present, special name change, if chaos mode true, do it then
+		::TLW.MutateEntity.renameActor(_actor, prevName);
 	}
 }
 
@@ -152,13 +207,22 @@
 			//mutant_glow_sprite.varySaturation(0.1);
 			//mutant_glow_sprite.varyColor(0.05, 0.05, 0.05);
 			mutant_glow_sprite.Visible = true;
+
+			// Adds Effect to animate above sprite
+			if (!_actor.getSkills().hasSkill("effects.pov_enemy_mutation_effect"))
+			{
+				_actor.getSkills().add(this.new("scripts/skills/effects/pov_enemy_mutation_effect"));
+			}
 		}
+
 		// Adds sprite for the mutation effect (bust)
-		if (_actor.hasSprite("miniboss"))
+		if (_actor.hasSprite("pov_bust"))
 		{
-			local mutant_bust_sprite = _actor.getSprite("miniboss");
-			mutant_bust_sprite.setBrush("pov_mutant_bust"); 
+			local mutant_bust_sprite = _actor.getSprite("pov_bust");
+			mutant_bust_sprite.setBrush("pov_mutant_bust");
 			mutant_bust_sprite.Saturation = 0.8;
+			mutant_bust_sprite.varySaturation(0.1);
+			mutant_bust_sprite.varyColor(0.15, 0.15, 0.15); 
 			mutant_bust_sprite.Visible = true;
 		}
 	}
@@ -184,6 +248,7 @@
 	::TLW.EnemyMutations.add_mutation_enemy_skeleton(this.actor, false);
 	::TLW.EnemyMutations.add_mutation_enemy_alp(this.actor, false);
 	::TLW.EnemyMutations.add_mutation_enemy_hexe(this.actor, false);
+	::TLW.EnemyMutations.add_mutation_enemy_rot(this.actor, false);
 	*/
 
 	// Enemy Mutation General Function
@@ -195,6 +260,8 @@
 		if (_actor.isResurrected()){return;} //Fallback-Fix for enemies getting mutation when rising from dead
 
 		// Mutant name change!
+		// Only works the first time an entity is mutated
+		// Names depending on multiple mutations are handled on the end of mutate entity and/or add mutation all
 		if (!_actor.getFlags().has("mutant"))
 		{
 			local prevName = _actor.m.Name;
@@ -225,6 +292,7 @@
 		// Add the Mutation effect Sprite
 		::TLW.MutantEffect.add_mutant_effect(_actor);
 	}
+
 
 	add_mutation_enemy_serpent = function(_actor, _hard)
 	{
@@ -305,6 +373,11 @@
 	{
 		::TLW.EnemyMutations.add_mutation_enemy("hexe", "Cursebearer", null, _actor, _hard);
 	}
+
+	add_mutation_enemy_rot = function(_actor, _hard)
+	{
+		::TLW.EnemyMutations.add_mutation_enemy("rot", "Foul", null, _actor, _hard);
+	}
 	// ENEMY SPECIFIC MUTATIONS (wtf was this for xd)
 }
 
@@ -339,23 +412,27 @@
 
 // Enemy Mutations Definition n Integration
 // Added to Above Object via Its Function, take EnemyMutations function as arg
-::TLW.EnemyMut.Unhold <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_unhold);
-::TLW.EnemyMut.Vampire <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_vampire);
-::TLW.EnemyMut.Spider <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_spider);
-::TLW.EnemyMut.Orc <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_orc);
-::TLW.EnemyMut.Lindwurm <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_lindwurm);
-::TLW.EnemyMut.Sandgolem <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_sandgolem);
-::TLW.EnemyMut.Ghost <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_ghost);
-::TLW.EnemyMut.Serpent <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_serpent);
-::TLW.EnemyMut.Ghoul <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_ghoul);
-::TLW.EnemyMut.Basilisk <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_basilisk);
-::TLW.EnemyMut.Direwolf <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_direwolf);
-::TLW.EnemyMut.Goblin <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_goblin);
-::TLW.EnemyMut.Schrat <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_schrat);
-::TLW.EnemyMut.Skeleton <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_skeleton);
-::TLW.EnemyMut.Alp <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_alp);
-::TLW.EnemyMut.Hexe <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_hexe);
+::TLW.EnemyMut.Unhold <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_unhold); //1
+::TLW.EnemyMut.Vampire <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_vampire); //2
+::TLW.EnemyMut.Spider <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_spider); //3
+::TLW.EnemyMut.Orc <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_orc); //4
+::TLW.EnemyMut.Lindwurm <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_lindwurm); //5
+::TLW.EnemyMut.Sandgolem <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_sandgolem); //6
+::TLW.EnemyMut.Ghost <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_ghost); //7
+::TLW.EnemyMut.Serpent <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_serpent); //8
+::TLW.EnemyMut.Ghoul <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_ghoul); //9
+::TLW.EnemyMut.Basilisk <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_basilisk); //10
+::TLW.EnemyMut.Direwolf <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_direwolf); //1
+::TLW.EnemyMut.Goblin <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_goblin); //12
+::TLW.EnemyMut.Schrat <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_schrat); //13
+::TLW.EnemyMut.Skeleton <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_skeleton); //14
+::TLW.EnemyMut.Alp <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_alp); //15
+::TLW.EnemyMut.Hexe <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_hexe); //16
+::TLW.EnemyMut.Rot <- ::TLW.EnemyMut.add(::TLW.EnemyMutations.add_mutation_enemy_rot); //17
 
 // Enemy Mutation Arrays Are Created From The Above Values
 // in Enemy_Mutation_Arrays.nut, in afterhooks (rest in prev file, bottom)
+
+// You can also use the above as they are, to test enemy mutations, example below:
+// ::TLW.MutateEntity.mutate_entity(this.actor,::TLW.EnemyMutChance.Test100,[::TLW.EnemyMut.Unhold,::TLW.EnemyMut.Sandgolem],false);
 

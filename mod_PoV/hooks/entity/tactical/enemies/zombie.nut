@@ -50,12 +50,6 @@
 				this.m.Skills.add(this.new("scripts/skills/effects/pov_calcium_deficiency_effect"));
 				this.m.Name = "Deficient " + prevName;
 			}
-
-			if (this.Math.rand(1.0, 100.0) <= chance)
-			{
-				this.m.Skills.add(this.new("scripts/skills/effects/pov_unbearable_stench_passive_effect"));
-				this.m.Name = "Foul " + prevName;
-			}
 		}
 
 		// Enemy Mutation System

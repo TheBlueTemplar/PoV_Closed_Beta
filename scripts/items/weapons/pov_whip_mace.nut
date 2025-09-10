@@ -6,7 +6,7 @@ this.pov_whip_mace <- this.inherit("scripts/items/weapons/weapon", {
 	{
 		this.weapon.create();
 		this.m.ID = "weapon.pov_whip_mace";
-		this.m.Name = "Whip Mace";
+		this.m.Name = "Whip Flail";
 		this.m.Description = "An eccentric weapon combining the qualities of the flail and the whip\n\nIt is in many ways impractical and hard to handle, only a skilled individual could use this properly";
 		this.m.IconLarge = "weapons/melee/pov_mace_whip_01.png";
 		this.m.Icon = "weapons/melee/pov_mace_whip_01_70x70.png";

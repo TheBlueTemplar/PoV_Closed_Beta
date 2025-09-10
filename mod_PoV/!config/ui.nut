@@ -1,6 +1,7 @@
 // Custom Colours to be used in Tooltips, Names and Skills/Effects!
 // Effects
 ::Const.UI.Color.povEnemyMutation <- "#01420d"; // GREEN - Mutant names, mutant effects
+::Const.UI.Color.povSpecialEnemyMutation <- "#632004"; // TERRACOTTA - Special Mutant names
 ::Const.UI.Color.povEnemyEffect <- "#5c3a01"; // BEIGE/BROWN - New enemy effects
 ::Const.UI.Color.povPainEffect <- "#5c0101"; // BORDEUX - Pain from injury effects
 // Skills / Perks

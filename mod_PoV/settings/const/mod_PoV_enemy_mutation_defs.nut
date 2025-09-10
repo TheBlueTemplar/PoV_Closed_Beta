@@ -110,3 +110,10 @@
 		Script = "scripts/items/misc/anatomist/pov_hexe_mutagen_item",
 		BaseDropChance = 2.5
 	};
+
+	::TLW.Mutation.Rot <- 
+	{
+		Flag = "pov_mutant_rot",
+		Script = "scripts/items/misc/anatomist/pov_strain_mutagen_item",
+		BaseDropChance = 1.8
+	};

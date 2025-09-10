@@ -66,7 +66,7 @@
 		        "effects.pov_schrat_mutagen_upgraded",
 		        "effects.pov_alp_mutagen_upgraded"
 		    ];
-
+			
 		    // Loop through and reduce count for each skill found
 		    foreach (skill in freeMutations)
 		    {
@@ -75,7 +75,7 @@
 		        	mutationCount -= 1;
 		        }
 		    }
-		    */
+		   	*/
 			
 			// Fallback
 			if (mutationCount < 0){mutationCount = 0;}
