@@ -1,4 +1,4 @@
-# Path-of-the-Vatt-ghern-V0.3.14-Beta
+# Path-of-the-Vatt-ghern-V0.3.15-Beta
 **Changelog in the Release Notes**
 
 **Previous Changes Changelogs in changelog.md above, or the included .txt**
