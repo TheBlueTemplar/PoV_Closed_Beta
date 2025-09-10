@@ -1,5 +1,39 @@
-# V0.3.14 BETA
+# v0.3.15 BETA
 
+## Changelog V0.3.15 BETA:
+
+### NEW ADDITIONS
+* Added a brand new enemy mutation to the enemy mutations roster: rot! (With now a total of 17 Possible Mutations)
+   * Its effect is quite similar to the "Unbearable Stench" passive that I added previously to PoV, granting an melee range aoe debuff to enemies
+   * Its drawback is that while it turns an enemy into a strong melee debuffer, it slows it down, reduces its resolve, and slightly reduces its defense, and gives weakness to fire
+   * Enemies who bear that mutation have a chance to drop the "Strain" mutagen
+   * The player can also obtain this effect, via the "Strain" Mutation
+   * Due to this being now a mutation, zombies cannot have a chance to obtain this effect via other means (previously they could get it)
+* Expanding the dynamic enemy renaming system from the enemy mutations.
+   * Now, other than the default title enemies gain when getting their first mutation (eg.: "cunning" for goblin) now there is also another possibility
+   * If an enemy rolls more than one mutation, and two of those happen to belong to a "Set", the enemy will get a more rare, "special" name
+     * Example, an enemy with the Sandgolem and Schrat mutations, will now receive the "Impenetrable" title.
+     * Currently, there are 20 such combinations and possible titles, and Im looking to expand them, any ideas very appreciated!
+* ANIMATIONS!!!
+   * Now, the green glow of enemy mutants will be animated (soft fade in and out, with scale change). 
+   * Also, enemies with the rot mutation or the unbearable stench effect will also have their "stench" effect in battle animated
+
+### IMPROVEMENTS/TWEAKS
+* The green bust sprite that the mutants have, will now be more visible if they are champions, and will show up in the turn order preview!
+* Chaos Mode and Enemy Mutations Systems are now more independent from each other
+   * With Chaos Mode enabled, now enemies will receive fully random mutations only. Not in addition to what they could roll normally (as it was before)
+   * To compensate, mutation chances of the enemy chaos mutations were slightly raised 
+* The in battle art of PoV's "Mace/Whip" weapons was improved to be less....weird
+* The "Mace Whip" was more appropriately renamed to "Whip Flail"
+
+### BALANCE
+* The Scaling of enemy mutations (how often they appear) was tweaked to be more reasonable
+* The Stench effect
+
+### FIXES
+* Fixed a typo in the "Many corpses" event
+* Fixed Schrats not being able to mutate
+  
 ## Changelog V0.3.14 BETA:
 
 ### IMPROVEMENTS/TWEAKS
