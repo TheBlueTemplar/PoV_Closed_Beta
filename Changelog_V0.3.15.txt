@@ -4,6 +4,7 @@
 * Added a brand new enemy mutation to the enemy mutations roster: rot! (With now a total of 17 Possible Mutations)
    * Its effect is quite similar to the "Unbearable Stench" passive that I added previously to PoV, granting an melee range aoe debuff to enemies
    * Its drawback is that while it turns an enemy into a strong melee debuffer, it slows it down, reduces its resolve, and slightly reduces its defense, and gives weakness to fire
+   * Enemies who bear that mutation have a chance to drop the "Strain" mutagen
    * The player can also obtain this effect, via the "Strain" Mutation
    * Due to this being now a mutation, zombies cannot have a chance to obtain this effect via other means (previously they could get it)
 * Expanding the dynamic enemy renaming system from the enemy mutations.
